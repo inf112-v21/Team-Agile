@@ -26,7 +26,7 @@ public class HelloWorld implements ApplicationListener {
     private OrthogonalTiledMapRenderer render;
     private OrthographicCamera camera;
 
-    private TiledMapTileLayer.Cell playerCell, wonPlayerCell, deadPlayerCell;
+    private TiledMapTileLayer.Cell playerCell, playerWonCell, playerDiedCell;
 
     Vector2 playerPosition;
 
@@ -61,6 +61,19 @@ public class HelloWorld implements ApplicationListener {
 
         playerCell = new TiledMapTileLayer.Cell();
         playerCell.setTile(new StaticTiledMapTile(tr[0][0]));
+
+        playerWonCell = new TiledMapTileLayer.Cell();
+        playerWonCell.setTile(new StaticTiledMapTile(tr[0][0]));
+
+        playerDiedCell = new TiledMapTileLayer.Cell();
+        playerDiedCell.setTile(new StaticTiledMapTile(tr[0][0]));
+
+
+
+
+
+
+
     }
 
     @Override
