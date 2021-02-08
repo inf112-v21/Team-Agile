@@ -48,7 +48,17 @@ _Notater for hva som ble gjort og hva som er litt avklart er notert ned selve da
 * Til neste møtepunkt skal vi gjennomføre mer kode, oppdatere Project Board, samt prøve å ferdigstille dokumentet mer. Vi legger også opp en fast struktur for hvert møtepunkt, både tidsmessig samt innholdsmessig.
 
 **8.februar 12:15-14:00**
-* 
+* Skrevet ferdig brukerhistorie, akseptansekriterer og arbeidsoppgaver
+* Laget struktur for project board
+* Opprettet markdown dokument i prosjektmappen
+    * Formatert dokumentet klart til innlevering     
+* Fortsatte på libgdx og Tiled.
+* Hadde Git problemer så en del av tiden forsvant på dette.
+* Fikk vist spiller på brett ved hjelp av vektor2.
+* Lagde metoden keyUp() og implementerte den for å bevege spiller på brett.
+* Sørget for å fjerne spiller fra forrige posisjon.
+
+
 
 
 ## Møtetidspunkt og møtestruktur
