@@ -16,6 +16,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.Input;
 
 public class HelloWorld extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
@@ -80,6 +81,30 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     }
 
     @Override
+    public boolean keyUp(int keycode) {
+        player.setCell((int) playerPosition.x, (int) playerPosition.y, null);
+
+        switch(keycode) {
+            case Input.Keys.LEFT:
+                playerPosition.set(playerPosition.x - 1, playerPosition.y);
+                break;
+            case Input.Keys.RIGHT:
+                playerPosition.set(playerPosition.x + 1, playerPosition.y);
+                break;
+            case Input.Keys.UP:
+                playerPosition.set(playerPosition.x, playerPosition.y + 1);
+                break;
+            case Input.Keys.DOWN:
+                playerPosition.set(playerPosition.x, playerPosition.y - 1);
+                break;
+        }
+
+        player.setCell((int) playerPosition.x, (int) playerPosition.y, playerCell);
+
+        return false;
+    }
+
+    @Override
     public void dispose() {
         batch.dispose();
         font.dispose();
@@ -91,6 +116,11 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
         render.render();
+
+        player.setCell((int) playerPosition.x, (int) playerPosition.y, playerCell);
+
+
+
     }
 
     @Override
