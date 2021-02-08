@@ -68,8 +68,6 @@ _Notater for hva som ble gjort og hva som er litt avklart er notert ned selve da
 * Onsdager 12:15 - 14:00  
 * Fredager 10:15 - 12:00
 
-_Møtets varighet endres litt ut fra behov. Møtetidspunktene er i hovedsak for å kunne snakke om fremdrift og se behovene for hva som må gjøres foor å komme i mål med prosjektet_ 
-
 **Fast møtestruktur:**
 * Gå gjennom dagens agenda
 * Se på project board // se på prosjektstatus 
@@ -79,7 +77,7 @@ _Møtets varighet endres litt ut fra behov. Møtetidspunktene er i hovedsak for 
 
 ## Teambeskrivelse og rollefordeling
 
-###**Erfaringer i teamet:**  
+### Erfaringer i teamet:  
 * **Marius, Leif Petter, Johnny, Tore:** Har hatt INF100, INF101, INF102, INF122, INF115. Tore har også hatt en prosjektoppgave på HVL så har noe erfaring i tilsvarende gruppeoppgaver fra før.
 * **Anthony:** Erfaring fra tidligere gruppeprosjekt i Bacheloroppgave og lignende faget INF100 i MatLab med å programmere noe Lego-greier. Programmeringserfaring tilsvarende de som er nevnt over, med noe webprogrammering i tillegg.
 
