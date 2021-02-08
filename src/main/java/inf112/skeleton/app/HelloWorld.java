@@ -15,8 +15,9 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.InputAdapter;
 
-public class HelloWorld implements ApplicationListener {
+public class HelloWorld extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
 
@@ -68,7 +69,9 @@ public class HelloWorld implements ApplicationListener {
         playerDiedCell = new TiledMapTileLayer.Cell();
         playerDiedCell.setTile(new StaticTiledMapTile(tr[0][0]));
 
+        playerPosition = new Vector2(2,2);
 
+        Gdx.input.setInputProcessor(this);
 
 
 
