@@ -123,38 +123,44 @@ Begrensing på antall oppgaver vi tar sammen.
 _Brukerhistorier for punkt 1-5 MVP fra oppgaveteksten:_
 
 **1. Vise et spillebrett**
-- Jeg er en spiller som ønsker å kunne se brettet jeg spiller på, derfor trenger jeg at spillet viser brettet.
+- Jeg er en spiller som ønsker å kunne se brettet jeg spiller på, derfor trenger jeg at de mest grunnleggende
+  elementer av spillebrettet vises korrekt når jeg starter spillet, og mens jeg spiller
 
 
 **Akseptansekriterier:**
-* Brettet er synlig for en spiller som tester å spille
+* Spillbrettet vises med korrekte dimensjoner, innenfor guien som vises til spiller, under oppstart og
+så lenge spillet pågår (før det avsluttes)
 
 **Arbeidsoppgaver:**
 * Gjøre brettet synlig i spillmotoren/java-koden
-* Designe spillebrettet og deretter importere den inn i prosjektet
+* Designe spillebrettet og deretter importere det inn i prosjektet
 * Gjøre slik at main starter spillet først ved å vise selve brettet
-* Lage koordinater til spillebrettet slik at en kan oppdatere innhold på posisjoner på brettet
+* Lage koordinater til spillebrettet slik at en kan oppdatere innhold på posisjoner på brettet (den logiske 
+  mekanikken)
 
 <br/>  
 
 
 **2. Vise brikke på spillebrett**
 
-- Jeg er en spiller som ønsker å kunne bruke en brikke i spillet, derfor trenger jeg å kunne se brukken der den skal være på et gitt tidspunkt i spillet.
+- Jeg er en spiller som ønsker å kunne bruke en robot-brikke i spillet, derfor trenger jeg å kunne se brikken 
+  der den skal være på starten av spillet.
 
 **Akseptansekriterier:**
-* En brikke er synlig
+* Brikken til spilleren er synlig på det feltet hvor den starter
 
 **Arbeidsoppgaver:**
 * Designe brikken og deretter importere den inn i prosjektet
 * Gjøre brikken synlig i spillmotoren/java-koden
 * Gi brikken en startposisjon i spillet ut fra koordinater
+* Sørge for at brikken vises på det riktige stedet (startkoordinatene til brikken på brettet)
 
 <br/> 
 
 **3. Flytte brikke (vha taster e.l. for testing)**
 
-* Jeg er en spiller som ønsker å bruke brikken jeg er i spillet, derfor trenger jeg å kunne flytte brikken ved å trykke på en tast f.eks.
+* Jeg er en spiller som ønsker å bruke brikken jeg er i spillet, derfor trenger jeg å kunne flytte brikken 
+  ved å trykke på piltastene på tastaturet  
 
 **Akseptansekriterier:**
 * Brikken kan flyttes i alle fire retninger
@@ -171,23 +177,26 @@ _Brukerhistorier for punkt 1-5 MVP fra oppgaveteksten:_
 
 **4. Robot besøker flagg**
 
-* Jeg er en spiller som ønsker å kunne vinne spillet, derfor trenger jeg å kunne besøke et flagg.
+* Jeg er en spiller som ønsker å kunne besøke flagget, derfor trenger jeg at jeg kan gå på
+  et felt som har et objekt, som f.eks et flagg.
 
 **Akseptansekriterier:**
-* Når spilleren besøker et flagg så må det adderes i et register av hvor mange ganger spilleren har besøkt et flagg.
-* Besøket må være unikt for flagget for hver gang. Altså om spilleren besøker det samme flagget to ganger så skal det ikke registreres to besøk ved flagg, bare ett.
+* Vil at spiller skal kunne gå til feltet med flagget og dermed vinne spillet.
+
 
 **Arbeidsoppgaver:**
 * Legge til mulighet for å sjekke posisjoner som spiller besøker etterhvert.
-* Lage en liste som registrer flaggene spilleren besøker.
-* Sjekke at flagget ikke ligger i listen fra før.
-* Registrere flagget spiller besøker inn i listen om den oppfyller kravet.
+  (* Lage en liste som registrerer flaggene spilleren besøker, og legg det til spillerobjektet) 
+  //kan vurdere om den over skal være med nå eller brukes senere
+* Sjekke at flagget ikke ligger i listen fra før for spiller
+* Registrere flagget spiller besøker inn i listen om den oppfyller kravet og erklare spiller som vinner.
 
 <br/> 
 
 **5. Robot vinner ved å besøke flagg**
 
-* Jeg er en spiller som ønsker å kunne vinne spillet, derfor trenger jeg å kunne besøke et flagg og få beskjed om jeg vinner spillet.
+* Jeg er en spiller som ønsker å kunne vinne spillet, derfor trenger jeg å kunne besøke et flagg og få 
+  vite/se at jeg vinner spillet.
 
 **Akseptansekriterier:**
 * Registrere hvor mange flagg / checkpoints som må besøkes for av spiller skal vinne.
@@ -197,6 +206,11 @@ _Brukerhistorier for punkt 1-5 MVP fra oppgaveteksten:_
 **Arbeidsoppgaver:**
 * Sjekke at spilleren har vært innom alle unike flagg (på antall)
 * Sjekke at spilleren er den eneste som har vært innom alle unike flagg
+
+
+
+  
+
 
 
 ## Produktleveranse / kode
