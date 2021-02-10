@@ -178,9 +178,10 @@ så lenge spillet pågår (før det avsluttes)
 **4. Robot besøker flagg**
 
 * Jeg er en spiller som ønsker å kunne besøke flagget, derfor trenger jeg at jeg kan gå på
-  et felt som har et objekt, som f.eks et flagg.
+  et felt som har et flagg.
 
 **Akseptansekriterier:**
+* En spiller kan gå på et felt med et annet objekt, om det er av en spesiell type
 * Vil at spiller skal kunne gå til feltet med flagget og dermed vinne spillet.
 
 
