@@ -53,13 +53,16 @@ _Notater for hva som ble gjort og hva som er litt avklart er notert ned selve da
 * Opprettet markdown dokument i prosjektmappen
     * Formatert dokumentet klart til innlevering
 * Fortsatte på libgdx og Tiled.
-* Hadde Git problemer så en del av tiden forsvant på dette.
+* Hadde Git problemer så en del av tiden forsvant på dette (oppdatert 10. februar: github hadde nedetid da vi fikk problemer).
 * Fikk vist spiller på brett ved hjelp av vektor2.
 * Lagde metoden keyUp() og implementerte den for å bevege spiller på brett.
 * Sørget for å fjerne spiller fra forrige posisjon.
 
 **10.februar 12:15-14:00**
-*  
+* 2 av gruppemedlemmene hadde ikke blitt lagt til prosjekt, dermed hadde brukte vi mye tid på å fikse dette.
+* Forandret litt på brukerhistorie og akseptansekriterier
+* Gjennomført siste del av tutorial. Noen få elementer gjenstår i koden for å gjennomføre MVP for punkt 1-5. 
+
 
 ## Møtetidspunkt og møtestruktur
 
