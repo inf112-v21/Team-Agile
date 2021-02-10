@@ -65,10 +65,10 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         playerCell.setTile(new StaticTiledMapTile(tr[0][0]));
 
         playerWonCell = new TiledMapTileLayer.Cell();
-        playerWonCell.setTile(new StaticTiledMapTile(tr[0][0]));
+        playerWonCell.setTile(new StaticTiledMapTile(tr[0][2]));
 
         playerDiedCell = new TiledMapTileLayer.Cell();
-        playerDiedCell.setTile(new StaticTiledMapTile(tr[0][0]));
+        playerDiedCell.setTile(new StaticTiledMapTile(tr[0][1]));
 
         playerPosition = new Vector2(2,2);
 
@@ -119,6 +119,16 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         player.setCell((int) playerPosition.x, (int) playerPosition.y, playerCell);
 
+
+        if (hole.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
+            player.setCell((int) playerPosition.x, (int) playerPosition.y, playerDiedCell);
+        }else if(flag.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
+            player.setCell((int) playerPosition.x, (int) playerPosition.y, playerWonCell);
+
+        }
+        /*else {
+            player.setCell((int) playerPosition.x, (int) playerPosition.y, playerCell);
+        }*/
 
 
     }
