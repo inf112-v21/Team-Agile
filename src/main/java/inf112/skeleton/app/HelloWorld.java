@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -17,20 +19,30 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Input;
+import org.lwjgl.system.windows.GDI32;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Vector;
 
 public class HelloWorld extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
 
     private TiledMap map;
-    private TiledMapTileLayer board,player,hole, flag;
+    private TiledMapTileLayer boardLayer,playerLayer,holeLayer, flagLayer;
 
     private OrthogonalTiledMapRenderer render;
     private OrthographicCamera camera;
 
     private TiledMapTileLayer.Cell playerCell, playerWonCell, playerDiedCell;
+
+
+
+    private ArrayList<Flag> flaggene = new ArrayList<>();
+
+
 
     Vector2 playerPosition;
 
@@ -46,14 +58,19 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         map = loader.load("tutorial.tmx");
 
         //Layers initialize
-        board = (TiledMapTileLayer) map.getLayers().get("Board");
-        player = (TiledMapTileLayer) map.getLayers().get("Player");
-        hole = (TiledMapTileLayer) map.getLayers().get("Hole");
-        flag = (TiledMapTileLayer) map.getLayers().get("Flag");
+        boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
+        playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
+        holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
+        flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
+
+        Vector2 flag1 = new Vector2(5,5);
+        flaggene.add(new Flag(flag1, 1));
+
+
+
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false,5,5);
-
 
         camera.update();
 
@@ -76,7 +93,9 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         playerPosition = new Vector2(2,2);
 
-        robotPlayer = new Player(playerPosition, player);
+
+
+        robotPlayer = new Player(playerPosition, playerLayer);
 
         Gdx.input.setInputProcessor(robotPlayer);
 
@@ -99,19 +118,21 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         render.render();
 
-        if (hole.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
-            player.setCell((int) playerPosition.x, (int) playerPosition.y, playerDiedCell);
+        if (holeLayer.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
+            playerLayer.setCell((int) playerPosition.x, (int) playerPosition.y, playerDiedCell);
         }
-        else if(flag.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
-            player.setCell((int) playerPosition.x, (int) playerPosition.y, playerWonCell);
-
+        else if(flagLayer.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
+            playerLayer.setCell((int) playerPosition.x, (int) playerPosition.y, playerWonCell);
+            robotPlayer.visitFlag(1);
         }
         else {
-            player.setCell((int) playerPosition.x, (int) playerPosition.y, playerCell);
+            playerLayer.setCell((int) playerPosition.x, (int) playerPosition.y, playerCell);
         }
 
 
     }
+
+
 
     /*
     @Override
@@ -135,4 +156,10 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     @Override
     public void resume() {
     }
+
+    public void allFlagsTaken(Player player) {
+        if(pla)
+
+    }
+
 }
