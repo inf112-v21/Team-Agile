@@ -1,5 +1,4 @@
-# INF112 Maven template 
-Simple skeleton with libgdx. 
+# INF112 README OBLIG 1
 
 ## HVORDAN LASTE NED PROSJEKTET OG STARTE SPILLET
 1. Laste ned Git-repo fra https://github.com/inf112-v21/Team-Agile ved å klone prosjektet til din maskin. 
