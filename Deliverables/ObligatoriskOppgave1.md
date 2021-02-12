@@ -254,11 +254,15 @@ Gitt at spilleren starter på posisjon (0,0) skal brikken vises på feltet i ven
 <br/> 
 
 
-  
-
-
-
 ## Produktleveranse / kode
+
+### Dokumentasjon om teknisk byggesett
+
+Dette er å finne i README-dokumentet i selve prosjektet. 
+
+### Beskrivelse av prosjektet 
+
+Dette er å finne i README-dokumentet i selve prosjektet.
 
 ### Kode
 **Hva vi ikke har fått til av kode:** 
@@ -268,6 +272,20 @@ Gitt at spilleren starter på posisjon (0,0) skal brikken vises på feltet i ven
 <br/>
 
 ### Retrospektiv 
+
+**Kommunikasjon**
+
+Kommunikasjen blant gruppen gjennom prosjektet har gått svært bra. Det har vært flere møtetidspunkter og prater 
+gjennom Discord, hvor samtlige har fått delt meniger og kommet med innspill til hvordan en kan få til et godt resultat, 
+og hvordan en skal løse de ulike utfordringene. 
+
+Samtidig har alle bidratt likt gjennom møtetidspunktene. Det meste av koding / jobbing med prosjektdokumentet har skjedd 
+gjennom de møtetidspunktete vi har hatt sammen, hvor vi har hatt 100% oppmøte hver gang (bortsett fra oppstartstimen, hvorav Petter var borte.) 
+
+En har jobbet gjennom flittig bruk av Code With Me, hvor en har arbeidet sammen i grupper på to og tre, hvorav en i hver gruppe har satt opp Code With Me. 
+Da har de andre kodet gjennom denne, før vedkommende som hostet sesjonen commiter og pusher prosjektet. En har i tillegg 
+også forsøkt at alle committer jevnt, selv om en commit ikke nødvendigvis representerer arbeidsmengden til en deltaker i gruppen (da en kan ha kodet mye gjennom Code With Me)
+
 
 **Gjennomførelsen av oppgaven**
 
@@ -283,15 +301,31 @@ problemstillingene, samt blitt mer vandt med verktøyene som brukes slik at nest
 En vet også at mye av GitHub-problematikken skyldes at to av gruppemedlemenne ikke var lagt til i selve repoet i Git, 
 og derav fikk en ikke pushet endringer. 
 
-Til neste oppgave ønsker vi...... (forbedringer, nye aktiviteter/verktøy/prosessmetodikk
+Til neste oppgave ønsker vi nok å se litt mer på prosessmetodikken vi har brukt. Vi kan ta erfaring av måten vi jobbet 
+sammen i oppstarten på, og dra det med på hvordan vi ønsker å jobbe videre i prosjektet ved senere innleveringer. Se mer om dette under neste overskrift. 
 
+Bruken av digitale verktøy er vi relativt fornøyde med (sett bort fra problematikken vi har opplevd) og ønsker foreløpig ikke gjøre noe store endringer her. 
 
+**Prosjektmetodikk gjennomførelse**
+
+Vi gikk opprinnelig for en kombinasjon av metodene Scrum og Kanban. Vi føler selv at vi kanskje ikke helt har klart å følge akkurat det vi satte oss som mål, da opptarten av prosjektet har vært
+litt udefinert og uoversiktlig, som har gjort litt til at vi har tatt ting etterhvert det kommer ny informasjon (eksempelvis gjennom forelesninger). 
+
+ 
+I retrospektiv ser vi at kanskje en bedre og mer effektiv gjennomførelse ville være en mer direkte scrum-basert løsning, hvor vi kunne jobbet mer direkte med brukerhistorier for hver gruppe. 
+Eksempelvis at vi beholder faste grupper gjennom prosjeketet og denne gruppen begir seg ut på en brukerhistorie. 
+Da har denne gruppen direkte ansvar å gjennomføre alt fra brukerhistorie, akseptansekriterier og arbeidsoppgaver, til implementasjonen av dette i kodingen og gjennomførelsen av testene. 
+
+Project Board fikk vi også litt erfaringer med over hva som var effektivt og nyttig, og hva som ikke var nyttig. 
+Vi begynte først med en veldig detaljert Project Board, før vi etterhvert gikk fra mange "små kort" til å heller inndele Project Board til å inneholde større oppgaver. 
+Vi ser frem til å kunne jobbe mer strukturert neste gang og å få brukt Project Board enda mer aktivt. 
 
 **Oppgavens omfang**
-_På slutten av denne oppgaven kan dere gjøre en liten vurdering av hvor bra dere traff på oppgaven.
-Dette kan dere bruke til å justere hvor mange oppgaver dere tenker å få inn i neste iterasjon, som da leveres med 
-obligatorisk oppgave 2._
+Vi har, gjennom hyppige møtepunkter, følt at vi har hatt ålreit kontroll på prosjektet fra start mot slutt. 
+Eneste er inneleveringsdagen hvor vi bommet litt på arbeidsomfang, samtidig som vi fikk noe problemer med selve koden. 
+Dette gjorde fullførelsen av koden noe mer stressende da tiden begynte å gå tapt, samtidig som flere i gruppen hadde andre forelesninger & innleveringer som måtte gjennomgås. 
 
+Til neste innlevering er det nok lurere, gjennom å forbedre prosjektmetodikken, å klare å holde mer kontroll på punktene vi må få gjort, samtidig bli ferdig med koden før innleveringsdagen. Da kan heller innleveringsdagen brukes til å finpusse på kode, samt prosjektdokumentet. 
 
 
 
