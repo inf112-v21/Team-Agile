@@ -42,7 +42,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
     private ArrayList<Flag> flaggene = new ArrayList<>();
 
-    private Integer flagsToTake = 3;
+    private Integer flagsToTake = 2;
 
 
     Vector2 playerPosition;
@@ -66,9 +66,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         Vector2 flag1 = new Vector2(5,5);
         flaggene.add(new Flag(flag1, 1));
-
-
-
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false,5,5);
@@ -101,9 +98,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         Gdx.input.setInputProcessor(robotPlayer);
 
 
-
-
-
     }
 
     @Override
@@ -133,18 +127,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
 
     }
-
-
-
-    /*
-    @Override
-    public void countFlags(){
-        LinkedList<> visitedFlags = new LinkedList<>();
-
-        if (flag.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
-            visitedFlags.add();
-        }
-    }*/
 
 
     @Override
