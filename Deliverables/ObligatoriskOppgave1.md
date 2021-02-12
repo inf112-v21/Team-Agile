@@ -326,6 +326,7 @@ Vi begynte først med en veldig detaljert Project Board, før vi etterhvert gikk
 Vi ser frem til å kunne jobbe mer strukturert neste gang og å få brukt Project Board enda mer aktivt. 
 
 **Oppgavens omfang**
+
 Vi har, gjennom hyppige møtepunkter, følt at vi har hatt ålreit kontroll på prosjektet fra start mot slutt. 
 Eneste er inneleveringsdagen hvor vi bommet litt på arbeidsomfang, samtidig som vi fikk noe problemer med selve koden. 
 Dette gjorde fullførelsen av koden noe mer stressende da tiden begynte å gå tapt, samtidig som flere i gruppen hadde andre forelesninger & innleveringer som måtte gjennomgås. 
