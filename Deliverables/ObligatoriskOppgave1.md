@@ -63,6 +63,8 @@ _Notater for hva som ble gjort og hva som er litt avklart er notert ned selve da
 * Forandret litt på brukerhistorie og akseptansekriterier
 * Gjennomført siste del av tutorial. Noen få elementer gjenstår i koden for å gjennomføre MVP for punkt 1-5. 
 
+**12.februar 10:15-12:00** 
+* Gjennomført markdown-doc. Justert på brukerhistorier, akseptansekriterer og arbeidsoppgaver. Også lagt inn informasjon som gjenstår i dokumentet før innlevering. 
 
 ## Teambeskrivelse og rollefordeling
 
@@ -86,7 +88,6 @@ Vi velger deler oss inn i to grupper gjennom prosjektet, med mulig bytting etter
 **Designer:** Leif Petter (har kontroll på hvordan det visuelle ser ut og har ansvar for bildefiler etc.)
 
 ## Prosjektmetodikk
-_(beskrive hvilken prosjektmetodikk vi har valgt, og hvorfor)_
 
 Vi går for en metode som bruker litt Scrum og Kanban. Tenker valg av items/oppgaver blir satt i sprints,
 slik at vi alltid har en bestemt deadline for når vi skal bli ferdig med dem.
@@ -94,9 +95,6 @@ Ellers blir det litt frittgående slik som Kanban.
 Har også bestemt oss for å ha en limited WIP (Work in progress) som skal følges ved jobbing av sprints.
 Skal prøve å starte med sprints på 1,5 uke i lengde.
 
-Diskuter i teamet hvordan dere skal organisere dere under prosjektet. Noen viktige elementer:
-  Oppfølging av arbeid
-  Deling og oppbevaring av felles dokumenter, diagram og kodebase????
 
 ### Prosess- og prosjektplan
 Vi har jevnlig møter utover prosjektet hvor vi har oppfølging av arbeid i de forskjellige gruppene. Der bestemmer vi 
@@ -261,7 +259,6 @@ Gitt at spilleren starter på posisjon (0,0) skal brikken vises på feltet i ven
 
 
 ## Produktleveranse / kode
-_(hva fungerte, hva har vi ikke fått til etc. diverse notater om det ferdige produkter kan skrives inn her)_
 
 ### Kode
 **Hva vi ikke har fått til av kode:** 
