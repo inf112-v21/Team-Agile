@@ -65,6 +65,9 @@ _Notater for hva som ble gjort og hva som er litt avklart er notert ned selve da
 
 **12.februar 10:15-12:00** 
 * Gjennomført markdown-doc. Justert på brukerhistorier, akseptansekriterer og arbeidsoppgaver. Også lagt inn informasjon som gjenstår i dokumentet før innlevering. 
+* Fullført README.md
+* Laget test for spiller-bevegelse 
+* Ble ferdig med MVP oppgave 5 idag
 
 ## Teambeskrivelse og rollefordeling
 
@@ -269,7 +272,7 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 * Restriksjoner på flytting av brikke
     - utenfor brettet
     - hinder (vegger) senere i implementasjonen.
-* 
+* Fikk ikke refaktorert alt
 
 <br/>
 
