@@ -18,6 +18,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Input;
 
+import java.util.LinkedList;
+
 public class HelloWorld extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
@@ -31,6 +33,8 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     private TiledMapTileLayer.Cell playerCell, playerWonCell, playerDiedCell;
 
     Vector2 playerPosition;
+
+    Player robotPlayer;
 
     @Override
     public void create() {
@@ -72,36 +76,14 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         playerPosition = new Vector2(2,2);
 
-        Gdx.input.setInputProcessor(this);
+        robotPlayer = new Player(playerPosition, player);
+
+        Gdx.input.setInputProcessor(robotPlayer);
 
 
 
 
 
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        player.setCell((int) playerPosition.x, (int) playerPosition.y, null);
-
-        switch(keycode) {
-            case Input.Keys.LEFT:
-                playerPosition.set(playerPosition.x - 1, playerPosition.y);
-                break;
-            case Input.Keys.RIGHT:
-                playerPosition.set(playerPosition.x + 1, playerPosition.y);
-                break;
-            case Input.Keys.UP:
-                playerPosition.set(playerPosition.x, playerPosition.y + 1);
-                break;
-            case Input.Keys.DOWN:
-                playerPosition.set(playerPosition.x, playerPosition.y - 1);
-                break;
-        }
-
-        player.setCell((int) playerPosition.x, (int) playerPosition.y, playerCell);
-
-        return false;
     }
 
     @Override
@@ -117,21 +99,30 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         render.render();
 
-        player.setCell((int) playerPosition.x, (int) playerPosition.y, playerCell);
-
-
         if (hole.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
             player.setCell((int) playerPosition.x, (int) playerPosition.y, playerDiedCell);
-        }else if(flag.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
+        }
+        else if(flag.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
             player.setCell((int) playerPosition.x, (int) playerPosition.y, playerWonCell);
 
         }
-        /*else {
+        else {
             player.setCell((int) playerPosition.x, (int) playerPosition.y, playerCell);
-        }*/
+        }
 
 
     }
+
+    /*
+    @Override
+    public void countFlags(){
+        LinkedList<> visitedFlags = new LinkedList<>();
+
+        if (flag.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
+            visitedFlags.add();
+        }
+    }*/
+
 
     @Override
     public void resize(int width, int height) {
