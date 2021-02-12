@@ -46,15 +46,15 @@ public class PlayerTest {
     @Test
     public void keyRightShouldMakePlayerMoveOneToTheRightDirection() {
 
-        //skjekker at player befinner seg på en celle.
+        //sjekker at player befinner seg på en celle.
         assertNotNull(playerLayer.getCell((int) player.getPositionX(), (int) player.getPositionY()));
 
-        //skjekker om nye posisjon til player er lik posisjon som er forventet ved tastetrykk.
+        //sjekker om nye posisjon til player er lik posisjon som er forventet ved tastetrykk.
         Vector2 newPosition = new Vector2((int) player.getPositionX() + 1, (int) player.getPositionY());
         player.keyUp(Input.Keys.RIGHT);
         assertEquals(newPosition, player.position);
 
-        //skjekker om player er fjernet fra den cellen som den opprinnelig befant seg i
+        //sjekker om player er fjernet fra den cellen som den opprinnelig befant seg i
         assertNull(playerLayer.getCell((int) player.getPositionX(), (int) player.getPositionY()));
 
 

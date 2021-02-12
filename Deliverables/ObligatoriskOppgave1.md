@@ -59,7 +59,7 @@ _Notater for hva som ble gjort og hva som er litt avklart er notert ned selve da
 * Sørget for å fjerne spiller fra forrige posisjon.
 
 **10.februar 12:15-14:00**
-* 2 av gruppemedlemmene hadde ikke blitt lagt til prosjekt, dermed hadde brukte vi mye tid på å fikse dette.
+* 2 av gruppemedlemmene hadde ikke blitt lagt til prosjekt, dermed brukte vi mye tid på å fikse dette.
 * Forandret litt på brukerhistorie og akseptansekriterier
 * Gjennomført siste del av tutorial. Noen få elementer gjenstår i koden for å gjennomføre MVP for punkt 1-5. 
 
@@ -114,7 +114,7 @@ Begrensing på antall oppgaver vi tar sammen.
 * Fredager 10:15 - 12:00
 
 _Møtets varighet endres litt ut fra behov. Møtetidspunktene er i hovedsak for å kunne snakke om fremdrift og se behovene
-for hva som må gjøres foor å komme i mål med prosjektet_
+for hva som må gjøres for å komme i mål med prosjektet_
 
 **Fast møtestruktur:**
 * Gå gjennom dagens agenda
@@ -268,7 +268,9 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 **Hva vi ikke har fått til av kode:** 
 * Restriksjoner på flytting av brikke
     - utenfor brettet
-    - hinder (vegger) senere i implementasjonen.     
+    - hinder (vegger) senere i implementasjonen.
+* 
+
 <br/>
 
 ### Retrospektiv 
@@ -308,7 +310,7 @@ Bruken av digitale verktøy er vi relativt fornøyde med (sett bort fra problema
 
 **Prosjektmetodikk gjennomførelse**
 
-Vi gikk opprinnelig for en kombinasjon av metodene Scrum og Kanban. Vi føler selv at vi kanskje ikke helt har klart å følge akkurat det vi satte oss som mål, da opptarten av prosjektet har vært
+Vi gikk opprinnelig for en kombinasjon av metodene Scrum og Kanban. Vi føler selv at vi kanskje ikke helt har klart å følge akkurat det vi satte oss som mål, da oppstarten av prosjektet har vært
 litt udefinert og uoversiktlig, som har gjort litt til at vi har tatt ting etterhvert det kommer ny informasjon (eksempelvis gjennom forelesninger). 
 
  

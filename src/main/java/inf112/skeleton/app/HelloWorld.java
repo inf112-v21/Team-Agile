@@ -42,6 +42,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
     private ArrayList<Flag> flaggene = new ArrayList<>();
 
+    private Integer flagsToTake = 3;
 
 
     Vector2 playerPosition;
@@ -128,6 +129,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         else {
             playerLayer.setCell((int) playerPosition.x, (int) playerPosition.y, playerCell);
         }
+        allFlagsTaken(robotPlayer);
 
 
     }
@@ -158,7 +160,9 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     }
 
     public void allFlagsTaken(Player player) {
-        if(pla)
+        if(player.getFlag() == flagsToTake) {
+            Gdx.app.exit();
+        }
 
     }
 
