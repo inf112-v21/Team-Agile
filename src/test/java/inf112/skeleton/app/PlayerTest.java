@@ -16,6 +16,7 @@ public class PlayerTest {
     TiledMap board;
     TiledMapTileLayer playerLayer;
     Player player;
+    private Object assertEquals;
 
     @Before
     public void setup() {
