@@ -64,22 +64,6 @@ _Notater for hva som ble gjort og hva som er litt avklart er notert ned selve da
 * Gjennomført siste del av tutorial. Noen få elementer gjenstår i koden for å gjennomføre MVP for punkt 1-5. 
 
 
-## Møtetidspunkt og møtestruktur
-
-**Faste møtetidspunkt:**
-* Mandager 12:15 - 14:00
-* Onsdager 12:15 - 14:00
-* Fredager 10:15 - 12:00
-
-_Møtets varighet endres litt ut fra behov. Møtetidspunktene er i hovedsak for å kunne snakke om fremdrift og se behovene for hva som må gjøres foor å komme i mål med prosjektet_
-
-**Fast møtestruktur:**
-* Gå gjennom dagens agenda
-* Se på project board // se på prosjektstatus
-* Dele inn i 2 grupper som jobber med hver sitt område
-* Samles mot slutten av møtet for å snakke om hvilke fremskritt en har gjort så langt og avtale neste nødvendige møtepunkt
-
-
 ## Teambeskrivelse og rollefordeling
 
 ### Erfaringer i teamet:
@@ -110,15 +94,53 @@ Ellers blir det litt frittgående slik som Kanban.
 Har også bestemt oss for å ha en limited WIP (Work in progress) som skal følges ved jobbing av sprints.
 Skal prøve å starte med sprints på 1,5 uke i lengde.
 
-
+Diskuter i teamet hvordan dere skal organisere dere under prosjektet. Noen viktige elementer:
+  Oppfølging av arbeid
+  Deling og oppbevaring av felles dokumenter, diagram og kodebase????
 
 ### Prosess- og prosjektplan
-Vi har jevnlig møter utover prosjektet hvor vi har oppfølging av arbeid i de forskjellige gruppene. Der bestemmer vi også hva som må å prioriteres og eventuelt problemer som har oppstått.
+Vi har jevnlig møter utover prosjektet hvor vi har oppfølging av arbeid i de forskjellige gruppene. Der bestemmer vi 
+også hva som må å prioriteres og eventuelt problemer som har oppstått.
 
 Begrensing på antall oppgaver vi tar sammen.
 
 ### Project board
 **Link:** https://trello.com/b/80a0xYw8/inf112-oblig-1
+
+
+### Møtetidspunkt og møtestruktur
+
+**Faste møtetidspunkt:**
+* Mandager 12:15 - 14:00
+* Onsdager 12:15 - 14:00
+* Fredager 10:15 - 12:00
+
+_Møtets varighet endres litt ut fra behov. Møtetidspunktene er i hovedsak for å kunne snakke om fremdrift og se behovene
+for hva som må gjøres foor å komme i mål med prosjektet_
+
+**Fast møtestruktur:**
+* Gå gjennom dagens agenda
+* Se på project board // se på prosjektstatus
+* Dele inn i 2 grupper som jobber med hver sitt område
+* Samles mot slutten av møtet for å snakke om hvilke fremskritt en har gjort så langt og avtale neste nødvendige møtepunkt
+
+### Oppfølging av arbeid
+Oppfølging av arbeid som er gjenstående gjøres sporadisk gjennom møtepunktene i løpet av uken, samt via Project Board på Trello. 
+
+### Kommunikasjonsverktøy, deling og oppbevaring av filer
+Kommunikasjonsformen til gruppen har vært via Discord. I og med at ikke alle kjenner hverandre fra før så har vi prøvd 
+å være konsekvent på at prosjektrelatert prat, gruppemedlemmer i mellom, skal skje via Discord. På denne måten utelukker
+vi at ingen uteblis fra informasjon som er delt, samt at vi har all kommunikasjon samlet på en plass.
+
+
+Gruppen har valgt å bruke Trello project board som en felles delingsarena for både Project Board, men vi har også laget 
+en egen tavle som heter "Ressurser". Her deles de nødvendige filer, informasjonsskriv og eventuelle bilder som gruppen 
+trenger enkelt tilgang til for å innhente nødvendig informasjon for utførelsen av oppgaven. Øvrig deling har skjedd via 
+egen intern Discord-chat, samt også brukt Github for 
+opplasting av kodebase og assets-filer.
+
+
+
 
 ## Spesifikasjon
 
@@ -126,9 +148,8 @@ Begrensing på antall oppgaver vi tar sammen.
 _Brukerhistorier for punkt 1-5 MVP fra oppgaveteksten:_
 
 **1. Vise et spillebrett**
-- Jeg er en spiller som ønsker å kunne se brettet jeg spiller på, derfor trenger jeg at de mest grunnleggende
-  elementer av spillebrettet vises korrekt når jeg starter spillet, og mens jeg spiller
 
+- Som spiller ønsker jeg å kunne se spillbrettet, slik at jeg kan være med å spille spillet.
 
 **Akseptansekriterier:**
 * Spillbrettet vises med korrekte dimensjoner, innenfor guien som vises til spiller, under oppstart og
@@ -146,11 +167,10 @@ så lenge spillet pågår (før det avsluttes)
 
 **2. Vise brikke på spillebrett**
 
-- Jeg er en spiller som ønsker å kunne bruke en robot-brikke i spillet, derfor trenger jeg å kunne se brikken 
-  der den skal være på starten av spillet.
+- Som spiller ønsker jeg å kunne se robot-brikkene i spillet, slik at jeg kan planlegge trekkene utifra posisjonen.
 
 **Akseptansekriterier:**
-* Brikken til spilleren er synlig på det feltet hvor den starter
+* Brikken til spilleren vises på oppgitt felt på spillbrettet.
 
 **Arbeidsoppgaver:**
 * Designe brikken og deretter importere den inn i prosjektet
@@ -158,15 +178,18 @@ så lenge spillet pågår (før det avsluttes)
 * Gi brikken en startposisjon i spillet ut fra koordinater
 * Sørge for at brikken vises på det riktige stedet (startkoordinatene til brikken på brettet)
 
+**Scenario**
+
+Gitt at spilleren starter på posisjon (0,0) skal brikken vises på feltet i venstre nedre hjørne.
+
 <br/> 
 
 **3. Flytte brikke (vha taster e.l. for testing)**
 
-* Jeg er en spiller som ønsker å bruke brikken jeg er i spillet, derfor trenger jeg å kunne flytte brikken 
-  ved å trykke på piltastene på tastaturet  
+* Som spiller ønsker jeg å kunne flytte på brikken, slik at brikken flytter på seg som jeg hadde tenkt.
 
 **Akseptansekriterier:**
-* Brikken kan flyttes i alle fire retninger
+* Brikken kan flyttes i alle fire retninger (NORD, SØR, VEST, ØST)
 
 **Arbeidsoppgaver:**
 * Flytte brikken oppover ved bruk av tast pil opp
@@ -174,43 +197,63 @@ så lenge spillet pågår (før det avsluttes)
 * Flytte brikken til venstre ved bruk av tast pil venstre
 * Flytte brikken til høyre ved bruk av tast pil høyre
 * Oppdatere brettet for hvert trekk
-* Gi restriksjoner på hvor brikken kan og kan ikke bevege seg
+* Gi restriksjoner på hvor brikken kan og kan ikke bevege seg (ikke implementert)
+
+**Scenario**
+* Gitt kordinatsystemet hvor posisjon (0,0) tilsvarer nedre venstre hjørne (x,y)-kordinater
+  - Når robot befinner seg på posisjon (0,1) og høyre pil tastetrykk registreres, skal roboten bevege seg til (1,1)
+  - Når robot befinner seg på posisjon (1,1) og venstre pil tastetrykk registreres, skal roboten bevege seg til (0,1)
+  - Når robot befinner seg på posisjon (1,1) og opp pil tastetrykk registreres, skal roboten bevege seg til (1,2)
+  - Når robot befinner seg på posisjon (1,2) og ned pil tastetrykk registreres, skal roboten bevege seg til (1,1)
 
 <br/> 
 
 **4. Robot besøker flagg**
 
-* Jeg er en spiller som ønsker å kunne besøke flagget, derfor trenger jeg at jeg kan gå på
-  et felt som har et flagg.
+* Som spiller ønsker jeg å kunne vite rekkefølgen flaggene må besøkes, slik at jeg vet hvilke flagg jeg skal prioritere
+* Som spiller ønsker jeg å kunne besøke flaggene i riktig rekkefølge, slik at de registres i en liste over besøkte flagg
 
 **Akseptansekriterier:**
-* En spiller kan gå på et felt med et annet objekt, om det er av en spesiell type
-* Vil at spiller skal kunne gå til feltet med flagget og dermed vinne spillet.
+* Vil at flaggene skal ha nummerering som viser hvilken rekkefølge de skal besøkes.
+* Vil at spiller skal kunne gå til feltet med flagget og at flagget registreres i en liste, 
+  hvis flagget besøkes i riktig rekkefølge og at det ikke er besøkt fra før. 
 
 
 **Arbeidsoppgaver:**
+* Lage layer for flagg, hvor alle flaggene som ligger i brettet er nummerert til en rekkefølge de skal besøkes. 
 * Legge til mulighet for å sjekke posisjoner som spiller besøker etterhvert.
   (* Lage en liste som registrerer flaggene spilleren besøker, og legg det til spillerobjektet) 
   //kan vurdere om den over skal være med nå eller brukes senere
 * Sjekke at flagget ikke ligger i listen fra før for spiller
 * Registrere flagget spiller besøker inn i listen om den oppfyller kravet og erklare spiller som vinner.
 
+**Scenario**
+* Gitt et spillerbrett med 3 flag:
+  - Robot har ikke besøkt noen flag, og besøker flag nr.1. Flagget registreres som besøkt for spilleren og kan gå
+    videre mot flag nr.2.
+  - Robot har ikke besøkt noen flag, og besøker flag nr.2. Flagget skal ikke registreres for spilleren ettersom spilleren
+    ikke har besøkt flag nr.1 tidligere.
+
 <br/> 
 
 **5. Robot vinner ved å besøke flagg**
-
-* Jeg er en spiller som ønsker å kunne vinne spillet, derfor trenger jeg å kunne besøke et flagg og få 
-  vite/se at jeg vinner spillet.
+  
+* Som spiller ønsker jeg å vite når jeg har besøkt alle flaggene i riktig prioritert rekkefølge, slik at jeg kan vinne spillet
 
 **Akseptansekriterier:**
-* Registrere hvor mange flagg / checkpoints som må besøkes for av spiller skal vinne.
-* Når spilleren besøker en posisjon ved flagg, og innom alle de andre flagg-posisjonene fra før, så må spillet avsluttes og det skal gis beskjed om at spilleren har vunnet.
+* Registrere hvor mange flagg / checkpoints som må besøkes for at en spiller skal kunne vinne.
+* Lage en liste for hver spiller i spillet over besøkte flagg. 
+* Når en spiller besøker en posisjon ved et flagg, og innom alle de andre flagg-posisjonene fra før, så må spillet 
+  avsluttes og det skal gis beskjed om at spilleren har vunnet.
 
 
 **Arbeidsoppgaver:**
-* Sjekke at spilleren har vært innom alle unike flagg (på antall)
-* Sjekke at spilleren er den eneste som har vært innom alle unike flagg
+* Lage en metode/funksjon som sjekker om spiller har vært innom alle mulige flagg, i riktig rekkefølge. 
+* Lage en sjekk som sjekker om en spiller har vært innom alle flagg
+* Avslutte spillet når en spiller har vært innom alle flagg.  
 
+
+<br/> 
 
 
   
@@ -219,3 +262,40 @@ så lenge spillet pågår (før det avsluttes)
 
 ## Produktleveranse / kode
 _(hva fungerte, hva har vi ikke fått til etc. diverse notater om det ferdige produkter kan skrives inn her)_
+
+### Kode
+**Hva vi ikke har fått til av kode:** 
+* Restriksjoner på flytting av brikke
+    - utenfor brettet
+    - hinder (vegger) senere i implementasjonen.     
+<br/>
+
+### Retrospektiv 
+
+**Gjennomførelsen av oppgaven**
+
+Gjennomførelsen av oppgaven har gått veldig bra. Gruppen har gjort det lurt i å sette opp faste møtetidspunkter og fast 
+møtestruktur for en effektiv gjennomføring, samt en kontrollert tidsbruk.
+En har hatt jevn inndeling i arbeidsmengde av alle i gruppen, hvorav alle i gruppen har bidratt likt. Det har vært jevn 
+fordeling også i hvem som koder og hvem som skriver på prosjektdokumentet. 
+
+Noen aspekter som kunne gått bedre er den tekniske gjennomføringen med Github og IntelliJ. Samtlige i gruppen har til 
+tider hatt ulike problemstillinger, alt fra IntelliJ-bugs som har ført til 
+at kode ikke vil kjøre til Github som en ikke får pushet/pullet prosjektet. Forhåpentligvis har en lært over de ulike 
+problemstillingene, samt blitt mer vandt med verktøyene som brukes slik at neste oppgave går bedre.
+En vet også at mye av GitHub-problematikken skyldes at to av gruppemedlemenne ikke var lagt til i selve repoet i Git, 
+og derav fikk en ikke pushet endringer. 
+
+Til neste oppgave ønsker vi...... (forbedringer, nye aktiviteter/verktøy/prosessmetodikk
+
+
+
+**Oppgavens omfang**
+_På slutten av denne oppgaven kan dere gjøre en liten vurdering av hvor bra dere traff på oppgaven.
+Dette kan dere bruke til å justere hvor mange oppgaver dere tenker å få inn i neste iterasjon, som da leveres med 
+obligatorisk oppgave 2._
+
+
+
+
+
