@@ -73,7 +73,8 @@ public class Player extends InputAdapter {
 
     }
     public Integer getFlag() {
-        return totalFlags;
+
+        return flagToTake;
     }
 
 }
