@@ -2,6 +2,8 @@ package inf112.skeleton.app;
 
 public class Programcard {
 
+
+
     public enum Direction {
         NORTH,
         SOUTH,
@@ -22,7 +24,6 @@ public class Programcard {
         this.steps = steps;
         this.priority = priority;
         this.direction = direction;
-
     }
 
     public int getSteps() {
@@ -36,9 +37,8 @@ public class Programcard {
     public int getPriority() {
         return priority;
     }
+
 }
-
-
 /*
 
 Lage 1 klasse for kortene.
