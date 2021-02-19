@@ -45,6 +45,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     private Integer flagsToTake = 2;
 
 
+
     Vector2 playerPosition;
 
     Player robotPlayer;
