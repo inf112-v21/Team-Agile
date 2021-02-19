@@ -17,7 +17,7 @@
     <maven.compiler.release>9</maven.compiler.release>
   </properties>
 
-  <dependencies>
+  <!--<dependency>-->
     <!-- https://mvnrepository.com/artifact/com.badlogicgames.gdx/gdx -->
     <dependency>
       <groupId>com.badlogicgames.gdx</groupId>
@@ -44,22 +44,18 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-
-  </dependencies>
-  <repositories>
-    <repository>
-      <id>clojars</id>
-      <url>http://clojars.org/repo/</url>
-    </repository>
-  </repositories>
-
-  <dependencies>
     <dependency>
-      <groupId>kryonet</groupId>
-      <artifactId>kryonet</artifactId>
-      <version>2.21</version>
+      <repository>
+        <id>clojars</id>
+        <url>http://clojars.org/repo/</url>
+     </repository>
     </dependency>
-  </dependencies>
+    <dependency>
+        <groupId>kryonet</groupId>
+        <artifactId>kryonet</artifactId>
+        <version>2.21</version>
+    </dependency>
+  </dependency>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
