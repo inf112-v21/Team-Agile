@@ -4,7 +4,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
+import com.esotericsoftware.kryonet.Server;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Player extends InputAdapter {
@@ -14,7 +16,7 @@ public class Player extends InputAdapter {
 
     int totalFlags = 3;
     int flagToTake = 1;
-
+    private int playerID;
 
     ArrayList<FlagID> flagsvisited = new ArrayList<FlagID>();
 
@@ -23,6 +25,23 @@ public class Player extends InputAdapter {
         this.playerLayer = playerTileLayer;
         int totalFlags;
         int flagTotake;
+        playerID = HelloWorld.playerids.get(0);
+        HelloWorld.playerids.remove(0);
+
+        if (playerID == 1) {
+            Server server = new Server();
+            server.start();
+            try {
+                server.bind(54555, 54777);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } ;
+
+        } else {
+
+        }
+
+
 
     }
 

@@ -27,8 +27,8 @@ import java.util.LinkedList;
 import java.util.Vector;
 
 import com.esotericsoftware.kryo.Kryo;
-import com.esotericsoftware.kryo.io.ByteBufferInput;
-import com.esotericsoftware.kryo.io.ByteBufferOutput;
+//import com.esotericsoftware.kryo.io.ByteBufferInput;
+//import com.esotericsoftware.kryo.io.ByteBufferOutput;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.esotericsoftware.kryonet.FrameworkMessage.DiscoverHost;
@@ -48,16 +48,13 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     private OrthographicCamera camera;
 
     private TiledMapTileLayer.Cell playerCell, playerWonCell, playerDiedCell;
-
-
-
     private ArrayList<Flag> flaggene = new ArrayList<>();
-
     private Integer flagsToTake = 2;
 
+    public static ArrayList<Integer> playerids = new ArrayList<>();
+    private int numberofplayers = 5;
 
     Vector2 playerPosition;
-
     Player robotPlayer;
 
     @Override
@@ -74,6 +71,10 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
+
+        for (int i = 1; i < numberofplayers; i++) {
+            playerids.add(i);
+        }
 
         Vector2 flag1 = new Vector2(5,5);
         flaggene.add(new Flag(flag1, 1));
