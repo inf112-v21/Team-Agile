@@ -4,9 +4,13 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
+import com.esotericsoftware.kryonet.Client;
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.ArrayList;
 
 public class Player extends InputAdapter {
@@ -28,6 +32,7 @@ public class Player extends InputAdapter {
         playerID = HelloWorld.playerids.get(0);
         HelloWorld.playerids.remove(0);
 
+        //the first player that joins creates a server
         if (playerID == 1) {
             Server server = new Server();
             server.start();
@@ -35,15 +40,35 @@ public class Player extends InputAdapter {
                 server.bind(54555, 54777);
             } catch (IOException e) {
                 e.printStackTrace();
-            } ;
 
-        } else {
-
+            }
+            //skal ta imot forespørsler fra klienter til server
+            server.addListener(new Listener() {
+                public void received (Connection connection, Object object) {
+                    if (object instanceof Player) {
+                        Player player = (Player) object;
+                        System.out.println(player.keyUp(1));
+                        Response response = new Response();
+                        response.text = "Thanks";
+                        connection.sendTCP(response);
+                        }
+                    }
+                });
+            }
+        else {
+                Client client = new Client();
+                client.start();
+                InetAddress address = client.discoverHost(54777, 5000);
+                try {
+                    client.connect(5000, address, 54555, 54777);
+                } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
-
-
     }
+
+
+
 
     private void move(int deltaX, int deltaY) {
         playerLayer.setCell((int) position.x, (int) position.y, null);
@@ -72,6 +97,7 @@ public class Player extends InputAdapter {
     }
 
 
+
     public float getPositionX() {
         return position.x;
     }
@@ -97,5 +123,3 @@ public class Player extends InputAdapter {
     }
 
 }
-
-

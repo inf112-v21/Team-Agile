@@ -29,7 +29,7 @@ import java.util.Vector;
 import com.esotericsoftware.kryo.Kryo;
 //import com.esotericsoftware.kryo.io.ByteBufferInput;
 //import com.esotericsoftware.kryo.io.ByteBufferOutput;
-import com.esotericsoftware.kryo.io.Input;
+//import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.esotericsoftware.kryonet.FrameworkMessage.DiscoverHost;
 import com.esotericsoftware.kryonet.FrameworkMessage.KeepAlive;
@@ -72,6 +72,8 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
 
+        //player IDs for all players, to be used by each player object
+        //to distinguish between players
         for (int i = 1; i < numberofplayers; i++) {
             playerids.add(i);
         }
