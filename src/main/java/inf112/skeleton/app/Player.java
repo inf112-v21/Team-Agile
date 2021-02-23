@@ -45,11 +45,12 @@ public class Player extends InputAdapter {
             //skal ta imot forespørsler fra klienter til server
             server.addListener(new Listener() {
                 public void received (Connection connection, Object object) {
-                    if (object instanceof Player) {
-                        Player player = (Player) object;
-                        System.out.println(player.keyUp(1));
+                    if (object instanceof Request) {
+                        Request request = (Request) object;
+                        //System.out.println(player.keyUp(1));
+                        Integer move = request.getMove();
                         Response response = new Response();
-                        response.text = "Thanks";
+                        response.text = "Request to move received";
                         connection.sendTCP(response);
                         }
                     }
