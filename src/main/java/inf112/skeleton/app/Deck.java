@@ -5,40 +5,45 @@ import java.util.Collections;
 
 public class Deck {
 
-    public ArrayList<Programcard> cards;
+    public Programcard[] cards;
+    private int cardsInDeck;
 
 
     public Deck() {
 
-
-        // RotateRight( 1,1,NORD) - 18 stk. legg til i deck.
-        // RotateRight( 1,1,NORD) - 18 stk. legg til i deck.
-        // RotateRight( 1,1,NORD) - 18 stk. legg til i deck.
-        // RotateRight( 1,1,NORD) - 18 stk. legg til i deck.
-        // RotateRight( 1,1,NORD) - 18 stk. legg til i deck.
-
+        cards = new Programcard[84];
 
     }
 
+    public void reset() {
 
-    public void shuffleDeck() {
-        Collections.shuffle(cards);
-    }
+        cardsInDeck = 0;
+       // Programcard.Direction[] directions = new Programcard.Direction.values();
 
-    public void createDeck() {
+        //BackUP kort
+        for (int x = 430; x <= 480; x += 10) {
 
-
-        for (int i = 80; i <= 420 ; i += 20) {
-           Programcard card = new Programcard();
-           
-
-
+        //    cards[cardsInDecks++] = new Programcard(priotity(x), )
 
         }
 
     }
 
-}
+
+    //public void shuffleDeck() {
+    //    Collections.shuffle(cards);
+    }
+
+    //public void createDeck() {
+
+
+        //for (int i = 80; i <= 420 ; i += 20) {
+        //   Programcard card = new Programcard();
+        //}
+
+//    }
+
+//}
 
 
 
@@ -47,9 +52,9 @@ har en bevegelse (Flytt frem 1, Flytt frem 2, Flytt frem 3, Flytt bakover 1, Rot
 
 har en prioritet (alle bevegelseskort må ha unik prioritet innenfor sin klasse, og mellom klassene (bevegelsestypene) skal intervallet ikke være overlappende)
 
-backup: 6 kort (430 - 480)
+backup: 6 kort (430 - 480, intervall 10)
 
-u-turn: 6 kort (10 - 60)
+u-turn: 6 kort (10 - 60, intervall 10)
 
 rotate right: 18 kort (80-420, intervall 20)
 

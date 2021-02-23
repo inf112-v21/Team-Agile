@@ -1,36 +1,54 @@
 package inf112.skeleton.app;
 
+import org.lwjgl.system.windows.MONITORINFOEX;
+
 public class Programcard {
 
 
+    public enum MoveType {
+        BACKUP,
+        UTURN,
+        ROTATE_RIGHT,
+        ROTATE_LEFT,
+        MOVEONE,
+        MOVETWO,
+        MOVETHREE;
+    }
+
 
     public enum Direction {
-        NORTH,
         SOUTH,
-        EAST,
-        WEST;
+        WEST,
+        NORTH,
+        EAST;
 
         private static final Direction[] dir = Direction.values();
+
         public static Direction getDir(int i) {
             return Direction.dir[i];
         }
     }
 
-    int steps;
-    int priority;
-    int direction;
 
-    public Programcard(int steps, int priority, int direction) {
-        this.steps = steps;
+    /*
+    libgdx metode rotate på selve Sprite (bilde objektet) brukes med angitt grader. (0-360) , 0 samme, 90
+     */
+
+    MoveType type;
+    int priority;
+    Direction direction;
+
+    public Programcard(MoveType type, int priority, Direction direction) {
+        this.type = type;
         this.priority = priority;
         this.direction = direction;
     }
 
-    public int getSteps() {
-        return steps;
+    public MoveType getSteps() {
+        return type;
     }
 
-    public int getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 
