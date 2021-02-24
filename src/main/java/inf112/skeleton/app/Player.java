@@ -8,6 +8,8 @@ import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
+import inf112.skeleton.app.networking.Request;
+import inf112.skeleton.app.networking.Response;
 
 import java.io.IOException;
 import java.net.InetAddress;
