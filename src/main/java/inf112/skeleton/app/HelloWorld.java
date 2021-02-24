@@ -7,10 +7,10 @@ import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -18,50 +18,64 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.Input;
-import org.lwjgl.system.windows.GDI32;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import inf112.skeleton.app.Player.InputHandler;
+import inf112.skeleton.app.Player.Robot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Vector;
-
-import com.esotericsoftware.kryo.Kryo;
-//import com.esotericsoftware.kryo.io.ByteBufferInput;
-//import com.esotericsoftware.kryo.io.ByteBufferOutput;
-//import com.esotericsoftware.kryo.io.Input;
-import com.esotericsoftware.kryo.io.Output;
-import com.esotericsoftware.kryonet.FrameworkMessage.DiscoverHost;
-import com.esotericsoftware.kryonet.FrameworkMessage.KeepAlive;
-import com.esotericsoftware.kryonet.FrameworkMessage.Ping;
-import com.esotericsoftware.kryonet.FrameworkMessage.RegisterTCP;
-import com.esotericsoftware.kryonet.FrameworkMessage.RegisterUDP;
 
 public class HelloWorld extends InputAdapter implements ApplicationListener {
+    public static final int V_WIDTH = 400;
+    public static final int V_HEIGHT = 400;
+
     private SpriteBatch batch;
     private BitmapFont font;
 
     private TiledMap map;
-    private TiledMapTileLayer boardLayer,playerLayer,holeLayer, flagLayer;
+    private TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer;
 
     private OrthogonalTiledMapRenderer render;
-    private OrthographicCamera camera;
 
     private TiledMapTileLayer.Cell playerCell, playerWonCell, playerDiedCell;
-    private ArrayList<Flag> flaggene = new ArrayList<>();
+
+
+   // private ArrayList<Flag> flaggene = new ArrayList<>();
+
     private Integer flagsToTake = 2;
 
-    public static ArrayList<Integer> playerids = new ArrayList<>();
-    private int numberofplayers = 5;
+
+    TextureRegion dead;
+
+    TextureRegion win;
+
+    private OrthographicCamera camera;
+
+    private ExtendViewport viewport;
+
+    Robot test;
+
+
+
+    TextureRegion state1;
+
+    TextureRegion[][] tr;
+
 
     Vector2 playerPosition;
-    Player robotPlayer;
+
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
+
+
+        camera = new OrthographicCamera();
+        viewport = new ExtendViewport(5,5);
+
 
         TmxMapLoader loader = new TmxMapLoader();
         map = loader.load("tutorial.tmx");
@@ -72,44 +86,38 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
 
-        //player IDs for all players, to be used by each player object
-        //to distinguish between players
-        for (int i = 1; i < numberofplayers; i++) {
-            playerids.add(i);
-        }
+        //Vector2 flag1 = new Vector2(5, 5);
+        //flaggene.add(new Flag(flag1, 1));
 
-        Vector2 flag1 = new Vector2(5,5);
-        flaggene.add(new Flag(flag1, 1));
+        render = new OrthogonalTiledMapRenderer(map , 1/300f);
 
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false,5,5);
-
-        camera.update();
-
-        render = new OrthogonalTiledMapRenderer(map, 1/300f);
-
-        render.setView(camera);
+        //camera.position.set(gameport.getWorldWidth() / 2, gameport.getWorldHeight() / 2, 0);
 
         Texture texture = new Texture("player.png");
 
-        TextureRegion[][] tr = TextureRegion.split(texture,300,300);
 
-        playerCell = new TiledMapTileLayer.Cell();
-        playerCell.setTile(new StaticTiledMapTile(tr[0][0]));
+        // splitter opp player.png bildet og definerer størrelsen
+        tr = TextureRegion.split(texture, 300, 300);
 
-        playerWonCell = new TiledMapTileLayer.Cell();
-        playerWonCell.setTile(new StaticTiledMapTile(tr[0][2]));
-
-        playerDiedCell = new TiledMapTileLayer.Cell();
-        playerDiedCell.setTile(new StaticTiledMapTile(tr[0][1]));
-
-        playerPosition = new Vector2(2,2);
+        state1 = tr[0][0];
+        dead = tr[0][1];
+        win = tr[0][2];
 
 
+        playerPosition = new Vector2(0, 0);
 
-        robotPlayer = new Player(playerPosition, playerLayer);
+        test = new Robot(state1,0,0);
 
-        Gdx.input.setInputProcessor(robotPlayer);
+        InputHandler myhandler = new InputHandler(test);
+
+
+        /**
+         * Hmm, tror kanskje dere blir nødt til å bruke sprites her ja.
+         * Usikker, men vet ikke om noen annen måte å gjøre det på. Alternative blir å bytte ut selve bilde med en rotert versjon.
+         * Altså at man har alle de roterte bildene lagret.
+         */
+
+        Gdx.input.setInputProcessor(myhandler);
 
 
     }
@@ -125,19 +133,25 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
+        viewport.apply();
+        render.setView((OrthographicCamera) viewport.getCamera());
         render.render();
 
-        if (holeLayer.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
-            playerLayer.setCell((int) playerPosition.x, (int) playerPosition.y, playerDiedCell);
+
+        render.getBatch().setProjectionMatrix(viewport.getCamera().combined);
+        render.getBatch().begin();
+        test.draw(render.getBatch());
+        render.getBatch().end();
+
+
+
+        if (holeLayer.getCell((int) test.getX(), (int) test.getY()) != null) {
+            test.setRegion(dead);
+        } else if (flagLayer.getCell((int) test.getX(), (int) test.getY()) != null) {
+            test.setRegion(win);
+        } else {
+            test.setRegion(state1);
         }
-        else if(flagLayer.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
-            playerLayer.setCell((int) playerPosition.x, (int) playerPosition.y, playerWonCell);
-            robotPlayer.visitFlag(1);
-        }
-        else {
-            playerLayer.setCell((int) playerPosition.x, (int) playerPosition.y, playerCell);
-        }
-        allFlagsTaken(robotPlayer);
 
 
     }
@@ -145,6 +159,9 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
     @Override
     public void resize(int width, int height) {
+        viewport.update(width, height, true);
+
+        viewport.getCamera().update();
     }
 
     @Override
@@ -155,11 +172,17 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     public void resume() {
     }
 
+
+
+
+    /*
     public void allFlagsTaken(Player player) {
-        if(player.getFlag() == flagsToTake) {
+        if (player.getFlag() == flagsToTake) {
             Gdx.app.exit();
         }
 
     }
+    */
+
 
 }
