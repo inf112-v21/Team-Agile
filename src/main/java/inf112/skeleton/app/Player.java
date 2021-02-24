@@ -35,8 +35,8 @@ public class Player extends InputAdapter {
 
         //if there is no server you create it
         if (address == null) {
-            playerID = HelloWorld.playerids.get(0);
-            HelloWorld.playerids.remove(0);
+            //playerID = HelloWorld.playerids.get(0);
+            //HelloWorld.playerids.remove(0);
             Server server = new Server();
             server.start();
             try {

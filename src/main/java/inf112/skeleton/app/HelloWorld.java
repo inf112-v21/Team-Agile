@@ -43,6 +43,8 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
    // private ArrayList<Flag> flaggene = new ArrayList<>();
 
+    //ArrayList<FlagID> playerids = new ArrayList<>();
+
     private Integer flagsToTake = 2;
 
 
