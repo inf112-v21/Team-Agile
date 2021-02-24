@@ -6,13 +6,23 @@ public class Programcard {
 
 
     public enum MoveType {
-        BACKUP,
-        UTURN,
+        BACKUP(0, -1, SOUTH),
+        UTURN(),
         ROTATE_RIGHT,
         ROTATE_LEFT,
         MOVEONE,
         MOVETWO,
         MOVETHREE;
+
+        private final int dx;
+        private final int dy;
+        private final Direction direction;
+
+        private MoveType(int dx, int dy, Direction direction){
+            this.dx = dx;
+            this.dy = dy;
+            this.direction = direction;
+        }
     }
 
 
@@ -30,6 +40,7 @@ public class Programcard {
     }
 
 
+
     /*
     libgdx metode rotate på selve Sprite (bilde objektet) brukes med angitt grader. (0-360) , 0 samme, 90
      */
@@ -38,23 +49,10 @@ public class Programcard {
     int priority;
     Direction direction;
 
-    public Programcard(MoveType type, int priority, Direction direction) {
+    public Programcard(MoveType type, int priority) {
         this.type = type;
-        this.priority = priority;
-        this.direction = direction;
     }
 
-    public MoveType getSteps() {
-        return type;
-    }
-
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public int getPriority() {
-        return priority;
-    }
 
 }
 /*
