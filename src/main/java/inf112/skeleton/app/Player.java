@@ -29,11 +29,14 @@ public class Player extends InputAdapter {
         this.playerLayer = playerTileLayer;
         int totalFlags;
         int flagTotake;
-        playerID = HelloWorld.playerids.get(0);
-        HelloWorld.playerids.remove(0);
 
-        //the first player that joins creates a server
-        if (playerID == 1) {
+        Client client = new Client();
+        InetAddress address = client.discoverHost(54777, 5000);
+
+        //if there is no server you create it
+        if (address == null) {
+            playerID = HelloWorld.playerids.get(0);
+            HelloWorld.playerids.remove(0);
             Server server = new Server();
             server.start();
             try {
@@ -57,9 +60,7 @@ public class Player extends InputAdapter {
                 });
             }
         else {
-                Client client = new Client();
                 client.start();
-                InetAddress address = client.discoverHost(54777, 5000);
                 try {
                     client.connect(5000, address, 54555, 54777);
                 } catch (IOException e) {
