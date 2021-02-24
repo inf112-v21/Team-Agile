@@ -1,4 +1,4 @@
-package inf112.skeleton.app.Player;
+package inf112.skeleton.app.Object;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;

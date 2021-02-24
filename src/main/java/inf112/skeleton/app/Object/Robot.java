@@ -1,8 +1,7 @@
-package inf112.skeleton.app.Player;
+package inf112.skeleton.app.Object;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Vector2;
 
 public class Robot extends Sprite {
 
