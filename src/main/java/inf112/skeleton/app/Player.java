@@ -32,43 +32,7 @@ public class Player extends InputAdapter {
         int totalFlags;
         int flagTotake;
 
-        Client client = new Client();
-        InetAddress address = client.discoverHost(54777, 5000);
 
-        //if there is no server you create it
-        if (address == null) {
-            //playerID = HelloWorld.playerids.get(0);
-            //HelloWorld.playerids.remove(0);
-            Server server = new Server();
-            server.start();
-            try {
-                server.bind(54555, 54777);
-            } catch (IOException e) {
-                e.printStackTrace();
-
-            }
-            //skal ta imot forespørsler fra klienter til server
-            server.addListener(new Listener() {
-                public void received (Connection connection, Object object) {
-                    if (object instanceof Request) {
-                        Request request = (Request) object;
-                        //System.out.println(player.keyUp(1));
-                        Integer move = request.getMove();
-                        Response response = new Response();
-                        response.text = "Request to move received";
-                        connection.sendTCP(response);
-                        }
-                    }
-                });
-            }
-        else {
-                client.start();
-                try {
-                    client.connect(5000, address, 54555, 54777);
-                } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
 
