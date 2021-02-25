@@ -101,7 +101,8 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         playerPosition = new Vector2(0, 0);
 
-        test = new Robot(state1,0,0);
+        test = new Robot(state1,2,2);
+        test.setRotation(0);
 
         InputHandler myhandler = new InputHandler(test);
 
@@ -133,6 +134,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         render.render();
 
 
+        System.out.println((int) test.getRotation());
         render.getBatch().setProjectionMatrix(viewport.getCamera().combined);
         render.getBatch().begin();
         test.draw(render.getBatch());
