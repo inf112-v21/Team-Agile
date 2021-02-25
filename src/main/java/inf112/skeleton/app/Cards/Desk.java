@@ -14,50 +14,34 @@ public class Deck {
 
 
         //Opprette BACKUP kort
-        //for (int x = 430; x <= 480; x += 10) {
-        //    Programcard card = new Programcard(Programcard.MoveType.BACKUP, x, Programcard.Direction());
-        //    deck.add(card);
-        //    cards[cardsInDecks++] = new Programcard(priotity(x), "action", )
+<<<<<<< HEAD
+                //for (int x = 430; x <= 480; x += 10) {
+                //    Programcard card = new Programcard(Programcard.MoveType.BACKUP, x, Programcard.Direction());
+                //    deck.add(card);
+                //    cards[cardsInDecks++] = new Programcard(priotity(x), "action", )
+                =======
+        for (int x = 430; x <= 480; x += 10) {
+            Programcard card = new Programcard(Programcard.MoveType.BACKUP, x , 0);
+            deck.add(card);
+
+
+
+            //    cards[cardsInDecks++] = new Programcard(priotity(x), "action", )
+>>>>>>> 9886a6916cd724dcef8a427362734ead7b5ecf31
+
+        }
+        //rotate
+        for (int x = 430; x <= 480; x += 10) {
+            Programcard card = new Programcard(Programcard.MoveType.0, x, ROTASJON);
+            deck.add(card);
 
         }
 
-    }
 
+        //public void shuffleDeck() {
+        //    Collections.shuffle(cards);
+        //}
 
-    //public void shuffleDeck() {
-    //    Collections.shuffle(cards);
-    //}
-
-//public void createDeck() {
-
-/*
-
-backuo(liste[10,20,30,40], )
-    for(går gjennom alle movetypes i enum){
-
-        // går gjennom backup i første iterasjon
-        for(liste i backup){
-        Programcard[] card = new Programcard(backup, prioritet, SOUTH, 0, -1);
-        cards.add(Programcard);
-        }
-
-        // går gjennom rotate right i andre iterasjon
-        for(liste i rotate right){
-        Programcard[] card = new Programcard(backup, prioritet, SOUTH, 0, -1);
-        cards.add(Programcard);
-
-    }
- */
-
-// new programcar_:  Programcard(MoveType type, int priority, Direction direction, int dx, int dy)
-
-//for (int i = 80; i <= 420 ; i += 20) {
-//   Programcard[] card = new Programcard();
-//   cards.add(Programcard);
-//}
-
-//    }
-//}
     /*
 
 
@@ -84,4 +68,3 @@ move 2: 12 kort (670 - 780, intervall 10)
 move 3: 6 kort (790 - 840, intervall 10)
 
  */
-

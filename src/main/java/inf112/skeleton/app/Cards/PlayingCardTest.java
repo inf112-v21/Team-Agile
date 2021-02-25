@@ -9,8 +9,8 @@ public class PlayingCardTest {
 
 
 
-        PlayingCard uturn = new PlayingCard(MoveType.UTURN, 20);
-        System.out.println(uturn.getMove());
+        //PlayingCard uturn = new PlayingCard(MoveType.UTURN, 20);
+        //System.out.println(uturn.getMove());
 
         /*
         spillerklaseen move(MoveType type) {
