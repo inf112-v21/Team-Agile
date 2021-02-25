@@ -103,7 +103,6 @@ Skal prøve å starte med sprints på 1,5 uke i lengde.
 Vi har jevnlig møter utover prosjektet hvor vi har oppfølging av arbeid i de forskjellige gruppene. Der bestemmer vi 
 også hva som må å prioriteres og eventuelt problemer som har oppstått.
 
-Begrensing på antall oppgaver vi tar sammen.
 
 ### Project board
 **Link:** https://trello.com/b/80a0xYw8/inf112-oblig-1

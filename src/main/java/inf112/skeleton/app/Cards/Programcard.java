@@ -6,24 +6,24 @@ public class Programcard {
 
 
     public enum MoveType {
-        BACKUP(0, -1, SOUTH),
-        UTURN(),
-        ROTATE_RIGHT,
-        ROTATE_LEFT,
-        MOVEONE,
-        MOVETWO,
-        MOVETHREE;
+        BACKUP(-1),
+        UTURN(Rotate(180)),
+        ROTATE_RIGHT(0, rotate(med klokken)),
+        ROTATE_LEFT(0, rotate(mot klokken)),
+        MOVEONE(1, 0),
+        MOVETWO(2,0),
+        MOVETHREE(3,0);
 
-        private final int dx;
-        private final int dy;
-        private final Direction direction;
-
-        private MoveType(int dx, int dy, Direction direction){
-            this.dx = dx;
-            this.dy = dy;
+        private final int steps;
+        private final Rotation rotate;
+        private MoveType(int steps, Rotation rotate){
+            this.steps = steps;
             this.direction = direction;
+
+
         }
     }
+
 
 
     public enum Direction {
@@ -49,7 +49,7 @@ public class Programcard {
     int priority;
     Direction direction;
 
-    public Programcard(MoveType type, int priority) {
+    public Programcard(MoveType type, int priority, Direction direction) {
         this.type = type;
     }
 
