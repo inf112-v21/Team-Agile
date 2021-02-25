@@ -2,11 +2,11 @@ package inf112.skeleton.app.Cards.CardTypes;
 
 public interface ICard {
 
-    public int getRotationDegrees();
+    public String getCardType();
+
+    
 
     public int getTimesMoveForward();
-
-    public void setPriority();
 
     public int getPriority();
 

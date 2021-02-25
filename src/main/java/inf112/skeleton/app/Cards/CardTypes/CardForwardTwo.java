@@ -1,10 +1,10 @@
 package inf112.skeleton.app.Cards.CardTypes;
 
-public class CardBackup implements ICard {
+public class CardForwardTwo implements ICard {
 
     int priority = 0;
 
-    public CardBackup (int priority) {
+    public CardForwardTwo (int priority) {
         this.priority = priority;
     }
 
@@ -17,7 +17,7 @@ public class CardBackup implements ICard {
     }
 
     public int getTimesMoveForward() {
-        return -1;
+        return 2;
     }
 
     public int getPriority() {
