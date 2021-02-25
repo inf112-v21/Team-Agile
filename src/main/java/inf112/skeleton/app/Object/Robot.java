@@ -12,6 +12,7 @@ public class Robot extends Sprite {
         setSize(WIDTH,HEIGHT);
         setRegion(texture);
         setOriginCenter();
+        setPosition(xstart, ystart);
 
     }
 }

@@ -2,30 +2,25 @@ package inf112.skeleton.app.Cards;
 
 import org.lwjgl.system.windows.MONITORINFOEX;
 
-public class Programcard {
+public class PlayingCard {
 
+    MoveType type;
+    int priority;
 
-    public enum MoveType {
-        BACKUP(0, -1, SOUTH),
-        UTURN(),
-        ROTATE_RIGHT,
-        ROTATE_LEFT,
-        MOVEONE,
-        MOVETWO,
-        MOVETHREE;
+    public PlayingCard(MoveType type, int priority) {
+        //BACKUP
+        //type.getMove() => -1
 
-        private final int dx;
-        private final int dy;
-        private final Direction direction;
-
-        private MoveType(int dx, int dy, Direction direction){
-            this.dx = dx;
-            this.dy = dy;
-            this.direction = direction;
-        }
+        this.type = type;
+        this.priority = priority;
     }
 
+    int getMove() {
+        return type.getMove();
+    }
+}
 
+/*
     public enum Direction {
         SOUTH,
         WEST,
@@ -38,20 +33,13 @@ public class Programcard {
             return Direction.dir[i];
         }
     }
-
+*/
 
 
     /*
     libgdx metode rotate på selve Sprite (bilde objektet) brukes med angitt grader. (0-360) , 0 samme, 90
-     */
+     *
 
-    MoveType type;
-    int priority;
-    Direction direction;
-
-    public Programcard(MoveType type, int priority) {
-        this.type = type;
-    }
 
 
 }

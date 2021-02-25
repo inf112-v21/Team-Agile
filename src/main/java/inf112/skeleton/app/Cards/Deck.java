@@ -1,24 +1,23 @@
 package inf112.skeleton.app.Cards;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Deck {
 
 
-    public ArrayList<Programcard> deck = new ArrayList<Programcard>();
+    public ArrayList<PlayingCard> deck = new ArrayList<PlayingCard>();
 
     public void createDeck() {
+
+
         // Programcard.Direction[] directions = new Programcard.Direction.values();
 
 
         //Opprette BACKUP kort
-        for (int x = 430; x <= 480; x += 10) {
-            Programcard card = new Programcard(Programcard.MoveType.BACKUP, x);
-            deck.add(card);
-
-            //    cards[cardsInDecks++] = new Programcard(priotity(x), "action", )
+        //for (int x = 430; x <= 480; x += 10) {
+        //    Programcard card = new Programcard(Programcard.MoveType.BACKUP, x, Programcard.Direction());
+        //    deck.add(card);
+        //    cards[cardsInDecks++] = new Programcard(priotity(x), "action", )
 
         }
 
@@ -27,7 +26,7 @@ public class Deck {
 
     //public void shuffleDeck() {
     //    Collections.shuffle(cards);
-}
+    //}
 
 //public void createDeck() {
 
