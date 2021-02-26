@@ -1,6 +1,6 @@
 package inf112.skeleton.app.Cards.CardTypes;
 
-public class CardForwardOne implements ICard {
+public class CardForwardOne implements IMoveCard {
 
     private int priority = 0;
 
@@ -12,9 +12,6 @@ public class CardForwardOne implements ICard {
         return "movecard";
     }
 
-    public int getRotationDegrees() {
-        return 0;
-    }
 
     public int getTimesMoveForward() {
         return 1;

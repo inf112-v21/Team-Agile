@@ -6,10 +6,6 @@ public interface ICard {
 
     public String getCardName();
 
-    
-
-    public int getTimesMoveForward();
-
     public int getPriority();
 
 }
