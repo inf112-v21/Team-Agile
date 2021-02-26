@@ -1,23 +1,23 @@
 package inf112.skeleton.app.Cards.CardTypes;
 
-public class CardForwardThree implements ICard {
+public class CardUTurn implements IRotateCard {
 
     private int priority = 0;
 
-    public CardForwardThree (int priority) {
+    public CardUTurn (int priority) {
         this.priority = priority;
     }
 
     public String getCardType() {
-        return "movecard";
+        return "UTurn";
     }
 
     public int getRotationDegrees() {
-        return 0;
+        return 180;
     }
 
     public int getTimesMoveForward() {
-        return 2;
+        return 0;
     }
 
     public int getPriority() {
