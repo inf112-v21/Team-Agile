@@ -4,10 +4,4 @@ public interface ICard {
 
     public String getCardType();
 
-    
-
-    public int getTimesMoveForward();
-
-    public int getPriority();
-
 }
