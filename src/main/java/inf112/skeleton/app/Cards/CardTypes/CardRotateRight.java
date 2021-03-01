@@ -12,12 +12,10 @@ public class CardRotateRight implements ICard {
         return "rotatecard";
     }
 
-    @Override
     public String getCardName() {
         return null;
     }
 
-    @Override
     public void setPriority(int priority) {
 
     }

@@ -12,17 +12,15 @@ public class CardForwardOne implements ICard {
         return "movecard";
     }
 
-<<<<<<< HEAD
-    @Override
+
     public String getCardName() {
         return null;
     }
 
-=======
+
     public int getRotationDegrees() {
         return 0;
     }
->>>>>>> 4c25317a9b132462176ba11b42f27d1b0c3571b2
 
     public int getTimesMoveForward() {
         return 1;

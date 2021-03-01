@@ -22,9 +22,6 @@ import inf112.skeleton.app.Object.InputHandler;
 import inf112.skeleton.app.Object.Robot;
 
 public class HelloWorld extends InputAdapter implements ApplicationListener {
-    public static final int V_WIDTH = 400;
-    public static final int V_HEIGHT = 400;
-
     private SpriteBatch batch;
     private BitmapFont font;
 
@@ -34,11 +31,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     private OrthogonalTiledMapRenderer render;
 
     private TiledMapTileLayer.Cell playerCell, playerWonCell, playerDiedCell;
-
-
-   // private ArrayList<Flag> flaggene = new ArrayList<>();
-
-    //ArrayList<FlagID> playerids = new ArrayList<>();
 
     private Integer flagsToTake = 2;
 
@@ -66,6 +58,14 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
     PlayingCardHand card1;
     PlayingCardHand card2;
+    PlayingCardHand card3;
+    PlayingCardHand card4;
+    PlayingCardHand card5;
+    PlayingCardHand card6;
+    PlayingCardHand card7;
+    PlayingCardHand card8;
+    PlayingCardHand card9;
+
 
     @Override
     public void create() {
@@ -75,7 +75,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
 
         camera = new OrthographicCamera();
-        viewport = new ExtendViewport(10,10);
+        viewport = new ExtendViewport(23,14);
 
 
         TmxMapLoader loader = new TmxMapLoader();
@@ -86,9 +86,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
-
-        //Vector2 flag1 = new Vector2(5, 5);
-        //flaggene.add(new Flag(flag1, 1));
 
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
 
@@ -102,8 +99,17 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
 
 
-        card1 = new PlayingCardHand(backup, 8, 6);
-        card2 = new PlayingCardHand(backup, 10, 6);
+        card1 = new PlayingCardHand(backup, 14, 11);
+        card2 = new PlayingCardHand(backup, 16, 11);
+        card3 = new PlayingCardHand(backup, 18, 11);
+        card4 = new PlayingCardHand(backup, 20, 11);
+        //card5 = new PlayingCardHand(backup, 9, 2);
+        //card6 = new PlayingCardHand(backup, 10, 2);
+        //card7 = new PlayingCardHand(backup, 11, 2);
+        //card8 = new PlayingCardHand(backup, 12, 2);
+        //card9 = new PlayingCardHand(backup, 13, 2);
+
+
 
         // splitter opp player.png bildet og definerer størrelsen
         tr = TextureRegion.split(texture, 300, 300);
@@ -123,15 +129,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         test2 = new Robot(state1, 6, 2);
 
-        /**
-         * Hmm, tror kanskje dere blir nødt til å bruke sprites her ja.
-         * Usikker, men vet ikke om noen annen måte å gjøre det på. Alternative blir å bytte ut selve bilde med en rotert versjon.
-         * Altså at man har alle de roterte bildene lagret.
-         */
-
         Gdx.input.setInputProcessor(myhandler);
-
-
     }
 
     @Override
@@ -156,6 +154,11 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         test.draw(batch);
         card1.draw(batch);
         card2.draw(batch);
+        card3.draw(batch);
+        card4.draw(batch);
+        //card5.draw(batch);
+        //card6.draw(batch);
+
         batch.end();
 
 
@@ -186,9 +189,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     @Override
     public void resume() {
     }
-
-
-
 
     /*
     public void allFlagsTaken(Player player) {

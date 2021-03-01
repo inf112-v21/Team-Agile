@@ -12,7 +12,6 @@ public class CardForwardTwo implements ICard {
         return "movecard";
     }
 
-    @Override
     public String getCardName() {
         return null;
     }

@@ -3,6 +3,8 @@ package inf112.skeleton.app.networking;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import inf112.skeleton.app.Request;
+import inf112.skeleton.app.Response;
 
 import java.io.IOException;
 import java.net.InetAddress;
