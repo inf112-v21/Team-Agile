@@ -8,9 +8,6 @@ public class PlayingCard {
     int priority;
 
     public PlayingCard(MoveType type, int priority) {
-        //BACKUP
-        //type.getMove() => -1
-
         this.type = type;
         this.priority = priority;
     }
@@ -20,29 +17,8 @@ public class PlayingCard {
     }
 }
 
-/*
-    public enum Direction {
-        SOUTH,
-        WEST,
-        NORTH,
-        EAST;
-
-        private static final Direction[] dir = Direction.values();
-
-        public static Direction getDir(int i) {
-            return Direction.dir[i];
-        }
-    }
-*/
 
 
-    /*
-    libgdx metode rotate på selve Sprite (bilde objektet) brukes med angitt grader. (0-360) , 0 samme, 90
-     *
-
-
-
-}
 /*
 Lage 1 klasse for kortene.
 kort som endre direction (priority, direction)

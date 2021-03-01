@@ -1,0 +1,54 @@
+MoveImages.png
+size: 2723, 596
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+backUp
+  rotate: false
+  xy: 0, 0
+  size: 389, 596
+  orig: 389, 596
+  offset: 0, 0
+  index: -1
+move1
+  rotate: false
+  xy: 389, 0
+  size: 389, 596
+  orig: 389, 596
+  offset: 0, 0
+  index: -1
+move2
+  rotate: false
+  xy: 778, 0
+  size: 389, 596
+  orig: 389, 596
+  offset: 0, 0
+  index: -1
+move3
+  rotate: false
+  xy: 1167, 0
+  size: 389, 596
+  orig: 389, 596
+  offset: 0, 0
+  index: -1
+rotate
+  rotate: false
+  xy: 1556, 0
+  size: 389, 596
+  orig: 389, 596
+  offset: 0, 0
+  index: -1
+rotateLeft
+  rotate: false
+  xy: 1945, 0
+  size: 389, 596
+  orig: 389, 596
+  offset: 0, 0
+  index: -1
+rotateRight
+  rotate: false
+  xy: 2334, 0
+  size: 389, 596
+  orig: 389, 596
+  offset: 0, 0
+  index: -1

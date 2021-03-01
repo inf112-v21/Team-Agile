@@ -12,6 +12,11 @@ public class CardForwardOne implements IMoveCard {
         return "movecard";
     }
 
+    @Override
+    public String getCardName() {
+        return null;
+    }
+
 
     public int getTimesMoveForward() {
         return 1;

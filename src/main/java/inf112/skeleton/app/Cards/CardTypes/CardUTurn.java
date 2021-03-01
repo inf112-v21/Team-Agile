@@ -12,6 +12,16 @@ public class CardUTurn implements IRotateCard {
         return "UTurn";
     }
 
+    @Override
+    public String getCardName() {
+        return null;
+    }
+
+    @Override
+    public void setPriority(int priority) {
+
+    }
+
     public int getRotationDegrees() {
         return 180;
     }

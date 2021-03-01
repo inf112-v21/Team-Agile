@@ -1,10 +1,60 @@
 package inf112.skeleton.app.Cards;
 
-import java.util.ArrayList;
+import inf112.skeleton.app.Object.Robot;
+
+import java.util.*;
 
 public class Deck {
 
+    ArrayList<PlayingCard> deck;
 
+    public ArrayList<PlayingCard> createDeck() {
+        deck = new ArrayList<>();
+        for(int i=430;i<=480;i += 10) {
+            PlayingCard backup = new PlayingCard(MoveType.BACKUP, i);
+            deck.add(backup);
+        }
+
+        for(int i=10;i<=60;i += 10) {
+            PlayingCard uturn = new PlayingCard(MoveType.UTURN, i);
+            deck.add(uturn);
+        }
+
+        for(int i=490;i<=650;i += 10) {
+            PlayingCard move1 = new PlayingCard(MoveType.MOVEONE, i);
+            deck.add(move1);
+        }
+
+        for(int i=670;i<=780;i += 10) {
+            PlayingCard move2 = new PlayingCard(MoveType.MOVETWO, i);
+            deck.add(move2);
+        }
+
+        for(int i=790;i<=840;i += 10) {
+            PlayingCard move3 = new PlayingCard(MoveType.MOVETHREE, i);
+            deck.add(move3);
+        }
+        for(int i=80;i<=420;i += 20) {
+            PlayingCard move3 = new PlayingCard(MoveType.ROTATE_LEFT, i);
+            deck.add(move3);
+        }
+        for(int i=70;i<=410;i += 20) {
+            PlayingCard move3 = new PlayingCard(MoveType.ROTATE_RIGHT, i);
+            deck.add(move3);
+        }
+
+        return deck;
+    }
+
+    public void shuffle() {
+        Collections.shuffle(deck);
+
+    }
+    public void dealOutCards(List<Robot> players) {
+
+
+
+    }
 }
 
 /*

@@ -27,11 +27,10 @@ public class InputHandler extends InputAdapter {
                 rotate(90);
                 break;
             case Input.Keys.RIGHT:
-                move(1, 0, 90);
+                rotate(-90);
                 break;
             case Input.Keys.R:
-                resetDegrees((int) player.getRotation());
-                player.setRotation(player.getRotation() + 90);
+                rotate(180);
                 break;
         }
         return false;
@@ -43,39 +42,29 @@ public class InputHandler extends InputAdapter {
 
     }
 
-    private void rotate(int degree) {
-        dir = (dir + degree) % 4;
-
-        switch (dir) {
-            case(0):
-                player.setRotation(0);
-                break;
-            case(1):
-                player.setRotation(90);
-                break;
-            case(2):
-                player.setRotation(180);
-                break;
-            case(3):
-                player.setRotation(270);
-                break;
-        }
-    }
 
 
     private void resetDegrees(int degree) {
-        if (degree >= 360) {
+        if (degree == 360) {
             player.setRotation(0);
+        } else if(degree < 0) {
+            player.setRotation(270);
+        } else if(degree == 450) {
+            player.setRotation(90);
         }
     }
+
+    private void rotate(int degree) {
+        player.setRotation(player.getRotation() + degree);
+        resetDegrees((int) player.getRotation());
+    }
+
     //1
     private void move(int steps) {
         switch ((int) player.getRotation()) {
             case(0):
-            case(360):
                 player.setPosition(player.getX(), player.getY() - steps);
                 break;
-
             case(90):
                 player.setPosition(player.getX() + steps, player.getY());
                 break;
