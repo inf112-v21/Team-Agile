@@ -4,8 +4,4 @@ public interface ICard {
 
     public String getCardType();
 
-    public String getCardName();
-
-    public int getPriority();
-
 }

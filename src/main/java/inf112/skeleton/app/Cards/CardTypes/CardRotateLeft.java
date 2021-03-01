@@ -1,8 +1,8 @@
 package inf112.skeleton.app.Cards.CardTypes;
 
-public class CardRotateLeft implements IRotateCard {
+public class CardRotateLeft implements ICard {
 
-    private int priority = 0;
+    int priority = 0;
 
     public CardRotateLeft (int priority) {
         this.priority = priority;

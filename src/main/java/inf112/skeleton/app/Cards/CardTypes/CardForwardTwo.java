@@ -2,7 +2,7 @@ package inf112.skeleton.app.Cards.CardTypes;
 
 public class CardForwardTwo implements ICard {
 
-    private int priority = 0;
+    int priority = 0;
 
     public CardForwardTwo (int priority) {
         this.priority = priority;

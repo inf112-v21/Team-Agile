@@ -2,7 +2,7 @@ package inf112.skeleton.app.Cards.CardTypes;
 
 public class CardBackup implements ICard {
 
-    private int priority = 0;
+    int priority = 0;
 
     public CardBackup (int priority) {
         this.priority = priority;
@@ -10,10 +10,6 @@ public class CardBackup implements ICard {
 
     public String getCardType() {
         return "movecard";
-    }
-
-    public String getCardName() {
-        return "backup";
     }
 
     public int getRotationDegrees() {
