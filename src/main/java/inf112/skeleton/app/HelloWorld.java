@@ -22,6 +22,8 @@ import inf112.skeleton.app.Cards.PlayingCardHand;
 import inf112.skeleton.app.Object.InputHandler;
 import inf112.skeleton.app.Object.Robot;
 
+import java.util.ArrayList;
+
 public class HelloWorld extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
@@ -67,6 +69,10 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
     Deck deck;
 
+    ArrayList<Robot> players;
+
+    PlayingCardHand hand;
+
 
     @Override
     public void create() {
@@ -100,10 +106,8 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         deck = new Deck();
 
-
-
-/**
         card1 = new PlayingCardHand(backup, 14, 10);
+        /**
         card2 = new PlayingCardHand(backup, 16, 10);
         card3 = new PlayingCardHand(backup, 18, 10);
         card4 = new PlayingCardHand(backup, 20, 10);
@@ -133,6 +137,14 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         test2 = new Robot(state1, 6, 2);
 
+        players = new ArrayList<>();
+
+        players.add(test);
+
+        deck.dealOutCards(players);
+
+        test.playerCardstoHand(test.getCards());
+
         Gdx.input.setInputProcessor(myhandler);
     }
 
@@ -152,10 +164,12 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         render.render();
 
 
-        System.out.println((int) test.getRotation());
+
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
         test.draw(batch);
+
+        test.render(batch);
 
 /**
         card1.draw(batch);

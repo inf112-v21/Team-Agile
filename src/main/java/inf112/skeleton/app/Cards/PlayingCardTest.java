@@ -4,8 +4,6 @@ public class PlayingCardTest {
 
     public static void main(String[] args) {
 
-        //PlayingCard backup = new PlayingCard(MoveType.BACKUP);
-        //System.out.println(backup);
 
 
 

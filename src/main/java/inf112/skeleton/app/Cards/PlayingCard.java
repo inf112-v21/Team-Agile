@@ -1,20 +1,29 @@
 package inf112.skeleton.app.Cards;
 
+import com.badlogic.gdx.graphics.Texture;
 import org.lwjgl.system.windows.MONITORINFOEX;
 
 public class PlayingCard {
 
     MoveType type;
     int priority;
+    public Texture texture;
 
-    public PlayingCard(MoveType type, int priority) {
+
+
+    public PlayingCard(MoveType type, int priority ) {
         this.type = type;
         this.priority = priority;
+        this.texture = type.getTexture();
+
     }
 
     int getMove() {
         return type.getMove();
     }
+
+
+
 }
 
 

@@ -8,6 +8,11 @@ public class Deck {
 
     ArrayList<PlayingCard> deck;
 
+    public Deck() {
+        createDeck();
+        shuffle();
+    }
+
     public ArrayList<PlayingCard> createDeck() {
         deck = new ArrayList<>();
         for(int i=430;i<=480;i += 10) {
@@ -46,14 +51,21 @@ public class Deck {
         return deck;
     }
 
+    public int getSize() {
+        return deck.size();
+    }
+
     public void shuffle() {
         Collections.shuffle(deck);
 
     }
     public void dealOutCards(List<Robot> players) {
-
-
-
+        for (Robot player : players) {
+            int hp = player.healthpoint;
+            for(int i = 0; i < hp ; i++) {
+                player.getCards().add(deck.remove(i));
+            }
+        }
     }
 }
 
