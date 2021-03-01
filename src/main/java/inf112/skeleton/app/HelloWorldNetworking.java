@@ -3,8 +3,10 @@ package inf112.skeleton.app;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net.Protocol;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.net.ServerSocket;
 import com.badlogic.gdx.net.ServerSocketHints;
@@ -12,12 +14,13 @@ import com.badlogic.gdx.net.Socket;
 import com.badlogic.gdx.net.SocketHints;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -54,7 +57,7 @@ public class HelloWorldNetworking implements ApplicationListener {
 
         // Load our UI skin from file.  Once again, I used the files included in the tests.
         // Make sure default.fnt, default.png, uiskin.[atlas/json/png] are all added to your assets
-        skin = new Skin(Gdx.files.internal("assets/uiskin.json"));
+        //skin = new Skin(Gdx.files.internal("assets/uiskin.json"));
         stage = new Stage();
         // Wire the stage to receive input, as we are using Scene2d in this example
         Gdx.input.setInputProcessor(stage);
@@ -93,11 +96,26 @@ public class HelloWorldNetworking implements ApplicationListener {
         vg.setBounds(0, 0, VIRTUAL_SCREEN_WIDTH, VIRTUAL_SCREEN_HEIGHT);
 
         // Create our controls
-        labelDetails = new Label(ipAddress,skin);
-        labelMessage = new Label("Hello world",skin);
-        button = new TextButton("Send message",skin);
-        textIPAddress = new TextArea("",skin);
-        textMessage = new TextArea("",skin);
+        //public void LabelStyle(BitmapFont font, @Null ,Color fontColor){
+
+       // }
+        BitmapFont font = new BitmapFont();
+        //Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
+        Label.LabelStyle labelStyle = new Label.LabelStyle();
+        labelStyle.font = font;
+        //Font font = new Font(default, 0, 8);
+
+        //labelStyle.fontcolor = Color.WHITE;
+        labelStyle.font.setColor(Color.WHITE);
+        TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
+        TextField.TextFieldStyle textFieldStyle = new TextField.TextFieldStyle();
+
+
+        labelDetails = new Label(ipAddress,labelStyle);
+        labelMessage = new Label("Hello world",labelStyle);
+        button = new TextButton("Send message",textButtonStyle);
+        textIPAddress = new TextArea("",textFieldStyle);
+        textMessage = new TextArea("",textFieldStyle);
         // Add them to scene
         vg.addActor(labelDetails);
         vg.addActor(labelMessage);
