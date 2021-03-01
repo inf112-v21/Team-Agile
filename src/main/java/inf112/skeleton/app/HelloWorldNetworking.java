@@ -54,7 +54,7 @@ public class HelloWorldNetworking implements ApplicationListener {
 
         // Load our UI skin from file.  Once again, I used the files included in the tests.
         // Make sure default.fnt, default.png, uiskin.[atlas/json/png] are all added to your assets
-        skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+        skin = new Skin(Gdx.files.internal("assets/uiskin.json"));
         stage = new Stage();
         // Wire the stage to receive input, as we are using Scene2d in this example
         Gdx.input.setInputProcessor(stage);
