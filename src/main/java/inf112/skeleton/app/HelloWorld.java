@@ -17,6 +17,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import inf112.skeleton.app.Cards.Deck;
 import inf112.skeleton.app.Cards.PlayingCardHand;
 import inf112.skeleton.app.Object.InputHandler;
 import inf112.skeleton.app.Object.Robot;
@@ -45,8 +46,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
     Robot test;
 
-
-
     TextureRegion state1;
 
     TextureRegion[][] tr;
@@ -65,6 +64,8 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     PlayingCardHand card7;
     PlayingCardHand card8;
     PlayingCardHand card9;
+
+    Deck deck;
 
 
     @Override
@@ -95,21 +96,24 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         Texture backup = new Texture("backUp.png");
 
-        TextureRegion hand1 = new TextureRegion(backup, 389 , 596);
+        TextureRegion hand1 = new TextureRegion(backup, 342 , 522);
+
+        deck = new Deck();
 
 
 
-        card1 = new PlayingCardHand(backup, 14, 11);
-        card2 = new PlayingCardHand(backup, 16, 11);
-        card3 = new PlayingCardHand(backup, 18, 11);
-        card4 = new PlayingCardHand(backup, 20, 11);
-        //card5 = new PlayingCardHand(backup, 9, 2);
-        //card6 = new PlayingCardHand(backup, 10, 2);
-        //card7 = new PlayingCardHand(backup, 11, 2);
-        //card8 = new PlayingCardHand(backup, 12, 2);
-        //card9 = new PlayingCardHand(backup, 13, 2);
+/**
+        card1 = new PlayingCardHand(backup, 14, 10);
+        card2 = new PlayingCardHand(backup, 16, 10);
+        card3 = new PlayingCardHand(backup, 18, 10);
+        card4 = new PlayingCardHand(backup, 20, 10);
+        card5 = new PlayingCardHand(backup, 22, 10);
+        card6 = new PlayingCardHand(backup, 15, 7);
+        card7 = new PlayingCardHand(backup, 17, 7);
+        card8 = new PlayingCardHand(backup, 19, 7);
+        card9 = new PlayingCardHand(backup, 21, 7);
 
-
+*/
 
         // splitter opp player.png bildet og definerer størrelsen
         tr = TextureRegion.split(texture, 300, 300);
@@ -152,13 +156,18 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
         test.draw(batch);
+
+/**
         card1.draw(batch);
         card2.draw(batch);
         card3.draw(batch);
         card4.draw(batch);
-        //card5.draw(batch);
-        //card6.draw(batch);
-
+        card5.draw(batch);
+        card6.draw(batch);
+        card7.draw(batch);
+        card8.draw(batch);
+        card9.draw(batch);
+*/
         batch.end();
 
 
