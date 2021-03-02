@@ -1,13 +1,20 @@
 package inf112.skeleton.app.Cards;
 
 import com.badlogic.gdx.graphics.Texture;
-import org.lwjgl.system.windows.MONITORINFOEX;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
-public class PlayingCard {
 
-    MoveType type;
-    int priority;
+public class PlayingCard extends Sprite {
+
+    private final int WIDTH = 2;
+    private final int HEIGHT = 3;
+    public MoveType type;
+    public int priority;
     public Texture texture;
+
+    private BitmapFont font;
+
 
 
 
@@ -15,10 +22,15 @@ public class PlayingCard {
         this.type = type;
         this.priority = priority;
         this.texture = type.getTexture();
+        setSize(WIDTH,HEIGHT);
+        setRegion(texture);
 
     }
+    public MoveType getType() {
+        return type;
+    }
 
-    int getMove() {
+    public int getMove() {
         return type.getMove();
     }
 

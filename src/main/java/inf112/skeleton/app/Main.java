@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("test");
-        cfg.setWindowedMode(3000, 1000);
+        cfg.setWindowedMode(1500, 750);
 
         new Lwjgl3Application(new HelloWorld(), cfg);
     }
