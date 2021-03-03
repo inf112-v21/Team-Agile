@@ -79,18 +79,33 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 <br/> 
 
 **26.02.20 10:15-12:00**
-
+* Alle tilstede. 
+* Implementert programCards. Lagde enum for alle korttyper.
+* Begynte med libgdx sin nettverks-API istedenfor kryonet.
+* 
 <br/> 
 
 **01.03.20 12:15-13:00:**
+* Alle tilstede
+* Fikk oppdatert kartet og laged GUI for hvor kort initialiseres.
+* Implementerte ferdig kort-klassen og begynte på deck. 
+* Fortsatte med libgdx nettverks-API, sto fast med en json-fil.
 
 <br/> 
 
 **03.03.20 12:15-13:00:**
+* Alle tilstede
+* I forkant av dette møtet har Anthony ferdig implementert visualisering av utdelingen av kort. 
+* Oppsummerte hva vi har fått til nå, og hva som gjenstår å gjøres før innlevering. 
+* Testet kompabilitet tvers over forskjellige operativssystemer
+
 
 <br/> 
 
 **05.03.20 10:15-12:00**
+* 
+* 
+* 
 
 <br/> 
 
