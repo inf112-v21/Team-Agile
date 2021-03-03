@@ -79,6 +79,7 @@ public class InputHandler extends InputAdapter {
             } else {
                 rotate(movetype);
             }
+            player.playerLocked(player.getLockedHand());
         }
     }
 
