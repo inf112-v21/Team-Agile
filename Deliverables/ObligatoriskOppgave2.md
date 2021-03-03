@@ -97,7 +97,7 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Alle tilstede
 * I forkant av dette møtet har Anthony ferdig implementert visualisering av utdelingen av kort. 
 * Oppsummerte hva vi har fått til nå, og hva som gjenstår å gjøres før innlevering. 
-* Testet kompabilitet tvers over forskjellige operativssystemer
+* Testet kompabilitet tvers over forskjellige operativssystemer. Gikk fint, yay! 
 * Merge av playingcards-branch inn i master-branch
 * Refaktorert mye kode og slettet en del unødig kode
 * Fikset litt på README og justert på brukerhistorier
@@ -335,13 +335,18 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 
 **HUSK FØR INNLEVERING**
 * Lage klassediagram
+
 * Skrive hvilke bugs vi har
+
 * Endre README.md dokumentet
+
 * Fikse på tester. Legge til manuelle tester? 
   * testAllFlagsTaken
-  * test
-  * lage deck
-  * utføre PlayingCard
-    
-* Fikse TRello
+  * lage deck (test 84 kort, deleutkort skjekk at spiller får antall kort i forhold til HP)
+  * utføre PlayingCard (lage instans av alle ulike kortene og skjekk at spiller posisjon/rotasjon er som forventet utifra startpos/rotasjon)
+  * fikse playertest (fikse fra player til Robot)* 
+
+
+* Fikse Trello
+
 * Fullføre refaktorering
