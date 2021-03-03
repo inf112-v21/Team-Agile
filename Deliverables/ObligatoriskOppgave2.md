@@ -97,7 +97,7 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Alle tilstede
 * I forkant av dette møtet har Anthony ferdig implementert visualisering av utdelingen av kort. 
 * Oppsummerte hva vi har fått til nå, og hva som gjenstår å gjøres før innlevering. 
-* Testet kompabilitet tvers over forskjellige operativssystemer
+* Testet kompabilitet tvers over forskjellige operativssystemer, fungerer på Mac OS, Linux og Windows.
 * Merge av playingcards-branch inn i master-branch
 * Refaktorert mye kode og slettet en del unødig kode
 * Fikset litt på README og justert på brukerhistorier
