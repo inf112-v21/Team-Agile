@@ -6,17 +6,16 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 
-import inf112.skeleton.app.Player;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
+/**
 public class PlayerTest {
 
     TiledMap board;
     TiledMapTileLayer playerLayer;
-    Player player;
+    Robot player;
     Vector2 pos;
 
 
@@ -28,7 +27,7 @@ public class PlayerTest {
 
         Player klassen som skal testes med bevegelse funksjon.
 
-        */
+
         TmxMapLoader loader = new TmxMapLoader();
         playerLayer = new TiledMapTileLayer(5,5,300,300);
         pos = new Vector2(1,1);
@@ -107,3 +106,4 @@ public class PlayerTest {
 
     }
 }
+*/

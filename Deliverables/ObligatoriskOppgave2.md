@@ -99,6 +99,8 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Oppsummerte hva vi har fått til nå, og hva som gjenstår å gjøres før innlevering. 
 * Testet kompabilitet tvers over forskjellige operativssystemer
 * Merge av playingcards-branch inn i master-branch
+* Refaktorert mye kode og slettet en del unødig kode
+* Fikset litt på README og justert på brukerhistorier
 
 
 
@@ -261,48 +263,59 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 * Prioritet skal gis for hvert kort i bunken, i intervallene som er gitt over.
 * Må starte spillet med å dele ut kort til alle spillerene. Må randomnize deck og deretter dele ut 9. stk kort til hver spiller
 * Hvert kort må inneholde parameter for bevegelser som igjen kan hentes opp når spiller bruker kort.
-* Må legge inn hensyn til prioritet, vha en form for PriorityQueue
+* Må visualisere kortene som blir delt ut på brettet
 
-<br/> 
-
-**8. Velge 5 kort**
-* Som spiller ønsker jeg, ut fra kortene jeg har fått utdelt, velge fem kort slik at jeg kan bruke de som trekk i spillet
+<br/>
 
 
-**Akseptansekriterier:**
+  **8. Velge 5 kort**
+* Som spiller ønsker jeg, ut fra kortene jeg har fått utdelt, velge ut fem kort slik at jeg kan bruke de som trekk i spillet
 
-**Arbeidsoppgaver:**
 
+  **Akseptansekriterier:**
+* Må kunne velge kortene ved eksempelvis bruke tastatur
+* Må kunne se hvilke kort som er valgt på et eget område på brettet
 
-**9. Bevege robot ut fra valgte kort** 
+  **Arbeidsoppgaver:**
+* Lage plass i brettet til å se hvilke kort en har valgt
+* Gjøre det mulig for spiller å velge kortene vha tastatatur
+
+  **9. Bevege robot ut fra valgte kort** 
+* Som spiller ønsker jeg å kunne bruke kortene jeg har valgt ut slik at roboten kan flytte seg etter hva kortene representerer av trekk.
 * Som spiller ønsker jeg at de med høyest prioritet for kortet sitt hver runde de skal også få gjøre trekket sitt først.
 
-**Akseptansekriterier:**
 
-**Arbeidsoppgaver:**
-
-
+  **Akseptansekriterier:**
+*  
 
 
-<br/> 
+  **Arbeidsoppgaver:**
+* Robot må endre trekk etter hvert kort som blir brukt. 
+* Må legge inn hensyn til prioritet, vha en form for PriorityQueue, slik at roboten som har høyest prioritet får bevege seg først
+  
+
+
+
+
+  <br/> 
 
 
 ## Produktleveranse / kode
 
 ### Dokumentasjon om teknisk byggesett
 
-Dette er å finne i README-dokumentet i selve prosjektet. 
+  Dette er å finne i README-dokumentet i selve prosjektet. 
 
 ### Beskrivelse av prosjektet 
 
-Dette er å finne i README-dokumentet i selve prosjektet.
+  Dette er å finne i README-dokumentet i selve prosjektet.
 
 
 ### Kode
-**Hva vi ikke har fått til av kode:** 
+  **Hva vi ikke har fått til av kode:** 
 
 
-<br/>
+  <br/>
 
 ### Retrospektiv 
 
@@ -325,4 +338,10 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 * Skrive hvilke bugs vi har
 * Endre README.md dokumentet
 * Fikse på tester. Legge til manuelle tester? 
+  * testAllFlagsTaken
+  * test
+  * lage deck
+  * utføre PlayingCard
+    
 * Fikse TRello
+* Fullføre refaktorering

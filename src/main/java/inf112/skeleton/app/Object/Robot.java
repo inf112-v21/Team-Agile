@@ -18,6 +18,7 @@ public class Robot extends Sprite {
     int flagToTake;
 
 
+
     public ArrayList<PlayingCard> getLockedHand() {
         return lockedHand;
     }
@@ -85,10 +86,13 @@ public class Robot extends Sprite {
         }
         if (flagID == flagToTake) {
             flagToTake += 1;
-            System.out.println("flag:" + flagID + " was taken");
+            System.out.println("flag: " + flagID + " was taken");
             System.out.println(flagToTake);
         }
+    }
 
+    public Integer getFlag() {
+        return flagToTake;
     }
 }
 

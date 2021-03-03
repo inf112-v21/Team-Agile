@@ -15,9 +15,9 @@ public class Flag {
     Vector2 position;
     TiledMapTileLayer Layer;
 
-    ArrayList<Player> flagsvisited = new ArrayList<Player>();
+    //ArrayList<Player> flagsvisited = new ArrayList<Player>();
+    //private HashMap<Player,Integer> flagsvisitedbyplayers = new HashMap<>();
 
-    private HashMap<Player,Integer> flagsvisitedbyplayers = new HashMap<>();
 
 
 
@@ -40,14 +40,14 @@ public class Flag {
     }
 
 
-    public void visitedFlag (Player player) {
+   // public void visitedFlag (Player player) {
         //for (id : FlagID)
         //if (flagsvisitedbyplayers.get(player) == (flagID -1 ))
 
-        flagsvisited.add(player);
-        flagsvisitedbyplayers.put(player, flagsvisitedbyplayers.get(player) + 1);
+        //flagsvisited.add(player);
+        //flagsvisitedbyplayers.put(player, flagsvisitedbyplayers.get(player) + 1);
 
-    }
+    //}
 
 
 }

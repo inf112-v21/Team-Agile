@@ -20,7 +20,13 @@ Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjo
     * **Pil ned**: Flytter roboten 1 steg bakover i forhold til retningen den står i.
     * **Pil høyre**: Roterer roboten til høyre.
     * **Pil venstre**: Roterer roboten til venstre.
-* 
+    * ** R **: Roter roboten 180 grader (UTURN).
+* Velge ut kort ved tastetrykk 1-9, kortene er indeksert fra 1-5 de øverste, deretter 6-9 på raden under.
+    * tastetrykk flytter valgte kort til Register (kortene spilleren velger).
+* Angre valgte kort.
+    * ** A ** Resetter hele Register (valgte kort) alle kortene flyttes tilbake til og kan deretter velges på nytt.
+* Utføre valgte kort som ligger i Register
+    * ** SPACEBAR ** Utfører kortet som ligger først fra venstre.
 
 ## Known bugs
 **Dersom Main ikke vil kjøre:**

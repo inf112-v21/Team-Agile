@@ -83,6 +83,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
 
+
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
 
         //camera.position.set(gameport.getWorldWidth() / 2, gameport.getWorldHeight() / 2, 0);
@@ -149,7 +150,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         batch.end();
 
 
-
         if (holeLayer.getCell((int) test.getX(), (int) test.getY()) != null) {
             test.setRegion(dead);
         } else if (flagLayer.getCell((int) test.getX(), (int) test.getY()) != null) {
@@ -159,7 +159,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             test.setRegion(state1);
         }
 
-        //allFlagsTaken(test);
+        allFlagsTaken(test);
 
 
     }
@@ -180,13 +180,13 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     public void resume() {
     }
 
-/**
+
     public void allFlagsTaken(Robot player) {
         if (player.getFlag() == flagsToTake) {
             Gdx.app.exit();
         }
     }
-*/
+
 
 
 
