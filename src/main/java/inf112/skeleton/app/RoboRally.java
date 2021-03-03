@@ -2,7 +2,6 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -40,7 +39,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     TextureRegion win;
 
-    private OrthographicCamera camera;
+    private OrthographicCamera camera, font_cam;
 
     private ExtendViewport viewport;
 
@@ -59,21 +58,27 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     String text;
 
+
+
+
+
     @Override
     public void create() {
         batch = new SpriteBatch();
-        font = new BitmapFont();
-        font.setColor(Color.GREEN);
+        font = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
         text = "220";
-        font.getData().setScale(23/150f, 14/150f);
+
+
+
 
 
         camera = new OrthographicCamera();
         viewport = new ExtendViewport(23,14);
-
+        font_cam = new OrthographicCamera();
+        font_cam.setToOrtho(false, 1500 ,750);
 
         TmxMapLoader loader = new TmxMapLoader();
-        map = loader.load("tutorial.tmx");
+        map = loader.load("maps/tutorial.tmx");
 
         //Layers initialize
         boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
@@ -128,13 +133,14 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         render.setView((OrthographicCamera) viewport.getCamera());
         render.render();
 
-        System.out.println(test.getLockedHand().size());
-
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
         test.draw(batch);
-        test.render(batch);
-        font.draw(batch, text, 14,11);
+        test.renderCards(batch);
+
+        batch.setProjectionMatrix(font_cam.combined);
+        test.renderPriority(batch);
+
         batch.end();
 
 

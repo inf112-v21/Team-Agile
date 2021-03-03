@@ -1,6 +1,8 @@
 package inf112.skeleton.app.Object;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import inf112.skeleton.app.Cards.PlayingCard;
@@ -16,6 +18,7 @@ public class Robot extends Sprite {
     private ArrayList<PlayingCard> lockedHand;
     int totalFlags = 3;
     int flagToTake;
+    BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
 
 
 
@@ -69,9 +72,7 @@ public class Robot extends Sprite {
         }
     }
 
-
-
-    public void render(Batch batch) {
+    public void renderCards(Batch batch) {
         for (PlayingCard kort : cards) {
             kort.draw(batch);
         }
@@ -79,6 +80,31 @@ public class Robot extends Sprite {
             locked.draw(batch);
         }
     }
+
+    public void renderPriority(Batch batch) {
+        float xStart = 842f;
+        float yStart = 682f;
+
+        for (PlayingCard kort : cards) {
+            int priority = kort.getPriority();
+            priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
+            xStart += 112;
+
+            if(xStart == 1402) {
+                xStart = 898;
+                yStart = 520;
+            }
+        }
+        xStart = 842;
+        yStart = 307;
+        for (PlayingCard locked : lockedHand) {
+            int priority = locked.getPriority();
+            priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
+            xStart += 112;
+        }
+
+    }
+
 
     public void visitFlag(int flagID) {
         if (flagID > flagToTake) {

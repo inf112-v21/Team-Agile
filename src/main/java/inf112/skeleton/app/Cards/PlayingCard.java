@@ -13,10 +13,6 @@ public class PlayingCard extends Sprite {
     public int priority;
     public Texture texture;
 
-    private BitmapFont font;
-
-
-
 
     public PlayingCard(MoveType type, int priority ) {
         this.type = type;
@@ -26,6 +22,7 @@ public class PlayingCard extends Sprite {
         setRegion(texture);
 
     }
+
     public MoveType getType() {
         return type;
     }
@@ -34,6 +31,9 @@ public class PlayingCard extends Sprite {
         return type.getMove();
     }
 
+    public int getPriority() {
+        return priority;
+    }
 
 
 }
