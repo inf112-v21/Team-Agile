@@ -1,4 +1,4 @@
-package inf112.skeleton.app.networking;
+package inf112.skeleton.app;
 
 public class Request {
     public String text;

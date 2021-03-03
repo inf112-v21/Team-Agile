@@ -16,13 +16,13 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import inf112.skeleton.app.Cards.Deck;
 import inf112.skeleton.app.Object.InputHandler;
 import inf112.skeleton.app.Object.Robot;
 
-public class HelloWorld extends InputAdapter implements ApplicationListener {
-    public static final int V_WIDTH = 400;
-    public static final int V_HEIGHT = 400;
+import java.util.ArrayList;
 
+public class HelloWorld extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
 
@@ -32,11 +32,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     private OrthogonalTiledMapRenderer render;
 
     private TiledMapTileLayer.Cell playerCell, playerWonCell, playerDiedCell;
-
-
-   // private ArrayList<Flag> flaggene = new ArrayList<>();
-
-    //ArrayList<FlagID> playerids = new ArrayList<>();
 
     private Integer flagsToTake = 2;
 
@@ -51,14 +46,21 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
     Robot test;
 
-
-
     TextureRegion state1;
 
     TextureRegion[][] tr;
 
 
     Vector2 playerPosition;
+
+    Robot test2;
+
+
+    Deck deck;
+
+    ArrayList<Robot> players;
+
+
 
 
     @Override
@@ -69,7 +71,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
 
         camera = new OrthographicCamera();
-        viewport = new ExtendViewport(5,5);
+        viewport = new ExtendViewport(23,14);
 
 
         TmxMapLoader loader = new TmxMapLoader();
@@ -81,18 +83,22 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
 
-        //Vector2 flag1 = new Vector2(5, 5);
-        //flaggene.add(new Flag(flag1, 1));
-
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
 
         //camera.position.set(gameport.getWorldWidth() / 2, gameport.getWorldHeight() / 2, 0);
 
         Texture texture = new Texture("player.png");
 
+        Texture backup = new Texture("backUp.png");
+
+        TextureRegion hand1 = new TextureRegion(backup, 342 , 522);
+
+        deck = new Deck();
+
 
         // splitter opp player.png bildet og definerer størrelsen
         tr = TextureRegion.split(texture, 300, 300);
+
 
         state1 = tr[0][0];
         dead = tr[0][1];
@@ -101,20 +107,22 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
 
         playerPosition = new Vector2(0, 0);
 
-        test = new Robot(state1,0,0);
+        test = new Robot(state1,2,2);
+
 
         InputHandler myhandler = new InputHandler(test);
 
+        test2 = new Robot(state1, 6, 2);
 
-        /**
-         * Hmm, tror kanskje dere blir nødt til å bruke sprites her ja.
-         * Usikker, men vet ikke om noen annen måte å gjøre det på. Alternative blir å bytte ut selve bilde med en rotert versjon.
-         * Altså at man har alle de roterte bildene lagret.
-         */
+        players = new ArrayList<>();
+
+        players.add(test);
+
+        deck.dealOutCards(players);
+
+        test.playerCardstoHand(test.getCards());
 
         Gdx.input.setInputProcessor(myhandler);
-
-
     }
 
     @Override
@@ -132,11 +140,24 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         render.setView((OrthographicCamera) viewport.getCamera());
         render.render();
 
+        System.out.println(test.getLockedHand().size());
 
-        render.getBatch().setProjectionMatrix(viewport.getCamera().combined);
-        render.getBatch().begin();
-        test.draw(render.getBatch());
-        render.getBatch().end();
+        batch.setProjectionMatrix(viewport.getCamera().combined);
+        batch.begin();
+        test.draw(batch);
+        test.render(batch);
+/**
+        card1.draw(batch);
+        card2.draw(batch);
+        card3.draw(batch);
+        card4.draw(batch);
+        card5.draw(batch);
+        card6.draw(batch);
+        card7.draw(batch);
+        card8.draw(batch);
+        card9.draw(batch);
+*/
+        batch.end();
 
 
 
@@ -166,9 +187,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     @Override
     public void resume() {
     }
-
-
-
 
     /*
     public void allFlagsTaken(Player player) {
