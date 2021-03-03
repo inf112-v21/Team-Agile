@@ -50,24 +50,22 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     TextureRegion[][] tr;
 
-
     Vector2 playerPosition;
-
-    Robot test2;
-
 
     Deck deck;
 
     ArrayList<Robot> players;
 
 
-
+    String text;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont();
-        font.setColor(Color.RED);
+        font.setColor(Color.GREEN);
+        text = "220";
+        font.getData().setScale(23/150f, 14/150f);
 
 
         camera = new OrthographicCamera();
@@ -86,20 +84,11 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
 
-        //camera.position.set(gameport.getWorldWidth() / 2, gameport.getWorldHeight() / 2, 0);
-
         Texture texture = new Texture("player.png");
 
-        Texture backup = new Texture("backUp.png");
-
-        TextureRegion hand1 = new TextureRegion(backup, 342 , 522);
-
         deck = new Deck();
-
-
         // splitter opp player.png bildet og definerer størrelsen
         tr = TextureRegion.split(texture, 300, 300);
-
 
         state1 = tr[0][0];
         dead = tr[0][1];
@@ -112,8 +101,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
 
         InputHandler myhandler = new InputHandler(test);
-
-        test2 = new Robot(state1, 6, 2);
 
         players = new ArrayList<>();
 
@@ -147,6 +134,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         batch.begin();
         test.draw(batch);
         test.render(batch);
+        font.draw(batch, text, 14,11);
         batch.end();
 
 
