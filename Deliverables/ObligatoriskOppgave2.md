@@ -98,6 +98,8 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * I forkant av dette møtet har Anthony ferdig implementert visualisering av utdelingen av kort. 
 * Oppsummerte hva vi har fått til nå, og hva som gjenstår å gjøres før innlevering. 
 * Testet kompabilitet tvers over forskjellige operativssystemer
+* Merge av playingcards-branch inn i master-branch
+
 
 
 <br/> 
@@ -264,6 +266,7 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 <br/> 
 
 **8. Velge 5 kort**
+* Som spiller ønsker jeg, ut fra kortene jeg har fått utdelt, velge fem kort slik at jeg kan bruke de som trekk i spillet
 
 
 **Akseptansekriterier:**

@@ -14,6 +14,8 @@ public class Robot extends Sprite {
     public int healthpoint;
     private ArrayList<PlayingCard> cards;
     private ArrayList<PlayingCard> lockedHand;
+    int totalFlags = 3;
+    int flagToTake;
 
 
     public ArrayList<PlayingCard> getLockedHand() {
@@ -27,14 +29,10 @@ public class Robot extends Sprite {
         setPosition(xstart, ystart);
         this.healthpoint = 9;
         this.cards = new ArrayList<>(healthpoint);
-
         this.lockedHand = new ArrayList<>();
+        this.flagToTake = 1;
 
     }
-
-
-
-
 
     public int getHealthpoint() {
         return healthpoint;
@@ -79,6 +77,18 @@ public class Robot extends Sprite {
         for (PlayingCard locked : lockedHand) {
             locked.draw(batch);
         }
+    }
+
+    public void visitFlag(int flagID) {
+        if (flagID > flagToTake) {
+            return;
+        }
+        if (flagID == flagToTake) {
+            flagToTake += 1;
+            System.out.println("flag:" + flagID + " was taken");
+            System.out.println(flagToTake);
+        }
+
     }
 }
 

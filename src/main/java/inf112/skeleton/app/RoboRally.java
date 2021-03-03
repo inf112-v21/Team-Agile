@@ -22,7 +22,7 @@ import inf112.skeleton.app.Object.Robot;
 
 import java.util.ArrayList;
 
-public class HelloWorld extends InputAdapter implements ApplicationListener {
+public class RoboRally extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
 
@@ -146,17 +146,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         batch.begin();
         test.draw(batch);
         test.render(batch);
-/**
-        card1.draw(batch);
-        card2.draw(batch);
-        card3.draw(batch);
-        card4.draw(batch);
-        card5.draw(batch);
-        card6.draw(batch);
-        card7.draw(batch);
-        card8.draw(batch);
-        card9.draw(batch);
-*/
         batch.end();
 
 
@@ -165,9 +154,12 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
             test.setRegion(dead);
         } else if (flagLayer.getCell((int) test.getX(), (int) test.getY()) != null) {
             test.setRegion(win);
+            test.visitFlag(1);
         } else {
             test.setRegion(state1);
         }
+
+        //allFlagsTaken(test);
 
 
     }
@@ -188,14 +180,14 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
     public void resume() {
     }
 
-    /*
-    public void allFlagsTaken(Player player) {
+/**
+    public void allFlagsTaken(Robot player) {
         if (player.getFlag() == flagsToTake) {
             Gdx.app.exit();
         }
-
     }
-    */
+*/
+
 
 
 }

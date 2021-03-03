@@ -9,6 +9,6 @@ public class Main {
         cfg.setTitle("test");
         cfg.setWindowedMode(1500, 750);
 
-        new Lwjgl3Application(new HelloWorld(), cfg);
+        new Lwjgl3Application(new RoboRally(), cfg);
     }
 }

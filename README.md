@@ -16,11 +16,11 @@ Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjo
 * Når du starter spillet så vil brettet laste. Du vil da se en spiller (ugle), en checkpoint (flagg) og et hull.
 * Du vinner av å besøke alle flaggene i riktig prioritert rekkefølge (se nummereringen).
 * Du navigerer ved å bruke piltastene: 
-    * **Pil opp**: Navigerer spilleren oppover på brettet
-    * **Pil ned**: Navigerer spilleren nedover på brettet
-    * **Pil høyre**: Navigerer spilleren mot høyre på brettet
-    * **Pil venstre**: Navigerer spilleren mot venstre på brettet
-
+    * **Pil opp**: Flytter roboten 1 steg framover i retningen den står i.
+    * **Pil ned**: Flytter roboten 1 steg bakover i forhold til retningen den står i.
+    * **Pil høyre**: Roterer roboten til høyre.
+    * **Pil venstre**: Roterer roboten til venstre.
+* 
 
 ## Known bugs
 **Dersom Main ikke vil kjøre:**
