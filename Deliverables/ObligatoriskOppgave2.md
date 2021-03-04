@@ -23,7 +23,7 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 
 <br/> 
 
-**17.02.20 12:15-13:00:**
+**17.02.20 12:15-14:00:**
 * Første møte etter oblig 1 var innlevert. Her møttes samtlige, bortsett fra Tore (han var ikke klar over at 
   vi skulle møtes).
 * Gikk kort gjennom hvordan vi tenkte å omstrukturere gruppefordelingen vår gjennom neste innelevering, hvilke 
@@ -40,7 +40,7 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 
 <br/> 
 
-**22.02.20 12:15-13:00:**
+**22.02.20 12:15-14:00:**
 * Alle tilstede. 
 * Fortsatte med kodingen i gruppene vi har delt oss inn i. 
 * Møtte på en del problemer i forbindelse med organisering av koden og selve strukturen i hvordan en skal organisere 
@@ -55,18 +55,17 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 
 <br/> 
 
-**24.02.20 12:15-13:00:**
+**24.02.20 12:15-14:00:**
 * Alle tilstede.
 * Anthony hadde mellom forrige møtet og dette møtet kodet endel videre på rotasjonene på spilleren. Til dette møtet 
   så hadde Anthony fått implementert all rotasjonslogikk for spilleren. 
 * Fortsatte her på MVP-kravene 6 & 7. Anthony byttet gruppe dette møtetidspunktet for å hjelpe til
   med koden til MVP-krav 6.
-*  
 
 
 <br/> 
 
-**25.02.20 12:15-13:00:**
+**25.02.20 12:15-14:00:**
 * Alle tilstede. 
 * Her gikk vi gjennom i plenum hvordan koden til kortdekket og korttypene per nå er strukturert, da vi har ikke vært 
   helt enige om hvordan vi skal gjøre dette. Snakket sammen om mulig løsninger før vi delte oss ut i grupper. 
@@ -82,10 +81,11 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Alle tilstede. 
 * Implementert programCards. Lagde enum for alle korttyper.
 * Begynte med libgdx sin nettverks-API istedenfor kryonet.
-* 
+
+
 <br/> 
 
-**01.03.20 12:15-13:00:**
+**01.03.20 12:15-14:00:**
 * Alle tilstede
 * Fikk oppdatert kartet og laged GUI for hvor kort initialiseres.
 * Implementerte ferdig kort-klassen og begynte på deck. 
@@ -93,20 +93,48 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 
 <br/> 
 
-**03.03.20 12:15-13:00:**
+**03.03.20 12:15-14:30:**
 * Alle tilstede
 * I forkant av dette møtet har Anthony ferdig implementert visualisering av utdelingen av kort. 
 * Oppsummerte hva vi har fått til nå, og hva som gjenstår å gjøres før innlevering. 
-* Testet kompabilitet tvers over forskjellige operativssystemer, fungerer på Mac OS, Linux og Windows.
+* Testet kompabilitet tvers over forskjellige operativssystemer. Gikk fint, yay! 
 * Merge av playingcards-branch inn i master-branch
 * Refaktorert mye kode og slettet en del unødig kode
 * Fikset litt på README og justert på brukerhistorier
 
 
+* Fikse til neste møtetidspunkt (fredag 09:00):
+          
+  Marius:
+  *   deck-test
+      *   fikse markdown-doc (nærmere fullføre)
+            * brukerhistorier
+            * litt retrospektiv om hvordan ting har gått
+            * skrive ned bugs
+            * priority over kort
+            * multiplayer
+            * antall flagg tatt
+            * les gjennom oblig2 og rettedok. se over hva som mangles
+            * Fullføre README.md dokument
+              
+    Anthony:
+    * Utføre PlayingCardTest
+        
+    Johnny:
+    * Klassediagram
+    
+    Leif Petter:
+    * Fikse playerTest
+    * Ferdigstille markdown-doc sammen med Marius (lese over det som har blitt skrivet. sjekke at vi har alt vi trenger)
+      
+    Tore:
+    * testAllFlagsTaken
+    * se over Trello
+
 
 <br/> 
 
-**05.03.20 10:15-12:00**
+**05.03.20 09:00-12:00**
 * 
 * 
 * 
@@ -335,13 +363,17 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 
 **HUSK FØR INNLEVERING**
 * Lage klassediagram
+
 * Skrive hvilke bugs vi har
+
 * Endre README.md dokumentet
+
 * Fikse på tester. Legge til manuelle tester? 
   * testAllFlagsTaken
-  * test
-  * lage deck
-  * utføre PlayingCard
-    
-* Fikse TRello
+  * lage deck (test 84 kort, deleutkort skjekk at spiller får antall kort i forhold til HP)
+  * utføre PlayingCard (lage instans av alle ulike kortene og skjekk at spiller posisjon/rotasjon er som forventet utifra startpos/rotasjon)
+  * fikse playertest (fikse fra player til Robot)*
+
+* Fikse Trello
+
 * Fullføre refaktorering

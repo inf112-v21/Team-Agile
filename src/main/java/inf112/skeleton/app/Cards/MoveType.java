@@ -1,16 +1,15 @@
 package inf112.skeleton.app.Cards;
 
 import com.badlogic.gdx.graphics.Texture;
-import org.w3c.dom.Text;
 
 public enum MoveType {
-    BACKUP(-1, new Texture("backUp.png")),
-    UTURN(180, new Texture("rotate.png")),
-    ROTATE_RIGHT(-90, new Texture("rotateRight.png")),
-    ROTATE_LEFT(90, new Texture("rotateLeft.png")),
-    MOVEONE(1, new Texture("move1.png")),
-    MOVETWO(2, new Texture("move2.png")),
-    MOVETHREE(3, new Texture("move3.png"));
+    BACKUP(-1, new Texture("cards/backUp.png")),
+    UTURN(180, new Texture("cards/rotate.png")),
+    ROTATE_RIGHT(-90, new Texture("cards/rotateRight.png")),
+    ROTATE_LEFT(90, new Texture("cards/rotateLeft.png")),
+    MOVEONE(1, new Texture("cards/move1.png")),
+    MOVETWO(2, new Texture("cards/move2.png")),
+    MOVETHREE(3, new Texture("cards/move3.png"));
 
     private int move;
 

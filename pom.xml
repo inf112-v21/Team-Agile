@@ -17,7 +17,11 @@
     <maven.compiler.release>9</maven.compiler.release>
   </properties>
 
+
+
   <dependencies>
+
+    
     <!-- https://mvnrepository.com/artifact/com.badlogicgames.gdx/gdx -->
     <dependency>
       <groupId>com.badlogicgames.gdx</groupId>

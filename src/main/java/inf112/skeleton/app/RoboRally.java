@@ -2,7 +2,6 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -40,7 +39,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     TextureRegion win;
 
-    private OrthographicCamera camera;
+    private OrthographicCamera camera, font_cam;
 
     private ExtendViewport viewport;
 
@@ -50,15 +49,15 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     TextureRegion[][] tr;
 
-
     Vector2 playerPosition;
-
-    Robot test2;
-
 
     Deck deck;
 
     ArrayList<Robot> players;
+
+
+    String text;
+
 
 
 
@@ -66,16 +65,20 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        font = new BitmapFont();
-        font.setColor(Color.RED);
+        font = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
+        text = "220";
+
+
+
 
 
         camera = new OrthographicCamera();
         viewport = new ExtendViewport(23,14);
-
+        font_cam = new OrthographicCamera();
+        font_cam.setToOrtho(false, 1500 ,750);
 
         TmxMapLoader loader = new TmxMapLoader();
-        map = loader.load("tutorial.tmx");
+        map = loader.load("maps/tutorial.tmx");
 
         //Layers initialize
         boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
@@ -86,20 +89,11 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
 
-        //camera.position.set(gameport.getWorldWidth() / 2, gameport.getWorldHeight() / 2, 0);
-
         Texture texture = new Texture("player.png");
 
-        Texture backup = new Texture("backUp.png");
-
-        TextureRegion hand1 = new TextureRegion(backup, 342 , 522);
-
         deck = new Deck();
-
-
         // splitter opp player.png bildet og definerer størrelsen
         tr = TextureRegion.split(texture, 300, 300);
-
 
         state1 = tr[0][0];
         dead = tr[0][1];
@@ -112,8 +106,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
 
         InputHandler myhandler = new InputHandler(test);
-
-        test2 = new Robot(state1, 6, 2);
 
         players = new ArrayList<>();
 
@@ -141,12 +133,14 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         render.setView((OrthographicCamera) viewport.getCamera());
         render.render();
 
-        System.out.println(test.getLockedHand().size());
-
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
         test.draw(batch);
-        test.render(batch);
+        test.renderCards(batch);
+
+        batch.setProjectionMatrix(font_cam.combined);
+        test.renderPriority(batch);
+
         batch.end();
 
 
