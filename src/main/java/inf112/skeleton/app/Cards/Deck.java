@@ -25,7 +25,7 @@ public class Deck {
             deck.add(uturn);
         }
 
-        for(int i=490;i<=650;i += 10) {
+        for(int i=490;i<=660;i += 10) {
             PlayingCard move1 = new PlayingCard(MoveType.MOVEONE, i);
             deck.add(move1);
         }
@@ -39,15 +39,15 @@ public class Deck {
             PlayingCard move3 = new PlayingCard(MoveType.MOVETHREE, i);
             deck.add(move3);
         }
-        for(int i=80;i<=420;i += 20) {
-            PlayingCard move3 = new PlayingCard(MoveType.ROTATE_LEFT, i);
-            deck.add(move3);
-        }
         for(int i=70;i<=410;i += 20) {
-            PlayingCard move3 = new PlayingCard(MoveType.ROTATE_RIGHT, i);
-            deck.add(move3);
+            PlayingCard rotateLeft = new PlayingCard(MoveType.ROTATE_LEFT, i);
+            deck.add(rotateLeft);
         }
-
+        for(int i=80;i<=420;i += 20) {
+            PlayingCard rotateRight = new PlayingCard(MoveType.ROTATE_RIGHT, i);
+            deck.add(rotateRight);
+        }
+        System.out.println(deck.get(3));
         return deck;
     }
 
@@ -55,10 +55,12 @@ public class Deck {
         return deck.size();
     }
 
+    public PlayingCard getIndex(int index) { return deck.get(index); }
+
     public void shuffle() {
         Collections.shuffle(deck);
-
     }
+
     public void dealOutCards(List<Robot> players) {
         for (Robot player : players) {
             int hp = player.healthpoint;

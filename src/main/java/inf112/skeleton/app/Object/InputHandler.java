@@ -84,8 +84,6 @@ public class InputHandler extends InputAdapter {
         }
     }
 
-
-
     public void resetLockedHand() {
         for (PlayingCard card: player.getLockedHand()) {
 
@@ -94,7 +92,6 @@ public class InputHandler extends InputAdapter {
         }
         player.getLockedHand().clear();
     }
-
 
     public void moveToLocked(int index) {
         if(player.getLockedHand().size() == 5 || player.getCards().size() <= index) {
@@ -105,9 +102,6 @@ public class InputHandler extends InputAdapter {
             player.playerCardstoHand(player.getCards());
         }
     }
-
-
-
 
     private void resetDegrees(int degree) {
         if (degree == 360) {

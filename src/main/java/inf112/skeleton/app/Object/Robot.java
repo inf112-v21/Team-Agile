@@ -13,7 +13,9 @@ public class Robot extends Sprite {
 
     private final int WIDTH = 1;
     private final int HEIGHT = 1;
+
     public int healthpoint;
+
     private ArrayList<PlayingCard> cards;
 
     public ArrayList<PlayingCard> getLockedHand() {
@@ -21,13 +23,10 @@ public class Robot extends Sprite {
     }
 
     private ArrayList<PlayingCard> lockedHand;
+
     int totalFlags = 3;
     int flagToTake;
     BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
-
-
-
-
 
     public Robot(TextureRegion texture, int xstart, int ystart) {
         setSize(WIDTH, HEIGHT);
@@ -45,12 +44,14 @@ public class Robot extends Sprite {
         return healthpoint;
     }
 
+    public void setHealthpoint(int healthpoint) {
+        this.healthpoint = healthpoint;
+    }
+
 
     public ArrayList<PlayingCard> getCards() {
         return cards;
     }
-
-
 
 
     public void playerCardstoHand(ArrayList<PlayingCard> spillerkort) {
