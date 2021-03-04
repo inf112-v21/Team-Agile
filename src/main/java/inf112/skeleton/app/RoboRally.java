@@ -24,43 +24,23 @@ import java.util.ArrayList;
 public class RoboRally extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
-
     private TiledMap map;
     private TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer;
-
     private OrthogonalTiledMapRenderer render;
-
     private TiledMapTileLayer.Cell playerCell, playerWonCell, playerDiedCell;
-
     private Integer flagsToTake = 2;
-
-
-    TextureRegion dead;
-
-    TextureRegion win;
-
     private OrthographicCamera camera, font_cam;
-
     private ExtendViewport viewport;
 
+    TextureRegion dead;
+    TextureRegion win;
     Robot test;
-
     TextureRegion state1;
-
     TextureRegion[][] tr;
-
     Vector2 playerPosition;
-
     Deck deck;
-
     ArrayList<Robot> players;
-
-
     String text;
-
-
-
-
 
     @Override
     public void create() {
@@ -68,14 +48,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         font = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
         text = "220";
 
-
-
-
-
         camera = new OrthographicCamera();
         viewport = new ExtendViewport(23,14);
         font_cam = new OrthographicCamera();
-        font_cam.setToOrtho(false, 1500 ,750);
+        font_cam.setToOrtho(false, 1339,750);
 
         TmxMapLoader loader = new TmxMapLoader();
         map = loader.load("maps/tutorial.tmx");
@@ -92,6 +68,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         Texture texture = new Texture("player.png");
 
         deck = new Deck();
+
         // splitter opp player.png bildet og definerer størrelsen
         tr = TextureRegion.split(texture, 300, 300);
 
@@ -99,11 +76,9 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         dead = tr[0][1];
         win = tr[0][2];
 
-
         playerPosition = new Vector2(0, 0);
 
         test = new Robot(state1,2,2);
-
 
         InputHandler myhandler = new InputHandler(test);
 
@@ -162,7 +137,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height, true);
-
         viewport.getCamera().update();
     }
 
@@ -174,14 +148,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     public void resume() {
     }
 
-
     public void allFlagsTaken(Robot player) {
         if (player.getFlag() == flagsToTake) {
             Gdx.app.exit();
         }
     }
-
-
-
 
 }
