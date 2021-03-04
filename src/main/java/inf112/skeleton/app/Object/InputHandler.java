@@ -65,12 +65,13 @@ public class InputHandler extends InputAdapter {
                 resetLockedHand();
                 break;
             case Input.Keys.SPACE:
-                performCard();
+                performCardinRegister();
                 break;
         }
         return false;
     }
-    public void performCard() {
+
+    public void performCardinRegister() {
         if (player.getLockedHand().size() > 0) {
             PlayingCard kortet = player.getLockedHand().remove(0);
             int movetype = kortet.getMove();
@@ -82,6 +83,7 @@ public class InputHandler extends InputAdapter {
             player.playerLocked(player.getLockedHand());
         }
     }
+
 
 
     public void resetLockedHand() {
@@ -117,13 +119,13 @@ public class InputHandler extends InputAdapter {
         }
     }
 
-    private void rotate(int degree) {
+    public void rotate(int degree) {
         player.setRotation(player.getRotation() + degree);
         resetDegrees((int) player.getRotation());
     }
 
     //1
-    private void move(int steps) {
+    public void move(int steps) {
         switch ((int) player.getRotation()) {
             case(0):
                 player.setPosition(player.getX(), player.getY() - steps);

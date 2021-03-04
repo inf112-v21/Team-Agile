@@ -15,6 +15,11 @@ public class Robot extends Sprite {
     private final int HEIGHT = 1;
     public int healthpoint;
     private ArrayList<PlayingCard> cards;
+
+    public ArrayList<PlayingCard> getLockedHand() {
+        return lockedHand;
+    }
+
     private ArrayList<PlayingCard> lockedHand;
     int totalFlags = 3;
     int flagToTake;
@@ -22,9 +27,7 @@ public class Robot extends Sprite {
 
 
 
-    public ArrayList<PlayingCard> getLockedHand() {
-        return lockedHand;
-    }
+
 
     public Robot(TextureRegion texture, int xstart, int ystart) {
         setSize(WIDTH, HEIGHT);
@@ -46,6 +49,8 @@ public class Robot extends Sprite {
     public ArrayList<PlayingCard> getCards() {
         return cards;
     }
+
+
 
 
     public void playerCardstoHand(ArrayList<PlayingCard> spillerkort) {
