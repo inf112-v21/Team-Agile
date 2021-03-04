@@ -1,4 +1,4 @@
-package inf112.skeleton.app;
+package inf112.skeleton.app.Cards;
 
 
 import com.badlogic.gdx.Game;
@@ -35,8 +35,6 @@ public class PlayingCardTest {
                 Gdx.app.exit();
             }
         }, cfg);
-
-
     }
 
     //alle testene utføres fra utgangspunktet i pos (3,3) og start rotasjon => 0 dvs peker sørover
