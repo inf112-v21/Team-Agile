@@ -130,6 +130,12 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
     Tore:
     * testAllFlagsTaken
     * se over Trello
+      **Multiplayer**
+      Tore og Petter har forsøkt en del på å implementere multiplayer men har støtt på en del problemer. Først valgte de 
+      å forsøke med en Kryonet implementasjon, som viste seg å være litt for omfattende og kanskje litt for lavnivå for jobben. 
+      De valgte derfor å forsøke med libgdx sin nettverks-API. Det har vist seg å være litt tidkrevende å komme ordentlig i
+      gang ved å lese tutorialet, da særlig å få importert en korrekt json-fil for å vise et vindu hvor det implementeres
+      nettverks-funksjonalitet. Forhåpentligvis vil ting gå en del fortere når disse tingene er løst.
 
 
 <br/> 
