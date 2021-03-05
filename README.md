@@ -73,11 +73,14 @@ Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere M
    installert riktig.
    
 **Linux/Ubuntu**
-``sudo apt update``
+
+1. ``sudo apt update``
 <br/>
-``sudo apt install maven``
+
+2. ``sudo apt install maven``
 <br/>
-``mvn -version`` (for å sjekke at du har riktig versjon)
+
+3. ``mvn -version`` (for å sjekke at du har riktig versjon)
 <br/>
 
 ## HVORDAN SPILLE SPILLET
