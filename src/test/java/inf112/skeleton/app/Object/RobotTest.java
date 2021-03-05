@@ -71,12 +71,12 @@ public class RobotTest {
         Vector2 newPosition = new Vector2((int) player.getX() + 1, (int) player.getY());
         handler = new InputHandler(player);
         handler.keyUp(Input.Keys.RIGHT);
-        Vector2 currentPosition = new Vector2((int) player.getX() + 1, (int) player.getY());
 
-        assertEquals(newPosition, currentPosition);
+        Float degreesAfter = player.getRotation();
 
-        //sjekker om player er fjernet fra den cellen som den opprinnelig befant seg i
-        assertNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
+        degreesBefore = degreesBefore + 270;
+
+        assertEquals(degreesBefore, degreesAfter);
 
     }
     @Test
@@ -87,15 +87,19 @@ public class RobotTest {
         Vector2 newPosition = new Vector2((int) player.getX() - 1, (int) player.getY());
         handler = new InputHandler(player);
         handler.keyUp(Input.Keys.LEFT);
-        Vector2 currentPosition = new Vector2((int) player.getX() + 1, (int) player.getY());
 
-        assertEquals(newPosition, currentPosition);
+        Float degreesAfter = player.getRotation();
 
-        assertNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
+        degreesBefore = degreesBefore + 90;
+        assertEquals(degreesBefore, degreesAfter);
     }
 
     @Test
     public void keyDownShouldMakePlayerMoveOneToTheDownDirection() {
+
+        //Siden spilleren sin robot peker mot sør vil key down gjøre at roboten
+        //går 1 i y-retning, selv om det er litt lite intuitivt. Det samme
+        //gjelder for keyUp-testen, sånn at den også blir "motsatt".
 
         assertNotNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
 
