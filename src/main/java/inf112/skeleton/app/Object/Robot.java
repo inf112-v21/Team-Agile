@@ -37,7 +37,6 @@ public class Robot extends Sprite {
         this.cards = new ArrayList<>(healthpoint);
         this.lockedHand = new ArrayList<>();
         this.flagToTake = 1;
-
     }
 
     public int getHealthpoint() {
