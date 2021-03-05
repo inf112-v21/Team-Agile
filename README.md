@@ -68,7 +68,7 @@ Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere M
 5. I _system variables_ skal vi legge til samme lenke i _Path_ som du skal ha fra før av.
    Her klikker du på _Path_, velger _Edit_, deretter _New_ og legger til samme lenke bare med 
    ``\bin`` på slutten. Vil se slik ut: 
-   `C:\Users\47915\Downloads\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin``
+   ``C:\Users\47915\Downloads\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin``
 6. Til slutt kan du åpne terminal og skrive inn kommandoen ``mvn -version`` for å sjekke at det har blitt
    installert riktig.
 
