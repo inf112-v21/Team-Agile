@@ -173,9 +173,6 @@ Her har vi hatt god erfaring fra oblig 1 og synes rollene har vært ganske så �
 
 ![](/Deliverables/Images/TrelloProjectBoard.png "Project Board")
 
-![](TrelloProjectBoard.png)
-
-<img src="/Deliverables/Images/TrelloProjectBoard.png" alt="Trello Project Board" style="height: 100px; width:100px;"/>
 
 **Link:** https://trello.com/b/80a0xYw8/inf112-oblig-1
 
@@ -345,17 +342,22 @@ rekkefølge og deretter avslutter spillet når alle flaggene er funnet. Antar å
 
 
 ### Retrospektiv hittil
-Etter å ha jobbet litt med prosjektet og har kommet litt lengre, så merkes det at kode-delen er ganske stor og
-at vi fort prioriterer å komme fortere i gang med kodingen istedet for å bruke tid på møter. Så noe vi har
-merket som en positiv endring er inndelingen av grupper over lengre tid. Siden vi kommer fortere i gang med kode-delen,
+Etter å ha jobbet med prosjektet og nå nærmer oss deadline, så merkes det at kode-delen er ganske mye større enn forventet og
+at vi fort startet med å prioriterer å komme fortere i gang med kodingen istedet for å bruke tid på møter.
+Noe vi har merket som en positiv endring er inndelingen av grupper over lengre tid. Siden vi kommer fortere i gang med kode-delen,
 enn hvis vi hver gang skal prøve å dele inn oppgaver og grupper. Nå derimot vet vi hvilken gruppe som skal jobbe med
 hva og de har selv kontroll på arbeidsoppgaver innad i gruppen. Noe vi ser på som en positiv forandring.
 
-Det har også vært noe utfordrende med konsekvent gruppeinndeling. Noen ganger må en bistå ene gruppen, for å kunne få fremgang på MVP-kravet. 
-Spesielt med tanke på multiplayer-kravet som har gitt store utfordringer for gjennomførelse, og kanskje igjen vært mer vanskelig å få hjulpet hverandre med å komme videre på dette.
+Noe negativt med gruppeindelingen vil være at det å hjelpe hverandre på tvers av gruppene har vert noe utfordende. Selv om det er godt å få et helt blankt
+synspunkt på kode av og til, så har vi heller fått konsekvensen av at der er for mye tid å sette seg inn for en enkelte person, bare for å hjelpe med en liten
+eller en veldig spesifikk del av koden. eksempel når vi har sittet å jobbet med multiplayer, men kommer ikke fremover på tutorial.
 
-Vi har også bemerket oss at vi ikke er så flinke til å oppdatere trello ut fra de arbeidsoppgavene vi har. Vi har mer en tendens
-å gjøre arbeidsoppgaver først, og deretter hive inn i trello,- noe som er feil rekkefølge.
+
+Vi har også bemerket oss at noen deler av oppgaven er vi ikke speielt flinke, slik som å holde trello oppdatert og refaktorering av koden.
+Når det kommer til trello har vi en tendens til å hive inn oppgave eller deler av hva vi har klart inn etter at vi har klart dem. Dette er
+vi fult klar over er feil rekkefølge, men noe vi da må bli bedre på er å gjerne dele opp gaven skikkelig eller mer spesifikk (utenom MVP-kravene).
+Og når det kommer til refaktorering må vi bare være flinkere på å refaktorere hele tiden.
+
 
 
 **Gjennomførelsen av oppgaven**
