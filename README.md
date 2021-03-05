@@ -8,33 +8,57 @@
 * JUnit 4.11
   
 ## HVORDAN LASTE NED PROSJEKTET OG STARTE SPILLET
-1. Laste ned Git-repo fra: https://github.com/inf112-v21/Team-Agile ved å klone prosjektet til din maskin.
-2. Åpne prosjektet i en java-IDE som kan kjøre koden.
+
+### MAC // LINUX // WINDOWS
+
+**Dersom du vil kjøre spillet fra en Java-IDE:**
+1. Laste ned Git-repo fra: https://github.com/inf112-v21/Team-Agile under den grønne knappen "Code" og "Download ZIP"
+2. Åpne prosjektet i din IDE. Eksempelvis anbefaler vi IntelliJ. 
 3. Finn main under directory: Team-Agile/src/main/java/inf112.skeleton.app/Main.java
 4. Kjør main. Da skal spillet startes.
 
+Om main ikke vil starte i din egen IDE, se under "known bugs"
 
-### MAC // LINUX // WINDOWS
+
+<br/>
+
+**Om du ikke har IDE fra før:**
 1. Sjekk at du har riktig Java versjon ved å skrive
         ``java -version``
    Du kan alltids laste ned nyeste Java versjon på Java sine egne sider.
+   
 2. Laste ned Git-repo fra: https://github.com/inf112-v21/Team-Agile under den grønne knappen "Code" og "Download ZIP"
+   
+
 3. Pakk ut ZIP-filen i en mappe lokalt på din maskin
+
+   
 4. Åpne Terminal/CMD og naviger deg inn til lokasjenen du lagret mappen i. Eksempelvis dersom filen befinner ser i Downloads: 
     Bruk kommandoen:
-      MAC/LINUX ``cd Downloads/Team-Agile``
-      WINDOWS ``cd "Downloads/Team-Agile"``
-5. Fullfør maven build kommandoer:
+      
+    **MacOS/Linux:** ``cd Downloads/eam-Agile``
+
+    **Windows:** ``cd "Downloads/Team-Agile"``
+
    
-    ``maven clean install``
+5. Fullfør maven build kommandoer:
+
+    ``mvn clean install``
    <br/>
 
-    ``maven compile``
+    ``mvn compile``
    <br/>
    ``mvn exec:java -Dexec.mainClass=inf112.skeleton.app``
    <br/>
 
-Om main ikke vil starte i din egen IDE, se under "known bugs"
+Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere Maven. Dette kan gjøres på følgende måte: 
+
+**MacOS:** 
+1. Installer _[HomeBrew](https://docs.brew.sh/Installation)_, en package manager til MacOS
+2. Kommandoen ``brew install maven`` vil installere maven. 
+
+**Windows:**
+
 
 ## HVORDAN SPILLE SPILLET
 Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjon på hvilke funksjoner som kan utføres i spillet:
