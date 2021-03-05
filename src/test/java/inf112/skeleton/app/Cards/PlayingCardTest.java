@@ -3,13 +3,10 @@ package inf112.skeleton.app.Cards;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import inf112.skeleton.app.Cards.MoveType;
-import inf112.skeleton.app.Cards.PlayingCard;
 import inf112.skeleton.app.Object.InputHandler;
 import inf112.skeleton.app.Object.Robot;
 import org.junit.Before;
@@ -21,7 +18,6 @@ public class PlayingCardTest {
     Robot player;
     PlayingCard card;
     InputHandler handler;
-
 
 
     @Before
@@ -49,7 +45,6 @@ public class PlayingCardTest {
         handler.rotate(card.getMove());
 
         assertEquals(180, (int) player.getRotation());
-
 
     }
 
