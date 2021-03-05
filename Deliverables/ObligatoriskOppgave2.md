@@ -267,6 +267,7 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 * Må kunne velge kortene ved eksempelvis bruke tastatur
 * Må kunne se hvilke kort som er valgt på et eget område på brettet
 
+
   **Arbeidsoppgaver:**
 * Lage plass i brettet til å se hvilke kort en har valgt
 * Gjøre det mulig for spiller å velge kortene vha tastatatur
@@ -411,29 +412,4 @@ sees som unødvendig, ettersom det tar tid å dele dem mer opp, samt det er lett
 får et MVP-krav og den andre får det andre.
 
 <br/> 
-
-**HUSK FØR INNLEVERING**
-* Lage klassediagram
-
-* Skrive hvilke bugs vi har
-
-* Endre README.md dokumentet
-
-* Fikse på tester. Legge til manuelle tester? 
-  * testAllFlagsTaken
-  * lage deck (test 84 kort, deleutkort skjekk at spiller får antall kort i forhold til HP)
-  * utføre PlayingCard (lage instans av alle ulike kortene og skjekk at spiller posisjon/rotasjon er som forventet utifra startpos/rotasjon)
-  * fikse playertest (fikse fra player til Robot)*
-
-* Fikse Trello
-
-* Fullføre refaktorering
-
------
-
-** FULLFØRE README
-
-** LEGGE VED BILDE AV TRELLO
-
-** SE OVER BRUKERHISTORIER, SPESIELT NR 8 og 9
 
