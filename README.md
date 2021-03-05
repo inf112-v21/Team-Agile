@@ -7,18 +7,33 @@
 * [![Build Status](https://travis-ci.com/inf112-v21/Team-Agile.svg?branch=master)](https://travis-ci.com/inf112-v21/Team-Agile)
   
 ## HVORDAN LASTE NED PROSJEKTET OG STARTE SPILLET
-1. Laste ned Git-repo fra: https://github.com/inf112-v21/Team-Agile ved å klone prosjektet til din maskin. 
-2. Åpne prosjektet i en java-IDE som kan kjøre koden. 
+1. Laste ned Git-repo fra: https://github.com/inf112-v21/Team-Agile ved å klone prosjektet til din maskin.
+2. Åpne prosjektet i en java-IDE som kan kjøre koden.
 3. Finn main under directory: Team-Agile/src/main/java/inf112.skeleton.app/Main.java
-4. Kjør main. Da skal spillet startes. 
+4. Kjør main. Da skal spillet startes.
 
-Om main ikke vil starte, se under "known bugs" 
 
-ta med java-versjon
-setup for linux/mac i form av terminalkommandoer
+### WINDOWS
 
-enda mer grunnleggende for en person som ikke kan git eller vet hva en IDE er
 
+### MAC // LINUX
+1. Sjekk at du har riktig Java versjon ved å skrive
+        java -version
+   Du kan alltids laste ned nyeste Java versjon på Java sine egne sider.
+2. Laste ned Git-repo fra: https://github.com/inf112-v21/Team-Agile under den grønne knappen "Code" og "Download ZIP"
+3. Pakk ut ZIP-filen i en mappe lokalt på din maskin
+4. Åpne Terminal og naviger deg inn til lokasjenen du lagret mappen i. Eksempelvis dersom filen befinner ser i Downloads: 
+    Bruk kommandoen:
+      cd Downloads/Team-Agile
+5. Fullfør maven build kommandoer: 
+      maven clean install
+   
+      maven compile
+
+      mvn exec:java -Dexec.mainClass=inf112.skeleton.app
+
+
+Om main ikke vil starte i din egen IDE, se under "known bugs"
 
 ## HVORDAN SPILLE SPILLET
 Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjon på hvilke funksjoner som kan utføres i spillet:
