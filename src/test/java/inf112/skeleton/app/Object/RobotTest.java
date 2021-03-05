@@ -36,7 +36,6 @@ public class RobotTest {
             }
         }, cfg);
 
-
         /*oppsett av variabler som trengs for testene.
         TiledMapTileLayer for å skjekke om spiller objektet eksisterer på nåværende celle, og forsvinner fra den cellen
         når en bevegelse utføres.
@@ -54,6 +53,8 @@ public class RobotTest {
 
         playerLayer.setCell((int) player.getX(), (int) player.getY(), cell);
     }
+
+
 
     @Test
     public void GivenTakesTheLastFlagThenWins() {
