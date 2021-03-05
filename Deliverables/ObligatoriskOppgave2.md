@@ -170,6 +170,13 @@ Her har vi hatt god erfaring fra oblig 1 og synes rollene har vært ganske så �
 <br/> 
 
 ### Project board
+
+![](/Deliverables/Images/TrelloProjectBoard.png "Project Board")
+
+![](TrelloProjectBoard.png)
+
+<img src="/Deliverables/Images/TrelloProjectBoard.png" alt="Trello Project Board" style="height: 100px; width:100px;"/>
+
 **Link:** https://trello.com/b/80a0xYw8/inf112-oblig-1
 
 <br/> 
@@ -307,6 +314,13 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 <br/> 
 
 ### Kode
+
+<br/>
+
+#### Klassediagram
+
+![](/Deliverables/Images/ClassDiagramRoboRally.png "Class Diagram")
+
   **Hva vi ikke har fått til av kode:** 
 
 Multiplayer:
