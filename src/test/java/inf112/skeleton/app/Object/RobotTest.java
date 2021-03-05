@@ -18,6 +18,7 @@ public class RobotTest {
 
     TiledMapTileLayer playerLayer;
     Robot player;
+    Robot testPlayer;
     Vector2 pos;
     InputHandler handler;
 
@@ -51,7 +52,7 @@ public class RobotTest {
 
 
     @Test
-    public void GivenTakesTheLastFlagThenWins() {
+    public void givenTakesTheLastFlagThenWins() {
         Integer flagsToTake = 3;
 
         player.visitFlag(1);
@@ -62,13 +63,13 @@ public class RobotTest {
     }
 
     @Test
-    public void keyRightShouldMakePlayerMoveOneToTheRightDirection() {
+    public void keyRightShouldMakePlayerRotate90DegreesToRight() {
 
         //sjekker at player befinner seg på en celle.
         assertNotNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
 
-        //sjekker om nye posisjon til player er lik posisjon som er forventet ved tastetrykk.
-        Vector2 newPosition = new Vector2((int) player.getX() + 1, (int) player.getY());
+        Float degreesBefore = player.getRotation();
+
         handler = new InputHandler(player);
         handler.keyUp(Input.Keys.RIGHT);
 
@@ -80,11 +81,12 @@ public class RobotTest {
 
     }
     @Test
-    public void keyLeftShouldMakePlayerMoveOneToTheLeftDirection() {
+    public void keyLeftShouldMakePlayerRotate90DegreesToLeft() {
 
         assertNotNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
 
-        Vector2 newPosition = new Vector2((int) player.getX() - 1, (int) player.getY());
+        Float degreesBefore = player.getRotation();
+
         handler = new InputHandler(player);
         handler.keyUp(Input.Keys.LEFT);
 
@@ -97,16 +99,18 @@ public class RobotTest {
     @Test
     public void keyDownShouldMakePlayerMoveOneToTheDownDirection() {
 
-        //Siden spilleren sin robot peker mot sør vil key down gjøre at roboten
-        //går 1 i y-retning, selv om det er litt lite intuitivt. Det samme
-        //gjelder for keyUp-testen, sånn at den også blir "motsatt".
+        // Siden spilleren sin robot peker mot sør vil key down gjøre at roboten
+        // går 1 i y-retning, selv om det er litt lite intuitivt. Det samme
+        // gjelder for keyUp-testen, sånn at den også blir "motsatt".
 
         assertNotNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
 
-        Vector2 newPosition = new Vector2((int) player.getX(), (int) player.getY() - 1);
+        Vector2 newPosition = new Vector2((int) player.getX(), (int) player.getY() + 1);
+
         handler = new InputHandler(player);
         handler.keyUp(Input.Keys.DOWN);
-        Vector2 currentPosition = new Vector2((int) player.getX() + 1, (int) player.getY());
+
+        Vector2 currentPosition = new Vector2((int) player.getX(), (int) player.getY());
 
         assertEquals(newPosition, currentPosition);
 
@@ -118,10 +122,10 @@ public class RobotTest {
 
         assertNotNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
 
-        Vector2 newPosition = new Vector2((int) player.getX(), (int) player.getY() + 1);
+        Vector2 newPosition = new Vector2((int) player.getX(), (int) player.getY() - 1);
         handler = new InputHandler(player);
         handler.keyUp(Input.Keys.UP);
-        Vector2 currentPosition = new Vector2((int) player.getX() + 1, (int) player.getY());
+        Vector2 currentPosition = new Vector2((int) player.getX(), (int) player.getY());
 
         assertEquals(newPosition, currentPosition);
 
