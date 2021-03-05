@@ -4,7 +4,8 @@
 * Maven
 * Java 15.02
 * JUnit 4.11
-
+* [![Build Status](https://travis-ci.com/inf112-v21/Team-Agile.svg?branch=master)](https://travis-ci.com/inf112-v21/Team-Agile)
+  
 ## HVORDAN LASTE NED PROSJEKTET OG STARTE SPILLET
 1. Laste ned Git-repo fra: https://github.com/inf112-v21/Team-Agile ved å klone prosjektet til din maskin. 
 2. Åpne prosjektet i en java-IDE som kan kjøre koden. 
