@@ -377,7 +377,7 @@ Forbedringspunkter fra retrospektiv:
 <br/> 
 
 ### Kommunikasjon
-Kommunikasjon har fortsattt henholdsvis via Discord. Eneste vi oppdaget gjennom første møtetidspunkt var at vi har ingen måte å få kontakt med Tore på
+Kommunikasjon har fortsatt henholdsvis via Discord, og litt Facebook. Eneste vi oppdaget gjennom første møtetidspunkt var at vi har ingen måte å få kontakt med Tore på
 uten at han er pålogget på Discord. Derfor har vi nå opprettet en facebook-chat hvor vi enklere kan nå hverandre og kommunisere kjappere.
 
 På generell basis så fungerer kommunikasjonen i gruppen bra. Gruppedynamikken er god og alle er flinke til å dele meninger, komme med forslag etc.
