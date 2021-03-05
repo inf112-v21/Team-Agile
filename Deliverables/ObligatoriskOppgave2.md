@@ -144,10 +144,7 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
     
     * Leif Petter: Fikset noe på prosjektdoc. 
     
-    * Johnny: Laget klassediagram. 
-
-* 
-* 
+    * Johnny: Laget klassediagram.
 
 <br/> 
 
@@ -207,8 +204,7 @@ for hva som må gjøres for å komme i mål med prosjektet, samt fortsette på k
 ### Brukerhistorier
 
 _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
-
-<br/> 
+ 
 
 **6. Spille fra flere maskiner (vise brikker for alle spillere, flytte brikker for alle spillere)**
 * Som spiller ønsker jeg å kunne spille mot flere spillere slik at vi kan spille mot hverandre.  
@@ -295,10 +291,6 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
   helt til alle spillere har gjort sitt trekk. 
 
   
-
-
-
-
   <br/> 
 
 
@@ -312,6 +304,7 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 
   Dette er å finne i README-dokumentet i selve prosjektet.
 
+<br/> 
 
 ### Kode
   **Hva vi ikke har fått til av kode:** 
@@ -335,20 +328,6 @@ rekkefølge og deretter avslutter spillet når alle flaggene er funnet. Antar å
 
 ## Retrospektiv
 
-
-### Prosjektmetodikk
-Vi har fortsatt med en type Scrum og Kanban metodikk. Vi har fortsatt hatt deadlines, men nå har vi bare bestemt oss for
-at deadlines skal være innleveringsdato, ettersom det ikke er mye ekstra tid å dele arbeidsoppgaver mer inn i tidligere deadlines.
-Vi beholder WIP limit til antall av MVP-er utdelt fra obligen. Noe vi har endret er en litt mer konsekvent gruppeinndeling.
-Vi beholder samme grupper over en hel sprint. Altså gjennom en hel obligatorisk innlevering.
-Planen var i utgangspunktet å skifte på gruppene halvveis, men fant fort ut at det var for mye å sette seg inn i
-dersom gruppene skulle skiftes på og arbeidsoppgaver/ kode måtte forklares og forstås. 
-Gruppen ble dermed enig om å holde på gruppene gjennom hele sprinten. 
-Noe vi merker er at det er mye koding som skal gjøres mellom hver deadline, så oppdeling av MVP
-sees som unødvendig, ettersom det tar tid å dele dem mer opp, samt det er lettere å skille arbeid dersom en gruppe
-får et MVP-krav og den andre får det andre.
-
-<br/> 
 
 ### Retrospektiv hittil
 Etter å ha jobbet litt med prosjektet og har kommet litt lengre, så merkes det at kode-delen er ganske stor og
@@ -399,6 +378,20 @@ egen intern Discord-chat, samt også brukt Github for
 opplasting av kodebase og assets-filer.
 
 Vi opplever at dette fungerer svært godt. 
+
+<br/> 
+
+### Prosjektmetodikk
+Vi har fortsatt med en type Scrum og Kanban metodikk. Vi har fortsatt hatt deadlines, men nå har vi bare bestemt oss for
+at deadlines skal være innleveringsdato, ettersom det ikke er mye ekstra tid å dele arbeidsoppgaver mer inn i tidligere deadlines.
+Vi beholder WIP limit til antall av MVP-er utdelt fra obligen. Noe vi har endret er en litt mer konsekvent gruppeinndeling.
+Vi beholder samme grupper over en hel sprint. Altså gjennom en hel obligatorisk innlevering.
+Planen var i utgangspunktet å skifte på gruppene halvveis, men fant fort ut at det var for mye å sette seg inn i
+dersom gruppene skulle skiftes på og arbeidsoppgaver/ kode måtte forklares og forstås.
+Gruppen ble dermed enig om å holde på gruppene gjennom hele sprinten.
+Noe vi merker er at det er mye koding som skal gjøres mellom hver deadline, så oppdeling av MVP
+sees som unødvendig, ettersom det tar tid å dele dem mer opp, samt det er lettere å skille arbeid dersom en gruppe
+får et MVP-krav og den andre får det andre.
 
 <br/> 
 
