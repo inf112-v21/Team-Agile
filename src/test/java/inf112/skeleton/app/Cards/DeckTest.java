@@ -27,7 +27,6 @@ public class DeckTest {
         cfg.setTitle("CLOSE THIS WINDOW TO START THE TESTS");
         cfg.setWindowedMode(500, 100);
         new Lwjgl3Application(new Game() {
-
             @Override
             public void create() {
                 Gdx.app.exit();
