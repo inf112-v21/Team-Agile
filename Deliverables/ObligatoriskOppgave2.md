@@ -274,17 +274,26 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 <br/>
 
   **9. Bevege robot ut fra valgte kort** 
-* Som spiller ønsker jeg å kunne bruke kortene jeg har valgt ut slik at roboten kan flytte seg etter hva kortene representerer av trekk.
-* Som spiller ønsker jeg at de med høyest prioritet for kortet sitt hver runde de skal også få gjøre trekket sitt først.
+* Som spiller ønsker jeg å kunne bruke kortene jeg har valgt ut slik at roboten kan flytte
+  seg etter hva kortene representerer av trekk.
+* Som spiller ønsker jeg at de med høyest prioritet for kortet sitt hver runde de 
+  skal også få gjøre trekket sitt først.
 
 
   **Akseptansekriterier:**
-*  
+* Må kunne velge hvilken spiller som har høyest prioritet og utføre hva utføre hva kortet 
+  til den spilleren sier. 
+* Etter å ha fått vite hva kortet sier, skal spillet utføre det på brette vissuelt. 
+* Det som skjer på brette må være det samme som kortet sier. 
 
 
   **Arbeidsoppgaver:**
 * Robot må endre trekk etter hvert kort som blir brukt. 
-* Må legge inn hensyn til prioritet, vha en form for PriorityQueue, slik at roboten som har høyest prioritet får bevege seg først
+* Må legge inn hensyn til prioritet, vha en form for PriorityQueue, slik at roboten 
+  som har høyest prioritet får bevege seg først.
+* Når første robot er ferdig med sitt trekk skal spillet forsette å følge PriorityQueue-en, 
+  helt til alle spillere har gjort sitt trekk. 
+
   
 
 
@@ -315,7 +324,7 @@ De valgte derfor å forsøke med libgdx sin nettverks-API. Det har vist seg å v
 gang ved å lese tutorialet, da særlig å få importert en korrekt json-fil for å vise et vindu hvor det implementeres
 nettverks-funksjonalitet. Forhåpentligvis vil ting gå en del fortere når disse tingene er løst.
 
-Det som er gjort hittil av Multiplayer er å finne under egen multiplayer-branch i prosjektet.
+Det som er gjort hittil av Multiplayer er å finne under egen libgdxmultiplayer-branch i prosjektet.
 
 Antall flagg funnet: 
 Vi har enda ikke fått implementert ferdig logikken for muligheten for flere flagg i spillet, slik at spillet tar hensyn til flaggens
@@ -331,8 +340,11 @@ rekkefølge og deretter avslutter spillet når alle flaggene er funnet. Antar å
 Vi har fortsatt med en type Scrum og Kanban metodikk. Vi har fortsatt hatt deadlines, men nå har vi bare bestemt oss for
 at deadlines skal være innleveringsdato, ettersom det ikke er mye ekstra tid å dele arbeidsoppgaver mer inn i tidligere deadlines.
 Vi beholder WIP limit til antall av MVP-er utdelt fra obligen. Noe vi har endret er en litt mer konsekvent gruppeinndeling.
-Vi beholder samme grupper over en lengre tid, før vi halvveis byttet grupper for å kunne bytte litt på arbeidsoppgavene
-og arbeidspartnere. Noe vi merker er at det er mye koding som skal gjøres mellom hver deadline, så oppdeling av MVP
+Vi beholder samme grupper over en hel sprint. Altså gjennom en hel obligatorisk innlevering.
+Planen var i utgangspunktet å skifte på gruppene halvveis, men fant fort ut at det var for mye å sette seg inn i
+dersom gruppene skulle skiftes på og arbeidsoppgaver/ kode måtte forklares og forstås. 
+Gruppen ble dermed enig om å holde på gruppene gjennom hele sprinten. 
+Noe vi merker er at det er mye koding som skal gjøres mellom hver deadline, så oppdeling av MVP
 sees som unødvendig, ettersom det tar tid å dele dem mer opp, samt det er lettere å skille arbeid dersom en gruppe
 får et MVP-krav og den andre får det andre.
 
@@ -350,6 +362,7 @@ Spesielt med tanke på multiplayer-kravet som har gitt store utfordringer for gj
 
 Vi har også bemerket oss at vi ikke er så flinke til å oppdatere trello ut fra de arbeidsoppgavene vi har. Vi har mer en tendens
 å gjøre arbeidsoppgaver først, og deretter hive inn i trello,- noe som er feil rekkefølge.
+
 
 **Gjennomførelsen av oppgaven**
 
