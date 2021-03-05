@@ -57,6 +57,7 @@ public class RobotTest {
         player.visitFlag(1);
         player.visitFlag(2);
 
+        //Sjekker om flagget som skal tas er det samme som siste flagget
         assertEquals(flagsToTake, player.getFlag());
     }
 
