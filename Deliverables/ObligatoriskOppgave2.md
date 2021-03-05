@@ -345,7 +345,7 @@ Noe negativt med gruppeindelingen vil være at det å hjelpe hverandre på tvers
 synspunkt på kode av og til, så har vi heller fått konsekvensen av at der er for mye tid å sette seg inn for en enkelte person, bare for å hjelpe med en liten
 eller en veldig spesifikk del av koden. eksempel når vi har sittet å jobbet med multiplayer, men kommer ikke fremover på tutorial.
 
-Vi har også bemerket oss at noen deler av oppgaven er vi ikke speielt flinke, slik som å holde trello oppdatert og refaktorering av koden.
+Vi har også bemerket oss at noen deler av oppgaven er vi ikke spesielt flinke, slik som å holde trello oppdatert og refaktorering av koden.
 Når det kommer til trello har vi en tendens til å hive inn oppgave eller deler av hva vi har klart inn etter at vi har klart dem. Dette er
 vi fullt klar over er feil rekkefølge, men noe vi da må bli bedre på er å gjerne dele opp gaven skikkelig eller mer spesifikk (utenom MVP-kravene).
 
