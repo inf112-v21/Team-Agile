@@ -49,7 +49,7 @@ Om main ikke vil starte i din egen IDE, se under "known bugs"
 
     ``mvn compile``
    <br/>
-   ``mvn exec:java -Dexec.mainClass=inf112.skeleton.app``
+   ``mvn exec:java -Dexec.mainClass=inf112.skeleton.app.Main``
    <br/>
 
 Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere Maven. Dette kan gjøres på følgende måte: 
