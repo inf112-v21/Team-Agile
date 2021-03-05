@@ -59,7 +59,18 @@ Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere M
 2. Kommandoen ``brew install maven`` vil installere maven. 
 
 **Windows:**
-
+1. installer ZIP-filen "apache-maven-3.6.3-bin.zip" (https://maven.apache.org/download.cgi)
+2. Høyreklikk på ZIP-filen og velg "Extract all". 
+3. Deretter må du søke på "enivroment vairables" i søke feltet loklalt på pc-en din.
+4. Lag variabel i "User variable" med navn "Maven_Home" og med verdi 
+   "C:\Users\"Username"\Downloads\apache-maven-3.6.3-bin\apache-maven-3.6.3",
+   legg til hva brukeren din heter der det står "Username".
+5. Så i "system variables" skal vi legge til samme lenke i "Path" som du skal ha fra før av.
+   Her klikker du på "Path", velger "Edit", deretter "New" og legger til samme lenke bare med 
+   "\bin" på slutten. Vil se slik ut: 
+   "C:\Users\47915\Downloads\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin"
+6. Til slutt kan du åpne terminal og skrive inn kommandoen "mvn -version" for å sjekke at det har blitt
+   installert korrekt.
 
 ## HVORDAN SPILLE SPILLET
 Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjon på hvilke funksjoner som kan utføres i spillet:
