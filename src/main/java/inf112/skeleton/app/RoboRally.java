@@ -15,9 +15,9 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import inf112.skeleton.app.Cards.Deck;
-import inf112.skeleton.app.Object.InputHandler;
-import inf112.skeleton.app.Object.Robot;
+import inf112.skeleton.app.cards.Deck;
+import inf112.skeleton.app.object.InputHandler;
+import inf112.skeleton.app.object.Robot;
 
 import java.util.ArrayList;
 
@@ -27,7 +27,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     private TiledMap map;
     private TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer;
     private OrthogonalTiledMapRenderer render;
-    private TiledMapTileLayer.Cell playerCell, playerWonCell, playerDiedCell;
     private Integer flagsToTake = 2;
     private OrthographicCamera camera, font_cam;
     private ExtendViewport viewport;

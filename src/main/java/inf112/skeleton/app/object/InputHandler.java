@@ -1,8 +1,8 @@
-package inf112.skeleton.app.Object;
+package inf112.skeleton.app.object;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
-import inf112.skeleton.app.Cards.PlayingCard;
+import inf112.skeleton.app.cards.PlayingCard;
 
 public class InputHandler extends InputAdapter {
 

@@ -1,4 +1,4 @@
-package inf112.skeleton.app.Cards;
+package inf112.skeleton.app.cards;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -6,7 +6,7 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import inf112.skeleton.app.Object.Robot;
+import inf112.skeleton.app.object.Robot;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;

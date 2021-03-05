@@ -1,11 +1,11 @@
-package inf112.skeleton.app.Object;
+package inf112.skeleton.app.object;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import inf112.skeleton.app.Cards.PlayingCard;
+import inf112.skeleton.app.cards.PlayingCard;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,6 @@
-package inf112.skeleton.app.Cards;
+package inf112.skeleton.app.cards;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 

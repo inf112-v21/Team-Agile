@@ -1,7 +1,6 @@
-package inf112.skeleton.app.Cards;
+package inf112.skeleton.app.cards;
 
-import inf112.skeleton.app.Object.Robot;
-
+import inf112.skeleton.app.object.Robot;
 import java.util.*;
 
 public class Deck {
