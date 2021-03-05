@@ -262,12 +262,12 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 * Som spiller ønsker jeg, ut fra kortene jeg har fått utdelt, velge ut fem kort slik at jeg kan bruke de som trekk i spillet
 
 
-  **Akseptansekriterier:**
+**Akseptansekriterier:**
 * Må kunne velge kortene ved eksempelvis bruke tastatur
 * Må kunne se hvilke kort som er valgt på et eget område på brettet
 
 
-  **Arbeidsoppgaver:**
+**Arbeidsoppgaver:**
 * Lage plass i brettet til å se hvilke kort en har valgt
 * Gjøre det mulig for spiller å velge kortene vha tastatatur
 
@@ -280,13 +280,13 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
   skal også få gjøre trekket sitt først.
 
 
-  **Akseptansekriterier:**
+**Akseptansekriterier:**
 * Spillet må prioritere den spilleren som har høyest prioritet og utføre hva utføre det kortet 
   til den spilleren sier først, deretter de andre i prioriteringen. 
 * Etter å ha fått vite hva kortet sier, skal spillet utføre det på brette visuelt. 
 * Det som skjer på brette må være det samme som kortet sier. 
-
-  **Arbeidsoppgaver:**
+  
+**Arbeidsoppgaver:**
 * Robot må endre trekk etter hvert kort som blir brukt. 
 * Må legge inn hensyn til prioritet, vha en form for PriorityQueue, slik at roboten 
   som har høyest prioritet får bevege seg først.
