@@ -22,7 +22,8 @@
 3. Pakk ut ZIP-filen i en mappe lokalt på din maskin
 4. Åpne Terminal/CMD og naviger deg inn til lokasjenen du lagret mappen i. Eksempelvis dersom filen befinner ser i Downloads: 
     Bruk kommandoen:
-      ``cd Downloads/Team-Agile``
+      MAC/LINUX ``cd Downloads/Team-Agile``
+      WINDOWS ``cd "Downloads/Team-Agile"``
 5. Fullfør maven build kommandoer:
    
     ``maven clean install``
