@@ -61,7 +61,7 @@ Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere M
 **Windows:**
 1. Installer ZIP-filen ``apache-maven-3.6.3-bin.zip` `` Fra _[Maven](https://maven.apache.org/download.cgi)_
 2. Høyreklikk på ZIP-filen og velg _Extract all_. 
-3. Deretter må du søke på _enivroment vairables_ i søkefeltet lokalt på pc-en din.
+3. Deretter må du søke på _environment variables_ i søkefeltet lokalt på pc-en din.
 4. Lag variabel i _User variable_ med navn _Maven_Home_ og med verdi 
    ``C:\Users\"Username"\Downloads\apache-maven-3.6.3-bin\apache-maven-3.6.3`` ,
    legg til hva brukeren din heter der det står _Username_.
