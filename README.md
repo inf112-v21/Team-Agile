@@ -1,5 +1,10 @@
 # INF112 README OBLIG 1
 
+### Build og versjoner
+* Maven
+* Java 15.02
+* JUnit 4.11
+
 ## HVORDAN LASTE NED PROSJEKTET OG STARTE SPILLET
 1. Laste ned Git-repo fra: https://github.com/inf112-v21/Team-Agile ved å klone prosjektet til din maskin. 
 2. Åpne prosjektet i en java-IDE som kan kjøre koden. 
