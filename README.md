@@ -13,16 +13,13 @@
 4. Kjør main. Da skal spillet startes.
 
 
-### WINDOWS
-
-
-### MAC // LINUX
+### MAC // LINUX // WINDOWS
 1. Sjekk at du har riktig Java versjon ved å skrive
         java -version
    Du kan alltids laste ned nyeste Java versjon på Java sine egne sider.
 2. Laste ned Git-repo fra: https://github.com/inf112-v21/Team-Agile under den grønne knappen "Code" og "Download ZIP"
 3. Pakk ut ZIP-filen i en mappe lokalt på din maskin
-4. Åpne Terminal og naviger deg inn til lokasjenen du lagret mappen i. Eksempelvis dersom filen befinner ser i Downloads: 
+4. Åpne Terminal/CMD og naviger deg inn til lokasjenen du lagret mappen i. Eksempelvis dersom filen befinner ser i Downloads: 
     Bruk kommandoen:
       cd Downloads/Team-Agile
 5. Fullfør maven build kommandoer: 
