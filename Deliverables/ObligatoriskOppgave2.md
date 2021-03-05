@@ -370,7 +370,7 @@ Forbedringspunkter fra retrospektiv:
    
 2. Ha selve refaktorering i tankene kontinurlig i kodingen, samt også planlegge selve strukturen i koden bedre i forkant. 
 
-3. Bruke Trello mer aktivt
+3. Bruke Trello mer aktivt, gjerne i forbindelse med møtene
 
 4. Jobbe mer på egenhånd / i inndelte grupper. Dette vil spare oss for mye tid i kodingen.
 
