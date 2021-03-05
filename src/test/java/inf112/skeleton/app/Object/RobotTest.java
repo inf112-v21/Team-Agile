@@ -17,9 +17,6 @@ import static org.junit.Assert.*;
 public class RobotTest {
 
     TiledMapTileLayer playerLayer;
-    //Texture texture = new Texture("pikachu.png");
-    //TextureRegion[][] tr;
-    //TextureRegion state1;
     Robot player;
     Vector2 pos;
     InputHandler handler;
@@ -46,12 +43,8 @@ public class RobotTest {
         playerLayer = new TiledMapTileLayer(5,5,300,300);
         pos = new Vector2(1,1);
         TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
-        //tr = TextureRegion.split(texture, 300, 300);
-        //state1 = tr[0][0];
 
-        //player = new Robot(state1,2,2);
         player = new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3);
-
         playerLayer.setCell((int) player.getX(), (int) player.getY(), cell);
     }
 
