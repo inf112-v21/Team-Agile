@@ -1,10 +1,11 @@
 # INF112 README OBLIG 1
 
+[![Build Status](https://travis-ci.com/inf112-v21/Team-Agile.svg?branch=master)](https://travis-ci.com/inf112-v21/Team-Agile)
+
 ### Build og versjoner
 * Maven
 * Java 15.02
 * JUnit 4.11
-* [![Build Status](https://travis-ci.com/inf112-v21/Team-Agile.svg?branch=master)](https://travis-ci.com/inf112-v21/Team-Agile)
   
 ## HVORDAN LASTE NED PROSJEKTET OG STARTE SPILLET
 1. Laste ned Git-repo fra: https://github.com/inf112-v21/Team-Agile ved å klone prosjektet til din maskin.
@@ -18,20 +19,22 @@
 
 ### MAC // LINUX
 1. Sjekk at du har riktig Java versjon ved å skrive
-        java -version
+        ``java -version``
    Du kan alltids laste ned nyeste Java versjon på Java sine egne sider.
 2. Laste ned Git-repo fra: https://github.com/inf112-v21/Team-Agile under den grønne knappen "Code" og "Download ZIP"
 3. Pakk ut ZIP-filen i en mappe lokalt på din maskin
 4. Åpne Terminal og naviger deg inn til lokasjenen du lagret mappen i. Eksempelvis dersom filen befinner ser i Downloads: 
     Bruk kommandoen:
-      cd Downloads/Team-Agile
-5. Fullfør maven build kommandoer: 
-      maven clean install
+      ``cd Downloads/Team-Agile``
+5. Fullfør maven build kommandoer:
    
-      maven compile
+    ``maven clean install``
+   <br/>
 
-      mvn exec:java -Dexec.mainClass=inf112.skeleton.app
-
+    ``maven compile``
+   <br/>
+   ``mvn exec:java -Dexec.mainClass=inf112.skeleton.app``
+   <br/>
 
 Om main ikke vil starte i din egen IDE, se under "known bugs"
 
