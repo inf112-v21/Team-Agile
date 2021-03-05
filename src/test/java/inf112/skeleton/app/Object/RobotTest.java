@@ -59,7 +59,7 @@ public class RobotTest {
 
     @Test
     public void GivenTakesTheLastFlagThenWins() {
-        Integer flagsToTake = 2;
+        Integer flagsToTake = 3;
 
         player.visitFlag(1);
         player.visitFlag(2);
