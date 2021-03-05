@@ -324,7 +324,8 @@ De valgte derfor å forsøke med libgdx sin nettverks-API. Det har vist seg å v
 gang ved å lese tutorialet, da særlig å få importert en korrekt json-fil for å vise et vindu hvor det implementeres
 nettverks-funksjonalitet. Forhåpentligvis vil ting gå en del fortere når disse tingene er løst.
 
-Det som er gjort hittil av Multiplayer er å finne under egen libgdxmultiplayer-branch i prosjektet.
+Det som er gjort hittil av Multiplayer er å finne under egen libgdxmultiplayer-branch i prosjektet, og det som ble
+gjort før det ligger i branchen som heter multiplayer.
 
 Antall flagg funnet: 
 Vi har enda ikke fått implementert ferdig logikken for muligheten for flere flagg i spillet, slik at spillet tar hensyn til flaggens
