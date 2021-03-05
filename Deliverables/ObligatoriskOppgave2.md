@@ -110,9 +110,6 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
       *   fikse markdown-doc (nærmere fullføre)
             * brukerhistorier
             * litt retrospektiv om hvordan ting har gått
-            * skrive ned bugs
-            * priority over kort
-            * multiplayer
             * antall flagg tatt
             * les gjennom oblig2 og rettedok. se over hva som mangles
             * Fullføre README.md dokument
@@ -130,18 +127,25 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
     Tore:
     * testAllFlagsTaken
     * se over Trello
-      **Multiplayer**
-      Tore og Petter har forsøkt en del på å implementere multiplayer men har støtt på en del problemer. Først valgte de 
-      å forsøke med en Kryonet implementasjon, som viste seg å være litt for omfattende og kanskje litt for lavnivå for jobben. 
-      De valgte derfor å forsøke med libgdx sin nettverks-API. Det har vist seg å være litt tidkrevende å komme ordentlig i
-      gang ved å lese tutorialet, da særlig å få importert en korrekt json-fil for å vise et vindu hvor det implementeres
-      nettverks-funksjonalitet. Forhåpentligvis vil ting gå en del fortere når disse tingene er løst.
+      
 
 
 <br/> 
 
 **05.03.20 09:00-12:00**
-* 
+* Fikset fra forrige gang:
+
+    * Marius: har implementert og fullført DeckTest. Implementert noen tester i RobotTest. Fikset på endel refaktorering. Fyllt ut mer på prosjektdoc. Ordnet window-size og font til å matche slik at 
+      programmet åpnes i riktig størrelse og med riktig formatering
+         
+    * Anthony: Implementert PlayingCardTest. Fiksit prioritet til kortene slik at det printes i kortets rute i selve GUI
+    
+    * Tore: Implementert noen tester i RobotTest og gjort setup() i RobotTest. Sett over Trello
+    
+    * Leif Petter: Fikset noe på prosjektdoc. 
+    
+    * Johnny: Laget klassediagram. 
+
 * 
 * 
 
@@ -165,53 +169,6 @@ Her har vi hatt god erfaring fra oblig 1 og synes rollene har vært ganske så �
 **Product-manager:** Tore (oversikt over det endelige produktet som leveres og ser over det før innlevering)
 
 **Designer:** Leif Petter (har kontroll på hvordan det visuelle ser ut og har ansvar for bildefiler etc.)
-
-<br/> 
-
-## Prosjektmetodikk
-Vi fortsetter med en type Scrum og Kanban metodikk. Vi har fortsatt deadlines, men nå har vi bare bestemt oss for 
-at deadlines skal være innleveringsdato, ettersom det ikke er mye ekstra tid å dele arbeidsoppgaver mer inn i tidligere deadlines.
-Vi behodler WIP limit til antall av MVP-er utdelt fra obligen. Noe vi har endret er en litt mer konsekvent gruppeinndeling. 
-Vi vil beholde samme grupper over en lengre tid, før vi halvveis byttet grupper for å kunne bytte litt på arbeidsoppgaver 
-og arbeidspartnere. Noe vi merker er at det er mye koding som skal gjøres mellom hver deadline, så oppdeling av MVP
-sees som unødvendig, ettersom det tar tid å dele dem mer opp, samt det er lettere å skille arbeid dersom en gruppe 
-får et MVP-krav og den andre får det andre. 
-
-<br/> 
-
-### Retrospektiv hittil
-Etter å ha jobbet litt med prosjektet og har kommet litt lengre, så merkes det at kode-delen er ganske stor og
-at vi fort prioriterer å komme fortere i gang med kodingen istedet for å bruke tid på møter. Så noe vi har 
-merket som en positiv endring er inndelingen av grupper over lengre tid. Siden vi kommer fortere i gang med kode-delen, 
-enn hvis vi hver gang skal prøve å dele inn oppgaver og grupper. Nå derimot vet vi hvilken gruppe som skal jobbe med 
-hva og de har selv kontroll på arbeidsoppgaver innad i gruppen. Noe vi ser på som en positiv forandring.
-
-Vi har også bemerket oss at vi ikke er så flinke til å oppdatere trello ut fra de arbeidsoppgavene vi har. Vi har mer en tendens
-å gjøre arbeidsoppgaver først, og deretter hive inn i trello,- noe som er feil rekkefølge. 
-
-Forbedringspunkter fra retrospektiv: 
-1. Jobbe mer aktivt med selve kode-biten. Ved forrige innlevering brukte vi alt for mye tid på kode siste dagen og
-var i overkant stresset de siste timene før inneleveringsfrist.
-   
-2. Bruke Trello mer aktivt
-
-3. Jobbe mer på egenhånd / i inndelte grupper. Dette vil spare oss for mye tid i kodingen. 
-
-<br/> 
-
-#### Kommunikasjon
-Kommunikasjon forsetter henholdsvis via Discord. Eneste vi oppdaget gjennom første møtetidspunkt var at vi har ingen måte å få kontakt med Tore på
-uten at han er pålogget på Discord. Derfor har vi nå opprettet en facebook-chat hvor vi enklere kan nå hverandre og kommunisere kjappere.
-
-På generell basis så fungerer kommunikasjonen i gruppen bra. Gruppedynamikken er god og alle er flinke til å dele meninger, komme med forslag etc. 
-Vi jobber godt sammen som team og er alle enige om måloppnåelsen med innleveringen. 
-
-Før øvrig deling og oppbevaring av filer gjelder samme som ble beskrive i oblig1:
-Gruppen har valgt å bruke Trello project board som en felles delingsarena for både Project Board, men vi har også laget
-en egen tavle som heter "Ressurser". Her deles de nødvendige filer, informasjonsskriv og eventuelle bilder som gruppen
-trenger enkelt tilgang til for å innhente nødvendig informasjon for utførelsen av oppgaven. Øvrig deling har skjedd via
-egen intern Discord-chat, samt også brukt Github for
-opplasting av kodebase og assets-filer.
 
 <br/> 
 
@@ -314,6 +271,8 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 * Lage plass i brettet til å se hvilke kort en har valgt
 * Gjøre det mulig for spiller å velge kortene vha tastatatur
 
+<br/>
+
   **9. Bevege robot ut fra valgte kort** 
 * Som spiller ønsker jeg å kunne bruke kortene jeg har valgt ut slik at roboten kan flytte seg etter hva kortene representerer av trekk.
 * Som spiller ønsker jeg at de med høyest prioritet for kortet sitt hver runde de skal også få gjøre trekket sitt først.
@@ -348,24 +307,87 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 ### Kode
   **Hva vi ikke har fått til av kode:** 
 
+Multiplayer:
 
-  <br/>
+Tore og Petter har forsøkt en del på å implementere multiplayer men har støtt på en del problemer. Først valgte de
+å forsøke med en Kryonet implementasjon, som viste seg å være litt for omfattende og kanskje litt for lavnivå for jobben.
+De valgte derfor å forsøke med libgdx sin nettverks-API. Det har vist seg å være litt tidkrevende å komme ordentlig i
+gang ved å lese tutorialet, da særlig å få importert en korrekt json-fil for å vise et vindu hvor det implementeres
+nettverks-funksjonalitet. Forhåpentligvis vil ting gå en del fortere når disse tingene er løst.
 
-### Retrospektiv 
+Det som er gjort hittil av Multiplayer er å finne under egen multiplayer-branch i prosjektet.
 
-**Kommunikasjon**
+Antall flagg funnet: 
+Vi har enda ikke fått implementert ferdig logikken for muligheten for flere flagg i spillet, slik at spillet tar hensyn til flaggens
+rekkefølge og deretter avslutter spillet når alle flaggene er funnet. Antar å gjennomføre dette innen neste oblig. Per nå fungerer det med ett flagg bare. 
+
+<br/>
 
 
+## Retrospektiv
+
+
+### Prosjektmetodikk
+Vi har fortsatt med en type Scrum og Kanban metodikk. Vi har fortsatt hatt deadlines, men nå har vi bare bestemt oss for
+at deadlines skal være innleveringsdato, ettersom det ikke er mye ekstra tid å dele arbeidsoppgaver mer inn i tidligere deadlines.
+Vi beholder WIP limit til antall av MVP-er utdelt fra obligen. Noe vi har endret er en litt mer konsekvent gruppeinndeling.
+Vi beholder samme grupper over en lengre tid, før vi halvveis byttet grupper for å kunne bytte litt på arbeidsoppgavene
+og arbeidspartnere. Noe vi merker er at det er mye koding som skal gjøres mellom hver deadline, så oppdeling av MVP
+sees som unødvendig, ettersom det tar tid å dele dem mer opp, samt det er lettere å skille arbeid dersom en gruppe
+får et MVP-krav og den andre får det andre.
+
+<br/> 
+
+### Retrospektiv hittil
+Etter å ha jobbet litt med prosjektet og har kommet litt lengre, så merkes det at kode-delen er ganske stor og
+at vi fort prioriterer å komme fortere i gang med kodingen istedet for å bruke tid på møter. Så noe vi har
+merket som en positiv endring er inndelingen av grupper over lengre tid. Siden vi kommer fortere i gang med kode-delen,
+enn hvis vi hver gang skal prøve å dele inn oppgaver og grupper. Nå derimot vet vi hvilken gruppe som skal jobbe med
+hva og de har selv kontroll på arbeidsoppgaver innad i gruppen. Noe vi ser på som en positiv forandring.
+
+Det har også vært noe utfordrende med konsekvent gruppeinndeling. Noen ganger må en bistå ene gruppen, for å kunne få fremgang på MVP-kravet. 
+Spesielt med tanke på multiplayer-kravet som har gitt store utfordringer for gjennomførelse, og kanskje igjen vært mer vanskelig å få hjulpet hverandre med å komme videre på dette.
+
+Vi har også bemerket oss at vi ikke er så flinke til å oppdatere trello ut fra de arbeidsoppgavene vi har. Vi har mer en tendens
+å gjøre arbeidsoppgaver først, og deretter hive inn i trello,- noe som er feil rekkefølge.
 
 **Gjennomførelsen av oppgaven**
 
+For denne innleveringen har det vært noe vanskeligere å komme i mål. Det har vært mye komplekse oppgaver som har måttet
+være utført i de siste MVP-kravene eksempelvis med logikken bak ulike korttyper, men spesielt med tanke på Multiplayer.
+Vi har nok undervurdert arbeidet med å implementere Multiplayer, og det har gjort til at vi ikke har fått komt i mål med dette MVP-kravet.
+Lureste hadde trolig vært å få flere til å jobbe med Multiplayer, i håp om større måloppnåelse.
 
-**Prosjektmetodikk gjennomførelse**
+Likevel er vi fornøyde med GUI hittill og kan allerede se tydelige resultater med fremgang i spillets utvikling.
 
 
-**Oppgavens omfang**
+Forbedringspunkter fra retrospektiv:
+1. Jobbe mer aktivt med selve kode-biten. Ved forrige innlevering brukte vi alt for mye tid på kode siste dagen og
+   var i overkant stresset de siste timene før inneleveringsfrist.
 
+2. Bruke Trello mer aktivt
 
+3. Jobbe mer på egenhånd / i inndelte grupper. Dette vil spare oss for mye tid i kodingen.
+
+<br/> 
+
+### Kommunikasjon
+Kommunikasjon forsetter henholdsvis via Discord. Eneste vi oppdaget gjennom første møtetidspunkt var at vi har ingen måte å få kontakt med Tore på
+uten at han er pålogget på Discord. Derfor har vi nå opprettet en facebook-chat hvor vi enklere kan nå hverandre og kommunisere kjappere.
+
+På generell basis så fungerer kommunikasjonen i gruppen bra. Gruppedynamikken er god og alle er flinke til å dele meninger, komme med forslag etc.
+Vi jobber godt sammen som team og er alle enige om måloppnåelsen med innleveringen.
+
+Før øvrig deling og oppbevaring av filer gjelder samme som ble beskrive i oblig1:
+Gruppen har valgt å bruke Trello project board som en felles delingsarena for både Project Board, men vi har også laget
+en egen tavle som heter "Ressurser". Her deles de nødvendige filer, informasjonsskriv og eventuelle bilder som gruppen
+trenger enkelt tilgang til for å innhente nødvendig informasjon for utførelsen av oppgaven. Øvrig deling har skjedd via
+egen intern Discord-chat, samt også brukt Github for
+opplasting av kodebase og assets-filer.
+
+Vi opplever at dette fungerer svært godt. 
+
+<br/> 
 
 **HUSK FØR INNLEVERING**
 * Lage klassediagram
@@ -383,3 +405,12 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 * Fikse Trello
 
 * Fullføre refaktorering
+
+-----
+
+** FULLFØRE README
+
+** LEGGE VED BILDE AV TRELLO
+
+** SE OVER BRUKERHISTORIER, SPESIELT NR 8 og 9
+
