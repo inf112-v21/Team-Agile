@@ -37,7 +37,7 @@ Om main ikke vil starte i din egen IDE, se under "known bugs"
 4. Åpne Terminal/CMD og naviger deg inn til lokasjenen du lagret mappen i. Eksempelvis dersom filen befinner ser i Downloads: 
     Bruk kommandoen:
       
-    **MacOS/Linux:** ``cd Downloads/eam-Agile``
+    **MacOS/Linux:** ``cd Downloads/Team-Agile``
 
     **Windows:** ``cd "Downloads/Team-Agile"``
 
