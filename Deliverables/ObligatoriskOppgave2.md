@@ -107,26 +107,23 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
           
   Marius:
   *   deck-test
-      *   fikse markdown-doc (nærmere fullføre)
-            * brukerhistorier
-            * litt retrospektiv om hvordan ting har gått
-            * antall flagg tatt
-            * les gjennom oblig2 og rettedok. se over hva som mangles
-            * Fullføre README.md dokument
+  *   fikse markdown-doc (nærmere fullføre)
+  *   fikse scaling på vinduet i spillet
+            
               
-    Anthony:
-    * Utføre PlayingCardTest
+  Anthony:
+  * Utføre PlayingCardTest
         
-    Johnny:
-    * Klassediagram
+  Johnny:
+  * Klassediagram
     
-    Leif Petter:
-    * Fikse playerTest
-    * Ferdigstille markdown-doc sammen med Marius (lese over det som har blitt skrivet. sjekke at vi har alt vi trenger)
+  Leif Petter:
+  * Fikse playerTest
+  * Ferdigstille markdown-doc sammen med Marius (lese over det som har blitt skrivet. sjekke at vi har alt vi trenger)
       
-    Tore:
-    * testAllFlagsTaken
-    * se over Trello
+  Tore:
+  * testAllFlagsTaken
+  * se over Trello
       
 
 
@@ -145,9 +142,11 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
     * Leif Petter: Fikset noe på prosjektdoc. 
     
     * Johnny: Laget klassediagram.
-
-<br/> 
-
+* Ferdigstilt testklasse PlayingCardTest
+* Ferdigstilt README.md med oppdaterte build-comments
+* Ferdigstilt prosjektdoc
+* Sett over kode. Forsøkt å refaktorere noe, slette noe unødige linjer etc.
+<br/>
 
 ## Teambeskrivelse og rollefordeling
 
