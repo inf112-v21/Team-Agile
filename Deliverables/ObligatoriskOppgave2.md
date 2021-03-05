@@ -107,26 +107,23 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
           
   Marius:
   *   deck-test
-      *   fikse markdown-doc (nærmere fullføre)
-            * brukerhistorier
-            * litt retrospektiv om hvordan ting har gått
-            * antall flagg tatt
-            * les gjennom oblig2 og rettedok. se over hva som mangles
-            * Fullføre README.md dokument
+  *   fikse markdown-doc (nærmere fullføre)
+  *   fikse scaling på vinduet i spillet
+            
               
-    Anthony:
-    * Utføre PlayingCardTest
+  Anthony:
+  * Utføre PlayingCardTest
         
-    Johnny:
-    * Klassediagram
+  Johnny:
+  * Klassediagram
     
-    Leif Petter:
-    * Fikse playerTest
-    * Ferdigstille markdown-doc sammen med Marius (lese over det som har blitt skrivet. sjekke at vi har alt vi trenger)
+  Leif Petter:
+  * Fikse playerTest
+  * Ferdigstille markdown-doc sammen med Marius (lese over det som har blitt skrivet. sjekke at vi har alt vi trenger)
       
-    Tore:
-    * testAllFlagsTaken
-    * se over Trello
+  Tore:
+  * testAllFlagsTaken
+  * se over Trello
       
 
 
@@ -145,9 +142,11 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
     * Leif Petter: Fikset noe på prosjektdoc. 
     
     * Johnny: Laget klassediagram.
-
-<br/> 
-
+* Ferdigstilt testklasse PlayingCardTest
+* Ferdigstilt README.md med oppdaterte build-comments
+* Ferdigstilt prosjektdoc
+* Sett over kode. Forsøkt å refaktorere noe, slette noe unødige linjer etc.
+<br/>
 
 ## Teambeskrivelse og rollefordeling
 
@@ -263,11 +262,12 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 * Som spiller ønsker jeg, ut fra kortene jeg har fått utdelt, velge ut fem kort slik at jeg kan bruke de som trekk i spillet
 
 
-  **Akseptansekriterier:**
+**Akseptansekriterier:**
 * Må kunne velge kortene ved eksempelvis bruke tastatur
 * Må kunne se hvilke kort som er valgt på et eget område på brettet
 
-  **Arbeidsoppgaver:**
+
+**Arbeidsoppgaver:**
 * Lage plass i brettet til å se hvilke kort en har valgt
 * Gjøre det mulig for spiller å velge kortene vha tastatatur
 
@@ -276,27 +276,24 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
   **9. Bevege robot ut fra valgte kort** 
 * Som spiller ønsker jeg å kunne bruke kortene jeg har valgt ut slik at roboten kan flytte
   seg etter hva kortene representerer av trekk.
-* Som spiller ønsker jeg at de med høyest prioritet for kortet sitt hver runde de 
+* Som spiller ønsker jeg at de spillerene med høyest prioritet på kortet sitt, for hvert trekk, de 
   skal også få gjøre trekket sitt først.
 
 
-  **Akseptansekriterier:**
-* Må kunne velge hvilken spiller som har høyest prioritet og utføre hva utføre hva kortet 
-  til den spilleren sier. 
-* Etter å ha fått vite hva kortet sier, skal spillet utføre det på brette vissuelt. 
+**Akseptansekriterier:**
+* Spillet må prioritere den spilleren som har høyest prioritet og utføre hva utføre det kortet 
+  til den spilleren sier først, deretter de andre i prioriteringen. 
+* Etter å ha fått vite hva kortet sier, skal spillet utføre det på brette visuelt. 
 * Det som skjer på brette må være det samme som kortet sier. 
-
-
-  **Arbeidsoppgaver:**
+  
+**Arbeidsoppgaver:**
 * Robot må endre trekk etter hvert kort som blir brukt. 
 * Må legge inn hensyn til prioritet, vha en form for PriorityQueue, slik at roboten 
   som har høyest prioritet får bevege seg først.
 * Når første robot er ferdig med sitt trekk skal spillet forsette å følge PriorityQueue-en, 
   helt til alle spillere har gjort sitt trekk. 
-
   
-  <br/> 
-
+  <br/>
 
 ## Produktleveranse / kode
 
@@ -307,12 +304,9 @@ _Brukerhistorier for punkt 6-8 MVP fra oppgaveteksten i oblig1:_
 ### Beskrivelse av prosjektet 
 
   Dette er å finne i README-dokumentet i selve prosjektet.
-
-<br/> 
+<br/>
 
 ### Kode
-
-<br/>
 
 #### Klassediagram
 
@@ -332,14 +326,13 @@ Det som er gjort hittil av Multiplayer er å finne under egen libgdxmultiplayer-
 gjort før det ligger i branchen som heter multiplayer.
 
 Antall flagg funnet: 
+
 Vi har enda ikke fått implementert ferdig logikken for muligheten for flere flagg i spillet, slik at spillet tar hensyn til flaggens
 rekkefølge og deretter avslutter spillet når alle flaggene er funnet. Antar å gjennomføre dette innen neste oblig. Per nå fungerer det med ett flagg bare. 
 
 <br/>
 
-
 ## Retrospektiv
-
 
 ### Retrospektiv hittil
 Etter å ha jobbet med prosjektet og nå nærmer oss deadline, så merkes det at kode-delen er ganske mye større enn forventet og
@@ -352,13 +345,14 @@ Noe negativt med gruppeindelingen vil være at det å hjelpe hverandre på tvers
 synspunkt på kode av og til, så har vi heller fått konsekvensen av at der er for mye tid å sette seg inn for en enkelte person, bare for å hjelpe med en liten
 eller en veldig spesifikk del av koden. eksempel når vi har sittet å jobbet med multiplayer, men kommer ikke fremover på tutorial.
 
-
 Vi har også bemerket oss at noen deler av oppgaven er vi ikke speielt flinke, slik som å holde trello oppdatert og refaktorering av koden.
 Når det kommer til trello har vi en tendens til å hive inn oppgave eller deler av hva vi har klart inn etter at vi har klart dem. Dette er
-vi fult klar over er feil rekkefølge, men noe vi da må bli bedre på er å gjerne dele opp gaven skikkelig eller mer spesifikk (utenom MVP-kravene).
-Og når det kommer til refaktorering må vi bare være flinkere på å refaktorere hele tiden.
+vi fullt klar over er feil rekkefølge, men noe vi da må bli bedre på er å gjerne dele opp gaven skikkelig eller mer spesifikk (utenom MVP-kravene).
 
+Vi har også ikke vært så flinke med å planlegge strukturen av koden i forkant. Dette har kanskje ført til dårligere objektorientert kode, samt et større behov for 
+kontinuerlig refaktorering. 
 
+<br/>
 
 **Gjennomførelsen av oppgaven**
 
@@ -372,16 +366,18 @@ Likevel er vi fornøyde med GUI hittill og kan allerede se tydelige resultater m
 
 Forbedringspunkter fra retrospektiv:
 1. Jobbe mer aktivt med selve kode-biten. Ved forrige innlevering brukte vi alt for mye tid på kode siste dagen og
-   var i overkant stresset de siste timene før inneleveringsfrist.
+   var i overkant stresset de siste timene før inneleveringsfrist. 
+   
+2. Ha selve refaktorering i tankene kontinurlig i kodingen, samt også planlegge selve strukturen i koden bedre i forkant. 
 
-2. Bruke Trello mer aktivt
+3. Bruke Trello mer aktivt
 
-3. Jobbe mer på egenhånd / i inndelte grupper. Dette vil spare oss for mye tid i kodingen.
+4. Jobbe mer på egenhånd / i inndelte grupper. Dette vil spare oss for mye tid i kodingen.
 
 <br/> 
 
 ### Kommunikasjon
-Kommunikasjon forsetter henholdsvis via Discord. Eneste vi oppdaget gjennom første møtetidspunkt var at vi har ingen måte å få kontakt med Tore på
+Kommunikasjon har fortsattt henholdsvis via Discord. Eneste vi oppdaget gjennom første møtetidspunkt var at vi har ingen måte å få kontakt med Tore på
 uten at han er pålogget på Discord. Derfor har vi nå opprettet en facebook-chat hvor vi enklere kan nå hverandre og kommunisere kjappere.
 
 På generell basis så fungerer kommunikasjonen i gruppen bra. Gruppedynamikken er god og alle er flinke til å dele meninger, komme med forslag etc.
@@ -411,29 +407,4 @@ sees som unødvendig, ettersom det tar tid å dele dem mer opp, samt det er lett
 får et MVP-krav og den andre får det andre.
 
 <br/> 
-
-**HUSK FØR INNLEVERING**
-* Lage klassediagram
-
-* Skrive hvilke bugs vi har
-
-* Endre README.md dokumentet
-
-* Fikse på tester. Legge til manuelle tester? 
-  * testAllFlagsTaken
-  * lage deck (test 84 kort, deleutkort skjekk at spiller får antall kort i forhold til HP)
-  * utføre PlayingCard (lage instans av alle ulike kortene og skjekk at spiller posisjon/rotasjon er som forventet utifra startpos/rotasjon)
-  * fikse playertest (fikse fra player til Robot)*
-
-* Fikse Trello
-
-* Fullføre refaktorering
-
------
-
-** FULLFØRE README
-
-** LEGGE VED BILDE AV TRELLO
-
-** SE OVER BRUKERHISTORIER, SPESIELT NR 8 og 9
 
