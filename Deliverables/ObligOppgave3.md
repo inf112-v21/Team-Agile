@@ -1,4 +1,4 @@
-#Oblig 3
+# Oblig 3
 
 ### Krav for oblig
 
@@ -8,7 +8,7 @@
 * implementasjon av tokens
 * status bar/ noe som forteller oss hva som skjer me spiller(HUD)
 
-###Team-Agile
+### Team-Agile
 * Leif Petter Sørbø
 * Tore Wie Bøe
 * Marius Skimmeland
@@ -17,7 +17,7 @@
 
 <br/>
 
-###Møtetidspunkt og møtereferat
+### Møtetidspunkt og møtereferat
 **12.02.2021, 12:15 - 14:00**
 * Alle til stedet i starten, Marius måtte gå etter 20 min.
 * Gikk gjennom hvilke krav vi ville oppnå i løpet av denne sprinten. 
@@ -30,9 +30,9 @@ eget krav han kunne jobbe med denne tiden. Han tok HUD.
 
 
 
-###Spesifikasjoner
+### Spesifikasjoner
 
-###Brukerhistorier
+### Brukerhistorier
 
 **6. Spille fra flere maskiner (vise brikker for alle spillere, flytte brikker for alle spillere(Multiplayer))**
 * Som spiller ønsker jeg å kunne spille mot flere spillere slik at vi kan spille mot hverandre.
