@@ -71,6 +71,17 @@ Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere M
    ``C:\Users\47915\Downloads\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin``
 6. Til slutt kan du åpne terminal og skrive inn kommandoen ``mvn -version`` for å sjekke at det har blitt
    installert riktig.
+   
+**Linux/Ubuntu**
+
+1. ``sudo apt update``
+<br/>
+
+2. ``sudo apt install maven``
+<br/>
+
+3. ``mvn -version`` (for å sjekke at du har riktig versjon)
+<br/>
 
 ## HVORDAN SPILLE SPILLET
 Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjon på hvilke funksjoner som kan utføres i spillet:
