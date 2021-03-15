@@ -29,6 +29,12 @@ eget krav han kunne jobbe med denne tiden. Han tok HUD.
 * Petter startet med å oppdatere project-board og marckdown-doc.
 
 
+**15.03.2021, 12:15-14:00**
+* Johnny og Petter startet på design av brettet idag, og startet såvidt på implementasjon av vegger.
+* Tore og Anthony jobbet videre på multiplayer. kommet en del videre.
+* Marius jobber alene fortsatt og jobber med HUD.
+
+
 
 ### Spesifikasjoner
 
