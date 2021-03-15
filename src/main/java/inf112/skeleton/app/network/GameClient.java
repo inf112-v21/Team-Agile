@@ -10,6 +10,7 @@ import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.examples.chat.Network;
 import inf112.skeleton.app.RoboRally;
 
+import java.awt.geom.Point2D;
 import java.io.IOException;
 
 public class GameClient {
@@ -32,13 +33,13 @@ public class GameClient {
         }
 
 
+
         client.addListener(new Listener() {
             public void connected(Connection connection) {
                 Network.RegisterName registerName = new Network.RegisterName();
                 registerName.name = name;
                 client.sendTCP(registerName);
             }
-
 
         });
     }
