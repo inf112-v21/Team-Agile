@@ -43,7 +43,7 @@ public class GameClient {
         });
     }
 
-public
+
 
     public static void main(String[] args) {
 
