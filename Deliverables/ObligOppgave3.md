@@ -18,7 +18,7 @@
 <br/>
 
 ### Møtetidspunkt og møtereferat
-**12.02.2021, 12:15 - 14:00**
+**12.02.2021 : 12:15 - 14:00**
 * Alle til stedet i starten, Marius måtte gå etter 20 min.
 * Gikk gjennom hvilke krav vi ville oppnå i løpet av denne sprinten. 
 * Hva vi kom frem til er satt under "krav for oblig" øverst i dokumentet. 
@@ -29,12 +29,18 @@ eget krav han kunne jobbe med denne tiden. Han tok HUD.
 * Petter startet med å oppdatere project-board og marckdown-doc.
 
 
-**15.03.2021, 12:15-14:00**
+**15.03.2021 : 12:15-14:00**
 * Johnny og Petter startet på design av brettet idag, og startet såvidt på implementasjon av vegger.
 * Tore og Anthony jobbet videre på multiplayer. kommet en del videre.
 * Marius jobber alene fortsatt og jobber med HUD.
 
 
+**17.03.2021 : 12:15-14:00**
+* Alle utenom Marius tilstede, han var på vei til jobb denne dagen.
+  han har også egen oppgave han jobber med så han bestemmer litt selv når 
+  det passer han i denne perioden.
+* Tore og Anthony fortsetter på multiplayer idag.
+* Petter og Johnny fortsetter på vegger på spillbrettet.
 
 ### Spesifikasjoner
 
