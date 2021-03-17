@@ -25,7 +25,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
     private TiledMap map;
-    private TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer;
+    private TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer, wallLayer, laserLayer;
     private OrthogonalTiledMapRenderer render;
     private Integer flagsToTake = 2;
     private OrthographicCamera camera, font_cam;
@@ -53,13 +53,15 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         font_cam.setToOrtho(false, 1339,750);
 
         TmxMapLoader loader = new TmxMapLoader();
-        map = loader.load("maps/tutorial.tmx");
+        map = loader.load("maps/MapNumber1.tmx");
 
         //Layers initialize
-        boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
+        boardLayer = (TiledMapTileLayer) map.getLayers().get("BaseLayer");
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
-        holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
-        flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
+        holeLayer = (TiledMapTileLayer) map.getLayers().get("Holes");
+        flagLayer = (TiledMapTileLayer) map.getLayers().get("Flags");
+        wallLayer = (TiledMapTileLayer) map.getLayers().get("Walls");
+        laserLayer = (TiledMapTileLayer) map.getLayers().get("Laser");
 
 
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
