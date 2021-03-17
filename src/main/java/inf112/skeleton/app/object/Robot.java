@@ -1,6 +1,7 @@
 package inf112.skeleton.app.object;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -28,6 +29,12 @@ public class Robot extends Sprite {
     int flagToTake;
     BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
 
+    Texture texture;
+    TextureRegion[][] tr;
+    TextureRegion normalState;
+    TextureRegion deadState;
+    TextureRegion winState;
+
     public Robot(TextureRegion texture, int xstart, int ystart) {
         setSize(WIDTH, HEIGHT);
         setRegion(texture);
@@ -38,6 +45,22 @@ public class Robot extends Sprite {
         this.lockedHand = new ArrayList<>();
         this.flagToTake = 1;
     }
+
+    public Robot(int xstart, int ystart) {
+        setSize(WIDTH, HEIGHT);
+        initializeTexture();
+        setRegion(normalState);
+        setPosition(xstart, ystart);
+    }
+
+    public void initializeTexture() {
+        texture = new Texture(Gdx.files.internal("player.png"));
+        tr = TextureRegion.split(texture, 300, 300);
+        normalState = tr[0][0];
+        deadState = tr[0][1];
+        winState = tr[0][2];
+    }
+
 
     public int getHealthpoint() {
         return healthpoint;

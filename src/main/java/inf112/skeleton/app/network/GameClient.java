@@ -9,6 +9,7 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.examples.chat.Network;
 import inf112.skeleton.app.RoboRally;
+import inf112.skeleton.app.network.Packets.PlayerList;
 
 import java.awt.geom.Point2D;
 import java.io.IOException;
@@ -17,9 +18,11 @@ public class GameClient {
 
     Client client;
     String name;
+    RoboRally game;
 
-    public GameClient() {
+    public GameClient(RoboRally game) {
         client = new Client();
+        this.game = game;
 
 
         NetworkHandler.register(client);
@@ -33,19 +36,27 @@ public class GameClient {
         }
 
 
-
         client.addListener(new Listener() {
             public void connected(Connection connection) {
-                Network.RegisterName registerName = new Network.RegisterName();
-                registerName.name = name;
-                client.sendTCP(registerName);
+
+            }
+            public void received (Connection c, Object object) {
+
+                if(object instanceof PlayerList) {
+                    PlayerList list = (PlayerList)object;
+                    game.players = list.spillerliste;
+
+                    //client.sendTCP(test);
+
+                }
+
             }
 
         });
     }
 
 
-
+/*
     public static void main(String[] args) {
 
         GameClient client = new GameClient();
@@ -55,7 +66,8 @@ public class GameClient {
         cfg.setWindowedMode(1339,750);
 
         new Lwjgl3Application(new RoboRally(), cfg);
-    }
 
+    }
+*/
 
 }

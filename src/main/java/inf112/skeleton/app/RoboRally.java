@@ -15,10 +15,13 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.esotericsoftware.kryonet.Client;
 import inf112.skeleton.app.cards.Deck;
+import inf112.skeleton.app.network.GameClient;
 import inf112.skeleton.app.object.InputHandler;
 import inf112.skeleton.app.object.Robot;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class RoboRally extends InputAdapter implements ApplicationListener {
@@ -38,8 +41,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     TextureRegion[][] tr;
     Vector2 playerPosition;
     Deck deck;
-    ArrayList<Robot> players;
+    public ArrayList<Robot> players;
     String text;
+    Robot test2;
+    GameClient client;
 
     @Override
     public void create() {
@@ -78,24 +83,40 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         playerPosition = new Vector2(0, 0);
 
         test = new Robot(state1,2,2);
+        test2 = new Robot(state1,4,4);
 
         InputHandler myhandler = new InputHandler(test);
 
         players = new ArrayList<>();
 
-        players.add(test);
+       // players.add(test);
+       // players.add(test2);
 
         deck.dealOutCards(players);
 
         test.playerCardstoHand(test.getCards());
 
         Gdx.input.setInputProcessor(myhandler);
+
+        try {
+            client = new GameClient(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
     public void dispose() {
         batch.dispose();
         font.dispose();
+    }
+
+    public void drawPlayers(ArrayList<Robot> spillerliste, SpriteBatch batch) {
+
+        for(Robot r : spillerliste) {
+            r.draw(batch);
+        }
     }
 
     @Override
@@ -109,14 +130,18 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
+        drawPlayers(players, batch);
+        batch.end();
+
+        /*
         test.draw(batch);
-        test.renderCards(batch);
+        //test.renderCards(batch);
 
         batch.setProjectionMatrix(font_cam.combined);
         test.renderPriority(batch);
 
         batch.end();
-
+*/
 
         if (holeLayer.getCell((int) test.getX(), (int) test.getY()) != null) {
             test.setRegion(dead);
