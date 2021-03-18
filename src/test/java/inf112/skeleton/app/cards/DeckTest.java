@@ -90,9 +90,9 @@ public class DeckTest {
     }
 
     public void createPlayersAndDealOutDeck(){
-        player1 = new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3);
-        player2 = new Robot(new TextureRegion(new Texture("pikachu.png")) , 8 , 5);
-        player3 = new Robot(new TextureRegion(new Texture("pikachu.png")) , 5 , 8);
+        player1 = new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
+        player2 = new Robot(new TextureRegion(new Texture("pikachu.png")) , 8 , 5, "player 1");
+        player3 = new Robot(new TextureRegion(new Texture("pikachu.png")) , 5 , 8, "player 1");
 
         player1.setHealthpoint(5);
         player2.setHealthpoint(7);

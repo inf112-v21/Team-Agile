@@ -16,6 +16,8 @@ public class Robot extends Sprite {
 
     public int healthpoint;
 
+    public String name;
+
     private ArrayList<PlayingCard> cards;
 
     public ArrayList<PlayingCard> getLockedHand() {
@@ -25,14 +27,16 @@ public class Robot extends Sprite {
     private ArrayList<PlayingCard> lockedHand;
 
     int totalFlags = 3;
+
     int flagToTake;
     BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
-
-    public Robot(TextureRegion texture, int xstart, int ystart) {
+    BitmapFont hudFont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
+    public Robot(TextureRegion texture, int xstart, int ystart, String name) {
         setSize(WIDTH, HEIGHT);
         setRegion(texture);
         setOriginCenter();
         setPosition(xstart, ystart);
+        this.name = name;
         this.healthpoint = 9;
         this.cards = new ArrayList<>(healthpoint);
         this.lockedHand = new ArrayList<>();
@@ -47,6 +51,13 @@ public class Robot extends Sprite {
         this.healthpoint = healthpoint;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public ArrayList<PlayingCard> getCards() {
         return cards;
@@ -107,6 +118,11 @@ public class Robot extends Sprite {
             priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
             xStart += 107;
         }
+    }
+
+    public void renderHud(Batch batch){
+        hudFont.draw(batch, ("Player: " + name), 30, 80);
+        hudFont.draw(batch, ("GameHP = " + healthpoint), 570, 80);
 
     }
 

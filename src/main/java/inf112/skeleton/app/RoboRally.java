@@ -77,7 +77,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         playerPosition = new Vector2(0, 0);
 
-        test = new Robot(state1,2,2);
+        test = new Robot(state1,2,2, "Player 1");
 
         InputHandler myhandler = new InputHandler(test);
 
@@ -114,6 +114,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         batch.setProjectionMatrix(font_cam.combined);
         test.renderPriority(batch);
+        test.renderHud(batch);
 
         batch.end();
 
