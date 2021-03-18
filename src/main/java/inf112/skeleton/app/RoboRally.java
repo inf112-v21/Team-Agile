@@ -28,6 +28,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     private OrthogonalTiledMapRenderer render;
     private OrthographicCamera font_cam;
     private ExtendViewport viewport;
+
+    Integer flagsToTake = 2;
     TextureRegion dead;
 
     TextureRegion win;
@@ -38,10 +40,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     Vector2 playerPosition;
     Deck deck;
     ArrayList<Robot> players;
-
-    public SpriteBatch getBatch() {
-        return batch;
-    }
 
     @Override
     public void create() {
@@ -112,19 +110,16 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         if (holeLayer.getCell((int) robot.getX(), (int) robot.getY()) != null) {
             robot.setRegion(dead);
-            robot.decreaseRobotHealthpoint(1);
+            robot.decreaseRobotHealthpoint(-1);
             robot.renderHud("You lost 1 HP", batch, 0);
         } else if (flagLayer.getCell((int) robot.getX(), (int) robot.getY()) != null) {
             robot.setRegion(win);
             robot.visitFlag(1);
-            robot.renderHud("Flag: " + 1 + " was taken\n" + robot.getFlagToTake() + " numbers of flags left", batch, 0);
+            robot.renderHud("Flag: " + 1 + " was taken\n" + (flagsToTake-1) + " numbers of flags left", batch, 0);
         } else {
             robot.setRegion(state1);
         }
-
         allFlagsTaken(robot);
-
-
     }
 
     @Override
@@ -142,9 +137,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     }
 
     public void allFlagsTaken(Robot player) {
-        Integer flagsToTake = 2;
         if (player.getFlag().equals(flagsToTake)) {
-            player.renderHud("Player " + player.getName() + " won the game!\nRestart the game to start over", batch, 2);
+            player.renderHud("Player " + player.getName() + " won the game!\nRestart the game to start again", batch, 2);
         }
     }
 }

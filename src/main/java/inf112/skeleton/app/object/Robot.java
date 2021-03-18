@@ -26,10 +26,6 @@ public class Robot extends Sprite {
 
     private ArrayList<PlayingCard> lockedHand;
 
-    public int getFlagToTake() {
-        return flagToTake;
-    }
-
     int flagToTake;
 
     BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
@@ -136,9 +132,6 @@ public class Robot extends Sprite {
         }
         if (flagID == flagToTake) {
             flagToTake += 1;
-
-            //System.out.println("flag: " + flagID + " was taken");
-            System.out.println(flagToTake);
         }
     }
 
