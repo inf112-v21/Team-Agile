@@ -1,10 +1,7 @@
 package inf112.skeleton.app.object;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.*;
 import inf112.skeleton.app.cards.PlayingCard;
 
 import java.util.ArrayList;
@@ -14,10 +11,13 @@ public class Robot extends Sprite {
     private final int WIDTH = 1;
     private final int HEIGHT = 1;
 
-    public int healthpoint;
+    public int robotHealthPoint;
+
+    public String getName() {
+        return name;
+    }
 
     public String name;
-
     private ArrayList<PlayingCard> cards;
 
     public ArrayList<PlayingCard> getLockedHand() {
@@ -26,37 +26,34 @@ public class Robot extends Sprite {
 
     private ArrayList<PlayingCard> lockedHand;
 
-    int totalFlags = 3;
+    public int getFlagToTake() {
+        return flagToTake;
+    }
 
     int flagToTake;
+
     BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
     BitmapFont hudFont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
+
+
     public Robot(TextureRegion texture, int xstart, int ystart, String name) {
         setSize(WIDTH, HEIGHT);
         setRegion(texture);
         setOriginCenter();
         setPosition(xstart, ystart);
         this.name = name;
-        this.healthpoint = 9;
-        this.cards = new ArrayList<>(healthpoint);
+        this.robotHealthPoint = 9;
+        this.cards = new ArrayList<>(robotHealthPoint);
         this.lockedHand = new ArrayList<>();
         this.flagToTake = 1;
     }
 
-    public int getHealthpoint() {
-        return healthpoint;
+    public int getRobotHealthPoint() {
+        return robotHealthPoint;
     }
 
-    public void setHealthpoint(int healthpoint) {
-        this.healthpoint = healthpoint;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void decreaseRobotHealthpoint(int healthpoint) {
+        this.robotHealthPoint -= healthpoint;
     }
 
     public ArrayList<PlayingCard> getCards() {
@@ -120,12 +117,18 @@ public class Robot extends Sprite {
         }
     }
 
-    public void renderHud(Batch batch){
+    public void initializeHud(Batch batch){
         hudFont.draw(batch, ("Player: " + name), 30, 80);
-        hudFont.draw(batch, ("GameHP = " + healthpoint), 570, 80);
-
+        hudFont.draw(batch, ("HP = " + robotHealthPoint), 615, 80);
     }
 
+    public void renderHud(String text, SpriteBatch batch, int hudPosition){
+        BitmapFont hudFont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
+        batch.begin();
+        if(hudPosition == 0){ hudFont.draw(batch, text, 250, 55); }
+        else{ hudFont.draw(batch, text, 901,55); }
+        batch.end();
+    }
 
     public void visitFlag(int flagID) {
         if (flagID > flagToTake) {
@@ -133,7 +136,8 @@ public class Robot extends Sprite {
         }
         if (flagID == flagToTake) {
             flagToTake += 1;
-            System.out.println("flag: " + flagID + " was taken");
+
+            //System.out.println("flag: " + flagID + " was taken");
             System.out.println(flagToTake);
         }
     }

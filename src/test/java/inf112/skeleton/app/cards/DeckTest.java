@@ -94,9 +94,9 @@ public class DeckTest {
         player2 = new Robot(new TextureRegion(new Texture("pikachu.png")) , 8 , 5, "player 1");
         player3 = new Robot(new TextureRegion(new Texture("pikachu.png")) , 5 , 8, "player 1");
 
-        player1.setHealthpoint(5);
-        player2.setHealthpoint(7);
-        player3.setHealthpoint(3);
+        player1.decreaseRobotHealthpoint(5);
+        player2.decreaseRobotHealthpoint(7);
+        player3.decreaseRobotHealthpoint(3);
 
         players = new ArrayList<>();
         players.add(player1);

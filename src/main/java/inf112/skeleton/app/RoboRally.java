@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -23,79 +22,71 @@ import java.util.ArrayList;
 
 public class RoboRally extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
-    private BitmapFont font;
-    private TiledMap map;
-    private TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer;
-    private OrthogonalTiledMapRenderer render;
-    private Integer flagsToTake = 2;
-    private OrthographicCamera camera, font_cam;
-    private ExtendViewport viewport;
 
+    private TiledMapTileLayer holeLayer;
+    private TiledMapTileLayer flagLayer;
+    private OrthogonalTiledMapRenderer render;
+    private OrthographicCamera font_cam;
+    private ExtendViewport viewport;
     TextureRegion dead;
+
     TextureRegion win;
-    Robot test;
+
+    Robot robot;
     TextureRegion state1;
     TextureRegion[][] tr;
     Vector2 playerPosition;
     Deck deck;
     ArrayList<Robot> players;
-    String text;
+
+    public SpriteBatch getBatch() {
+        return batch;
+    }
 
     @Override
     public void create() {
         batch = new SpriteBatch();
-        font = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
-        text = "220";
 
-        camera = new OrthographicCamera();
         viewport = new ExtendViewport(23,14);
         font_cam = new OrthographicCamera();
         font_cam.setToOrtho(false, 1339,750);
 
         TmxMapLoader loader = new TmxMapLoader();
-        map = loader.load("maps/tutorial.tmx");
+        TiledMap map = loader.load("maps/tutorial.tmx");
 
         //Layers initialize
-        boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
-        playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
+        TiledMapTileLayer boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
+        TiledMapTileLayer playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
 
-
-        render = new OrthogonalTiledMapRenderer(map , 1/300f);
+        render = new OrthogonalTiledMapRenderer(map, 1/300f);
 
         Texture texture = new Texture("player.png");
 
-        deck = new Deck();
-
-        // splitter opp player.png bildet og definerer størrelsen
         tr = TextureRegion.split(texture, 300, 300);
-
         state1 = tr[0][0];
         dead = tr[0][1];
         win = tr[0][2];
 
         playerPosition = new Vector2(0, 0);
+        robot = new Robot(state1,2,2, "Player 1");
 
-        test = new Robot(state1,2,2, "Player 1");
+        InputHandler myHandler = new InputHandler(robot);
 
-        InputHandler myhandler = new InputHandler(test);
-
+        deck = new Deck();
         players = new ArrayList<>();
-
-        players.add(test);
+        players.add(robot);
 
         deck.dealOutCards(players);
+        robot.playerCardstoHand(robot.getCards());
 
-        test.playerCardstoHand(test.getCards());
-
-        Gdx.input.setInputProcessor(myhandler);
+        Gdx.input.setInputProcessor(myHandler);
     }
 
     @Override
     public void dispose() {
         batch.dispose();
-        font.dispose();
     }
 
     @Override
@@ -109,30 +100,32 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
-        test.draw(batch);
-        test.renderCards(batch);
+        robot.draw(batch);
+        robot.renderCards(batch);
 
         batch.setProjectionMatrix(font_cam.combined);
-        test.renderPriority(batch);
-        test.renderHud(batch);
+        robot.renderPriority(batch);
+        robot.initializeHud(batch);
 
         batch.end();
 
 
-        if (holeLayer.getCell((int) test.getX(), (int) test.getY()) != null) {
-            test.setRegion(dead);
-        } else if (flagLayer.getCell((int) test.getX(), (int) test.getY()) != null) {
-            test.setRegion(win);
-            test.visitFlag(1);
+        if (holeLayer.getCell((int) robot.getX(), (int) robot.getY()) != null) {
+            robot.setRegion(dead);
+            robot.decreaseRobotHealthpoint(1);
+            robot.renderHud("You lost 1 HP", batch, 0);
+        } else if (flagLayer.getCell((int) robot.getX(), (int) robot.getY()) != null) {
+            robot.setRegion(win);
+            robot.visitFlag(1);
+            robot.renderHud("Flag: " + 1 + " was taken\n" + robot.getFlagToTake() + " numbers of flags left", batch, 0);
         } else {
-            test.setRegion(state1);
+            robot.setRegion(state1);
         }
 
-        allFlagsTaken(test);
+        allFlagsTaken(robot);
 
 
     }
-
 
     @Override
     public void resize(int width, int height) {
@@ -149,9 +142,9 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     }
 
     public void allFlagsTaken(Robot player) {
-        if (player.getFlag() == flagsToTake) {
-            Gdx.app.exit();
+        Integer flagsToTake = 2;
+        if (player.getFlag().equals(flagsToTake)) {
+            player.renderHud("Player " + player.getName() + " won the game!\nRestart the game to start over", batch, 2);
         }
     }
-
 }
