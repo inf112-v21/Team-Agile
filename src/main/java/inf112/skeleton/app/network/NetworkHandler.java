@@ -4,6 +4,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.EndPoint;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.MoveType;
+import inf112.skeleton.app.network.Packets.CreateRobot;
 import inf112.skeleton.app.network.Packets.PlayerList;
 import inf112.skeleton.app.object.Robot;
 

@@ -1,6 +1,7 @@
 package inf112.skeleton.app.network;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.math.Interpolation;
@@ -9,8 +10,11 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.examples.chat.Network;
 import inf112.skeleton.app.RoboRally;
+import inf112.skeleton.app.network.Packets.CreateRobot;
 import inf112.skeleton.app.network.Packets.PlayerList;
+import inf112.skeleton.app.object.Robot;
 
+//import java.awt.*;
 import java.awt.geom.Point2D;
 import java.io.IOException;
 
@@ -37,10 +41,11 @@ public class GameClient {
 
 
         client.addListener(new Listener() {
-            public void connected(Connection connection) {
+                               public void connected(Connection connection) {
 
-            }
-            public void received (Connection c, Object object) {
+                               }
+
+                               public void received(Connection c, Object object) {
 
                                    if (object instanceof CreateRobot) {
                                        CreateRobot newRobot = (CreateRobot) object;
@@ -81,9 +86,13 @@ public class GameClient {
                         }
 
             }
+ */
 
-        });
-    }
+        }
+
+
+
+                               }
 
 
 /*

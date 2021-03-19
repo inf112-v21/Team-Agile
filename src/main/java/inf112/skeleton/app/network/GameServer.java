@@ -8,6 +8,7 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
+import inf112.skeleton.app.network.Packets.CreateRobot;
 import inf112.skeleton.app.network.Packets.PlayerList;
 import inf112.skeleton.app.object.Robot;
 
@@ -62,7 +63,7 @@ public class GameServer{
                         server.sendToAllTCP(spillerliste);
                     }
                 });
-
+*/
 
             }
             public void received (Connection c, Object object) {

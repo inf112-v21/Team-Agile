@@ -23,4 +23,10 @@ public class GameEvent {
         this.isAlive = isAlive;
     }
 
+    /*
+    1 klasse Sende parametere for initalisere robot (int x , int y)
+
+    1 klasse oppdatere parametere til robot (int nyx, int nyY , rotation
+     */
+
 }
