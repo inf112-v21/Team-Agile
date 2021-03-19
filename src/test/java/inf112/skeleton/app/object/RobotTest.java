@@ -45,7 +45,7 @@ public class RobotTest {
         pos = new Vector2(1,1);
         TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
 
-        player = new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3);
+        player = new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
         playerLayer.setCell((int) player.getX(), (int) player.getY(), cell);
     }
 

@@ -37,7 +37,7 @@ public class PlayingCardTest {
 
     @Test
     public void performUTurnsShouldReturn180degree() {
-        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3);
+        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
         handler = new InputHandler(player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.UTURN, 10);
@@ -50,7 +50,7 @@ public class PlayingCardTest {
 
     @Test
     public void performRotateRightShouldReturn270degree() {
-        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3);
+        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
         handler = new InputHandler(player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.ROTATE_RIGHT, 10);
@@ -62,7 +62,7 @@ public class PlayingCardTest {
 
     @Test
     public void performRotateLeftShouldReturn90degree() {
-        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3);
+        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
         handler = new InputHandler(player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.ROTATE_LEFT, 10);
@@ -73,7 +73,7 @@ public class PlayingCardTest {
     }
     @Test
     public void performMoveOneShouldReturn2inYdirection() {
-        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3);
+        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
         handler = new InputHandler(player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVEONE, 10);
@@ -84,7 +84,7 @@ public class PlayingCardTest {
     }
     @Test
     public void performMoveTwoShouldReturn1inYdirection() {
-        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3);
+        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
         handler = new InputHandler(player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVETWO, 10);
@@ -96,7 +96,7 @@ public class PlayingCardTest {
 
     @Test
     public void performMoveThreeShouldReturn0inYdirection() {
-        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3);
+        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
         handler = new InputHandler(player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVETHREE, 10);
