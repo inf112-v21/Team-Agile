@@ -64,6 +64,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         laserLayer = (TiledMapTileLayer) map.getLayers().get("Laser");
 
 
+
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
 
         Texture texture = new Texture("player.png");
