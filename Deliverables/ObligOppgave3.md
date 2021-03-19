@@ -42,6 +42,13 @@ eget krav han kunne jobbe med denne tiden. Han tok HUD.
 * Tore og Anthony fortsetter på multiplayer idag.
 * Petter og Johnny fortsetter på vegger på spillbrettet.
 
+
+**17.03.2021 : 12:15-14:00**
+* Alle tilstede, vi diskuterte litt om implementasjon av vegger,
+  og fikk innspill fra kundekontakt, før vi fortsatte fra der vi slapp 
+  sist gang.
+* Tore og Anthony har jobbet videre med multiplayer.
+
 ### Spesifikasjoner
 
 ### Brukerhistorier
