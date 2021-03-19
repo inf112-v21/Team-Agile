@@ -38,6 +38,13 @@ public class GameServer{
         server.addListener(new Listener(){
             public void connected(Connection c) {
                 System.out.println("Recieved a connection from" + c.getRemoteAddressTCP().getHostString());
+
+
+                CreateRobot newRobot = new CreateRobot(2,2);
+                server.sendToAllTCP(newRobot);
+
+
+                /*
                 Gdx.app.postRunnable(new Runnable() {
 
                     @Override

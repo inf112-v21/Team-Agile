@@ -42,13 +42,43 @@ public class GameClient {
             }
             public void received (Connection c, Object object) {
 
-                if(object instanceof PlayerList) {
+                                   if (object instanceof CreateRobot) {
+                                       CreateRobot newRobot = (CreateRobot) object;
+
+                                       Gdx.app.postRunnable(new Runnable() {
+                                           @Override
+                                           public void run() {
+                                               Robot robot = new Robot(newRobot.x, newRobot.y);
+                                               game.players.add(robot);
+                                           }
+                                       });
+
+                                   }
+                               }
+                           });
+                    /*
+                }
                     PlayerList list = (PlayerList)object;
                     game.players = list.spillerliste;
 
-                    //client.sendTCP(test);
 
-                }
+
+                    //client.sendTCP(test);
+                    Gdx.app.postRunnable(new Runnable() {
+
+
+                            if(numplayers == 0) {
+                                Robot spiller = new Robot(2, 2);
+                                spillerliste.spillerliste.add(spiller);
+                                numplayers++;
+                            } else if (numplayers == 1) {
+                                Robot spiller = new Robot(4, 4);
+                                spillerliste.spillerliste.add(spiller);
+                                numplayers++;
+                            }
+
+                            server.sendToAllTCP(spillerliste);
+                        }
 
             }
 
@@ -70,4 +100,3 @@ public class GameClient {
     }
 */
 
-}

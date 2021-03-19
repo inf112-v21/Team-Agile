@@ -18,10 +18,12 @@ public class NetworkHandler {
 
         Kryo kryo = endPoint.getKryo();
         kryo.register(Packet.class);
-        kryo.register(Robot.class);
+        //kryo.register(Robot.class);
         kryo.register(PlayerList.class);
         kryo.register(ArrayList.class);
         kryo.register(RoboRally.class);
+        kryo.register(GameEvent.class);
+        kryo.register(CreateRobot.class);
 
 
     }
