@@ -19,6 +19,13 @@ public class Wall {
     int posX;
     int posY;
 
+    public enum Type {
+        SOUTH,
+        WEST,
+        NORTH,
+        EAST
+    }
+
     public Wall(TiledMapTileLayer wallLayer, Vector2 wallPos, Integer wallID, RotationDirection direction){
 
         //første hente layer
@@ -35,24 +42,29 @@ public class Wall {
     public Boolean isWallInFrontOfPlayer(Robot player){
 
         float rotation = player.getRotation();
+        xycoord playercoords = new xycoord();
+        playercoords.setX(player.getX());
+        playercoords.setY(player.getY());
+
+        //HashMap<playercoords, RotationDirection>
+
 
         switch(rotation) {
             case 0:
-                if (southWall.get(player.getX(), player.getY()-1) == null) {
-                    return false;
+                if (RoboRally.walls.get(playercoords) == RotationDirection.SOUTH) {
+                    return true;
             } case 90:
-                if (westWall.get(player.getX()-1, player.getY()) == null) {
-                    return false;
+                if (RoboRally.walls.get(playercoords) == RotationDirection.WEST) {
+                    return true;
                 } case 180:
-                if (northWall.get(player.getX(), player.getY()+1) == null) {
-                    return false;
+                if (RoboRally.walls.get(playercoords) == RotationDirection.NORTH) {
+                    return true;
                 } case 270:
-                if (eastWall.get(player.getX()+1, player.getY()) == null) {
-                    return false;
+                if (RoboRally.walls.get(playercoords) == RotationDirection.EAST) {
+                    return true;
                 }
         }
-
-        return true;
+        return false;
     }
 
 }

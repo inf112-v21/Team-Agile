@@ -32,7 +32,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     private OrthographicCamera camera, font_cam;
     private ExtendViewport viewport;
 
-    HashMap southWall, westWall, northWall, eastWall;
+    public static HashMap walls;
 
     TextureRegion dead;
     TextureRegion win;
@@ -81,10 +81,9 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         dead = tr[0][1];
         win = tr[0][2];
 
-        southWall = new HashMap<Integer, Integer>();
-        westWall = new HashMap<Integer, Integer>();
-        northWall = new HashMap<Integer, Integer>();
-        eastWall = new HashMap<Integer, Integer>();
+        //need to add all maps with coordinates to hashmap
+        walls = new HashMap<xycoord, Wall.Type>();
+
 
         playerPosition = new Vector2(0, 0);
 
