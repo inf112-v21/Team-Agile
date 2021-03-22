@@ -48,6 +48,30 @@ public class Robot extends Sprite {
     }
 
 
+    public void push(Robot otherplayer) {
+        //if the player is pushing another robot, it needs to make sure that
+        //the other player is being moved
+    }
+
+    public void getPushed() {
+        //the player gets pushed and gets moved
+    }
+
+    public boolean isPushing(Robot otherplayer) {
+        //check for if the player is moving towards another player and doing a push
+        return true;
+    }
+
+    public boolean isBeingpushed(Robot player, Robot otherplayer) {
+        //if the player is being pushed and hits a wall, both the player and the
+        //other player must stop
+        if (otherplayer.isPushing(player)) {
+            return true;
+        }
+        return false;
+    }
+
+
     public ArrayList<PlayingCard> getCards() {
         return cards;
     }

@@ -122,16 +122,28 @@ public class InputHandler extends InputAdapter {
     public void move(int steps) {
         switch ((int) player.getRotation()) {
             case(0):
-                player.setPosition(player.getX(), player.getY() - steps);
+                for(int i = 1; i <= steps; i++){
+                    player.setPosition(player.getX(), player.getY() - 1);
+                }
+                //player.setPosition(player.getX(), player.getY()) - steps;
                 break;
             case(90):
-                player.setPosition(player.getX() + steps, player.getY());
+                for(int i = 1; i <= steps; i++){
+                    player.setPosition(player.getX() + 1, player.getY());
+                }
+                //player.setPosition(player.getX() + steps, player.getY());
                 break;
             case(180):
-                player.setPosition(player.getX(), player.getY() + steps);
+                for(int i = 1; i <= steps; i++){
+                    player.setPosition(player.getX(), player.getY() + 1);
+                }
+                //player.setPosition(player.getX(), player.getY() + steps);
                 break;
             case(270):
-                player.setPosition(player.getX() - steps, player.getY());
+                for(int i = 1; i <= steps; i++){
+                    player.setPosition(player.getX() - 1, player.getY());
+                }
+                //player.setPosition(player.getX() - steps, player.getY());
                 break;
         }
     }

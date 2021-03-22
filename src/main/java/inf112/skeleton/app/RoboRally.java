@@ -20,6 +20,7 @@ import inf112.skeleton.app.object.InputHandler;
 import inf112.skeleton.app.object.Robot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RoboRally extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
@@ -30,6 +31,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     private Integer flagsToTake = 2;
     private OrthographicCamera camera, font_cam;
     private ExtendViewport viewport;
+
+    HashMap southWall, westWall, northWall, eastWall;
 
     TextureRegion dead;
     TextureRegion win;
@@ -77,6 +80,11 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         state1 = tr[0][0];
         dead = tr[0][1];
         win = tr[0][2];
+
+        southWall = new HashMap<Integer, Integer>();
+        westWall = new HashMap<Integer, Integer>();
+        northWall = new HashMap<Integer, Integer>();
+        eastWall = new HashMap<Integer, Integer>();
 
         playerPosition = new Vector2(0, 0);
 
