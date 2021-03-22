@@ -47,7 +47,12 @@ eget krav han kunne jobbe med denne tiden. Han tok HUD.
 * Alle tilstede, vi diskuterte litt om implementasjon av vegger,
   og fikk innspill fra kundekontakt, før vi fortsatte fra der vi slapp 
   sist gang.
+* Marius fikk ferdigsstilt HUD til i dag. Han ble videre med Petter og Johnny på implementasjonen av vegger og øvrig funksjoner på spillbrettet. 
 * Tore og Anthony har jobbet videre med multiplayer.
+
+**22.03.2021 : 12:15-14:00**
+* 
+
 
 ### Spesifikasjoner
 
