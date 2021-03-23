@@ -8,11 +8,15 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
-import inf112.skeleton.app.network.Packets.CreateRobot;
-import inf112.skeleton.app.network.Packets.PlayerList;
+import inf112.skeleton.app.cards.PlayingCard;
+import inf112.skeleton.app.network.Packets.*;
+import inf112.skeleton.app.object.Player;
 import inf112.skeleton.app.object.Robot;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class GameServer{
 
@@ -20,6 +24,8 @@ public class GameServer{
     public Server server;
     public int numplayers;
     public PlayerList spillerliste = new PlayerList();
+    public HashMap<Integer, Player> playerlist = new HashMap<>();
+
 
     public GameServer(){
         server = new Server();
@@ -38,48 +44,55 @@ public class GameServer{
 
         server.addListener(new Listener(){
             public void connected(Connection c) {
-                System.out.println("Recieved a connection from" + c.getRemoteAddressTCP().getHostString());
+                System.out.println("Recieved a connection from " + c.getRemoteAddressTCP().getHostString());
+                numplayers++;
+                if(numplayers == 1) {
+                    Player newPlayer = new Player(2,2, c.getID());
+                    playerlist.put(c.getID(), newPlayer);
+                    spillerliste.spillerliste.add(newPlayer);
+                } else if (numplayers == 2) {
+                    Player newPlayer = new Player(4,4, c.getID());
+                    playerlist.put(c.getID(), newPlayer);
+                    spillerliste.spillerliste.add(newPlayer);
+                }
+                server.sendToAllTCP(spillerliste);
 
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Ready to start? y/n");
+                if(sc.nextLine().equals("y")) {
+                    sendCards(new CardsPacket());
+                }
 
-                CreateRobot newRobot = new CreateRobot(2,2);
-                server.sendToAllTCP(newRobot);
-
-
-                /*
-                Gdx.app.postRunnable(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        if(numplayers == 0) {
-                            Robot spiller = new Robot(2, 2);
-                            spillerliste.spillerliste.add(spiller);
-                            numplayers++;
-                        } else if (numplayers == 1) {
-                            Robot spiller = new Robot(4, 4);
-                            spillerliste.spillerliste.add(spiller);
-                            numplayers++;
-                        }
-
-                        server.sendToAllTCP(spillerliste);
-                    }
-                });
-*/
+                System.out.println("Currently Connected players: " + playerlist.size());
 
             }
             public void received (Connection c, Object object) {
-                if(object instanceof Packet) {
-                    System.out.println("motatt tilbake");
+                if(object instanceof MoveEvent) {
+                    MoveEvent event = (MoveEvent)object;
+                    server.sendToAllExceptTCP(c.getID(), event);
                 }
-            }
+                if (object instanceof RotationEvent) {
+                    RotationEvent event = (RotationEvent)object;
+                    server.sendToAllExceptTCP(c.getID(), event);
+                }
 
+            }
+/*
             public void disconnected(Connection c) {
                 System.out.println("Player disconnected from server");
             }
+
+ */
         });
 
         server.start();
 
 
+
+
+    }
+    public void sendCards(CardsPacket cards) {
+        server.sendToAllTCP(cards);
     }
 
     public static void main(String[] args) {
@@ -87,7 +100,7 @@ public class GameServer{
        GameServer server = new GameServer();
 
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-        cfg.setTitle("CLOSE THIS WINDOW TO START THE TESTS");
+        cfg.setTitle("Server Running");
         cfg.setWindowedMode(500, 100);
         new Lwjgl3Application(new Game() {
             @Override

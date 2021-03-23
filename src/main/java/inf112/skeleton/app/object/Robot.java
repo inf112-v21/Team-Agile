@@ -1,6 +1,7 @@
 package inf112.skeleton.app.object;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -17,15 +18,8 @@ public class Robot extends Sprite {
 
     public int healthpoint;
 
-    private ArrayList<PlayingCard> cards;
-
-    public ArrayList<PlayingCard> getLockedHand() {
-        return lockedHand;
-    }
-
-    private ArrayList<PlayingCard> lockedHand;
-
-    int totalFlags = 3;
+    public ArrayList<PlayingCard> cards;
+    public ArrayList<PlayingCard> lockedHand;
     int flagToTake;
     BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
 
@@ -34,6 +28,7 @@ public class Robot extends Sprite {
     TextureRegion normalState;
     TextureRegion deadState;
     TextureRegion winState;
+    public int id;
 
     public Robot(TextureRegion texture, int xstart, int ystart) {
         setSize(WIDTH, HEIGHT);
@@ -46,11 +41,18 @@ public class Robot extends Sprite {
         this.flagToTake = 1;
     }
 
-    public Robot(int xstart, int ystart) {
+    public Robot(int xstart, int ystart, Color color, int id) {
         setSize(WIDTH, HEIGHT);
         initializeTexture();
         setRegion(normalState);
+        setOriginCenter();
         setPosition(xstart, ystart);
+        this.healthpoint = 9;
+        this.cards = new ArrayList<>(healthpoint);
+        this.lockedHand = new ArrayList<>();
+        this.flagToTake = 1;
+        this.id = id;
+        setColor(color);
     }
 
     public void initializeTexture() {
@@ -61,19 +63,22 @@ public class Robot extends Sprite {
         winState = tr[0][2];
     }
 
+    public void changeState(String state) {
+        switch(state) {
+            case("normal"):
+                this.setRegion(normalState);
+                break;
+            case("dead"):
+                this.setRegion(deadState);
+                break;
+            case("win"):
+                this.setRegion(winState);
+                break;
+        }
 
-    public int getHealthpoint() {
-        return healthpoint;
     }
 
-    public void setHealthpoint(int healthpoint) {
-        this.healthpoint = healthpoint;
-    }
 
-
-    public ArrayList<PlayingCard> getCards() {
-        return cards;
-    }
 
 
     public void playerCardstoHand(ArrayList<PlayingCard> spillerkort) {
@@ -103,9 +108,11 @@ public class Robot extends Sprite {
     public void renderCards(Batch batch) {
         for (PlayingCard kort : cards) {
             kort.draw(batch);
+
         }
         for (PlayingCard locked : lockedHand) {
             locked.draw(batch);
+
         }
     }
 
@@ -140,13 +147,59 @@ public class Robot extends Sprite {
         }
         if (flagID == flagToTake) {
             flagToTake += 1;
-            System.out.println("flag: " + flagID + " was taken");
-            System.out.println(flagToTake);
+            System.out.println("flag: " + flagID + " was taken by player " + this.id);
+            System.out.println("player " + this.id + " next flag to take " + flagToTake);
         }
     }
 
     public Integer getFlag() {
         return flagToTake;
     }
+
+    public void move(int steps) {
+        switch ((int) this.getRotation()) {
+            case(0):
+                this.setPosition(this.getX(), this.getY() - steps);
+                break;
+            case(90):
+                this.setPosition(this.getX() + steps, this.getY());
+                break;
+            case(180):
+                this.setPosition(this.getX(), this.getY() + steps);
+                break;
+            case(270):
+                this.setPosition(this.getX() - steps, this.getY());
+                break;
+        }
+    }
+    public void rotate(int degree) {
+        this.setRotation(this.getRotation() + degree);
+        resetDegrees((int) this.getRotation());
+    }
+    private void resetDegrees(int degree) {
+        if (degree == 360) {
+            this.setRotation(0);
+        } else if(degree < 0) {
+            this.setRotation(270);
+        } else if(degree == 450) {
+            this.setRotation(90);
+        }
+    }
+    public ArrayList<PlayingCard> getLockedHand() {
+        return lockedHand;
+    }
+
+    public int getHealthpoint() {
+        return healthpoint;
+    }
+
+    public void setHealthpoint(int healthpoint) {
+        this.healthpoint = healthpoint;
+    }
+
+    public ArrayList<PlayingCard> getCards() {
+        return cards;
+    }
+
 }
 
