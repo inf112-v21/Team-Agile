@@ -15,6 +15,8 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import inf112.skeleton.app.map.Wall;
+import inf112.skeleton.app.map.xyCoordinate;
 import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.object.InputHandler;
 import inf112.skeleton.app.object.Robot;
@@ -82,8 +84,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         win = tr[0][2];
 
         //need to add all maps with coordinates to hashmap
-        walls = new HashMap<xycoord, Wall.Type>();
+        //walls = new HashMap<xyCoordinate, Wall.Type>();
+        //System.out.println("WALLS: " + walls);
 
+        //walls = Wall(wallLayer,)
 
         playerPosition = new Vector2(0, 0);
 
