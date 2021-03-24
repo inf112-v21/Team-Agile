@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("test");
-        cfg.setWindowedMode(1339,750);
+        cfg.setWindowedMode(1553,750);
 
         new Lwjgl3Application(new RoboRally(), cfg);
     }

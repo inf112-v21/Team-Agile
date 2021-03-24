@@ -78,21 +78,21 @@ public class Robot extends Sprite {
 
 
     public void playerCardstoHand(ArrayList<PlayingCard> spillerkort) {
-        int x = 14;
+        int x = 18;
         int y = 10;
         for (int i = 0; i < spillerkort.size() ; i++ ) {
             PlayingCard nvKort = spillerkort.get(i);
             nvKort.setPosition( x,  y);
             x += 2;
-            if(x == 24 ) {
-                x = 15;
+            if(x == 28 ) {
+                x = 19;
                 y = 7;
             }
         }
     }
 
     public void playerLocked(ArrayList<PlayingCard> lockedkort) {
-        int x = 14;
+        int x = 18;
         int y = 3;
         for (int i = 0; i < lockedkort.size() ; i++ ) {
             PlayingCard kort = lockedkort.get(i);
@@ -111,7 +111,7 @@ public class Robot extends Sprite {
     }
 
     public void renderPriority(Batch batch) {
-        float xStart = 808f;
+        float xStart = 830;
         float yStart = 682f;
 
         for (PlayingCard kort : cards) {
@@ -119,12 +119,12 @@ public class Robot extends Sprite {
             priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
             xStart += 107;
 
-            if(xStart == 1343) {
+            if(xStart == 1558) {
                 xStart = 864;
                 yStart = 520;
             }
         }
-        xStart = 808f;
+        xStart = 830;
         yStart = 307;
         for (PlayingCard locked : lockedHand) {
             int priority = locked.getPriority();
