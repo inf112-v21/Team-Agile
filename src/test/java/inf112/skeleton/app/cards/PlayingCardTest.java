@@ -12,7 +12,7 @@ import inf112.skeleton.app.object.Robot;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
+/***
 public class PlayingCardTest {
 
     Robot player;
@@ -108,3 +108,4 @@ public class PlayingCardTest {
 
 
 }
+*/

@@ -15,14 +15,12 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import inf112.skeleton.app.map.Wall;
-import inf112.skeleton.app.map.xyCoordinate;
 import inf112.skeleton.app.cards.Deck;
+import inf112.skeleton.app.map.Wall;
 import inf112.skeleton.app.object.InputHandler;
 import inf112.skeleton.app.object.Robot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class RoboRally extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
@@ -34,7 +32,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     private OrthographicCamera camera, font_cam;
     private ExtendViewport viewport;
 
-    public static HashMap walls;
+    //public static HashMap<Vector2, TiledMapTileLayer.Cell> walls;
 
     TextureRegion dead;
     TextureRegion win;
@@ -45,6 +43,11 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     Deck deck;
     ArrayList<Robot> players;
     String text;
+
+    int boardHeight = 12;
+    int boardWidth = 13;
+
+    ArrayList<Wall> allWalls = new ArrayList<>();
 
     @Override
     public void create() {
@@ -84,8 +87,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         win = tr[0][2];
 
         //need to add all maps with coordinates to hashmap
-        //walls = new HashMap<xyCoordinate, Wall.Type>();
         //System.out.println("WALLS: " + walls);
+        //allWalls = registerWalls();
+        registerWalls();
+
 
         //walls = Wall(wallLayer,)
 
@@ -93,7 +98,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         test = new Robot(state1,2,2);
 
-        InputHandler myhandler = new InputHandler(test);
+        InputHandler myhandler = new InputHandler(test, allWalls);
 
         players = new ArrayList<>();
 
@@ -132,6 +137,12 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         batch.end();
 
 
+        //for(Wall vegg : allWalls){
+         //   if(vegg.isWallInFrontOfPlayer(test)){
+           //     System.out.println("Wall Found: ");
+            //}
+       // }
+
         if (holeLayer.getCell((int) test.getX(), (int) test.getY()) != null) {
             test.setRegion(dead);
         } else if (flagLayer.getCell((int) test.getX(), (int) test.getY()) != null) {
@@ -140,10 +151,31 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         } else {
             test.setRegion(state1);
         }
-
         allFlagsTaken(test);
+    }
 
+    public void registerWalls(){
+        // register walls created in map design
+        for(int i = 0; i < wallLayer.getHeight(); i++){
+            for(int j = 0; j < wallLayer.getWidth(); j++){
+                TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,j);
+                if (wallTile != null){
+                    allWalls.add(new Wall(new Vector2(i,j), wallTile, wallTile.getTile().getId()));
+                }
+            }
+        }
 
+        // register of outer vertical walls in map
+        for(int i = 3; i < boardHeight+3; i++){
+            allWalls.add(new Wall(new Vector2(0,i), null, 0));
+            allWalls.add(new Wall(new Vector2(boardWidth,i), null, 0));
+            }
+
+        // register of outer horisontal walls in map
+        for(int i = 0; i < boardWidth; i++){
+            allWalls.add(new Wall(new Vector2(i,3), null, 0));
+            allWalls.add(new Wall(new Vector2(i,boardHeight), null, 0));
+        }
     }
 
 

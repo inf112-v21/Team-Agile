@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
+/**
 public class RobotTest {
 
     TiledMapTileLayer playerLayer;
@@ -34,12 +34,12 @@ public class RobotTest {
             }
         }, cfg);
 
-        /*oppsett av variabler som trengs for testene.
-        TiledMapTileLayer for å skjekke om spiller objektet eksisterer på nåværende celle, og forsvinner fra den cellen
-        når en bevegelse utføres.
+        //oppsett av variabler som trengs for testene.
+        //TiledMapTileLayer for å skjekke om spiller objektet eksisterer på nåværende celle, og forsvinner fra den cellen
+        //når en bevegelse utføres.
 
-        Robot klassen som skal testes med bevegelse funksjon.
-         */
+        //Robot klassen som skal testes med bevegelse funksjon.
+
 
         playerLayer = new TiledMapTileLayer(5,5,300,300);
         pos = new Vector2(1,1);
@@ -132,4 +132,4 @@ public class RobotTest {
         assertNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
     }
 
-}
+}*/

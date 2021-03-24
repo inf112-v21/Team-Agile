@@ -2,16 +2,21 @@ package inf112.skeleton.app.object;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.PlayingCard;
+import inf112.skeleton.app.map.Wall;
+
+import java.util.ArrayList;
 
 public class InputHandler extends InputAdapter {
 
     Robot player;
-
+    ArrayList<Wall> walls;
     int dir = 0;
 
-    public InputHandler(Robot player) {
+    public InputHandler(Robot player, ArrayList<Wall> walls) {
         this.player = player;
+        this.walls = walls;
     }
 
 
@@ -118,12 +123,24 @@ public class InputHandler extends InputAdapter {
         resetDegrees((int) player.getRotation());
     }
 
+    public boolean checkForWalls(Robot player, float x, float y){
+        for (Wall wall : walls){
+            if(wall.isWallInFrontOfPlayer(player, x, y)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     //1
     public void move(int steps) {
         switch ((int) player.getRotation()) {
             case(0):
                 for(int i = 1; i <= steps; i++){
-                    player.setPosition(player.getX(), player.getY() - 1);
+                    if(checkForWalls(player, player.getX(), player.getY() - 1)){
+                        System.out.println("Not possible to make that move, because of wall");
+                    }
+                    else{ player.setPosition(player.getX(), player.getY() - 1); }
                 }
                 //player.setPosition(player.getX(), player.getY()) - steps;
                 break;
