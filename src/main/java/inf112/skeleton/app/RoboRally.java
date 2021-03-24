@@ -11,16 +11,12 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.esotericsoftware.kryonet.Client;
 import inf112.skeleton.app.cards.Deck;
-import inf112.skeleton.app.cards.PlayingCard;
 import inf112.skeleton.app.network.GameClient;
 import inf112.skeleton.app.map.Laser;
 import inf112.skeleton.app.map.Wall;
@@ -28,7 +24,6 @@ import inf112.skeleton.app.object.InputHandler;
 import inf112.skeleton.app.object.Player;
 import inf112.skeleton.app.object.Robot;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -36,34 +31,24 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     public SpriteBatch batch;
     private BitmapFont font;
     private TiledMap map;
-    private static TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer, wallLayer, laserLayer;
+    private static TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer, wallLayer, laserLayer, flag1, flag2, flag3;
     private OrthogonalTiledMapRenderer render;
     private Integer flagsToTake = 4;
     private OrthographicCamera camera, font_cam;
     private ExtendViewport viewport;
 
-    TextureRegion dead;
-    TextureRegion win;
+
     Robot test;
-    TextureRegion state1;
-    TextureRegion[][] tr;
-    Vector2 playerPosition;
+
     public Deck deck;
     public ArrayList<Player> players;
     public ArrayList<Robot> robots;
-    String text;
-    Robot test2;
+
     public GameClient client;
     public InputHandler handler;
     public ArrayList<Color> colors;
 
     public Robot clientPlayer;
-
-
-
-
-
-
 
     int boardHeightStartPos = 2;
     int boardHeight = boardHeightStartPos + 11;
@@ -237,7 +222,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                 r.changeState("normal");
             }
         }
-        allFlagsTaken(test);
+        allFlagsTaken(robots);
     }
 
     public void registerWallsAndLasers(){
