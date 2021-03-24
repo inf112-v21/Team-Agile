@@ -2,36 +2,53 @@ package inf112.skeleton.app.object;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.PlayingCard;
+import inf112.skeleton.app.network.Packets.Events.MoveEvent;
+import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 
 public class InputHandler extends InputAdapter {
 
     Robot player;
+    RoboRally game;
 
     int dir = 0;
 
+    public InputHandler(RoboRally game, Robot player) {
+
+        this.player = player;
+        this.game = game;
+    }
     public InputHandler(Robot player) {
         this.player = player;
     }
+
+
 
 
     @Override
     public boolean keyUp(int keycode) {
         switch (keycode) {
             case Input.Keys.UP:
-                move(1);
+                player.move(1);
+                game.client.sendMove(new MoveEvent(game.client.getID(), 1));
+
                 break;
             case Input.Keys.DOWN:
-                move(-1);
+                player.move(-1);
+                game.client.sendMove(new MoveEvent(game.client.getID(), -1));
                 break;
             case Input.Keys.LEFT:
-                rotate(90);
+                player.rotate(90);
+                game.client.sendRotation(new RotationEvent(game.client.getID(), 90));
                 break;
             case Input.Keys.RIGHT:
                 rotate(-90);
+                game.client.sendRotation(new RotationEvent(game.client.getID(), -90));
                 break;
             case Input.Keys.R:
                 rotate(180);
+                game.client.sendRotation(new RotationEvent(game.client.getID(), 180));
                 break;
             case Input.Keys.NUM_1:
                 moveToLocked(0);
@@ -60,12 +77,16 @@ public class InputHandler extends InputAdapter {
             case Input.Keys.NUM_9:
                 moveToLocked(8);
                 break;
-
             case Input.Keys.A:
                 resetLockedHand();
                 break;
             case Input.Keys.SPACE:
                 performCardinRegister();
+                break;
+            case Input.Keys.ENTER:
+                game.client.sendCards(game.clientPlayer.lockedHand);
+                game.clientPlayer.getLockedHand().clear();
+                game.clientPlayer.cards.clear();
                 break;
         }
         return false;
@@ -76,7 +97,7 @@ public class InputHandler extends InputAdapter {
             PlayingCard kortet = player.getLockedHand().remove(0);
             int movetype = kortet.getMove();
             if (movetype < 4 && movetype != -90) {
-                move(movetype);
+                player.move(movetype);
             } else {
                 rotate(movetype);
             }
@@ -119,6 +140,7 @@ public class InputHandler extends InputAdapter {
     }
 
     //1
+
     public void move(int steps) {
         switch ((int) player.getRotation()) {
             case(0):
@@ -134,6 +156,13 @@ public class InputHandler extends InputAdapter {
                 player.setPosition(player.getX() - steps, player.getY());
                 break;
         }
+    }
+
+
+
+    public void setHandler(Robot robot) {
+        player = robot;
+
     }
 
 }

@@ -1,5 +1,6 @@
 package inf112.skeleton.app.cards;
 
+import com.badlogic.gdx.utils.Array;
 import inf112.skeleton.app.object.Robot;
 import java.util.*;
 
@@ -61,11 +62,20 @@ public class Deck {
     }
 
     public void dealOutCards(List<Robot> players) {
+        createDeck();
+        shuffle();
         for (Robot player : players) {
             int hp = player.robotHealthPoint;
             for(int i = 0; i < hp ; i++) {
                 player.getCards().add(deck.remove(i));
             }
         }
+    }
+    public void dealCards(Robot player) {
+        int hp = player.healthpoint;
+        for(int i = 0; i < hp ; i++) {
+            player.getCards().add(deck.remove(i));
+        }
+
     }
 }

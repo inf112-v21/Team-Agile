@@ -19,7 +19,6 @@ public class PlayingCard extends Sprite {
         this.texture = type.getTexture();
         setSize(WIDTH,HEIGHT);
         setRegion(texture);
-
     }
 
     public MoveType getType() {
