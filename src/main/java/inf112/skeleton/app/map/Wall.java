@@ -1,11 +1,8 @@
 package inf112.skeleton.app.map;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
-import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.object.Robot;
-import inf112.skeleton.app.map.Laser;
 
-import java.util.HashMap;
 public class Wall {
 
     TiledMapTileLayer.Cell cell;
@@ -18,34 +15,47 @@ public class Wall {
     static int NORTH = 31;
     static int EAST = 23;
 
+    // create a random ID to be used for outer walls:
+    public static int outerWallSOUTH = 290;
+    public static int outerWallWEST= 300;
+    public static int outerWallNORTH = 310;
+    public static int outerWallEAST = 230;
 
 
-    public Wall(Vector2 wallPos, TiledMapTileLayer.Cell cell, int cellId){
+
+    public Vector2 getWallPos() {
+        return wallPos;
+    }
+
+    public int getCellId() {
+        return cellId;
+    }
+
+    public Wall(Vector2 wallPos, int cellId){
         this.wallPos = wallPos;
-        this.cell = cell;
         this.cellId = cellId;
-
-        //rightWall = new HashMap<Integer, Integer>();
-        //wallLayer.getCell(1,1).getTile().getId();
     }
 
     public Boolean isWallInFrontOfPlayer(Robot player, float x, float y){
 
+
+
         float rotation = player.getRotation();
         Vector2 playerCoordinate = new Vector2(x, y);
-        if (playerCoordinate.equals(wallPos) && ((cellId == SOUTH) || (cellId == Laser.laserSOUTH)) && rotation == 0) {
+        System.out.println("CELL ID: " + cellId);
+        if (playerCoordinate.equals(wallPos) && ((cellId == SOUTH) || (cellId == Laser.laserSOUTH) || (cellId == outerWallSOUTH)) && rotation == 0) {
             System.out.println("Wall facing SOUTH");
             return true; }
 
-        else if (playerCoordinate.equals(wallPos) && ((cellId == EAST) || (cellId == Laser.laserEAST) || (cellId == Laser.doubleLaserEAST)) && rotation == 90) {
+        else if (playerCoordinate.equals(wallPos) && ((cellId == EAST) || (cellId == Laser.laserEAST) || (cellId == Laser.doubleLaserEAST) || (cellId == outerWallEAST)) && rotation == 90) {
             System.out.println("Wall facing EAST");
             return true; }
 
-        else if(playerCoordinate.equals(wallPos) && (cellId == NORTH) && rotation == 180) {
+        else if(playerCoordinate.equals(wallPos) && (cellId == NORTH || (cellId == outerWallNORTH)) && rotation == 180) {
             System.out.println("Wall facing NORTH");
             return true; }
 
-        else if (playerCoordinate.equals(wallPos) && ((cellId == WEST) || (cellId == Laser.laserWEST)) && rotation == 270) {
+        else if (playerCoordinate.equals(wallPos) && ((cellId == WEST) || (cellId == Laser.laserWEST)|| (cellId == outerWallWEST)) && rotation == 270) {
             System.out.println("Wall facing WEST");
             return true; }
 
@@ -65,4 +75,9 @@ public class Wall {
  * 46 = laser fra ØST mot VEST
  *
  * 95 = dobbel laser fra ØST mot VEST
+ *
+ *
+ * int boardHeightStartPos = 2;
+ * int boardHeight = boardHeightStartPos + 12;
+ * int boardWidth = 17;
  */

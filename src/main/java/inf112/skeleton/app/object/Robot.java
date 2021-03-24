@@ -111,25 +111,25 @@ public class Robot extends Sprite {
     }
 
     public void renderPriority(Batch batch) {
-        float xStart = 830;
+        float xStart = 882;
         float yStart = 682f;
 
         for (PlayingCard kort : cards) {
             int priority = kort.getPriority();
             priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
-            xStart += 107;
+            xStart += 92;
 
-            if(xStart == 1558) {
-                xStart = 864;
+            if(xStart == 1342) {
+                xStart = 930;
                 yStart = 520;
             }
         }
-        xStart = 830;
+        xStart = 882;
         yStart = 307;
         for (PlayingCard locked : lockedHand) {
             int priority = locked.getPriority();
             priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
-            xStart += 107;
+            xStart += 92;
         }
 
     }

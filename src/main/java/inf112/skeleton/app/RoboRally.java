@@ -43,8 +43,9 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     ArrayList<Robot> players;
     String text;
 
-    int boardHeight = 12;
-    int boardWidth = 13;
+    int boardHeightStartPos = 2;
+    int boardHeight = boardHeightStartPos + 11;
+    int boardWidth = 16;
 
     ArrayList<Wall> allWalls = new ArrayList<>();
     ArrayList<Laser> allLasers = new ArrayList<>();
@@ -86,7 +87,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         dead = tr[0][1];
         win = tr[0][2];
 
-        registerWalls();
+        registerWallsAndLasers();
 
         playerPosition = new Vector2(0, 0);
 
@@ -141,31 +142,31 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         allFlagsTaken(test);
     }
 
-    public void registerWalls(){
+    public void registerWallsAndLasers(){
         // register all walls created in the map design
-        for(int i = 0; i < wallLayer.getHeight(); i++){
-            for(int j = 0; j < wallLayer.getWidth(); j++){
+        for(int i = 0; i < boardHeight; i++){
+            for(int j = 0; j < boardWidth; j++){
                 TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,j);
                 if (wallTile != null){
                     int wallid = wallTile.getTile().getId();
-                    if (wallid == 37 || wallid == 38 || wallid == 46 || wallid == 95) {
+                    if (wallid == Laser.laserSOUTH || wallid == Laser.laserWEST || wallid == Laser.laserEAST || wallid == Laser.doubleLaserEAST) {
                         allLasers.add(new Laser(new Vector2(i,j), wallTile, wallTile.getTile().getId()));
                     }
-                    allWalls.add(new Wall(new Vector2(i,j), wallTile, wallTile.getTile().getId()));
+                    allWalls.add(new Wall(new Vector2(i,j), wallTile.getTile().getId()));
                 }
             }
         }
 
         // register of outer vertical walls in map
-        for(int i = 3; i < boardHeight+3; i++){
-            allWalls.add(new Wall(new Vector2(0,i), null, 0));
-            allWalls.add(new Wall(new Vector2(boardWidth,i), null, 0));
+        for(int i = boardHeightStartPos; i <= boardHeight; i++){
+            allWalls.add(new Wall(new Vector2(boardWidth,i), Wall.outerWallEAST));
+            allWalls.add(new Wall(new Vector2(0, i), Wall.outerWallWEST));
             }
 
-        // register of outer horisontal walls in map
-        for(int i = 0; i < boardWidth; i++){
-            allWalls.add(new Wall(new Vector2(i,3), null, 0));
-            allWalls.add(new Wall(new Vector2(i,boardHeight+3), null, 0));
+        // register of outer horizontal walls in map
+        for(int i = 0; i <= boardWidth; i++){
+            allWalls.add(new Wall(new Vector2(i,boardHeightStartPos), Wall.outerWallSOUTH));
+            allWalls.add(new Wall(new Vector2(i,boardHeight), Wall.outerWallNORTH));
         }
     }
 

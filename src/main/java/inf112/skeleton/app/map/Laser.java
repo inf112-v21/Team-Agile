@@ -5,8 +5,6 @@ import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.object.Robot;
 
-import java.util.HashMap;
-
 public class Laser extends Wall {
 
     TiledMapTileLayer.Cell cell;
@@ -15,22 +13,22 @@ public class Laser extends Wall {
     int cellId;
 
     //laser shoots towards north
-    static int laserSOUTH = 37;
+    public static int laserSOUTH = 37;
     //laser shoots towards east
-    static int laserWEST = 38;
+    public static int laserWEST = 38;
     //int laserNORTH = ;
 
     //laser shoots towards west
-    static int laserEAST = 46;
+    public static int laserEAST = 46;
 
     //laser shoots towards west
-    static int doubleLaserEAST = 95;
+    public static int doubleLaserEAST = 95;
 
     TiledMapTileLayer laserLayer = RoboRally.getLaserLayer();
 
 
     public Laser(Vector2 wallPos, TiledMapTileLayer.Cell cell, int cellId) {
-        super(wallPos, cell, cellId);
+        super(wallPos, cellId);
     }
 
     public Boolean isLaserInFrontOfPlayer(Robot player, float x, float y){
