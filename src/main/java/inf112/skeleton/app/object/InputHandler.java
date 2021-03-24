@@ -144,24 +144,38 @@ public class InputHandler extends InputAdapter {
                 }
                 //player.setPosition(player.getX(), player.getY()) - steps;
                 break;
+
             case(90):
                 for(int i = 1; i <= steps; i++){
-                    player.setPosition(player.getX() + 1, player.getY());
+                    if(checkForWalls(player, player.getX() + 1, player.getY())){
+                        System.out.println("Not possible to make that move, because of wall");
+                    }
+                    else{
+                    player.setPosition(player.getX() + 1, player.getY());}
                 }
                 //player.setPosition(player.getX() + steps, player.getY());
                 break;
+
             case(180):
                 for(int i = 1; i <= steps; i++){
-                    player.setPosition(player.getX(), player.getY() + 1);
+                    if(checkForWalls(player, player.getX(), player.getY() + 1)){
+                        System.out.println("Not possible to make that move, because of wall");
+                    }
+                    else{player.setPosition(player.getX(), player.getY() + 1);}
                 }
                 //player.setPosition(player.getX(), player.getY() + steps);
                 break;
+
             case(270):
                 for(int i = 1; i <= steps; i++){
-                    player.setPosition(player.getX() - 1, player.getY());
+                    if(checkForWalls(player, player.getX() - 1, player.getY())){
+                        System.out.println("Not possible to make that move, because of wall");
+                    }
+                    else{player.setPosition(player.getX() - 1, player.getY());}
                 }
                 //player.setPosition(player.getX() - steps, player.getY());
                 break;
+
         }
     }
 
