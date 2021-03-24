@@ -16,6 +16,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import inf112.skeleton.app.cards.Deck;
+import inf112.skeleton.app.map.Laser;
 import inf112.skeleton.app.map.Wall;
 import inf112.skeleton.app.object.InputHandler;
 import inf112.skeleton.app.object.Robot;
@@ -46,6 +47,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     int boardWidth = 13;
 
     ArrayList<Wall> allWalls = new ArrayList<>();
+    ArrayList<Laser> allLasers = new ArrayList<>();
 
     @Override
     public void create() {
@@ -90,7 +92,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         test = new Robot(state1,2,2);
 
-        InputHandler myhandler = new InputHandler(test, allWalls);
+        InputHandler myhandler = new InputHandler(test, allWalls, allLasers);
 
         players = new ArrayList<>();
 
@@ -145,6 +147,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             for(int j = 0; j < wallLayer.getWidth(); j++){
                 TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,j);
                 if (wallTile != null){
+                    int wallid = wallTile.getTile().getId();
+                    if (wallid == 37 || wallid == 38 || wallid == 46 || wallid == 95) {
+                        allLasers.add(new Laser(new Vector2(i,j), wallTile, wallTile.getTile().getId()));
+                    }
                     allWalls.add(new Wall(new Vector2(i,j), wallTile, wallTile.getTile().getId()));
                 }
             }
