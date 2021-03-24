@@ -22,6 +22,8 @@ import com.esotericsoftware.kryonet.Client;
 import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.cards.PlayingCard;
 import inf112.skeleton.app.network.GameClient;
+import inf112.skeleton.app.map.Laser;
+import inf112.skeleton.app.map.Wall;
 import inf112.skeleton.app.object.InputHandler;
 import inf112.skeleton.app.object.Player;
 import inf112.skeleton.app.object.Robot;
@@ -34,7 +36,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     public SpriteBatch batch;
     private BitmapFont font;
     private TiledMap map;
-    private TiledMapTileLayer boardLayer, playerLayer, holeLayer, flag1, flag2, flag3;
+    private static TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer, wallLayer, laserLayer;
     private OrthogonalTiledMapRenderer render;
     private Integer flagsToTake = 4;
     private OrthographicCamera camera, font_cam;
@@ -63,6 +65,13 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
 
 
+    int boardHeightStartPos = 2;
+    int boardHeight = boardHeightStartPos + 11;
+    int boardWidth = 16;
+
+    ArrayList<Wall> allWalls = new ArrayList<>();
+    ArrayList<Laser> allLasers = new ArrayList<>();
+
     @Override
     public void create() {
         batch = new SpriteBatch();
@@ -77,11 +86,16 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         font_cam.setToOrtho(false, 1339,750);
 
         TmxMapLoader loader = new TmxMapLoader();
-        map = loader.load("maps/tutorial.tmx");
+        map = loader.load("maps/MapNumber1.tmx");
 
         //Layers initialize
-        boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
+        boardLayer = (TiledMapTileLayer) map.getLayers().get("BaseLayer");
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
+        holeLayer = (TiledMapTileLayer) map.getLayers().get("Holes");
+        flagLayer = (TiledMapTileLayer) map.getLayers().get("Flags");
+        wallLayer = (TiledMapTileLayer) map.getLayers().get("Walls");
+        laserLayer = (TiledMapTileLayer) map.getLayers().get("Laser");
+
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flag1 = (TiledMapTileLayer) map.getLayers().get("Flag1");
         flag2 = (TiledMapTileLayer) map.getLayers().get("Flag2");
@@ -106,12 +120,14 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         dead = tr[0][1];
         win = tr[0][2];
 
+        registerWallsAndLasers();
+
         playerPosition = new Vector2(0, 0);
         robot = new Robot(state1,2,2, "Player 1");
 
-        InputHandler myHandler = new InputHandler(robot);
+        test = new Robot(state1,2,2);
 
-        InputHandler myhandler = new InputHandler(test);
+        InputHandler myhandler = new InputHandler(test, allWalls, allLasers);
 
         players = new ArrayList<>();
 
@@ -119,7 +135,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         deck.dealOutCards(players);
 
-
+        test.playerCardstoHand(test.getCards());
+        Gdx.input.setInputProcessor(myhandler);
       */
         try {
             client = new GameClient(this);
@@ -220,6 +237,39 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                 r.changeState("normal");
             }
         }
+        allFlagsTaken(test);
+    }
+
+    public void registerWallsAndLasers(){
+        // register all walls created in the map design
+        for(int i = 0; i < boardHeight; i++){
+            for(int j = 0; j < boardWidth; j++){
+                TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,j);
+                if (wallTile != null){
+                    int wallid = wallTile.getTile().getId();
+                    if (wallid == Laser.laserSOUTH || wallid == Laser.laserWEST || wallid == Laser.laserEAST || wallid == Laser.doubleLaserEAST) {
+                        allLasers.add(new Laser(new Vector2(i,j), wallTile, wallTile.getTile().getId()));
+                    }
+                    allWalls.add(new Wall(new Vector2(i,j), wallTile.getTile().getId()));
+                }
+            }
+        }
+
+        // register of outer vertical walls in map
+        for(int i = boardHeightStartPos; i <= boardHeight; i++){
+            allWalls.add(new Wall(new Vector2(boardWidth,i), Wall.outerWallEAST));
+            allWalls.add(new Wall(new Vector2(0, i), Wall.outerWallWEST));
+        }
+
+        // register of outer horizontal walls in map
+        for(int i = 0; i <= boardWidth; i++){
+            allWalls.add(new Wall(new Vector2(i,boardHeightStartPos), Wall.outerWallSOUTH));
+            allWalls.add(new Wall(new Vector2(i,boardHeight), Wall.outerWallNORTH));
+        }
+
+        //for(Wall wall : allWalls){
+        //    System.out.println("Position: " + wall.getWallPos().x);
+       // }
 
     }
 
@@ -271,5 +321,9 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     }
 
        */
+
+    public static TiledMapTileLayer getLaserLayer() {
+        return laserLayer;
+    }
 
 }

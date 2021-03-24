@@ -103,27 +103,51 @@ public class Robot extends Sprite {
         }
     }
 
+    public void push(Robot otherplayer) {
+        //if the player is pushing another robot, it needs to make sure that
+        //the other player is being moved
+    }
+
+    public void getPushed() {
+        //the player gets pushed and gets moved
+    }
+
+    public boolean isPushing(Robot otherplayer) {
+        //check for if the player is moving towards another player and doing a push
+        return true;
+    }
+
+    public boolean isBeingpushed(Robot player, Robot otherplayer) {
+        //if the player is being pushed and hits a wall, both the player and the
+        //other player must stop
+        if (otherplayer.isPushing(player)) {
+            return true;
+        }
+        return false;
+    }
+
+
     public ArrayList<PlayingCard> getCards() {
         return cards;
     }
 
 
     public void playerCardstoHand(ArrayList<PlayingCard> spillerkort) {
-        int x = 14;
+        int x = 18;
         int y = 10;
         for (int i = 0; i < spillerkort.size() ; i++ ) {
             PlayingCard nvKort = spillerkort.get(i);
             nvKort.setPosition( x,  y);
             x += 2;
-            if(x == 24 ) {
-                x = 15;
+            if(x == 28 ) {
+                x = 19;
                 y = 7;
             }
         }
     }
 
     public void playerLocked(ArrayList<PlayingCard> lockedkort) {
-        int x = 14;
+        int x = 18;
         int y = 3;
         for (int i = 0; i < lockedkort.size() ; i++ ) {
             PlayingCard kort = lockedkort.get(i);
@@ -142,25 +166,25 @@ public class Robot extends Sprite {
     }
 
     public void renderPriority(Batch batch) {
-        float xStart = 808f;
+        float xStart = 882;
         float yStart = 682f;
 
         for (PlayingCard kort : cards) {
             int priority = kort.getPriority();
             priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
-            xStart += 107;
+            xStart += 92;
 
-            if(xStart == 1343) {
-                xStart = 864;
+            if(xStart == 1342) {
+                xStart = 930;
                 yStart = 520;
             }
         }
-        xStart = 808f;
+        xStart = 882;
         yStart = 307;
         for (PlayingCard locked : lockedHand) {
             int priority = locked.getPriority();
             priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
-            xStart += 107;
+            xStart += 92;
         }
     }
 

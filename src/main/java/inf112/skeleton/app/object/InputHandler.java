@@ -3,27 +3,29 @@ package inf112.skeleton.app.object;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import inf112.skeleton.app.RoboRally;
+import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.PlayingCard;
+import inf112.skeleton.app.map.Laser;
+import inf112.skeleton.app.map.Wall;
+
+import java.util.ArrayList;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 
 public class InputHandler extends InputAdapter {
 
     Robot player;
+    ArrayList<Wall> walls;
+    ArrayList<Laser> lasers;
     RoboRally game;
 
     int dir = 0;
 
-    public InputHandler(RoboRally game, Robot player) {
-
+    public InputHandler(Robot player, ArrayList<Wall> walls, ArrayList<Laser> lasers) {
         this.player = player;
-        this.game = game;
+        this.walls = walls;
+        this.lasers = lasers;
     }
-    public InputHandler(Robot player) {
-        this.player = player;
-    }
-
-
 
 
     @Override
@@ -139,22 +141,65 @@ public class InputHandler extends InputAdapter {
         resetDegrees((int) player.getRotation());
     }
 
+    public boolean checkForWall(Robot player, int xDiff, int yDiff){
+        for (Wall wall : walls){
+            if(wall.isWallInFrontOfPlayer(player) || wall.isWallInNextTile(player, xDiff, yDiff)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkForLaser(Robot player){
+        for (Laser laser : lasers){
+            if(laser.isLaserInFrontOfPlayer(player)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     //1
 
     public void move(int steps) {
         switch ((int) player.getRotation()) {
             case(0):
-                player.setPosition(player.getX(), player.getY() - steps);
+                for(int i = 1; i <= steps; i++){
+                    if(checkForWall(player, 0, -1)){
+                        System.out.println("1aNot possible to make that move, because of wall");
+                    }
+                    else{ player.setPosition(player.getX(), player.getY() - 1); }
+                }
                 break;
+
             case(90):
-                player.setPosition(player.getX() + steps, player.getY());
+                for(int i = 1; i <= steps; i++){
+                    if(checkForWall(player, 1, 0)){
+                        System.out.println("2aNot possible to make that move, because of wall");
+                    }
+                    else{
+                        player.setPosition(player.getX() + 1, player.getY());}
+                }
                 break;
+
             case(180):
-                player.setPosition(player.getX(), player.getY() + steps);
+                for(int i = 1; i <= steps; i++){
+                    if(checkForWall(player, 0, 1)){
+                        System.out.println("3Not possible to make that move, because of wall");
+                    }
+                    else{player.setPosition(player.getX(), player.getY() + 1);}
+                }
                 break;
+
             case(270):
-                player.setPosition(player.getX() - steps, player.getY());
+                for(int i = 1; i <= steps; i++){
+                    if(checkForWall(player, -1, 0)){
+                        System.out.println("4Not possible to make that move, because of wall");
+                    }
+                    else{player.setPosition(player.getX() - 1, player.getY());}
+                }
                 break;
+
         }
     }
 
