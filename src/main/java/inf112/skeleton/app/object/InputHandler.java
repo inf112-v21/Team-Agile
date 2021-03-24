@@ -13,6 +13,7 @@ public class InputHandler extends InputAdapter {
 
     Robot player;
     ArrayList<Wall> walls;
+    ArrayList<Laser> lasers;
     int dir = 0;
 
     public InputHandler(Robot player, ArrayList<Wall> walls, ArrayList<Laser> lasers) {

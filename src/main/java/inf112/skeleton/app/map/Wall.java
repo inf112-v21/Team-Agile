@@ -3,6 +3,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.object.Robot;
+import inf112.skeleton.app.map.Laser;
 
 import java.util.HashMap;
 public class Wall {
@@ -33,31 +34,24 @@ public class Wall {
     public Boolean isWallInFrontOfPlayer(Robot player, float x, float y){
 
         float rotation = player.getRotation();
-        //Vector2 playerCoordinate = new Vector2(player.getX(), player.getY());
         Vector2 playerCoordinate = new Vector2(x, y);
-        switch((int) rotation) {
-            case 0:
-                if (playerCoordinate.equals(wallPos) && (cellId == SOUTH)) {
-                    System.out.println("Wall facing SOUTH");
-                    return true;
+        if (playerCoordinate.equals(wallPos) && ((cellId == SOUTH) || (cellId == Laser.laserSOUTH)) && rotation == 0) {
+            System.out.println("Wall facing SOUTH");
+            return true; }
 
-            } case 90:
-                if (playerCoordinate.equals(wallPos) && (cellId == WEST)) {
-                    System.out.println("Wall facing WEST");
-                    return true;
+        else if (playerCoordinate.equals(wallPos) && ((cellId == EAST) || (cellId == Laser.laserEAST) || (cellId == Laser.doubleLaserEAST)) && rotation == 90) {
+            System.out.println("Wall facing EAST");
+            return true; }
 
-                } case 180:
-                if (playerCoordinate.equals(wallPos) && (cellId == NORTH)) {
-                    System.out.println("Wall facing NORTH");
-                    return true;
+        else if(playerCoordinate.equals(wallPos) && (cellId == NORTH) && rotation == 180) {
+            System.out.println("Wall facing NORTH");
+            return true; }
 
-                } case 270:
-                if (playerCoordinate.equals(wallPos) && (cellId == EAST)) {
-                    System.out.println("Wall facing EAST");
-                    return true;
-                }
-        }
-        return false;
+        else if (playerCoordinate.equals(wallPos) && ((cellId == WEST) || (cellId == Laser.laserWEST)) && rotation == 270) {
+            System.out.println("Wall facing WEST");
+            return true; }
+
+        else return false;
     }
 
 }
