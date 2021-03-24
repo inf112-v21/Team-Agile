@@ -27,7 +27,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
     private TiledMap map;
-    private TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer, wallLayer, laserLayer;
+    private static TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer, wallLayer, laserLayer;
     private OrthogonalTiledMapRenderer render;
     private Integer flagsToTake = 2;
     private OrthographicCamera camera, font_cam;
