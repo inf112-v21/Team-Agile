@@ -61,6 +61,8 @@ public class Deck {
     }
 
     public void dealOutCards(List<Robot> players) {
+        createDeck();
+        shuffle();
         for (Robot player : players) {
             int hp = player.healthpoint;
             for(int i = 0; i < hp ; i++) {

@@ -1,20 +1,17 @@
-package inf112.skeleton.app.network.Packets;
+package inf112.skeleton.app.network.Packets.Events;
 
 public class RotationEvent {
     public int id;
-    public String rotation;
-
+    public int rotation;
 
     public RotationEvent() {
 
     }
-    public RotationEvent(int index ,String move) {
+
+    public RotationEvent(int index, int move) {
         this.id = index;
         this.rotation = move;
     }
-
-    public int toInt(String rotation) {
-        return Integer.parseInt(rotation);
-    }
 }
+
 

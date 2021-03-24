@@ -178,7 +178,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         for(Robot r : robotliste) {
             if (holeLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
                 r.changeState("dead");
-                System.out.println("DU E PÅ ET HÅL");
             } else {
                 r.changeState("normal");
             }

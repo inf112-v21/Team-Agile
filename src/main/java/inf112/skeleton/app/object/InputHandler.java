@@ -4,10 +4,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.PlayingCard;
-import inf112.skeleton.app.network.Packets.MoveEvent;
-import inf112.skeleton.app.network.Packets.RotationEvent;
-
-import java.util.ArrayList;
+import inf112.skeleton.app.network.Packets.Events.MoveEvent;
+import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 
 public class InputHandler extends InputAdapter {
 
@@ -33,24 +31,24 @@ public class InputHandler extends InputAdapter {
         switch (keycode) {
             case Input.Keys.UP:
                 player.move(1);
-                game.client.sendMove(new MoveEvent(game.client.getID(), "1"));
-                //game.clientPlayer.getCards().clear();
+                game.client.sendMove(new MoveEvent(game.client.getID(), 1));
+
                 break;
             case Input.Keys.DOWN:
                 player.move(-1);
-                game.client.sendMove(new MoveEvent(game.client.getID(), "-1"));
+                game.client.sendMove(new MoveEvent(game.client.getID(), -1));
                 break;
             case Input.Keys.LEFT:
                 player.rotate(90);
-                game.client.sendRotation(new RotationEvent(game.client.getID(), "90"));
+                game.client.sendRotation(new RotationEvent(game.client.getID(), 90));
                 break;
             case Input.Keys.RIGHT:
                 rotate(-90);
-                game.client.sendRotation(new RotationEvent(game.client.getID(), "-90"));
+                game.client.sendRotation(new RotationEvent(game.client.getID(), -90));
                 break;
             case Input.Keys.R:
                 rotate(180);
-                game.client.sendRotation(new RotationEvent(game.client.getID(), "180"));
+                game.client.sendRotation(new RotationEvent(game.client.getID(), 180));
                 break;
             case Input.Keys.NUM_1:
                 moveToLocked(0);
@@ -79,7 +77,6 @@ public class InputHandler extends InputAdapter {
             case Input.Keys.NUM_9:
                 moveToLocked(8);
                 break;
-
             case Input.Keys.A:
                 resetLockedHand();
                 break;
@@ -87,7 +84,10 @@ public class InputHandler extends InputAdapter {
                 performCardinRegister();
                 break;
             case Input.Keys.ENTER:
-                game.client.sendCards(game.clientPlayer.getLockedHand());
+                game.client.sendCards(game.clientPlayer.lockedHand);
+                game.clientPlayer.getLockedHand().clear();
+                game.clientPlayer.cards.clear();
+                break;
         }
         return false;
     }

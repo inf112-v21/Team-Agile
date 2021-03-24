@@ -1,4 +1,4 @@
-package inf112.skeleton.app.network.Packets;
+package inf112.skeleton.app.network.Packets.Initialize;
 
 public class CardsPacket {
 
