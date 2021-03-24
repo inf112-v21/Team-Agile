@@ -4,6 +4,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.PlayingCard;
+import inf112.skeleton.app.map.Laser;
 import inf112.skeleton.app.map.Wall;
 
 import java.util.ArrayList;
@@ -14,9 +15,10 @@ public class InputHandler extends InputAdapter {
     ArrayList<Wall> walls;
     int dir = 0;
 
-    public InputHandler(Robot player, ArrayList<Wall> walls) {
+    public InputHandler(Robot player, ArrayList<Wall> walls, ArrayList<Laser> lasers) {
         this.player = player;
         this.walls = walls;
+        this.lasers = lasers;
     }
 
 
@@ -126,6 +128,15 @@ public class InputHandler extends InputAdapter {
     public boolean checkForWalls(Robot player, float x, float y){
         for (Wall wall : walls){
             if(wall.isWallInFrontOfPlayer(player, x, y)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkForLaser(Robot player, float x, float y){
+        for (Laser laser : lasers){
+            if(laser.isLaserInFrontOfPlayer(player, x, y)){
                 return true;
             }
         }
