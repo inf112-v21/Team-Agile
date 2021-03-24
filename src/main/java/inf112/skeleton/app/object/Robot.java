@@ -24,17 +24,16 @@ public class Robot extends Sprite {
     }
 
     public String name;
-    private ArrayList<PlayingCard> cards;
+    public ArrayList<PlayingCard> cards;
+    public ArrayList<PlayingCard> lockedHand;
 
     public ArrayList<PlayingCard> getLockedHand() {
         return lockedHand;
     }
 
-    private ArrayList<PlayingCard> lockedHand;
 
-    public ArrayList<PlayingCard> cards;
-    public ArrayList<PlayingCard> lockedHand;
-    int flagToTake;
+
+    public int flagToTake;
     Texture texture;
     TextureRegion[][] tr;
     TextureRegion normalState;
@@ -48,6 +47,7 @@ public class Robot extends Sprite {
 
     public Robot(TextureRegion texture, int xstart, int ystart, String name) {
 
+    }
 
     public Robot(TextureRegion texture, int xstart, int ystart) {
         setSize(WIDTH, HEIGHT);
@@ -64,24 +64,24 @@ public class Robot extends Sprite {
     public int getRobotHealthPoint() {
             return robotHealthPoint;
         }
+
     public Robot(int xstart, int ystart, Color color, int id) {
         setSize(WIDTH, HEIGHT);
         initializeTexture();
         setRegion(normalState);
         setOriginCenter();
         setPosition(xstart, ystart);
-        this.healthpoint = 9;
-        this.cards = new ArrayList<>(healthpoint);
+        this.robotHealthPoint = 9;
+        this.cards = new ArrayList<>(robotHealthPoint);
         this.lockedHand = new ArrayList<>();
         this.flagToTake = 1;
         this.id = id;
         setColor(color);
     }
 
-    public void decreaseRobotHealthpoint(int healthpoint){
-            this.robotHealthPoint -= healthpoint;
-        }
-    public void initializeTexture() {
+
+
+        public void initializeTexture() {
         texture = new Texture(Gdx.files.internal("player.png"));
         tr = TextureRegion.split(texture, 300, 300);
         normalState = tr[0][0];
@@ -90,17 +90,18 @@ public class Robot extends Sprite {
     }
 
     public void changeState(String state) {
-        switch(state) {
-            case("normal"):
+        switch (state) {
+            case ("normal"):
                 this.setRegion(normalState);
                 break;
-            case("dead"):
+            case ("dead"):
                 this.setRegion(deadState);
                 break;
-            case("win"):
+            case ("win"):
                 this.setRegion(winState);
                 break;
         }
+    }
 
     public ArrayList<PlayingCard> getCards() {
         return cards;
@@ -164,7 +165,7 @@ public class Robot extends Sprite {
     }
 
     public void initializeHud(Batch batch){
-        hudFont.draw(batch, ("Player: " + name), 30, 80);
+        hudFont.draw(batch, ("Player: " + id), 30, 80);
         hudFont.draw(batch, ("HP = " + robotHealthPoint), 615, 80);
     }
 
@@ -207,10 +208,12 @@ public class Robot extends Sprite {
                 break;
         }
     }
+
     public void rotate(int degree) {
         this.setRotation(this.getRotation() + degree);
         resetDegrees((int) this.getRotation());
     }
+
     private void resetDegrees(int degree) {
         if (degree == 360) {
             this.setRotation(0);
@@ -220,21 +223,12 @@ public class Robot extends Sprite {
             this.setRotation(90);
         }
     }
-    public ArrayList<PlayingCard> getLockedHand() {
-        return lockedHand;
+
+    public void decreaseRobotHealthpoint(int healthpoint){
+        this.robotHealthPoint -= healthpoint;
     }
 
-    public int getHealthpoint() {
-        return healthpoint;
-    }
 
-    public void setHealthpoint(int healthpoint) {
-        this.healthpoint = healthpoint;
-    }
-
-    public ArrayList<PlayingCard> getCards() {
-        return cards;
-    }
 
 }
 

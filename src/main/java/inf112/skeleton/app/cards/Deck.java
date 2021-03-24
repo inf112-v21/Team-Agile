@@ -72,7 +72,7 @@ public class Deck {
         }
     }
     public void dealCards(Robot player) {
-        int hp = player.healthpoint;
+        int hp = player.robotHealthPoint;
         for(int i = 0; i < hp ; i++) {
             player.getCards().add(deck.remove(i));
         }

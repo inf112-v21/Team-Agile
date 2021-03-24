@@ -118,7 +118,7 @@ public class GameServer extends Listener{
                 }
 
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

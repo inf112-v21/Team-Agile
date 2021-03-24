@@ -2,6 +2,8 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -97,7 +99,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
 
         // splitter opp player.png bildet og definerer størrelsen
-        /*
+     /*
         tr = TextureRegion.split(texture, 300, 300);
 
         state1 = tr[0][0];
@@ -117,6 +119,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         deck.dealOutCards(players);
 
+
+      */
         try {
             client = new GameClient(this);
         } catch (Exception e) {
@@ -161,35 +165,27 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
-        robot.draw(batch);
-        robot.renderCards(batch);
-
-        batch.setProjectionMatrix(font_cam.combined);
-        robot.renderPriority(batch);
-        robot.initializeHud(batch);
-
         drawPlayers(robots, batch);
+
         if(clientPlayer != null && !clientPlayer.cards.isEmpty()) {
             clientPlayer.renderCards(batch);
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.renderPriority(batch);
-        }
-        batch.end();
 
-    if(clientPlayer != null) {
-        checkrobotStates(robots);
-        checkFlags(robots);
-        allFlagsTaken(robots);
+        }
+        if(clientPlayer != null) {
+            batch.setProjectionMatrix(font_cam.combined);
+            clientPlayer.initializeHud(batch);
         }
 
-    }
-    public void checkrobotStates(ArrayList<Robot> robotliste) {
-        for(Robot r : robotliste) {
-            if (holeLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
-                r.changeState("dead");
-            } else {
-                r.changeState("normal");
-            }
+
+        //robot.draw(batch);
+        //robot.renderCards(batch);
+
+        //batch.setProjectionMatrix(font_cam.combined);
+        //robot.renderPriority(batch);
+        //robot.initializeHud(batch);
+ /*
         if (holeLayer.getCell((int) robot.getX(), (int) robot.getY()) != null) {
             robot.setRegion(dead);
             robot.decreaseRobotHealthpoint(-1);
@@ -201,16 +197,43 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         } else {
             robot.setRegion(state1);
         }
+
+         */
+
+        batch.end();
+
+    if(clientPlayer != null) {
+
+        checkrobotStates(robots);
+        checkFlags(robots);
+        allFlagsTaken(robots);
+        }
+
+    }
+    public void checkrobotStates(ArrayList<Robot> robotliste) {
+        for(Robot r : robotliste) {
+            if (holeLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
+                r.changeState("dead");
+                r.decreaseRobotHealthpoint(-1);
+                r.renderHud("You lost 1 HP", batch, 0);
+            } else {
+                r.changeState("normal");
+            }
+        }
+
     }
 
     public void checkFlags(ArrayList<Robot> robotliste) {
         for(Robot r : robotliste) {
             if (flag1.getCell((int) r.getX(), (int) r.getY()) != null) {
                 r.visitFlag(1);
+                r.renderHud("Flag: " + 1 + " was taken by player " + r.id, batch, 0);
             } else if (flag2.getCell((int) r.getX(), (int) r.getY()) != null) {
                 r.visitFlag(2);
+                r.renderHud("Flag: " + 2 + " was taken by player " + r.id, batch, 0);
             } else if (flag3.getCell((int) r.getX(), (int) r.getY()) != null) {
                 r.visitFlag(3);
+                r.renderHud("Flag: " + 3 + " was taken by player " + r.id, batch, 0);
             }
         }
     }
@@ -235,12 +258,18 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     public void allFlagsTaken(ArrayList<Robot> robotliste) {
         for (Robot r : robotliste) {
             if (r.getFlag() == flagsToTake) {
-                Gdx.app.exit();
+                r.renderHud("Player " + r.id + " won the game!\nRestart the game to start again", batch, 2);
             }
-    public void allFlagsTaken(Robot player) {
-        if (player.getFlag().equals(flagsToTake)) {
-            player.renderHud("Player " + player.getName() + " won the game!\nRestart the game to start again", batch, 2);
         }
     }
+      /*
+    public void allFlagsTaken(ArrayList<Robot> robots) {
+                if (player.getFlag().equals(flagsToTake)) {
+                player.renderHud("Player " + player.getName() + " won the game!\nRestart the game to start again", batch, 2);
+                }
+            }
+    }
+
+       */
 
 }
