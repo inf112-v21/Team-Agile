@@ -59,36 +59,51 @@ eget krav han kunne jobbe med denne tiden. Han tok HUD.
 **22.03.2021 : 12:15-14:00**
 * 
 
+**24.03.2021 : 12.15-15:00**
+*
+
+
 ## Teambeskrivelse og rollefordeling
 
 **Fordeling av roller:**
 
-Vi har ikke forandret noe veldig på rollene siden første oblig, men merker at rollene er ikke så fastsatt. Merker at alle er med å bidrar sånn at arbeidet blir gjort. 
+Vi har ikke forandret noe veldig på rollene siden første oblig, men rollene er ikke så fastsatt. Alle er med å bidrar sånn at arbeidet blir gjort.
+
 
 **Projektmetodikk:**
 
-Vi har for det meste delt oss inn i mindre grupper (som oftest parprogrammering), og fordelt arbeidsoppgavene. 
-Dette har vi forandret så mye på siden sist oblig og har fungert veldig fint fram til nå. 
+Vi tatt å gjort justering på hvordan vi jobber siden den første obligatoriske innlevering, men mye av det har holdt seg det samme.
+Vi bruker fortsatt en blanding mellom Scrum og Kanban. 
+Vi kunne ha vært bedre å oppdatere projectboard oftere, men for det meste er vi flinke til skrive og flytte oppgaver på Trello projectboard. 
 I forhold til de tidligere obligene så har arbeidsoppgavene blitt mindre og mer konkrete. Dette har medført til at vi har økt begrensning av oppgaver som kan være i "work-in-progress". 
 Samtidig som mange av oppgavene også overlapper hverandre.
-Det vi kanskje kunne ha prøvd på og som har vært diskutert i teamet er å jobbe litt mer alene. 
-Vi har fram til nå nesten alltid jobbet i grupper og har merket at av og til kan det ta litt tid før vi får startet. 
 
 ## Retrospektiv
 
 **Prosjektstruktur:**
 
 Vil si at vi er veldig fornøyd på det vi har klart frem til nå. Det er selvfølgelig ting vi kanskje burde ha forandret eller gjort bedre, men frem til nå har dette fungert.
-Det vi kunne ha forbedret oss på er produktivitet. Vi jobber med oppgaven mandag, onsdag og fredag der vi møter hverandre. Som oftest har vi 2 timer på oss, hvor mye av tiden
+Det vi kunne ha forbedret oss på er produktivitet.
+Vi har for det meste delt oss inn i mindre grupper (som oftest parprogrammering), og fordelt arbeidsoppgavene.
+Det vi kanskje kunne ha prøvd på og som har vært diskutert i teamet er å jobbe litt mer alene.
+Vi har fram til nå nesten alltid jobbet i grupper og har merket at av og til kan det ta litt tid før vi får startet.
+Vi jobber med oppgaven mandag, onsdag og fredag der vi møter hverandre. Som oftest har vi 2 timer på oss, hvor mye av tiden
 bruker vi å oppdatere hverandre hvordan det går med de forskjellige gruppene, planlegge hva vi skal gjøre og om noen trenger hjelp.
 Dette 
 
 **3 forbedringspunkter:**
-organisering av arbeid
-litt mer effektivt, si ifra litt kjapper
+Organsering av arbeid er noe vi kan vær mer individuelt og effektivt. Som sakt har nesten kun parprogrammering, men ser nå at det er mye vi kunne ha programmert alene for å være mer effektiv. 
+
+
+--organisering av arbeid
+--litt mer effektivt, si ifra litt kjapper
 
 **Projectboard:**
-Det som har hjulpet oss veldig på å holde styr på hva oppgaver som skal bli gjort er Trello Projectboard.
+
+![](/Deliverables/Images/TrelloProjectBoard2.png "Project Board")
+
+Det vi har fokusert og prioritert på i denne innlevering er multiplayer som var en av MVP kravene. 
+Andre ting vi har prioritert er størrelsen på oppgaven og hva som kanskje er det viktigste å velge oppgaver som gjør det mulig å spille spillet. 
 
 **Gruppedyamikk og kommunikasjon:**
 
@@ -96,6 +111,7 @@ Gruppedynamikken vår har vært utrolig bra og der har vi vært veldig heldig. �
 Det skal sies at 4 av 5 i gruppen kjente hverandre fra før som har gjort det mye enklere. Vi har også laget en facebook chat hvor mye planlegger
 oppdatere hverandre. Her planlegger vi møter, sier ifra om vi har tenkt å jobbe med oppgaven alene eller om vi lurer på noe angående koden.
 Når vi bruker discord så har det ofte at det er en som styre møte sånn at vi ikke snakker over hverandre og får diskutert ting mer strukturert.
+Frem til nå har vi nesten kun parprogrammert og har brukt Code With Me. Prøver å forandre på hvem som hoster Code With Me sånn at det blir jevn fordeling på commits. 
 
 ### Spesifikasjoner
 
