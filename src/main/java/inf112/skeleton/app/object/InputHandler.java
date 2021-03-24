@@ -2,7 +2,7 @@ package inf112.skeleton.app.object;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
-import inf112.skeleton.app.RoboRally;
+import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.PlayingCard;
 import inf112.skeleton.app.map.Laser;
 import inf112.skeleton.app.map.Wall;
@@ -126,66 +126,61 @@ public class InputHandler extends InputAdapter {
         resetDegrees((int) player.getRotation());
     }
 
-    public boolean checkForWalls(Robot player, float x, float y){
+    public boolean checkForWall(Robot player, int xDiff, int yDiff){
         for (Wall wall : walls){
-            if(wall.isWallInFrontOfPlayer(player, x, y)){
+            if(wall.isWallInFrontOfPlayer(player) || wall.isWallInNextTile(player, xDiff, yDiff)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean checkForLaser(Robot player, float x, float y){
+    public boolean checkForLaser(Robot player){
         for (Laser laser : lasers){
-            if(laser.isLaserInFrontOfPlayer(player, x, y)){
+            if(laser.isLaserInFrontOfPlayer(player)){
                 return true;
             }
         }
         return false;
     }
 
-    //1
     public void move(int steps) {
         switch ((int) player.getRotation()) {
             case(0):
                 for(int i = 1; i <= steps; i++){
-                    if(checkForWalls(player, player.getX(), player.getY())){
-                        System.out.println("1Not possible to make that move, because of wall");
+                    if(checkForWall(player, 0, -1)){
+                        System.out.println("1aNot possible to make that move, because of wall");
                     }
                     else{ player.setPosition(player.getX(), player.getY() - 1); }
                 }
-                //player.setPosition(player.getX(), player.getY()) - steps;
                 break;
 
             case(90):
                 for(int i = 1; i <= steps; i++){
-                    if(checkForWalls(player, player.getX(), player.getY())){
-                        System.out.println("2Not possible to make that move, because of wall");
+                    if(checkForWall(player, 1, 0)){
+                        System.out.println("2aNot possible to make that move, because of wall");
                     }
                     else{
                         player.setPosition(player.getX() + 1, player.getY());}
                 }
-                //player.setPosition(player.getX() + steps, player.getY());
                 break;
 
             case(180):
                 for(int i = 1; i <= steps; i++){
-                    if(checkForWalls(player, player.getX(), player.getY())){
+                    if(checkForWall(player, 0, 1)){
                         System.out.println("3Not possible to make that move, because of wall");
                     }
                     else{player.setPosition(player.getX(), player.getY() + 1);}
                 }
-                //player.setPosition(player.getX(), player.getY() + steps);
                 break;
 
             case(270):
                 for(int i = 1; i <= steps; i++){
-                    if(checkForWalls(player, player.getX(), player.getY())){
+                    if(checkForWall(player, -1, 0)){
                         System.out.println("4Not possible to make that move, because of wall");
                     }
                     else{player.setPosition(player.getX() - 1, player.getY());}
                 }
-                //player.setPosition(player.getX() - steps, player.getY());
                 break;
 
         }

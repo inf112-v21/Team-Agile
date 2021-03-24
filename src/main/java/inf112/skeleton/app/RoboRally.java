@@ -168,6 +168,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             allWalls.add(new Wall(new Vector2(i,boardHeightStartPos), Wall.outerWallSOUTH));
             allWalls.add(new Wall(new Vector2(i,boardHeight), Wall.outerWallNORTH));
         }
+
+        for(Wall wall : allWalls){
+            System.out.println("Position: " + wall.getWallPos().x);
+        }
     }
 
 

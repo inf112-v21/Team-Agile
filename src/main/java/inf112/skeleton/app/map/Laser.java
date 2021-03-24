@@ -31,21 +31,10 @@ public class Laser extends Wall {
         super(wallPos, cellId);
     }
 
-    public Boolean isLaserInFrontOfPlayer(Robot player, float x, float y){
-
-        //float rotation = player.getRotation();
-        //Vector2 playerCoordinate = new Vector2(player.getX(), player.getY());
-        Vector2 playerCoordinate = new Vector2(x, y);
-        float laserXPos = wallPos.x;
-        float laserYPos = wallPos.y;
-
+    public Boolean isLaserInFrontOfPlayer(Robot player){
         int xTest = ((int) player.getX());
         int yTest = ((int) player.getY());
-
-
-        if ((laserLayer.getCell(xTest,yTest).getTile().getId()) != 0) {
-            return true;
-        }
+        return (laserLayer.getCell(xTest, yTest).getTile().getId()) != 0;
 
         //int wallid = cell.getTile().getId();
         /*
@@ -76,9 +65,6 @@ public class Laser extends Wall {
             return true;
         }
         */
-
-
-        return false;
     }
 
 }
