@@ -149,8 +149,8 @@ public class InputHandler extends InputAdapter {
         switch ((int) player.getRotation()) {
             case(0):
                 for(int i = 1; i <= steps; i++){
-                    if(checkForWalls(player, player.getX(), player.getY() - 1)){
-                        System.out.println("Not possible to make that move, because of wall");
+                    if(checkForWalls(player, player.getX(), player.getY())){
+                        System.out.println("1Not possible to make that move, because of wall");
                     }
                     else{ player.setPosition(player.getX(), player.getY() - 1); }
                 }
@@ -159,19 +159,19 @@ public class InputHandler extends InputAdapter {
 
             case(90):
                 for(int i = 1; i <= steps; i++){
-                    if(checkForWalls(player, player.getX() + 1, player.getY())){
-                        System.out.println("Not possible to make that move, because of wall");
+                    if(checkForWalls(player, player.getX(), player.getY())){
+                        System.out.println("2Not possible to make that move, because of wall");
                     }
                     else{
-                    player.setPosition(player.getX() + 1, player.getY());}
+                        player.setPosition(player.getX() + 1, player.getY());}
                 }
                 //player.setPosition(player.getX() + steps, player.getY());
                 break;
 
             case(180):
                 for(int i = 1; i <= steps; i++){
-                    if(checkForWalls(player, player.getX(), player.getY() + 1)){
-                        System.out.println("Not possible to make that move, because of wall");
+                    if(checkForWalls(player, player.getX(), player.getY())){
+                        System.out.println("3Not possible to make that move, because of wall");
                     }
                     else{player.setPosition(player.getX(), player.getY() + 1);}
                 }
@@ -180,8 +180,8 @@ public class InputHandler extends InputAdapter {
 
             case(270):
                 for(int i = 1; i <= steps; i++){
-                    if(checkForWalls(player, player.getX() - 1, player.getY())){
-                        System.out.println("Not possible to make that move, because of wall");
+                    if(checkForWalls(player, player.getX(), player.getY())){
+                        System.out.println("4Not possible to make that move, because of wall");
                     }
                     else{player.setPosition(player.getX() - 1, player.getY());}
                 }

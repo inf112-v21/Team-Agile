@@ -190,4 +190,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         }
     }
 
+    public static TiledMapTileLayer getLaserLayer() {
+        return laserLayer;
+    }
+
 }

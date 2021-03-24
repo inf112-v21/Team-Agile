@@ -26,6 +26,8 @@ public class Laser extends Wall {
     //laser shoots towards west
     static int doubleLaserEAST = 95;
 
+    TiledMapTileLayer laserLayer = RoboRally.getLaserLayer();
+
 
     public Laser(Vector2 wallPos, TiledMapTileLayer.Cell cell, int cellId) {
         super(wallPos, cell, cellId);
@@ -39,7 +41,11 @@ public class Laser extends Wall {
         float laserXPos = wallPos.x;
         float laserYPos = wallPos.y;
 
-        if (playerCoordinate.equals(laserLayer)) {
+        int xTest = ((int) player.getX());
+        int yTest = ((int) player.getY());
+
+
+        if ((laserLayer.getCell(xTest,yTest).getTile().getId()) != 0) {
             return true;
         }
 

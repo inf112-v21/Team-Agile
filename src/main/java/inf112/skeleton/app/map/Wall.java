@@ -9,16 +9,14 @@ import java.util.HashMap;
 public class Wall {
 
     TiledMapTileLayer.Cell cell;
-    HashMap rightWall;
-    Integer wallID;
     Vector2 wallPos;
     int cellId;
 
     // wall values from .tmx-file:
-    int SOUTH = 29;
-    int WEST = 30;
-    int NORTH = 31;
-    int EAST = 23;
+    static int SOUTH = 29;
+    static int WEST = 30;
+    static int NORTH = 31;
+    static int EAST = 23;
 
 
 
