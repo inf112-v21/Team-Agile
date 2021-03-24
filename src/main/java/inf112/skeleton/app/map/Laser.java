@@ -2,6 +2,7 @@ package inf112.skeleton.app.map;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.object.Robot;
 
 import java.util.HashMap;
@@ -13,12 +14,17 @@ public class Laser extends Wall {
     Vector2 wallPos;
     int cellId;
 
-    int laserSOUTH = 37;
-    int laserWEST = 38;
+    //laser shoots towards north
+    static int laserSOUTH = 37;
+    //laser shoots towards east
+    static int laserWEST = 38;
     //int laserNORTH = ;
-    int laserEAST = 46;
 
-    int doubleLaserEAST = 95;
+    //laser shoots towards west
+    static int laserEAST = 46;
+
+    //laser shoots towards west
+    static int doubleLaserEAST = 95;
 
 
     public Laser(Vector2 wallPos, TiledMapTileLayer.Cell cell, int cellId) {
@@ -27,31 +33,48 @@ public class Laser extends Wall {
 
     public Boolean isLaserInFrontOfPlayer(Robot player, float x, float y){
 
-        float rotation = player.getRotation();
+        //float rotation = player.getRotation();
         //Vector2 playerCoordinate = new Vector2(player.getX(), player.getY());
         Vector2 playerCoordinate = new Vector2(x, y);
-        switch((int) rotation) {
-            case 0:
-                if (playerCoordinate.equals(wallPos) && (cellId == SOUTH)) {
-                    System.out.println("Wall facing SOUTH");
-                    return true;
+        float laserXPos = wallPos.x;
+        float laserYPos = wallPos.y;
 
-                } case 90:
-                if (playerCoordinate.equals(wallPos) && (cellId == WEST)) {
-                    System.out.println("Wall facing WEST");
-                    return true;
-
-                } case 180:
-                if (playerCoordinate.equals(wallPos) && (cellId == NORTH)) {
-                    System.out.println("Wall facing NORTH");
-                    return true;
-
-                } case 270:
-                if (playerCoordinate.equals(wallPos) && (cellId == EAST)) {
-                    System.out.println("Wall facing EAST");
-                    return true;
-                }
+        if (playerCoordinate.equals(laserLayer)) {
+            return true;
         }
+
+        //int wallid = cell.getTile().getId();
+        /*
+        if ((x == laserXPos && y < laserYPos) && (cellId == laserSOUTH)) {
+            System.out.println("Laser shooting towards NORTH");
+
+            //TiledMapTileLayer.Cell wallTile = wallLayer.getCell(x,y);
+            //if (wallTile != null)
+            //cell.getTile().getId();
+            for (float i = laserYPos; i > y; i--) {
+                if (RoboRally.boardLayer.getCell(x,i)
+            }
+
+        }
+
+        if ((x == laserXPos && y > laserYPos) && (cellId == WEST)) {
+            System.out.println("Laser shooting towards EAST");
+            return true;
+        }
+
+        if ((y == laserYPos && x < laserXPos) && (cellId == laserNORTH)) {
+            System.out.println("Laser shooting towards SOUTH");
+            return true;
+        }
+
+        if ((y == laserYPos && x > laserXPos) && (cellId == EAST)) {
+            System.out.println("Wall facing EAST");
+            return true;
+        }
+        */
+
+
         return false;
     }
+
 }
