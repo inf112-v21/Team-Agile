@@ -6,15 +6,13 @@ import java.util.ArrayList;
 
 public class Player {
 
-    public int x, y, id;
+    public int id;
     public ArrayList<PlayingCardPair> lockedHand;
 
     public Player() {
     }
 
-    public Player(int x, int y, int id) {
-        this.x = x;
-        this.y = y;
+    public Player(int id) {
         this.id = id;
         this.lockedHand = new ArrayList<>();
     }

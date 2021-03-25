@@ -18,6 +18,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import inf112.skeleton.app.cards.Deck;
+import inf112.skeleton.app.map.Spawn;
 import inf112.skeleton.app.network.GameClient;
 import inf112.skeleton.app.map.Laser;
 import inf112.skeleton.app.map.Wall;
@@ -27,12 +28,14 @@ import inf112.skeleton.app.object.Robot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Vector;
 
 public class RoboRally extends InputAdapter implements ApplicationListener {
     public SpriteBatch batch;
     private BitmapFont font;
     private TiledMap map;
-    private static TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer, wallLayer, laserLayer, flag1, flag2, flag3;
+    private static TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer, wallLayer, laserLayer, flag1, flag2, flag3, startPositions;
     private OrthogonalTiledMapRenderer render;
     private Integer flagsToTake = 4;
     private OrthographicCamera camera, font_cam;
@@ -58,15 +61,17 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     public ArrayList<Wall> allWalls = new ArrayList<>();
     public ArrayList<Laser> allLasers = new ArrayList<>();
-    public ArrayList<Vector2> spawns = new ArrayList<>();
+   // public ArrayList<Spawn> spawns = new ArrayList<>();
+    public HashMap<Integer, Spawn> spawns = new HashMap<>();
     public String gameState = "pickCards";
+
 
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
-        colors = new ArrayList<>(Arrays.asList(Color.LIGHT_GRAY, Color.ORANGE, Color.LIME, Color.YELLOW));
+        colors = new ArrayList<>(Arrays.asList(Color.WHITE,Color.LIGHT_GRAY,  Color.FIREBRICK , Color.ORANGE, Color.LIME, Color.YELLOW, Color.GREEN, Color.FOREST));
 
         camera = new OrthographicCamera();
         viewport = new FitViewport(29,14);
@@ -82,6 +87,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Holes");
         wallLayer = (TiledMapTileLayer) map.getLayers().get("Walls");
         laserLayer = (TiledMapTileLayer) map.getLayers().get("Laser");
+        startPositions = (TiledMapTileLayer) map.getLayers().get("StartPositions");
+
 
         flag1 = (TiledMapTileLayer) map.getLayers().get("Flag1");
         flag2 = (TiledMapTileLayer) map.getLayers().get("Flag2");
@@ -95,6 +102,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         players = new ArrayList<>();
         robots = new ArrayList<>();
         registerWallsAndLasers();
+        registerSpawns();
 
         try {
             client = new GameClient(this);
@@ -114,7 +122,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     public ArrayList<Robot> playerToRobot(ArrayList<Player> spillerliste) {
         robots.clear();
         for(int i = 0; i < spillerliste.size() ; i++) {
-            Robot robot = new Robot(spillerliste.get(i).x, spillerliste.get(i).y, colors.get(i), spillerliste.get(i).id, this);
+            Robot robot = new Robot((int)spawns.get(i).getSpawnpos().x, (int)spawns.get(i).getSpawnpos().y, colors.get(i), spillerliste.get(i).id, this);
             robots.add(robot);
         }
         return robots;
@@ -175,6 +183,52 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             }
         }
         allFlagsTaken(robots);
+    }
+
+    public void registerSpawns() {
+        for(int i = 0; i < boardWidth; i++){
+            for(int j = 0; j < boardHeight; j++) {
+                TiledMapTileLayer.Cell spawntile = startPositions.getCell(i,j);
+                if(spawntile != null) {
+                    if(spawntile.getTile().getId() == Spawn.spawn1) {
+                        spawns.put(0,new Spawn(new Vector2(i,j)));
+                        }
+                    if(spawntile.getTile().getId() == Spawn.spawn2) {
+                        spawns.put(1,new Spawn(new Vector2(i,j)));
+                    }
+                    if(spawntile.getTile().getId() == Spawn.spawn3) {
+                        spawns.put(2,new Spawn(new Vector2(i,j)));
+                    }
+                    if(spawntile.getTile().getId() == Spawn.spawn4) {
+                        spawns.put(3,new Spawn(new Vector2(i,j)));
+                    }
+                    if(spawntile.getTile().getId() == Spawn.spawn5) {
+                        spawns.put(4,new Spawn(new Vector2(i,j)));
+                    }
+                    if(spawntile.getTile().getId() == Spawn.spawn6) {
+                        spawns.put(5,new Spawn(new Vector2(i,j)));
+                    }
+                    if(spawntile.getTile().getId() == Spawn.spawn7) {
+                        spawns.put(6,new Spawn(new Vector2(i,j)));
+                    }
+                    if(spawntile.getTile().getId() == Spawn.spawn8) {
+                        spawns.put(7,new Spawn(new Vector2(i,j)));
+                    }
+
+                    }
+                }
+            }
+        /*
+        spawns.add(new Spawn(new Vector2(1,8)));
+        spawns.add(new Spawn(new Vector2(1,7)));
+        spawns.add(new Spawn(new Vector2(1,10)));
+        spawns.add(new Spawn(new Vector2(1,5)));
+        spawns.add(new Spawn(new Vector2(1,12)));
+        spawns.add(new Spawn(new Vector2(1,3)));
+        spawns.add(new Spawn(new Vector2(1,8)));
+        spawns.add(new Spawn(new Vector2(1,2)));
+
+         */
     }
 
     public void registerWallsAndLasers(){

@@ -75,6 +75,7 @@ public class Robot extends Sprite {
         setRegion(normalState);
         setOriginCenter();
         setPosition(xstart, ystart);
+        setRotation(90);
         this.robotHealthPoint = 9;
         this.cards = new ArrayList<>(robotHealthPoint);
         this.lockedHand = new ArrayList<>();

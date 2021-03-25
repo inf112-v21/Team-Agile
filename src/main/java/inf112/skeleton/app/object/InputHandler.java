@@ -18,12 +18,13 @@ public class InputHandler extends InputAdapter {
     ArrayList<Wall> walls;
     ArrayList<Laser> lasers;
     RoboRally game;
+    
 
-    public InputHandler(RoboRally game, Robot player, ArrayList<Wall> walls, ArrayList<Laser> lasers) {
+    public InputHandler(RoboRally game, Robot player) {
         this.game = game;
         this.player = player;
-        this.walls = walls;
-        this.lasers = lasers;
+        this.walls = game.allWalls;
+        this.lasers = game.allLasers;
     }
 
 
@@ -33,7 +34,6 @@ public class InputHandler extends InputAdapter {
             case Input.Keys.UP:
                 player.move(1);
                 game.client.sendMove(new MoveEvent(game.client.getID(), 1));
-
                 break;
             case Input.Keys.DOWN:
                 player.move(-1);
@@ -111,7 +111,6 @@ public class InputHandler extends InputAdapter {
 
     public void resetLockedHand() {
         for (PlayingCard card: player.getLockedHand()) {
-
             player.getCards().add(card);
             player.playerCardstoHand(player.getCards());
         }
