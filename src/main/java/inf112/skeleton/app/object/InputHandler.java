@@ -18,12 +18,13 @@ public class InputHandler extends InputAdapter {
     ArrayList<Wall> walls;
     ArrayList<Laser> lasers;
     RoboRally game;
+    
 
-    public InputHandler(RoboRally game, Robot player, ArrayList<Wall> walls, ArrayList<Laser> lasers) {
+    public InputHandler(RoboRally game, Robot player) {
         this.game = game;
         this.player = player;
-        this.walls = walls;
-        this.lasers = lasers;
+        this.walls = game.allWalls;
+        this.lasers = game.allLasers;
     }
 
 
