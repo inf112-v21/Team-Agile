@@ -105,12 +105,11 @@ bruker vi å oppdatere hverandre hvordan det går med de forskjellige gruppene, 
 Dette 
 
 **3 forbedringspunkter:**
-Organsering av arbeid er noe vi kan vær mer individuelt og effektivt. Vi har nesten kun parprogrammert, men ser nå at det er mye vi kunne ha programmert alene for å være mer effektiv. 
-
-
---organisering av arbeid
---litt mer effektivt, si ifra litt kjapper
-
+1. Organsering av arbeid er noe vi kan vær mer individuelt og effektivt på. Vi har nesten kun parprogrammert, men ser nå at det er mye vi kunne ha gjort alene for å være mer effektiv. 
+2. Selvom vi har ganske flinke med å kommunisere med hverandre, så kunne vi ha vært bedre når vi jobber individuelt. Dette er noe vi prøver å bli flinkere på.
+3. Det som har fortsatt henger igjen helt fra alle innlevering er bedre planlegging. Denne har vi klart å planlegge litt lengre i forveien, men merker fortsatt det er mye som samler seg mot slutten av innleveringen. 
+Dette kan vi bli enda bedre på og dele opp oppgavene jevnlig utover sprint perioden.
+   
 **Projectboard:**
 
 ![](/Deliverables/Images/TrelloProjectBoard2.png "Project Board")
@@ -162,7 +161,9 @@ Frem til nå har vi nesten kun parprogrammert og har brukt Code With Me. Prøver
 
 
 **Arbeidsoppgaver**
-*
+* Implimenter at spiller ikke kan gå utover kartets rammer
+* Implimenter at spiller ikke kan gå forbi vegger som står foran spillerens retning, i nåværende tile og tilen foran spilleren. 
+* Implimenter at spiller blir stoppet dersom det er en vegg i tilen foran som er ligger i retning motsatt av det spilleren peker mot 
 
 <br/>
 
