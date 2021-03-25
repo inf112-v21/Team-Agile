@@ -77,11 +77,9 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         boardLayer = (TiledMapTileLayer) map.getLayers().get("BaseLayer");
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Holes");
-        flagLayer = (TiledMapTileLayer) map.getLayers().get("Flags");
         wallLayer = (TiledMapTileLayer) map.getLayers().get("Walls");
         laserLayer = (TiledMapTileLayer) map.getLayers().get("Laser");
 
-        holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flag1 = (TiledMapTileLayer) map.getLayers().get("Flag1");
         flag2 = (TiledMapTileLayer) map.getLayers().get("Flag2");
         flag3 = (TiledMapTileLayer) map.getLayers().get("Flag3");
@@ -205,7 +203,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         batch.end();
 
     if(clientPlayer != null) {
-
         checkrobotStates(robots);
         checkFlags(robots);
         allFlagsTaken(robots);
