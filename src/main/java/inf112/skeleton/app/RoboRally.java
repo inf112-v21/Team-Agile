@@ -63,8 +63,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         font = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
         colors = new ArrayList<>(Arrays.asList(Color.LIGHT_GRAY, Color.ORANGE, Color.LIME, Color.YELLOW));
 
-
-
         camera = new OrthographicCamera();
         viewport = new ExtendViewport(23,14);
         font_cam = new OrthographicCamera();
