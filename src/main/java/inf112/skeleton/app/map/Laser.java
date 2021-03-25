@@ -27,7 +27,7 @@ public class Laser extends Wall {
     TiledMapTileLayer laserLayer = RoboRally.getLaserLayer();
 
 
-    public Laser(Vector2 wallPos, TiledMapTileLayer.Cell cell, int cellId) {
+    public Laser(Vector2 wallPos, int cellId) {
         super(wallPos, cellId);
     }
 

@@ -60,7 +60,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     public ArrayList<Wall> allWalls = new ArrayList<>();
     public ArrayList<Laser> allLasers = new ArrayList<>();
-    public ArrayList<Robot> inLineOfLaser = new ArrayList<>();
+    //public ArrayList<Robot> inLineOfLaser = new ArrayList<>();
     public ArrayList<Vector2> spawns = new ArrayList<>();
     public String gameState = "pickCards";
 
@@ -219,7 +219,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                 }
             }
         } else {
-            System.out.println("Not a laser.");
+            System.out.println("No players hit by lasers.");
         }
     }
 
@@ -301,7 +301,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                 if (wallTile != null){
                     int wallid = wallTile.getTile().getId();
                     if (wallid == Laser.laserSOUTH || wallid == Laser.laserWEST || wallid == Laser.laserEAST || wallid == Laser.doubleLaserEAST) {
-                        allLasers.add(new Laser(new Vector2(i,j), wallTile, wallTile.getTile().getId()));
+                        allLasers.add(new Laser(new Vector2(i,j), wallTile.getTile().getId()));
                     }
                     allWalls.add(new Wall(new Vector2(i,j), wallTile.getTile().getId()));
                 }
