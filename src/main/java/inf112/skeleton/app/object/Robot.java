@@ -45,7 +45,7 @@ public class Robot extends Sprite {
     TextureRegion winState;
     public int id;
 
-    BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
+    BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
     BitmapFont hudFont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
 
 
@@ -144,7 +144,7 @@ public class Robot extends Sprite {
             PlayingCard nvKort = spillerkort.get(i);
             nvKort.setPosition( x,  y);
             x += 2;
-            if(x == 28 ) {
+            if(x == 28) {
                 x = 19;
                 y = 7;
             }
@@ -195,14 +195,14 @@ public class Robot extends Sprite {
 
     public void initializeHud(Batch batch){
         hudFont.draw(batch, ("Player: " + id), 30, 80);
-        hudFont.draw(batch, ("HP = " + robotHealthPoint), 615, 80);
+        hudFont.draw(batch, ("HP = " + robotHealthPoint), 750, 80);
     }
 
     public void renderHud(String text, SpriteBatch batch, int hudPosition){
         BitmapFont hudFont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
         batch.begin();
-        if(hudPosition == 0){ hudFont.draw(batch, text, 250, 55); }
-        else{ hudFont.draw(batch, text, 901,55); }
+        if(hudPosition == 0){ hudFont.draw(batch, text, 500, 55); }
+        else{ hudFont.draw(batch, text, 1151,55); }
         batch.end();
     }
 

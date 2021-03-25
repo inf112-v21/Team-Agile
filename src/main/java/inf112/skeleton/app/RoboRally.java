@@ -16,6 +16,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.network.GameClient;
 import inf112.skeleton.app.map.Laser;
@@ -35,7 +36,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     private OrthogonalTiledMapRenderer render;
     private Integer flagsToTake = 4;
     private OrthographicCamera camera, font_cam;
-    private ExtendViewport viewport;
+    //private ExtendViewport viewport;
+    private FitViewport viewport;
 
 
     Robot test;
@@ -56,15 +58,18 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     public ArrayList<Wall> allWalls = new ArrayList<>();
     public ArrayList<Laser> allLasers = new ArrayList<>();
+    public ArrayList<Vector2> spawns = new ArrayList<>();
+    public String gameState = "pickCards";
+
 
     @Override
     public void create() {
         batch = new SpriteBatch();
-        font = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
+        font = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
         colors = new ArrayList<>(Arrays.asList(Color.LIGHT_GRAY, Color.ORANGE, Color.LIME, Color.YELLOW));
 
         camera = new OrthographicCamera();
-        viewport = new ExtendViewport(23,14);
+        viewport = new FitViewport(28,13);
         font_cam = new OrthographicCamera();
         font_cam.setToOrtho(false, 1339,750);
 
@@ -82,48 +87,21 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         flag2 = (TiledMapTileLayer) map.getLayers().get("Flag2");
         flag3 = (TiledMapTileLayer) map.getLayers().get("Flag3");
 
-
-
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
 
-        Texture texture = new Texture("player.png");
 
+        //Texture texture = new Texture("player.png");
         deck = new Deck();
         players = new ArrayList<>();
         robots = new ArrayList<>();
         registerWallsAndLasers();
 
-        // splitter opp player.png bildet og definerer størrelsen
-     /*
-        tr = TextureRegion.split(texture, 300, 300);
-
-        state1 = tr[0][0];
-        dead = tr[0][1];
-        win = tr[0][2];
-
-        registerWallsAndLasers();
-
-        playerPosition = new Vector2(0, 0);
-        robot = new Robot(state1,2,2, "Player 1");
-
-        test = new Robot(state1,2,2);
-
-        InputHandler myhandler = new InputHandler(test, allWalls, allLasers);
-
-        players = new ArrayList<>();
-
-        players.add(test);
-
-        deck.dealOutCards(players);
-
-        test.playerCardstoHand(test.getCards());
-        Gdx.input.setInputProcessor(myhandler);
-      */
         try {
             client = new GameClient(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
 
     }
 
@@ -176,34 +154,13 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             clientPlayer.initializeHud(batch);
         }
 
-
-        //robot.draw(batch);
-        //robot.renderCards(batch);
-
-        //batch.setProjectionMatrix(font_cam.combined);
-        //robot.renderPriority(batch);
-        //robot.initializeHud(batch);
- /*
-        if (holeLayer.getCell((int) robot.getX(), (int) robot.getY()) != null) {
-            robot.setRegion(dead);
-            robot.decreaseRobotHealthpoint(-1);
-            robot.renderHud("You lost 1 HP", batch, 0);
-        } else if (flagLayer.getCell((int) robot.getX(), (int) robot.getY()) != null) {
-            robot.setRegion(win);
-            robot.visitFlag(1);
-            robot.renderHud("Flag: " + 1 + " was taken\n" + (flagsToTake-1) + " numbers of flags left", batch, 0);
-        } else {
-            robot.setRegion(state1);
-        }
-
-         */
-
         batch.end();
 
-    if(clientPlayer != null) {
+    if(clientPlayer != null && gameState == "check") {
         checkrobotStates(robots);
         checkFlags(robots);
         allFlagsTaken(robots);
+        gameState = "pickCards";
         }
 
     }
@@ -211,7 +168,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         for(Robot r : robotliste) {
             if (holeLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
                 r.changeState("dead");
-                r.decreaseRobotHealthpoint(-1);
+                r.decreaseRobotHealthpoint(1);
                 r.renderHud("You lost 1 HP", batch, 0);
             } else {
                 r.changeState("normal");
@@ -247,13 +204,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             allWalls.add(new Wall(new Vector2(i,boardHeight), Wall.outerWallNORTH));
         }
 
-        //for(Wall wall : allWalls){
-        //    System.out.println("Position: " + wall.getWallPos().x);
-       // }
-
     }
 
     public void checkFlags(ArrayList<Robot> robotliste) {
+
         for(Robot r : robotliste) {
             if (flag1.getCell((int) r.getX(), (int) r.getY()) != null) {
                 r.visitFlag(1);
@@ -266,6 +220,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                 r.renderHud("Flag: " + 3 + " was taken by player " + r.id, batch, 0);
             }
         }
+
     }
 
 

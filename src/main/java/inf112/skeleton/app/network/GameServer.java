@@ -62,7 +62,7 @@ public class GameServer extends Listener{
                 server.sendToAllTCP(spillerliste);
 
                 Scanner sc = new Scanner(System.in);
-                System.out.println("Ready to start? y/n");
+                System.out.println("Start? y/n");
                 if(sc.nextLine().equals("y")) {
                     server.sendToAllTCP(new CardsPacket());
                 }

@@ -22,15 +22,6 @@ public class Wall {
     public static int outerWallNORTH = 310;
     public static int outerWallEAST = 230;
 
-
-    public Vector2 getWallPos() {
-        return wallPos;
-    }
-
-    public int getCellId() {
-        return cellId;
-    }
-
     public Wall(Vector2 wallPos, int cellId) {
         this.wallPos = wallPos;
         this.cellId = cellId;
@@ -83,25 +74,4 @@ public class Wall {
             return true; }
         else return false;
     }
-
 }
-
-
-
-/**
- * 23 = vegg i ØST
- * 30 = vegg i VEST
- * 31 = vegg i NORD
- * 29 = vegg i SØR
- * <p>
- * 37 = laser fra SØR mot NORD
- * 38 = laser fra VEST mot ØST
- * 46 = laser fra ØST mot VEST
- * <p>
- * 95 = dobbel laser fra ØST mot VEST
- * <p>
- * <p>
- * int boardHeightStartPos = 2;
- * int boardHeight = boardHeightStartPos + 12;
- * int boardWidth = 17;
- */
