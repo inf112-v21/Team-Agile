@@ -218,6 +218,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                     }
                 }
             }
+        } else {
+            System.out.println("Not a laser.");
         }
     }
 
