@@ -25,16 +25,6 @@ public class InputHandler extends InputAdapter {
         this.walls = walls;
         this.lasers = lasers;
     }
-    public InputHandler(RoboRally game, Robot player) {
-        this.player = player;
-        this.game = game;
-        this.walls = game.allWalls;
-        this.lasers = game.allLasers;
-
-    }
-    public InputHandler(Robot player) {
-        this.player = player;
-    }
 
 
     @Override
@@ -99,6 +89,9 @@ public class InputHandler extends InputAdapter {
                 game.clientPlayer.getLockedHand().clear();
                 game.clientPlayer.cards.clear();
                 break;
+            case Input.Keys.C:
+                game.gameState = "check";
+                break;
         }
         return false;
     }
@@ -151,7 +144,6 @@ public class InputHandler extends InputAdapter {
     }
 
     public boolean checkForWall(Robot player, int xDiff, int yDiff){
-        System.out.println("checkwall");
         for (Wall wall : walls){
             if(wall.isWallInFrontOfPlayer(player) || wall.isWallInNextTile(player, xDiff, yDiff)) {
                 return true;
@@ -169,14 +161,13 @@ public class InputHandler extends InputAdapter {
         return false;
     }
 
-    //1
 
     public void move(int steps) {
         switch ((int) player.getRotation()) {
             case(0):
                 for(int i = 1; i <= steps; i++){
                     if(checkForWall(player, 0, -1)){
-                        System.out.println("1aNot possible to make that move, because of wall");
+                        System.out.println("Not possible to make that move, because of wall");
                     }
                     else{ player.setPosition(player.getX(), player.getY() - 1); }
                 }
@@ -185,7 +176,7 @@ public class InputHandler extends InputAdapter {
             case(90):
                 for(int i = 1; i <= steps; i++){
                     if(checkForWall(player, 1, 0)){
-                        System.out.println("2aNot possible to make that move, because of wall");
+                        System.out.println("Not possible to make that move, because of wall");
                     }
                     else{
                         player.setPosition(player.getX() + 1, player.getY());}
@@ -195,7 +186,7 @@ public class InputHandler extends InputAdapter {
             case(180):
                 for(int i = 1; i <= steps; i++){
                     if(checkForWall(player, 0, 1)){
-                        System.out.println("3Not possible to make that move, because of wall");
+                        System.out.println("Not possible to make that move, because of wall");
                     }
                     else{player.setPosition(player.getX(), player.getY() + 1);}
                 }
@@ -204,7 +195,7 @@ public class InputHandler extends InputAdapter {
             case(270):
                 for(int i = 1; i <= steps; i++){
                     if(checkForWall(player, -1, 0)){
-                        System.out.println("4Not possible to make that move, because of wall");
+                        System.out.println("Not possible to make that move, because of wall");
                     }
                     else{player.setPosition(player.getX() - 1, player.getY());}
                 }
