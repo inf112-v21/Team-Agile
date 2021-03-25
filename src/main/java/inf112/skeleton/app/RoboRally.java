@@ -163,7 +163,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         checkrobotStates(robots);
         checkFlags(robots);
         allFlagsTaken(robots);
-        checkLaserBeams(robots);
+        checkLaserBeams(robots, allLasers);
         gameState = "pickCards";
         }
 
@@ -186,16 +186,43 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                 }
             }
         } else if (laser.getCellId() == Laser.laserWEST) {
-
+            for (int i = (int) x; i < boardWidth; i++) {
+                if (playerLayer.getCell((int) i, (int) y) != null) {
+                    for (Robot r: roboter) {
+                        if (r.getX() == i && r.getY() == y) {
+                            r.decreaseRobotHealthpoint(1);
+                            r.renderHud("You lost 1 HP", batch, 0);
+                        }
+                    }
+                }
+            }
         } else if (laser.getCellId() == Laser.laserEAST) {
-
+            for (int i = (int) x; i > 0; i--) {
+                if (playerLayer.getCell((int) i, (int) y) != null) {
+                    for (Robot r: roboter) {
+                        if (r.getX() == i && r.getY() == y) {
+                            r.decreaseRobotHealthpoint(1);
+                            r.renderHud("You lost 1 HP", batch, 0);
+                        }
+                    }
+                }
+            }
         } else if (laser.getCellId() == Laser.doubleLaserEAST) {
-
+            for (int i = (int) x; i > 0; i--) {
+                if (playerLayer.getCell((int) i, (int) y) != null) {
+                    for (Robot r: roboter) {
+                        if (r.getX() == i && r.getY() == y) {
+                            r.decreaseRobotHealthpoint(2);
+                            r.renderHud("You lost 2 HP", batch, 0);
+                        }
+                    }
+                }
+            }
         }
     }
 
-    private void checkLaserBeams(ArrayList<Robot> robotliste, ArrayList<Laser> allLasers) {
-        for (Laser l : allLasers) {
+    private void checkLaserBeams(ArrayList<Robot> robotliste, ArrayList<Laser> lasers) {
+        for (Laser l : lasers) {
             dealDamageFromLaser(l, robotliste);
         }
 
@@ -248,7 +275,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
              */
 
 
-        }
+
     }
 
     public void checkrobotStates(ArrayList<Robot> robotliste) {
