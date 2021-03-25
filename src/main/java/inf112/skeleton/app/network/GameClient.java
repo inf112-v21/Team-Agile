@@ -79,6 +79,7 @@ public class GameClient extends Listener {
             Gdx.app.postRunnable(new Runnable() {
                 @Override
                 public void run() {
+                    game.deck.createDeck();
                     game.handler = new InputHandler(game, game.robots.get(c.getID() - 1));
                     game.clientPlayer = game.robots.get(c.getID() - 1);
                     game.deck.dealOutCards(game.robots);

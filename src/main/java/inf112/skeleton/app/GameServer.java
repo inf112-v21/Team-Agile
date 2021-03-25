@@ -55,9 +55,9 @@ public class GameServer extends Listener{
                 server.sendToAllTCP(spillerliste);
 
                 Scanner sc = new Scanner(System.in);
-                System.out.println("Start? y/n");
-                if(sc.nextLine().equals("y")) {
-                    server.sendToAllTCP(new CardsPacket());
+                System.out.println("Accept player? yes/no");
+                if(sc.nextLine().equals("yes")) {
+                    server.sendToTCP(c.getID() , new CardsPacket());
                 }
 
                 System.out.println("Currently Connected players: " + playerlist.size());
@@ -81,9 +81,10 @@ public class GameServer extends Listener{
 
             if(recievedRegisters == playerlist.size()) {
                 gameloop();
-                server.sendToAllTCP(new CardsPacket());
-                recievedRegisters = 0;
+
+
             }
+
         }
     }
 
@@ -110,15 +111,22 @@ public class GameServer extends Listener{
                     server.sendToAllTCP(event);
                 }
 
+                long start = new Date().getTime();
+                while(new Date().getTime() - start < 1000L){
+
+                }
+/*
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
+*/
 
             }
         }
+        recievedRegisters = 0;
+        server.sendToAllTCP(new CardsPacket());
     }
 
     public void sendNewCards(CardsPacket cards) {

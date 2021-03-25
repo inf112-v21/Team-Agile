@@ -197,6 +197,23 @@ Frem til nå har vi nesten kun parprogrammert og har brukt Code With Me. Prøver
 
 
 
+**Manuell Test for Multiplayer**
+
+Før man starter må man tillate at flere instanser av Main tillates. Åpne opp Main gå i menylinjen, og naviger deg til
+run -> edit configurations -> modify options -> huke av på ``Allow multiple instances``
+
+(les Known Bugs i ``Readme.md`` om feil oppstår ved gjennomføring av test)
+
+* Start GameServer instans
+* Start Main instans, i GameServer terminalen skriv ``yes`` da kobles den Main instansen til Server.
+* Start en ny Main instans til, og i GameServer ``yes``
+* Nå skal 2 seperate spillvinduer være oppe , hvor hver av de har egne brukertaster og styrer hver sin robot.
+* Gjennomfør noen av robot styringene ved hjelp av piltastene. Spilleren som flytter på seg flytter seg på samme måte i begge spillvinduene.
+* Velg 5 kort med tastetrykkene fra 1-9 og trykk ``ENTER`` for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt.
+* Når valgte kort er sendt fra begge spillvinduer, utføres kortene i sekvens for alle spillvinduene.
+* Etter alle kortene er utført vil begge spillvinduer få nye kort og, stegene over kan gjøres på nytt.
+
+
 
 debugging: 25:03
 * har merga sammen branche mapdesign med master, men marius og anthony har begge endret mye på spillet hver 

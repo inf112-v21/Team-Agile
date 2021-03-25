@@ -88,7 +88,7 @@ Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere M
 Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjon på hvilke funksjoner som kan utføres i spillet:
 
 For å starte å spillet kjøres 1 instans av GameServer først også 1 instans av Main, deretter for å starte å kunne gjøre bevegelser
-skrive ``y`` og enter i terminalen til GameServer som spillet kjøres på. Hvordan spille flere spillere sammen beskrives i [multiplayer] (#multiplayer)
+skrive ``yes`` og enter i terminalen til GameServer som spillet kjøres på. Hvordan spille flere spillere sammen beskrives i [multiplayer] (#multiplayer)
 
 * Når du starter spillet så vil brettet laste. Du vil da se en spiller (ugle), en checkpoint (flagg) og et hull.
 * Du vinner av å besøke alle flaggene i riktig prioritert rekkefølge (se nummereringen).
@@ -98,6 +98,7 @@ skrive ``y`` og enter i terminalen til GameServer som spillet kjøres på. Hvord
     * **Pil høyre**: Roterer roboten til høyre.
     * **Pil venstre**: Roterer roboten til venstre.
     * **R**: Roter roboten 180 grader (UTURN).
+    * **C**: Plukke opp ``flag`` eller ta ``skade`` når roboten befinner seg i en av de rutene. 
 * Velge ut kort ved tastetrykk 1-9, kortene er indeksert fra 1-5 de øverste, deretter 6-9 på raden under.
     * Tastetrykk flytter valgte kort til Register-feltet (kortene spilleren velger).
 * Angre valgte kort: 
@@ -107,6 +108,34 @@ skrive ``y`` og enter i terminalen til GameServer som spillet kjøres på. Hvord
     * **ENTER** Sender de valgte kortene til Server.
     
 ## Multiplayer
+Spillet er per nå konfiguert til å kjøre på samme pc med flere instanser av spillet for hver spiller.
+Før man starter må man tillate at flere instanser av Main tillates. Åpne opp Main gå i menylinjen, og naviger deg til 
+run -> edit configurations -> modify options -> huke av på ``Allow multiple instances``
+
+
+
+(insert screenshot here)
+
+(kan me gjør ein antagelse på at brukeren kan oppsett av hamachi ettersom multiplayer e straight ``POOP`` ellers?)
+ 
+
+Kjøre multiplayer med flere instanser av Main på samme PC:
+
+* Kjører 1 instans av GameServer for å starte server. 
+* Kjører deretter så mange instanser av Main for antall spillere man ønsker å ha i spillet. For hver instans av Main som startes, 
+må tilkoblingen aksepteres i GameServer Terminalen ved å skrive ``yes``
+* Når ønsket antall instanser av Main for antall spillere er oppnådd, bruker man brukertastene oppgitt over for å spille spillet.
+* Når antall spillere tilkoblet har sendt de valgte kortene sine til Server ved å trykke ``Enter`` vil Serveren utføre de valgte kortene i riktig
+rekkefølge.
+  
+Kjøre multiplayer ved hjelp av Hamachi:
+
+* Før man kobler til gjennom hamachi må man navigere seg i prosjektmappen network -> NetworkHandler og finne variabelen ``IPAdress`` og endre til IPadressen til koblingen man er koblet gjennom Hamachi.
+* Gjør samme fremgangsmåte som over på samme PC, men hver spiller starter Main selv på sin PC etter at en av spillerene har startet å Hoste GameServer.
+
+
+
+
 
 ## Known bugs
 **Dersom Main eller tester ikke vil kjøre:**
@@ -119,5 +148,9 @@ at...."._ I dette tilfellet er det en feil som må rettes opp i selve IntelliJ, 
    * MERK at denne må legges inn både under main og under testene! 
 3. Apply settings og lukk dialogboksen. Du skal nå kunne starte spillet. 
 
+**Multiplayer ikke starter korrekt**
+
+Om man prøver å koble til Main instanser til GameServer for fort, kan føre til at Server/Client kræsjer.
+Vent etter hver oppstart av instans til at programmet får loadet og startet skikkelig eller prøv igjen.
 
 
