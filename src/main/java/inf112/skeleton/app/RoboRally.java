@@ -171,6 +171,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     private void dealDamageFromLaser(Laser laser) {
         Vector2 laserpos = laser.getLaserPos();
+        System.out.println(laserpos);
         float x = laserpos.x;
         float y = laserpos.y;
 
@@ -225,6 +226,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     private void checkLaserBeams(ArrayList<Laser> lasers) {
         for (Laser l : lasers) {
+            System.out.println(l);
             dealDamageFromLaser(l);
         }
 

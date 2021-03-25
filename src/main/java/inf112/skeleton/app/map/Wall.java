@@ -22,6 +22,11 @@ public class Wall {
     public static int outerWallNORTH = 310;
     public static int outerWallEAST = 230;
 
+    public Wall() {
+        wallPos = null;
+        cellId = 0;
+    }
+
     public Wall(Vector2 wallPos, int cellId) {
         this.wallPos = wallPos;
         this.cellId = cellId;

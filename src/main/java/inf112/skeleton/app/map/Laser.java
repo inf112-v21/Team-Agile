@@ -27,7 +27,8 @@ public class Laser extends Wall {
 
 
     public Laser(Vector2 wallPos, int cellId) {
-        super(wallPos, cellId);
+        this.wallPos = wallPos;
+        this.cellId = cellId;
     }
 
     public Vector2 getLaserPos() {
