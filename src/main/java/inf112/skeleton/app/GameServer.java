@@ -1,4 +1,4 @@
-package inf112.skeleton.app.network;
+package inf112.skeleton.app;
 
 
 import com.badlogic.gdx.Game;
@@ -7,18 +7,16 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
+import inf112.skeleton.app.network.NetworkHandler;
 import inf112.skeleton.app.network.Packets.*;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 import inf112.skeleton.app.network.Packets.Initialize.CardsPacket;
-import inf112.skeleton.app.network.Packets.Initialize.InputhandlerPacket;
 import inf112.skeleton.app.network.Packets.Initialize.PlayerList;
 import inf112.skeleton.app.object.Player;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 public class GameServer extends Listener{
 

@@ -82,9 +82,13 @@ Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere M
 
 3. ``mvn -version`` (for å sjekke at du har riktig versjon)
 <br/>
+   
 
 ## HVORDAN SPILLE SPILLET
 Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjon på hvilke funksjoner som kan utføres i spillet:
+
+For å starte å spillet kjøres 1 instans av GameServer først også 1 instans av Main, deretter for å starte å kunne gjøre bevegelser
+skrive ``y`` og enter i terminalen til GameServer som spillet kjøres på. Hvordan spille flere spillere sammen beskrives i [Multiplayer] (#Multiplayer)
 
 * Når du starter spillet så vil brettet laste. Du vil da se en spiller (ugle), en checkpoint (flagg) og et hull.
 * Du vinner av å besøke alle flaggene i riktig prioritert rekkefølge (se nummereringen).
@@ -100,6 +104,9 @@ Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjo
     * **A** Resetter hele Register-feltet (valgte kort) og alle kortene flyttes tilbake til og kan deretter velges på nytt.
 * Utføre valgte kort som ligger i Register-feltet: 
     * **SPACEBAR** Utfører kortet som ligger først fra venstre.
+    * **ENTER** Sender de valgte kortene til Server.
+    
+## Multiplayer
 
 ## Known bugs
 **Dersom Main eller tester ikke vil kjøre:**
