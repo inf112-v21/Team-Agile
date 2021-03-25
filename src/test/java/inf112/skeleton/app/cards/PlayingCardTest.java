@@ -7,17 +7,20 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.object.InputHandler;
 import inf112.skeleton.app.object.Robot;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-/**
+
 public class PlayingCardTest {
 
     Robot player;
     PlayingCard card;
     InputHandler handler;
+
+    RoboRally game = new RoboRally("tutorial.tmx");
 
 
     @Before
@@ -25,6 +28,9 @@ public class PlayingCardTest {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("CLOSE THIS WINDOW TO START THE TESTS");
         cfg.setWindowedMode(500, 100);
+
+
+
         new Lwjgl3Application(new Game() {
             @Override
             public void create() {
@@ -38,7 +44,7 @@ public class PlayingCardTest {
     @Test
     public void performUTurnsShouldReturn180degree() {
         player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
-        handler = new InputHandler(player);
+        handler = new InputHandler(game, player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.UTURN, 10);
 
@@ -51,7 +57,7 @@ public class PlayingCardTest {
     @Test
     public void performRotateRightShouldReturn270degree() {
         player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
-        handler = new InputHandler(player);
+        handler = new InputHandler(game,player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.ROTATE_RIGHT, 10);
 
@@ -63,7 +69,7 @@ public class PlayingCardTest {
     @Test
     public void performRotateLeftShouldReturn90degree() {
         player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
-        handler = new InputHandler(player);
+        handler = new InputHandler(game,player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.ROTATE_LEFT, 10);
 
@@ -74,7 +80,7 @@ public class PlayingCardTest {
     @Test
     public void performMoveOneShouldReturn2inYdirection() {
         player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
-        handler = new InputHandler(player);
+        handler = new InputHandler(game,player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVEONE, 10);
 
@@ -85,7 +91,7 @@ public class PlayingCardTest {
     @Test
     public void performMoveTwoShouldReturn1inYdirection() {
         player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
-        handler = new InputHandler(player);
+        handler = new InputHandler(game,player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVETWO, 10);
 
@@ -97,7 +103,7 @@ public class PlayingCardTest {
     @Test
     public void performMoveThreeShouldReturn0inYdirection() {
         player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
-        handler = new InputHandler(player);
+        handler = new InputHandler(game,player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVETHREE, 10);
 
@@ -108,4 +114,4 @@ public class PlayingCardTest {
 
 
 }
- */
+

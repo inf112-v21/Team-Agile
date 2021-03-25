@@ -9,11 +9,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.RoboRally;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-/**
+
 public class RobotTest {
 
     TiledMapTileLayer playerLayer;
@@ -21,6 +22,8 @@ public class RobotTest {
     Robot testPlayer;
     Vector2 pos;
     InputHandler handler;
+
+    RoboRally game = new RoboRally("tutorial.tmx");
 
     @Before
     public void setUp() throws Exception {
@@ -70,7 +73,7 @@ public class RobotTest {
 
         Float degreesBefore = player.getRotation();
 
-        handler = new InputHandler(player);
+        handler = new InputHandler(game, player);
         handler.keyUp(Input.Keys.RIGHT);
 
         Float degreesAfter = player.getRotation();
@@ -87,7 +90,7 @@ public class RobotTest {
 
         Float degreesBefore = player.getRotation();
 
-        handler = new InputHandler(player);
+        handler = new InputHandler(game, player);
         handler.keyUp(Input.Keys.LEFT);
 
         Float degreesAfter = player.getRotation();
@@ -107,7 +110,7 @@ public class RobotTest {
 
         Vector2 newPosition = new Vector2((int) player.getX(), (int) player.getY() + 1);
 
-        handler = new InputHandler(player);
+        handler = new InputHandler(game, player);
         handler.keyUp(Input.Keys.DOWN);
 
         Vector2 currentPosition = new Vector2((int) player.getX(), (int) player.getY());
@@ -123,7 +126,7 @@ public class RobotTest {
         assertNotNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
 
         Vector2 newPosition = new Vector2((int) player.getX(), (int) player.getY() - 1);
-        handler = new InputHandler(player);
+        handler = new InputHandler(game, player);
         handler.keyUp(Input.Keys.UP);
         Vector2 currentPosition = new Vector2((int) player.getX(), (int) player.getY());
 
@@ -132,4 +135,4 @@ public class RobotTest {
         assertNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
     }
 
-}*/
+}

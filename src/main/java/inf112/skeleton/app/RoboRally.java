@@ -65,6 +65,11 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     public HashMap<Integer, Spawn> spawns = new HashMap<>();
     public String gameState = "pickCards";
 
+    public RoboRally(String map){
+        TmxMapLoader loader = new TmxMapLoader();
+        this.map = loader.load(map);
+    }
+
 
 
     @Override
@@ -78,8 +83,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         font_cam = new OrthographicCamera();
         font_cam.setToOrtho(false, 1339,750);
 
-        TmxMapLoader loader = new TmxMapLoader();
-        map = loader.load("maps/MapNumber1.tmx");
+        //TmxMapLoader loader = new TmxMapLoader();
+        //map = loader.load("maps/MapNumber1.tmx");
 
         //Layers initialize
         boardLayer = (TiledMapTileLayer) map.getLayers().get("BaseLayer");
