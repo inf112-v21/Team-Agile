@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -27,6 +28,7 @@ import inf112.skeleton.app.object.Robot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class RoboRally extends InputAdapter implements ApplicationListener {
     public SpriteBatch batch;
@@ -58,6 +60,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     public ArrayList<Wall> allWalls = new ArrayList<>();
     public ArrayList<Laser> allLasers = new ArrayList<>();
+    public ArrayList<Robot> inLineOfLaser = new ArrayList<>();
     public ArrayList<Vector2> spawns = new ArrayList<>();
     public String gameState = "pickCards";
 
@@ -166,7 +169,48 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     }
 
-    private void checkLaserBeams(ArrayList<Robot> robots) {
+    private void checkLaserBeams(ArrayList<Robot> robotliste) {
+        HashMap<Robot,Float> laserxcoords = new HashMap<>();
+        HashMap<Robot,Float> laserycoords = new HashMap<>();
+        HashMap<Robot,Integer> distanceToLaser = new HashMap<>();
+        for(Robot r : robotliste) {
+            if (laserLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
+                inLineOfLaser.add(r);
+                float x = r.getX();
+                laserxcoords.put(r,x);
+                float y = r.getY();
+                laserycoords.put(r,y);
+
+                r.decreaseRobotHealthpoint(1);
+                r.renderHud("You lost 1 HP", batch, 0);
+            }
+        }
+
+        int xwall = 0;
+        int ywall = 0;
+        for (Robot r : inLineOfLaser) {
+            boolean donex = false;
+            boolean foundx = false;
+            float xcoord = r.getX();
+            float ycoord = 0;
+            float xdiff = 0;
+            float ydiff = 0;
+            while (!donex) {
+                if (wallLayer.getCell((int) xcoord, (int) ycoord) != null && laserLayer.getCell((int) xcoord, (int) ycoord) != null) {
+                    xwall = (int)xcoord;
+                    xdiff = Math.abs(xcoord - xwall);
+                    laserxcoords.put(r,xcoord);
+                    foundx = true;
+                    donex = true;
+                }
+                if (ycoord >= boardHeight) {
+                    donex = true;
+                }
+                ycoord++;
+            }
+
+
+        }
     }
 
     public void checkrobotStates(ArrayList<Robot> robotliste) {
