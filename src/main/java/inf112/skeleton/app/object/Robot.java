@@ -8,7 +8,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.PlayingCard;
+import inf112.skeleton.app.map.Wall;
 
 import java.util.ArrayList;
 
@@ -18,6 +20,8 @@ public class Robot extends Sprite {
     private final int HEIGHT = 1;
 
     public int robotHealthPoint;
+
+    RoboRally game;
 
     public String getName() {
         return name;
@@ -65,7 +69,7 @@ public class Robot extends Sprite {
             return robotHealthPoint;
         }
 
-    public Robot(int xstart, int ystart, Color color, int id) {
+    public Robot(int xstart, int ystart, Color color, int id, RoboRally game) {
         setSize(WIDTH, HEIGHT);
         initializeTexture();
         setRegion(normalState);
@@ -77,6 +81,7 @@ public class Robot extends Sprite {
         this.flagToTake = 1;
         this.id = id;
         setColor(color);
+        this.game = game;
     }
 
 
@@ -215,7 +220,7 @@ public class Robot extends Sprite {
     public Integer getFlag() {
         return flagToTake;
     }
-
+/*
     public void move(int steps) {
         switch ((int) this.getRotation()) {
             case(0):
@@ -231,6 +236,58 @@ public class Robot extends Sprite {
                 this.setPosition(this.getX() - steps, this.getY());
                 break;
         }
+    }
+
+ */
+public void move(int steps) {
+    switch ((int) this.getRotation()) {
+        case(0):
+            for(int i = 1; i <= steps; i++){
+                if(checkForWall(this, 0, -1)){
+                    System.out.println("1aNot possible to make that move, because of wall");
+                }
+                else{ this.setPosition(this.getX(), this.getY() - 1); }
+            }
+            break;
+
+        case(90):
+            for(int i = 1; i <= steps; i++){
+                if(checkForWall(this, 1, 0)){
+                    System.out.println("2aNot possible to make that move, because of wall");
+                }
+                else{
+                    this.setPosition(this.getX() + 1, this.getY());}
+            }
+            break;
+
+        case(180):
+            for(int i = 1; i <= steps; i++){
+                if(checkForWall(this, 0, 1)){
+                    System.out.println("3Not possible to make that move, because of wall");
+                }
+                else{this.setPosition(this.getX(), this.getY() + 1);}
+            }
+            break;
+
+        case(270):
+            for(int i = 1; i <= steps; i++){
+                if(checkForWall(this, -1, 0)){
+                    System.out.println("4Not possible to make that move, because of wall");
+                }
+                else{this.setPosition(this.getX() - 1, this.getY());}
+            }
+            break;
+
+    }
+}
+    public boolean checkForWall(Robot player, int xDiff, int yDiff){
+        System.out.println("checkwall");
+        for (Wall wall : game.allWalls){
+            if(wall.isWallInFrontOfPlayer(player) || wall.isWallInNextTile(player, xDiff, yDiff)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void rotate(int degree) {

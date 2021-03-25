@@ -59,18 +59,28 @@ public class Wall {
         } else return false;
     }
 
-
     public boolean isWallInNextTile(Robot player, int xDiff, int yDiff) {
         float rotation = player.getRotation();
         Vector2 playerCoordinate = new Vector2(player.getX()+xDiff, player.getY()+yDiff);
 
         boolean southCheck = ((cellId == SOUTH) || (cellId == Laser.laserSOUTH) || (cellId == outerWallSOUTH));
+        boolean northCheck = (cellId == NORTH || (cellId == outerWallNORTH));
+        boolean eastCheck = ((cellId == EAST) || (cellId == Laser.laserEAST) || (cellId == Laser.doubleLaserEAST) || (cellId == outerWallEAST));
+        boolean westCheck = ((cellId == WEST) || (cellId == Laser.laserWEST) || (cellId == outerWallWEST));
 
-        if (playerCoordinate.equals(wallPos) && southCheck && rotation == 0) {
+
+        if (playerCoordinate.equals(wallPos) && northCheck && rotation == 0) {
             System.out.println("Wall facing SOUTH");
             return true; }
-
-
+        else if (playerCoordinate.equals(wallPos) && westCheck && rotation == 90) {
+            System.out.println("Wall facing EAST");
+            return true; }
+        else if (playerCoordinate.equals(wallPos) && southCheck && rotation == 180) {
+            System.out.println("Wall facing NORTH");
+            return true; }
+        else if (playerCoordinate.equals(wallPos) && eastCheck && rotation == 270) {
+            System.out.println("Wall facing WEST");
+            return true; }
         else return false;
     }
 

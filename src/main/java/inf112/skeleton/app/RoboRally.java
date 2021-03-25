@@ -54,8 +54,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     int boardHeight = boardHeightStartPos + 11;
     int boardWidth = 16;
 
-    ArrayList<Wall> allWalls = new ArrayList<>();
-    ArrayList<Laser> allLasers = new ArrayList<>();
+    public ArrayList<Wall> allWalls = new ArrayList<>();
+    public ArrayList<Laser> allLasers = new ArrayList<>();
 
     @Override
     public void create() {
@@ -91,7 +91,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         deck = new Deck();
         players = new ArrayList<>();
         robots = new ArrayList<>();
-
+        registerWallsAndLasers();
 
         // splitter opp player.png bildet og definerer størrelsen
      /*
@@ -136,7 +136,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     public ArrayList<Robot> playerToRobot(ArrayList<Player> spillerliste) {
         robots.clear();
         for(int i = 0; i < spillerliste.size() ; i++) {
-            Robot robot = new Robot(spillerliste.get(i).x, spillerliste.get(i).y, colors.get(i), spillerliste.get(i).id);
+            Robot robot = new Robot(spillerliste.get(i).x, spillerliste.get(i).y, colors.get(i), spillerliste.get(i).id, this);
             robots.add(robot);
         }
         return robots;
@@ -222,8 +222,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     public void registerWallsAndLasers(){
         // register all walls created in the map design
-        for(int i = 0; i < boardHeight; i++){
-            for(int j = 0; j < boardWidth; j++){
+        for(int i = 0; i < boardWidth; i++){
+            for(int j = 0; j < boardHeight; j++){
                 TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,j);
                 if (wallTile != null){
                     int wallid = wallTile.getTile().getId();

@@ -19,15 +19,18 @@ public class InputHandler extends InputAdapter {
     ArrayList<Laser> lasers;
     RoboRally game;
 
-    public InputHandler(Robot player, ArrayList<Wall> walls, ArrayList<Laser> lasers) {
+    public InputHandler(RoboRally game, Robot player, ArrayList<Wall> walls, ArrayList<Laser> lasers) {
+        this.game = game;
         this.player = player;
         this.walls = walls;
         this.lasers = lasers;
     }
     public InputHandler(RoboRally game, Robot player) {
-
         this.player = player;
         this.game = game;
+        this.walls = game.allWalls;
+        this.lasers = game.allLasers;
+
     }
     public InputHandler(Robot player) {
         this.player = player;
@@ -148,6 +151,7 @@ public class InputHandler extends InputAdapter {
     }
 
     public boolean checkForWall(Robot player, int xDiff, int yDiff){
+        System.out.println("checkwall");
         for (Wall wall : walls){
             if(wall.isWallInFrontOfPlayer(player) || wall.isWallInNextTile(player, xDiff, yDiff)) {
                 return true;
