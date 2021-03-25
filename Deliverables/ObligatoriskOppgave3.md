@@ -69,11 +69,11 @@ eget krav han kunne jobbe med denne tiden. Han tok HUD.
 
 
 **25.03.2021 : 10:00 - 16:00**
-* Johnny har i mellomtiden jobbet med Mardown doc og fått skrevet ned en del
+* Johnny har i mellomtiden jobbet med Markdown doc og fått skrevet ned en del
 * Marius og Anthony jobbet med merging fra klokken 10 av denne dagen, hvor de hadde store problemer mellom master og
   mapdesign branch.
   Etter endelig å ha merget ferdig fortsatte Anthony og Marius med debugging av koden
-* Petter ble med klokken 11:00 og forstatte hvor johnny slapp på marcdown doc.
+* Petter ble med klokken 11:00 og forstatte hvor johnny slapp på markdown doc.
 
 
 ## Teambeskrivelse og rollefordeling
@@ -105,7 +105,7 @@ bruker vi å oppdatere hverandre hvordan det går med de forskjellige gruppene, 
 Dette 
 
 **3 forbedringspunkter:**
-Organsering av arbeid er noe vi kan vær mer individuelt og effektivt. Som sakt har nesten kun parprogrammering, men ser nå at det er mye vi kunne ha programmert alene for å være mer effektiv. 
+Organsering av arbeid er noe vi kan vær mer individuelt og effektivt. Vi har nesten kun parprogrammert, men ser nå at det er mye vi kunne ha programmert alene for å være mer effektiv. 
 
 
 --organisering av arbeid
@@ -199,5 +199,5 @@ Frem til nå har vi nesten kun parprogrammert og har brukt Code With Me. Prøver
 
 debugging: 25:03
 * har merga sammen branche mapdesign med master, men marius og anthony har begge endret mye på spillet hver 
-for seg uten å snakke særlig, så de staret tidliger enn alle oss andre for å fikse problemet 
+for seg uten å snakke særlig, så de staret tidligere enn alle oss andre for å fikse problemet 
   før vi egentlig skulle starte å jobbe med prosjektet denne dagen. 
