@@ -160,10 +160,15 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         checkrobotStates(robots);
         checkFlags(robots);
         allFlagsTaken(robots);
+        checkLaserBeams(robots);
         gameState = "pickCards";
         }
 
     }
+
+    private void checkLaserBeams(ArrayList<Robot> robots) {
+    }
+
     public void checkrobotStates(ArrayList<Robot> robotliste) {
         for(Robot r : robotliste) {
             if (holeLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
