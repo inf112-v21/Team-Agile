@@ -161,7 +161,9 @@ Frem til nå har vi nesten kun parprogrammert og har brukt Code With Me. Prøver
 
 
 **Arbeidsoppgaver**
-*
+* Implimenter at spiller ikke kan gå utover kartets rammer
+* Implimenter at spiller ikke kan gå forbi vegger som står foran spillerens retning, i nåværende tile og tilen foran spilleren. 
+* Implimenter at spiller blir stoppet dersom det er en vegg i tilen foran som er ligger i retning motsatt av det spilleren peker mot 
 
 <br/>
 
