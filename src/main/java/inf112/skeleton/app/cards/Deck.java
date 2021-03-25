@@ -47,7 +47,6 @@ public class Deck {
             PlayingCard rotateRight = new PlayingCard(MoveType.ROTATE_RIGHT, i);
             deck.add(rotateRight);
         }
-        System.out.println(deck.get(3));
         return deck;
     }
 

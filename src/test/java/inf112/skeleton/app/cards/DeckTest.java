@@ -4,8 +4,10 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.object.Robot;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +21,7 @@ public class DeckTest {
     Robot player2;
     Robot player3;
     ArrayList<Robot> players;
+    RoboRally game = new RoboRally("tutorial.tmx");
 
 
     @Before
@@ -84,16 +87,17 @@ public class DeckTest {
     public void testThatNumberOfCardsInHandIsCorrespondingWithRobotHP() {
         createPlayersAndDealOutDeck();
 
-        assertEquals(5, player1.getCards().size());
-        assertEquals(7, player2.getCards().size());
-        assertEquals(3, player3.getCards().size());
+        assertEquals(4, player1.getCards().size());
+        assertEquals(2, player2.getCards().size());
+        assertEquals(6, player3.getCards().size());
     }
 
     public void createPlayersAndDealOutDeck(){
-        player1 = new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
-        player2 = new Robot(new TextureRegion(new Texture("pikachu.png")) , 8 , 5, "player 1");
-        player3 = new Robot(new TextureRegion(new Texture("pikachu.png")) , 5 , 8, "player 1");
+        player1 = new Robot(3,3, Color.BLACK, 1, game);
+        player2 = new Robot(3,3, Color.BLACK, 1, game);
+        player3 = new Robot(3,3, Color.BLACK, 1, game);
 
+        //gjør skade på robotene
         player1.decreaseRobotHealthpoint(5);
         player2.decreaseRobotHealthpoint(7);
         player3.decreaseRobotHealthpoint(3);
