@@ -169,13 +169,22 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     }
 
-    private void robotHitByLaser(ArrayList<Robot> robotsinline, int damage, Laser laser) {
-        for (Robot r : robotsinline) {
+    private void robotHitByLaser(ArrayList<Robot> robotsInLine, int damage, Laser laser) {
+        for (Robot r : robotsInLine) {
 
+            r.decreaseRobotHealthpoint(damage);
+            r.renderHud("You lost " + damage + " HP", batch, 0);
+        }
+    }
+
+    private Boolean noAnotherRobotsInLine(ArrayList<Robot> robotsInLine, float x, float y){
+        for (Robot r : robotsInLine) {
+            if((r.getX() == x) && (r.getY() == y)){
+                return false;
+            }
         }
 
-        robot.decreaseRobotHealthpoint(damage);
-        robot.renderHud("You lost " + damage + " HP", batch, 0);
+        return true;
     }
 
     private void dealDamageFromLaser(Laser laser) {
@@ -192,7 +201,13 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                 for (Robot r: robots) {
                     if (r.getX() == x && r.getY() == i) {
                         inLineOfFire.add(r);
-                        robotHitByLaser(inLineOfFire, laserdamage, laser);
+                        if(noAnotherRobotsInLine(inLineOfFire, r.getX(), r.getY()+1)){
+                            r.decreaseRobotHealthpoint(1);
+                            r.renderHud("You lost 1 HP", batch, 0);
+                        }
+
+                        //inLineOfFire.add(r);
+                        //robotHitByLaser(inLineOfFire, laserdamage, laser);
                         //r.decreaseRobotHealthpoint(1);
                         //r.renderHud("You lost 1 HP", batch, 0);
                         }
