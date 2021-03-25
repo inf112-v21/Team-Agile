@@ -31,6 +31,10 @@ public class Laser extends Wall {
         super(wallPos, cellId);
     }
 
+    public Vector2 getLaserPos() {
+        return this.wallPos;
+    }
+
     public Boolean isLaserInFrontOfPlayer(Robot player){
         int xTest = ((int) player.getX());
         int yTest = ((int) player.getY());
@@ -97,6 +101,10 @@ public class Laser extends Wall {
             System.out.println("Double laser facing WEST");
             return "DoubleWest"; }
         else return "Nothing";
+    }
+
+    public int getCellId() {
+        return this.cellId;
     }
 
 }

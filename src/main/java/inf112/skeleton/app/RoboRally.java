@@ -169,7 +169,38 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     }
 
-    private void checkLaserBeams(ArrayList<Robot> robotliste) {
+    private void dealDamageFromLaser(Laser laser, ArrayList<Robot> roboter) {
+        Vector2 laserpos = laser.getLaserPos();
+        float x = laserpos.x;
+        float y = laserpos.y;
+
+        if (laser.getCellId() == Laser.laserSOUTH) {
+            for (int i = (int) y; i < boardHeight; i++) {
+                if (playerLayer.getCell((int) x, (int) i) != null) {
+                    for (Robot r: roboter) {
+                        if (r.getX() == x && r.getY() == i) {
+                            r.decreaseRobotHealthpoint(1);
+                            r.renderHud("You lost 1 HP", batch, 0);
+                        }
+                    }
+                }
+            }
+        } else if (laser.getCellId() == Laser.laserWEST) {
+
+        } else if (laser.getCellId() == Laser.laserEAST) {
+
+        } else if (laser.getCellId() == Laser.doubleLaserEAST) {
+
+        }
+    }
+
+    private void checkLaserBeams(ArrayList<Robot> robotliste, ArrayList<Laser> allLasers) {
+        for (Laser l : allLasers) {
+            dealDamageFromLaser(l, robotliste);
+        }
+
+
+        /*
         HashMap<Robot,Float> laserxcoords = new HashMap<>();
         HashMap<Robot,Float> laserycoords = new HashMap<>();
         HashMap<Robot,Integer> distanceToLaser = new HashMap<>();
@@ -196,6 +227,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             float xdiff = 0;
             float ydiff = 0;
 
+
+         */
 
 
             /*
