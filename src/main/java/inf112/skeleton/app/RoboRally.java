@@ -195,6 +195,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             float ycoord = 0;
             float xdiff = 0;
             float ydiff = 0;
+
+
+
+            /*
             while (!donex) {
                 if (wallLayer.getCell((int) xcoord, (int) ycoord) != null && laserLayer.getCell((int) xcoord, (int) ycoord) != null) {
                     xwall = (int)xcoord;
@@ -208,6 +212,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                 }
                 ycoord++;
             }
+             */
 
 
         }

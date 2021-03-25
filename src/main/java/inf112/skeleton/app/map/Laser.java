@@ -67,4 +67,36 @@ public class Laser extends Wall {
         */
     }
 
+    public String laserTypeInNextTile(Robot player, int xDiff, int yDiff) {
+        //float rotation = player.getRotation();
+        Vector2 playerCoordinate = new Vector2(player.getX()+xDiff, player.getY()+yDiff);
+
+        boolean southCheck = cellId == Laser.laserSOUTH);
+        //boolean northCheck = (cellId == laserNORTH);
+        boolean eastCheck = (cellId == Laser.laserEAST);
+        boolean eastDoubleCheck = (cellId == Laser.doubleLaserEAST);
+        boolean westCheck = (cellId == Laser.laserWEST);
+
+
+        /*
+        if (playerCoordinate.equals(wallPos) && northCheck && rotation == 0) {
+            System.out.println("Wall facing SOUTH");
+            return true; }
+
+         */
+        if (playerCoordinate.equals(wallPos) && westCheck) {
+            System.out.println("Laser facing EAST");
+            return "East"; }
+        else if (playerCoordinate.equals(wallPos) && southCheck) {
+            System.out.println("Laser facing NORTH");
+            return "North"; }
+        else if (playerCoordinate.equals(wallPos) && eastCheck) {
+            System.out.println("Laser facing WEST");
+            return "West"; }
+        else if (playerCoordinate.equals(wallPos) && eastDoubleCheck) {
+            System.out.println("Double laser facing WEST");
+            return "DoubleWest"; }
+        else return "Nothing";
+    }
+
 }
