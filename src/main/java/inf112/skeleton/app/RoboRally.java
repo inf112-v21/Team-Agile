@@ -69,7 +69,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         colors = new ArrayList<>(Arrays.asList(Color.LIGHT_GRAY, Color.ORANGE, Color.LIME, Color.YELLOW));
 
         camera = new OrthographicCamera();
-        viewport = new FitViewport(28,13);
+        viewport = new FitViewport(29,14);
         font_cam = new OrthographicCamera();
         font_cam.setToOrtho(false, 1339,750);
 

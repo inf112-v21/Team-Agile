@@ -171,21 +171,23 @@ public class Robot extends Sprite {
     }
 
     public void renderPriority(Batch batch) {
-        float xStart = 882;
-        float yStart = 682f;
+        float xStart = 883;
+        float yStart = 680;
+
+        // 83 y 17
 
         for (PlayingCard kort : cards) {
             int priority = kort.getPriority();
             priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
-            xStart += 92;
+            xStart += 93;
 
-            if(xStart == 1342) {
+            if(xStart == 1348) {
                 xStart = 930;
                 yStart = 520;
             }
         }
-        xStart = 882;
-        yStart = 307;
+        xStart = 883;
+        yStart = 305;
         for (PlayingCard locked : lockedHand) {
             int priority = locked.getPriority();
             priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
@@ -195,14 +197,14 @@ public class Robot extends Sprite {
 
     public void initializeHud(Batch batch){
         hudFont.draw(batch, ("Player: " + id), 30, 80);
-        hudFont.draw(batch, ("HP = " + robotHealthPoint), 750, 80);
+        hudFont.draw(batch, ("HP = " + robotHealthPoint), 715, 80);
     }
 
     public void renderHud(String text, SpriteBatch batch, int hudPosition){
         BitmapFont hudFont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
         batch.begin();
         if(hudPosition == 0){ hudFont.draw(batch, text, 500, 55); }
-        else{ hudFont.draw(batch, text, 1151,55); }
+        else{ hudFont.draw(batch, text, 1000,55); }
         batch.end();
     }
 
