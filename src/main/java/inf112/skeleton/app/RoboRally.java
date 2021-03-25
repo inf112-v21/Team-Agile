@@ -163,21 +163,21 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         checkrobotStates(robots);
         checkFlags(robots);
         allFlagsTaken(robots);
-        checkLaserBeams(robots, allLasers);
+        checkLaserBeams(allLasers);
         gameState = "pickCards";
         }
 
     }
 
-    private void dealDamageFromLaser(Laser laser, ArrayList<Robot> roboter) {
+    private void dealDamageFromLaser(Laser laser) {
         Vector2 laserpos = laser.getLaserPos();
         float x = laserpos.x;
         float y = laserpos.y;
 
         if (laser.getCellId() == Laser.laserSOUTH) {
             for (int i = (int) y; i < boardHeight; i++) {
-                if (playerLayer.getCell((int) x, (int) i) != null) {
-                    for (Robot r: roboter) {
+                if (playerLayer.getCell((int) x, i) != null) {
+                    for (Robot r: robots) {
                         if (r.getX() == x && r.getY() == i) {
                             r.decreaseRobotHealthpoint(1);
                             r.renderHud("You lost 1 HP", batch, 0);
@@ -187,8 +187,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             }
         } else if (laser.getCellId() == Laser.laserWEST) {
             for (int i = (int) x; i < boardWidth; i++) {
-                if (playerLayer.getCell((int) i, (int) y) != null) {
-                    for (Robot r: roboter) {
+                if (playerLayer.getCell(i, (int) y) != null) {
+                    for (Robot r: robots) {
                         if (r.getX() == i && r.getY() == y) {
                             r.decreaseRobotHealthpoint(1);
                             r.renderHud("You lost 1 HP", batch, 0);
@@ -198,8 +198,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             }
         } else if (laser.getCellId() == Laser.laserEAST) {
             for (int i = (int) x; i > 0; i--) {
-                if (playerLayer.getCell((int) i, (int) y) != null) {
-                    for (Robot r: roboter) {
+                if (playerLayer.getCell(i, (int) y) != null) {
+                    for (Robot r: robots) {
                         if (r.getX() == i && r.getY() == y) {
                             r.decreaseRobotHealthpoint(1);
                             r.renderHud("You lost 1 HP", batch, 0);
@@ -209,8 +209,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             }
         } else if (laser.getCellId() == Laser.doubleLaserEAST) {
             for (int i = (int) x; i > 0; i--) {
-                if (playerLayer.getCell((int) i, (int) y) != null) {
-                    for (Robot r: roboter) {
+                if (playerLayer.getCell(i, (int) y) != null) {
+                    for (Robot r: robots) {
                         if (r.getX() == i && r.getY() == y) {
                             r.decreaseRobotHealthpoint(2);
                             r.renderHud("You lost 2 HP", batch, 0);
@@ -223,9 +223,9 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         }
     }
 
-    private void checkLaserBeams(ArrayList<Robot> robotliste, ArrayList<Laser> lasers) {
+    private void checkLaserBeams(ArrayList<Laser> lasers) {
         for (Laser l : lasers) {
-            dealDamageFromLaser(l, robotliste);
+            dealDamageFromLaser(l);
         }
 
 

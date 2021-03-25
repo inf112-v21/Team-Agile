@@ -7,8 +7,8 @@ import inf112.skeleton.app.object.Robot;
 
 public class Laser extends Wall {
 
-    TiledMapTileLayer.Cell cell;
-    Integer wallID;
+    //TiledMapTileLayer.Cell cell;
+    //Integer wallID;
     Vector2 wallPos;
     int cellId;
 
@@ -20,7 +20,6 @@ public class Laser extends Wall {
 
     //laser shoots towards west
     public static int laserEAST = 46;
-
     //laser shoots towards west
     public static int doubleLaserEAST = 95;
 
