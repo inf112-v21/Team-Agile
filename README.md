@@ -88,7 +88,7 @@ Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere M
 Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjon på hvilke funksjoner som kan utføres i spillet:
 
 For å starte å spillet kjøres 1 instans av GameServer først også 1 instans av Main, deretter for å starte å kunne gjøre bevegelser
-skrive ``y`` og enter i terminalen til GameServer som spillet kjøres på. Hvordan spille flere spillere sammen beskrives i [Multiplayer] (#Multiplayer)
+skrive ``y`` og enter i terminalen til GameServer som spillet kjøres på. Hvordan spille flere spillere sammen beskrives i [multiplayer] (#multiplayer)
 
 * Når du starter spillet så vil brettet laste. Du vil da se en spiller (ugle), en checkpoint (flagg) og et hull.
 * Du vinner av å besøke alle flaggene i riktig prioritert rekkefølge (se nummereringen).
