@@ -5,6 +5,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import inf112.skeleton.app.RoboRally;
@@ -43,12 +44,12 @@ public class PlayingCardTest {
 
     @Test
     public void performUTurnsShouldReturn180degree() {
-        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
-        handler = new InputHandler(game, player);
+        player = new Robot(3,3, Color.BLACK, 1, game);
+
         player.setRotation(0);
         card = new PlayingCard(MoveType.UTURN, 10);
 
-        handler.rotate(card.getMove());
+        player.rotate(card.getMove());
 
         assertEquals(180, (int) player.getRotation());
 
@@ -79,7 +80,7 @@ public class PlayingCardTest {
     }
     @Test
     public void performMoveOneShouldReturn2inYdirection() {
-        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
+        player = new Robot(3,3, Color.BLACK, 1, game);
         handler = new InputHandler(game,player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVEONE, 10);
@@ -90,7 +91,7 @@ public class PlayingCardTest {
     }
     @Test
     public void performMoveTwoShouldReturn1inYdirection() {
-        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
+        player = new Robot(3,3, Color.BLACK, 1, game);
         handler = new InputHandler(game,player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVETWO, 10);
@@ -102,7 +103,7 @@ public class PlayingCardTest {
 
     @Test
     public void performMoveThreeShouldReturn0inYdirection() {
-        player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
+        player = new Robot(3,3, Color.BLACK, 1, game);
         handler = new InputHandler(game,player);
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVETHREE, 10);

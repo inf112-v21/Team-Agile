@@ -58,6 +58,7 @@ public class Robot extends Sprite {
         setRegion(texture);
         setOriginCenter();
         setPosition(xstart, ystart);
+        setRotation(0);
         this.name = name;
         this.robotHealthPoint = 9;
         this.cards = new ArrayList<>(robotHealthPoint);
@@ -243,41 +244,48 @@ public class Robot extends Sprite {
 
  */
 public void move(int steps) {
+    int moveby;
+    if (steps < 0) {
+        moveby = -1;
+    } else {
+        moveby = 1;
+    }
+
     switch ((int) this.getRotation()) {
         case(0):
-            for(int i = 1; i <= steps; i++){
+            for(int i = 1; i <= Math.abs(steps); i++){
                 if(checkForWall(this, 0, -1)){
                     System.out.println("1aNot possible to make that move, because of wall");
                 }
-                else{ this.setPosition(this.getX(), this.getY() - 1); }
+                else{ this.setPosition(this.getX(), this.getY() - moveby); }
             }
             break;
 
         case(90):
-            for(int i = 1; i <= steps; i++){
+            for(int i = 1; i <= Math.abs(steps); i++){
                 if(checkForWall(this, 1, 0)){
                     System.out.println("2aNot possible to make that move, because of wall");
                 }
                 else{
-                    this.setPosition(this.getX() + 1, this.getY());}
+                    this.setPosition(this.getX() + moveby, this.getY());}
             }
             break;
 
         case(180):
-            for(int i = 1; i <= steps; i++){
+            for(int i = 1; i <= Math.abs(steps); i++){
                 if(checkForWall(this, 0, 1)){
                     System.out.println("3Not possible to make that move, because of wall");
                 }
-                else{this.setPosition(this.getX(), this.getY() + 1);}
+                else{this.setPosition(this.getX(), this.getY() + moveby);}
             }
             break;
 
         case(270):
-            for(int i = 1; i <= steps; i++){
+            for(int i = 1; i <= Math.abs(steps); i++){
                 if(checkForWall(this, -1, 0)){
                     System.out.println("4Not possible to make that move, because of wall");
                 }
-                else{this.setPosition(this.getX() - 1, this.getY());}
+                else{this.setPosition(this.getX() - moveby, this.getY());}
             }
             break;
 
