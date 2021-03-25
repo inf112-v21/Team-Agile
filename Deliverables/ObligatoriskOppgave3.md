@@ -57,10 +57,23 @@ eget krav han kunne jobbe med denne tiden. Han tok HUD.
 * Tore og Anthony har jobbet videre med multiplayer.
 
 **22.03.2021 : 12:15-14:00**
-* 
+* Denne dagen var Tore og Marius med å jobbet på Wall-klassen ettersom Petter og Johnny hadde slitt litt dagene før med denne delen.
+* Anthony ble så å si ferdig med multiplayer denne dagen, ble ferdig så langt han kunne ha komt til nå i prosjektet. 
 
 **24.03.2021 : 12.15-15:00**
-*
+* Onsdag før levering så hadde Marius endret litt på Walls klassen, så vi gikk gjennom denne sammen i starten av timen.
+* Etterpå fortsatte Tore og Marius med Wall-klassen.
+* Johnny forstatte og fylle ut på markdown doc.
+* Petter lagde ferdig design på kartet og endret litt på design. 
+* Anthony startet på merging av multiplayer branch og master.
+
+
+**25.03.2021 : 10:00 - 16:00**
+* Johnny har i mellomtiden jobbet med Mardown doc og fått skrevet ned en del
+* Marius og Anthony jobbet med merging fra klokken 10 av denne dagen, hvor de hadde store problemer mellom master og
+  mapdesign branch.
+  Etter endelig å ha merget ferdig fortsatte Anthony og Marius med debugging av koden
+* Petter ble med klokken 11:00 og forstatte hvor johnny slapp på marcdown doc.
 
 
 ## Teambeskrivelse og rollefordeling
@@ -182,3 +195,9 @@ Frem til nå har vi nesten kun parprogrammert og har brukt Code With Me. Prøver
 **Arbeidsoppgaver**
 
 
+
+
+debugging: 25:03
+* har merga sammen branche mapdesign med master, men marius og anthony har begge endret mye på spillet hver 
+for seg uten å snakke særlig, så de staret tidliger enn alle oss andre for å fikse problemet 
+  før vi egentlig skulle starte å jobbe med prosjektet denne dagen. 
