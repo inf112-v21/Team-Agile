@@ -12,6 +12,6 @@ public class Main {
         cfg.setResizable(false);
 
 
-        new Lwjgl3Application(new RoboRally(), cfg);
+        new Lwjgl3Application(new RoboRally("MapNumber1.tmx"), cfg);
     }
 }

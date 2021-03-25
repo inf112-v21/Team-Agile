@@ -41,6 +41,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     private OrthographicCamera camera, font_cam;
     //private ExtendViewport viewport;
     private FitViewport viewport;
+    private String mapChosen;
 
 
     Robot test;
@@ -61,9 +62,16 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     public ArrayList<Wall> allWalls = new ArrayList<>();
     public ArrayList<Laser> allLasers = new ArrayList<>();
-   // public ArrayList<Spawn> spawns = new ArrayList<>();
     public HashMap<Integer, Spawn> spawns = new HashMap<>();
     public String gameState = "pickCards";
+
+
+    public RoboRally(String mapChosen){
+        this.mapChosen = mapChosen;
+    }
+
+
+
 
 
 
@@ -79,7 +87,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         font_cam.setToOrtho(false, 1339,750);
 
         TmxMapLoader loader = new TmxMapLoader();
-        map = loader.load("maps/MapNumber1.tmx");
+        map = loader.load("assets/maps/" + mapChosen);
 
         //Layers initialize
         boardLayer = (TiledMapTileLayer) map.getLayers().get("BaseLayer");

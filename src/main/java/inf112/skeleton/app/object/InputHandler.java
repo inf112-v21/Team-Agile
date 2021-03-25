@@ -18,7 +18,7 @@ public class InputHandler extends InputAdapter {
     ArrayList<Wall> walls;
     ArrayList<Laser> lasers;
     RoboRally game;
-    
+
 
     public InputHandler(RoboRally game, Robot player) {
         this.game = game;
