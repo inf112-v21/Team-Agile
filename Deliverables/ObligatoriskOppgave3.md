@@ -4,7 +4,7 @@
 **Gruppenavn:** Team Agile
 
 **Deltakere:**
-* Tore Bøe
+* Tore Wie Bøe
 * Leif Petter Sørbø
 * Anthony Vu
 * Johnny Tran
