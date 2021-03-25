@@ -50,15 +50,10 @@ public class GameServer extends Listener{
         public void connected(Connection c) {
                 System.out.println("Recieved a connection from " + c.getRemoteAddressTCP().getHostString());
                 numplayers++;
-                if(numplayers == 1) {
-                    Player newPlayer = new Player(2,2, c.getID());
-                    playerlist.put(c.getID(), newPlayer);
-                    spillerliste.spillerliste.add(newPlayer);
-                } else if (numplayers == 2) {
-                    Player newPlayer = new Player(4,4, c.getID());
-                    playerlist.put(c.getID(), newPlayer);
-                    spillerliste.spillerliste.add(newPlayer);
-                }
+                Player newPlayer = new Player(c.getID());
+                playerlist.put(c.getID(), newPlayer);
+                spillerliste.spillerliste.add(newPlayer);
+
                 server.sendToAllTCP(spillerliste);
 
                 Scanner sc = new Scanner(System.in);
