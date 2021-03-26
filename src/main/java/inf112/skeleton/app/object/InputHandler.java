@@ -2,6 +2,7 @@ package inf112.skeleton.app.object;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputProcessor;
 import inf112.skeleton.app.RoboRally;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.PlayingCard;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 
-public class InputHandler extends InputAdapter {
+public class InputHandler extends InputAdapter implements InputProcessor {
 
     Robot player;
     ArrayList<Wall> walls;
@@ -94,6 +95,44 @@ public class InputHandler extends InputAdapter {
                 break;
         }
         return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        if(button == Input.Buttons.LEFT) {
+            if(screenX > 870 && screenX < 960 && screenY > 52 && screenY < 190 ) {
+                moveToLocked(0);
+            }
+            if(screenX > 961 && screenX < 1051 && screenY > 52 && screenY < 190 ) {
+                moveToLocked(1);
+            }
+            if(screenX > 1052 && screenX < 1141 && screenY > 52 && screenY < 190 ) {
+                moveToLocked(2);
+            }
+            if(screenX > 1142 && screenX < 1232 && screenY > 52 && screenY < 190 ) {
+                moveToLocked(3);
+            }
+            if(screenX > 1233 && screenX < 1323 && screenY > 52 && screenY < 190 ) {
+                moveToLocked(4);
+            }
+            if(screenX > 918 && screenX < 1008 && screenY > 190 && screenY < 336 ) {
+                moveToLocked(5);
+            }
+            if(screenX > 1009 && screenX < 1098 && screenY > 190 && screenY < 336 ) {
+                moveToLocked(6);
+            }
+            if(screenX > 1099 && screenX < 1189 && screenY > 190 && screenY < 336 ) {
+                moveToLocked(7);
+            }
+            if(screenX > 1190 && screenX < 1280 && screenY > 190 && screenY < 336 ) {
+                moveToLocked(8);
+            }
+        }
+        if(button == Input.Buttons.RIGHT) {
+            resetLockedHand();
+        }
+        return false;
+
     }
 
     public void performCardinRegister() {
