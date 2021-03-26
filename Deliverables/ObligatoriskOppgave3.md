@@ -281,7 +281,7 @@ Dette er veldig tidkrevende, og ikke god utnyttelse av tid - som også fører ti
 
 **Projectboard:**
 
-![](/Deliverables/Images/TrelloProjectBoard2.png "Project Board")
+[Project Board](https://trello.com/b/80a0xYw8/inf112-oblig-2)
 
 Det vi har fokusert og prioritert på i denne innlevering er det siste MVP-kravet som var multiplayer.
 Utenom denne så har vi priroritert å få på plass øvrig spilllogikk, som vegger & lasere. Det har også vært viktig å få på plass
