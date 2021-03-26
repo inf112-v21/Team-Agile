@@ -103,8 +103,8 @@ Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere M
 ## HVORDAN SPILLE SPILLET
 Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjon på hvilke funksjoner som kan utføres i spillet:
 
-For å starte å spillet kjøres 1 instans av GameServer først også 1 instans av Main, deretter for å starte å kunne gjøre bevegelser
-skrive ``yes`` og enter i terminalen til GameServer som spillet kjøres på. Hvordan spille flere spillere sammen beskrives under i Multiplayer
+For å starte spillet start en Main instans deretter for å starte å kunne gjøre bevegelser
+skrive ``yes`` og enter i terminalen til Main som spillet kjøres på. Hvordan spille flere spillere sammen beskrives under i Multiplayer
 
 * Når du starter spillet så vil brettet laste. Du vil da se en spiller (ugle), en checkpoint (flagg) og et hull.
 * Du vinner av å besøke alle flaggene i riktig prioritert rekkefølge (se nummereringen).
@@ -129,10 +129,11 @@ run -> edit configurations -> modify options -> huke av på ``Allow multiple ins
 ![](/Deliverables/Images/Multipleinstances.png "")
 
 Kjøre multiplayer med flere instanser av Main på samme PC:
+* Start en instans av Main 
+* Deretter i Main skjekk at host
+  ![](/Deliverables/Images/Main.png "")  
 
-* Kjører 1 instans av GameServer for å starte server. 
-* Kjører deretter så mange instanser av Main for antall spillere man ønsker å ha i spillet. For hver instans av Main som startes, 
-må tilkoblingen aksepteres i GameServer Terminalen ved å skrive ``yes``
+
 * Når ønsket antall instanser av Main for antall spillere er oppnådd, bruker man brukertastene oppgitt over for å spille spillet.
 * Når antall spillere tilkoblet har sendt de valgte kortene sine til Server ved å trykke ``Enter`` vil Serveren utføre de valgte kortene i riktig
 rekkefølge.

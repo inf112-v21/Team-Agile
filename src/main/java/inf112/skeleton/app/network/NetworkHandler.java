@@ -22,11 +22,9 @@ public class NetworkHandler {
     public static void register(EndPoint endPoint) {
 
         Kryo kryo = endPoint.getKryo();
-        kryo.register(Packet.class);
         kryo.register(PlayerList.class);
         kryo.register(ArrayList.class);
         kryo.register(RoboRally.class);
-        kryo.register(GameEvent.class);
         kryo.register(CreateRobot.class);
         kryo.register(Player.class);
         kryo.register(MoveEvent.class);

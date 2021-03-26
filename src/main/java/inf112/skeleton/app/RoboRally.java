@@ -6,13 +6,16 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.map.Spawn;
@@ -27,6 +30,7 @@ import inf112.skeleton.app.object.Robot;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Vector;
 
 public class RoboRally extends InputAdapter implements ApplicationListener {
     public SpriteBatch batch;
@@ -64,7 +68,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     private boolean host;
 
 
-    public RoboRally(String mapChosen){
+    public RoboRally(String mapChosen, boolean host){
         this.mapChosen = mapChosen;
         this.host = host;
     }
