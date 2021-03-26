@@ -21,7 +21,7 @@ public class WallTest {
     Wall wall;
     Vector2 wallPos;
     int cellID;
-    Robot robot, robot2, robot3, robot4, robot5, robot6;
+    Robot robot, robot2, robot3, robot4, robot5, robot6, robot7;
     RoboRally game = new RoboRally("tutorial.tmx" , true);
 
     /**
@@ -157,26 +157,7 @@ public class WallTest {
         assertEquals(4, (int) robot5.getY());
     }
 
-    public void setUpNewWallInGameOuterBorders(int cellId){ // Til å sette opp vegger i tile foran spiller
-        wall = new Wall(new Vector2(4,4),cellId);
-        game.allWalls.add(wall);
-    }
 
 
-    public void testIfWallIsCreatedInGameMapBordersNorth(){
-
-    }
-
-    public void testIfWallIsCreatedInGameMapBordersSouth(){
-
-    }
-
-    public void testIfWallIsCreatedInGameMapBordersWest(){
-
-    }
-
-    public void testIfWallIsCreatedInGameMapBordersEast(){
-
-    }
 
 }

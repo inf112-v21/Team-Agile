@@ -142,7 +142,7 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 
 **Implementasjon av laser**
 * Som spiller ønsker jeg at det skal være en ekstra spenning med spillet, som for.eks å miste liv / dø i spillet.
-* Så vil at spillet skal ha ektra element utenom blokkeringer slik som vegger.
+* Så vil at spillet skal ha ekstra element utenom blokkeringer slik som vegger.
 
 
 **Akseptansekriterier**
@@ -289,12 +289,12 @@ den største grunnmuren av logikk, før vi i neste innleveringen kan fokusere p�
 
 <br/> 
 
-**Gruppedyamikk og kommunikasjon:**
+**Gruppedynamikk og kommunikasjon:**
 
 Gruppedynamikken vår har vært utrolig bra og der har vi vært veldig heldig. Å jobbe med hverandre har aldri vært vanskelig og alle blir hørt.
 Det skal sies at 4 av 5 i gruppen kjente hverandre fra før som har gjort det mye enklere. Vi har også laget en facebook chat hvor mye planlegger
 oppdatere hverandre. Her planlegger vi møter, sier ifra om vi har tenkt å jobbe med oppgaven alene eller om vi lurer på noe angående koden.
-Når vi bruker discord så har det ofte at det er en som styre møte sånn at vi ikke snakker over hverandre og får diskutert ting mer strukturert.
+Når vi bruker discord så har vi det ofte at det er en som styre møte sånn at vi ikke snakker over hverandre og får diskutert ting mer strukturert.
 Frem til nå har vi nesten kun parprogrammert og har brukt Code With Me.
 
 Når vi er ferdig med oppgaven vår, så bruker vi ofte en liten del av møte for å gå gjennom det som har blitt gjort. 

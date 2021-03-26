@@ -178,7 +178,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         }
 
     }
-    private void checkLaserBeams(ArrayList<Laser> lasers) {
+    public void checkLaserBeams(ArrayList<Laser> lasers) {
         for (Laser l : lasers) {
             System.out.println(l);
             dealDamageFromLaser(l);
