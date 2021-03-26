@@ -70,7 +70,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
-        colors = new ArrayList<>(Arrays.asList(Color.WHITE,Color.LIGHT_GRAY,  Color.FIREBRICK , Color.ORANGE, Color.LIME, Color.YELLOW, Color.GREEN, Color.FOREST));
+        colors = new ArrayList<>(Arrays.asList(Color.WHITE,Color.GREEN, Color.LIGHT_GRAY,  Color.FIREBRICK , Color.ORANGE, Color.LIME, Color.YELLOW,  Color.FOREST));
 
         camera = new OrthographicCamera();
         viewport = new FitViewport(29,14);
@@ -196,6 +196,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         if (laser.getCellId() == Laser.laserSOUTH) {
             for (int i = (int) y; i < boardHeight; i++) {
+                TiledMapTileLayer.Cell wallTile = wallLayer.getCell((int)x,i);
+                if (wallTile != null && i > y) {
+                    break;
+                }
                 for (Robot r: robots) {
                     if (r.getX() == x && r.getY() == i) {
                         distance = (int) Math.abs(r.getY() - y);
@@ -205,6 +209,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             }
         } else if (laser.getCellId() == Laser.laserWEST) {
             for (int i = (int) x; i < boardWidth; i++) {
+                TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,(int)y);
+                if (wallTile != null && i > x) {
+                    break;
+                }
                 for (Robot r: robots) {
                     if (r.getX() == i && r.getY() == y) {
                         distance = (int) Math.abs(r.getX() - x);
@@ -214,6 +222,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             }
         } else if (laser.getCellId() == Laser.laserEAST) {
             for (int i = (int) x; i > 0; i--) {
+                TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,(int)y);
+                if (wallTile != null && i < x) {
+                    break;
+                }
                 for (Robot r: robots) {
                     if (r.getX() == i && r.getY() == y) {
                         distance = (int) Math.abs(r.getX() - x);
@@ -223,6 +235,10 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             }
         } else if (laser.getCellId() == Laser.doubleLaserEAST) {
             for (int i = (int) x; i > 0; i--) {
+                TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,(int)y);
+                if (wallTile != null && i < x) {
+                    break;
+                }
                 for (Robot r: robots) {
                     if (r.getX() == i && r.getY() == y) {
                         laserdamage = 2;

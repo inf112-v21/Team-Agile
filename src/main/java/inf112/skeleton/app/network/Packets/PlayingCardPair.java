@@ -4,6 +4,9 @@ public class PlayingCardPair {
 
     public Integer move, priority;
 
+    public PlayingCardPair() {
+
+    }
 
     public PlayingCardPair(int move, int priority) {
         this.move = move;

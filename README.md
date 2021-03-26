@@ -129,8 +129,9 @@ run -> edit configurations -> modify options -> huke av på ``Allow multiple ins
 ![](/Deliverables/Images/Multipleinstances.png "")
 
 Kjøre multiplayer med flere instanser av Main på samme PC:
-* Start en instans av Main, første instans av Main vil være hosten av serveren. Og skrive i terminalen til denne instansen ``no``.
-* Deretter i Main skjekk at ``host`` variabl er satt til ``false`` og kjør flere instanser av Main for å koble nye instansen til hosten. 
+* Start en instans av Main, første instans av Main vil være hosten av serveren. Og skriv i terminalen til denne instansen ``no``.
+* Deretter i Main skjekk at ``host`` variabel
+  er satt til ``false`` og kjør flere instanser av Main for å koble nye instansen til hosten. (som bilde under)
   For hver nye Main instanser som blir kjørt må det i første Main instansen som er Host skrive ``yes`` vist du ikke ønsker å koble til flere Main instanser, ``no`` visst du skal koble til flere.
   ![](/Deliverables/Images/Main.png "")
 * Når ønsket antall instanser av Main for antall spillere er oppnådd, bruker man brukertastene oppgitt over for å spille spillet.
@@ -165,6 +166,9 @@ at...."._ I dette tilfellet er det en feil som må rettes opp i selve IntelliJ, 
 3. Apply settings og lukk dialogboksen. Du skal nå kunne starte spillet. 
 
 **Multiplayer ikke starter korrekt:**
+
+skjekk at lib mappen ligger i pathen til prosjektet høyre klikk på prosjekt mappen Team-Agile -> Open Module Settings -> Dependencies tab -> helt nederst av listen er det et "+" tegn.
+-> Jars and Directories -> Velg ``lib`` som ligger i prosjekt mappen og apply.
 
 Om man prøver å koble til Main instanser til GameServer for fort, kan føre til at Server/Client kræsjer.
 Vent etter hver oppstart av instans til at programmet får loadet og startet skikkelig eller prøv igjen.

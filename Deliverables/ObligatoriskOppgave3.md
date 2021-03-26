@@ -197,6 +197,7 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 * Spillet vårt går foreløpig ikke i en loop, som sjekker conditions sporadisk, så derfor har vi midlertidlig lagt til en funksjon hvor du gjøre tastetrykk
   "c" inne i spillet, da den vil sjekke conditions for den ruten du er i. Med neste innlevering så ønsker vi å implementere ferdig game-loop som sporadisk sjekker
   Tile brukeren står i, og gir informasjon om hva den aktuelle Tilen gjør.
+* Vi har enda ikke tatt høyde for at spillerene flytter hverandre når de treffer på samme tile. Dette implementeter vi inn i neste innleveringen.  
 * HUD er ikke ferdig implementert enda, da det mangler litt mer spill-logikk for at denne skal bli fullstendig.
   Mangler også fullstendig game-loop for at HUD-informasjonen skal kunne vises for hver condition som skjer (tatt flagg, mistet hp, power down etc).
   Men foreløpig resultat for HUD, og hvordan den er tenkt til å brukes, kan sees i bilde under:
@@ -206,6 +207,8 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 ### Manuelle tester
 
 **Multiplayer test med flere instanser på samme PC**
+Vi hadde problemer med å hente modulene fra pom.xml filen derfor må du skjekke at lib mappen ligger i pathen til prosjektet høyre klikk på prosjekt mappen Team-Agile -> Open Module Settings -> Dependencies tab -> helt nederst av listen er det et "+" tegn.
+-> Jars and Directories -> Velg ``lib`` som ligger i prosjekt mappen og apply.
 
 Før man starter må man tillate at flere instanser av Main tillates. Åpne opp Main gå i menylinjen, og naviger deg til
 run -> edit configurations -> modify options -> huke av på ``Allow multiple instances``
@@ -215,8 +218,8 @@ run -> edit configurations -> modify options -> huke av på ``Allow multiple ins
 Kjøre multiplayer med 2 instanser av Main på samme PC:
 
 * Start en instans av Main, første instans av Main vil være hosten av serveren. Og skrive i terminalen til denne instansen ``no``.
-* Deretter i Main skjekk at ``host`` variabl er satt til ``false`` og kjør flere instanser av Main for å koble nye instansen til hosten.
-  For hver nye Main instanser som blir kjørt må det i første Main instansen som er Host skrive ``yes`` vist du ikke ønsker å koble til flere Main instanser, ``no`` visst du skal koble til flere. (les i Multiplayer i readme.md for mer detaljert stegvis oppstart av Multiplayer)
+* Deretter i Main skjekk at ``host`` variabel er satt til ``false`` og kjør flere instanser av Main for å koble nye instansen til hosten.
+  For hver nye Main instanser som blir kjørt må det i første Main instansen som er Host skrive ``no`` visst du skal koble til flere instanser ellers ``yes`` for å starte og få tilgang til brukertaster(les i Multiplayer i readme.md for mer detaljert stegvis oppstart av Multiplayer)
 * Start en ny Main instans til, og i første Main instansen som ble kjørt skriv ``yes``
 * Nå skal 2 seperate spillvinduer være oppe , hvor hver av de har egne brukertaster og styrer hver sin robot.
 * Gjennomfør noen av robot styringene ved hjelp av piltastene. Spilleren som flytter på seg flytter seg på samme måte i begge spillvinduene.
@@ -294,7 +297,9 @@ oppdatere hverandre. Her planlegger vi møter, sier ifra om vi har tenkt å jobb
 Når vi bruker discord så har det ofte at det er en som styre møte sånn at vi ikke snakker over hverandre og får diskutert ting mer strukturert.
 Frem til nå har vi nesten kun parprogrammert og har brukt Code With Me.
 
-- Kommunikasjon (spesifisere kunnskapsoverføring og hvordan kunnskapsoverføring gjøres) (fra retteskjema)
+Når vi er ferdig med oppgaven vår, så bruker vi ofte en liten del av møte for å gå gjennom det som har blitt gjort. 
+Her stiller vi ofte spørsmål om det er noe vi ikke forstår og kommer med forslag om endringer. 
+
 
 Merk også at vi bruker Code With me flittig. Dette medfører i stor variasjon i commits blant teammedlemmene. 
 En annen faktor til dette er også at de som skriver mye innhold på markdown dokumentet får også større status i "contributions" på Github, selv om
