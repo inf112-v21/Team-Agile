@@ -108,7 +108,7 @@ Det vi kanskje kunne ha prøvd på og som har vært diskutert i teamet er å job
 Vi har fram til nå nesten alltid jobbet i grupper og har merket at av og til kan det ta litt tid før vi får startet.
 Vi jobber med oppgaven mandag, onsdag og fredag der vi møter hverandre. Som oftest har vi 2 timer på oss, hvor mye av tiden
 bruker vi å oppdatere hverandre hvordan det går med de forskjellige gruppene, planlegge hva vi skal gjøre og om noen trenger hjelp.
-Dette 
+
 
 **3 forbedringspunkter:**
 1. Organsering av arbeid er noe vi kan vær mer individuelt og effektivt på. Vi har nesten kun parprogrammert, men ser nå at det er mye vi kunne ha gjort alene for å være mer effektiv. 
