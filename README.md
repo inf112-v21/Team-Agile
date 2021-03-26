@@ -99,10 +99,8 @@ skrive ``yes`` og enter i terminalen til GameServer som spillet kjøres på. Hvo
     * **Pil venstre**: Roterer roboten til venstre.
     * **R**: Roter roboten 180 grader (UTURN).
     * **C**: Plukke opp ``flag`` eller ta ``skade`` når roboten befinner seg i en av de rutene. 
-* Velge ut kort ved tastetrykk 1-9, kortene er indeksert fra 1-5 de øverste, deretter 6-9 på raden under.
-    * Tastetrykk flytter valgte kort til Register-feltet (kortene spilleren velger).
-* Angre valgte kort: 
-    * **A** Resetter hele Register-feltet (valgte kort) og alle kortene flyttes tilbake til og kan deretter velges på nytt.
+* Velge ut kort ved med ``Venstre museklikk`` på valgte kort.
+* Angre valgte kort ``Høyre museklikk``
 * Utføre valgte kort som ligger i Register-feltet: 
     * **SPACEBAR** Utfører kortet som ligger først fra venstre.
     * **ENTER** Sender de valgte kortene til Server.

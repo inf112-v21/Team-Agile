@@ -101,7 +101,6 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 * Må fungere cross-platform (Mac/Windows/Linux)
 * Hver spiller skal kunne ha en dialog med server slik at server reagerer på input fra spillere på andre datamaskiner.
 * Spiller skal kunne bevege seg på brettet på sin skjerm og dermed også motspiller sin skjerm.
-* Hver Spiller styrer hver sin robot.
 
 
 **Arbeidsoppgaver:**
@@ -109,24 +108,6 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 * spillere klarer å koble seg til.
 * viser alle spiller på et og samme brett på hver datamaskin.
 * bevege alle spillere på hver sin datamaskin og vise det likt på alle andre maskiner.
-
-**Multiplayer Manuel test**
-
-Før man starter må man tillate at flere instanser av Main tillates. Åpne opp Main gå i menylinjen, og naviger deg til
-run -> edit configurations -> modify options -> huke av på ``Allow multiple instances``
-
-(les Known Bugs i ``Readme.md`` om feil oppstår ved gjennomføring av manuel test for multiplayer, spessielt for macOS)
-
-* Start GameServer instans
-* Start Main instans, i GameServer terminalen skriv ``yes`` da kobles den Main instansen til Server.
-* Start en ny Main instans til, og i GameServer ``yes``
-* Nå skal 2 seperate spillvinduer være oppe , hvor hver av de har egne brukertaster og styrer hver sin robot.
-* Gjennomfør noen av robot styringene ved hjelp av piltastene. Spilleren som flytter på seg flytter seg på samme måte i begge spillvinduene.
-* Velg 5 kort med tastetrykkene fra 1-9 og trykk ``ENTER`` for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt.
-* Når valgte kort er sendt fra begge spillvinduer, utføres kortene i sekvens for alle spillvinduene.
-* Etter alle kortene er utført vil begge spillvinduer få nye kort og, stegene over kan gjøres på nytt.
-
-<br/>
 
 <br/>
 <br/> 
@@ -204,7 +185,35 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 **Hva vi ikke har fått til av kode:**
 ***
 
+* Spillet vårt går foreløpig ikke i en loop, som sjekker conditions sporadisk, så derfor har vi midlertidlig lagt til en funksjon hvor du gjøre tastetrykk
+  "c" inne i spillet, da den vil sjekke conditions for den ruten du er i. Med neste innlevering så ønsker vi å implementere ferdig game-loop som sporadisk sjekker 
+  Tile brukeren står i, og gir informasjon om hva den aktuelle Tilen gjør.
+* Lasere fungerer foreløpig ikke på en slik måte at den stopper når den treffer en robot. Per nå så treffer laseren alle robotene som står i samme linje som laser. 
+* HUD er ikke ferdig implementert enda, da det mangler litt mer spill-logikk for at denne skal bli fullstendig.
+Mangler også fullstendig game-loop for at HUD-informasjonen skal kunne vises for hver condition som skjer (tatt flagg, mistet hp, power down etc). 
+  Men foreløpig resultat for HUD, og hvordan den er tenkt til å brukes, kan sees i bilde under: 
 
+![](/Deliverables/Images/HUD.png "HUD")
+
+### Manuelle tester
+
+**Multiplayer**
+
+Før man starter må man tillate at flere instanser av Main tillates. Åpne opp Main gå i menylinjen, og naviger deg til
+run -> edit configurations -> modify options -> huke av på ``Allow multiple instances``
+
+(les Known Bugs i ``Readme.md`` om feil oppstår ved gjennomføring av test)
+
+* Start GameServer instans
+* Start Main instans, i GameServer terminalen skriv ``yes`` da kobles den Main instansen til Server.
+* Start en ny Main instans til, og i GameServer ``yes``
+* Nå skal 2 seperate spillvinduer være oppe , hvor hver av de har egne brukertaster og styrer hver sin robot.
+* Gjennomfør noen av robot styringene ved hjelp av piltastene. Spilleren som flytter på seg flytter seg på samme måte i begge spillvinduene.
+* Velg 5 kort med tastetrykkene fra 1-9 og trykk ``ENTER`` for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt.
+* Når valgte kort er sendt fra begge spillvinduer, utføres kortene i sekvens for alle spillvinduene.
+* Etter alle kortene er utført vil begge spillvinduer få nye kort og, stegene over kan gjøres på nytt.
+
+<br/>
 
 ***
 ## Teambeskrivelse og rollefordeling
