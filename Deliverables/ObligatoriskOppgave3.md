@@ -191,11 +191,13 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 **Hva vi ikke har fått til av kode:**
 ***
 
+* Prosjektet bygger ikke korrekt i Travis eller via Terminal/Command prompt på grunn av oppstart av Serveren forventer et svar i System.out.println() terminalen, og vil dermed ikke få Connection mellom Server
+  og Client dersom det i skrives i Server terminalen. Mål om å fikse dette i neste innlevering. 
 * Noe av koden kan ansees som litt uoversiktlig. Vi har litt gjenstående når det gjelder abstraksjon og refaktorering av selve koden. Dette vil være et mål i neste innlevering. 
 * Spillet vårt går foreløpig ikke i en loop, som sjekker conditions sporadisk, så derfor har vi midlertidlig lagt til en funksjon hvor du gjøre tastetrykk
   "c" inne i spillet, da den vil sjekke conditions for den ruten du er i. Med neste innlevering så ønsker vi å implementere ferdig game-loop som sporadisk sjekker
   Tile brukeren står i, og gir informasjon om hva den aktuelle Tilen gjør.
-* Vi har enda ikke tatt høyde for at spillerene flytter hverandre når de treffer på samme tile. Dette implementeter vi inn i neste innleveringen.  
+* Vi har enda ikke tatt høyde for at spillerene flytter hverandre når de treffer på samme tile. Dette implementerer vi inn i neste innleveringen.  
 * HUD er ikke ferdig implementert enda, da det mangler litt mer spill-logikk for at denne skal bli fullstendig.
   Mangler også fullstendig game-loop for at HUD-informasjonen skal kunne vises for hver condition som skjer (tatt flagg, mistet hp, power down etc).
   Men foreløpig resultat for HUD, og hvordan den er tenkt til å brukes, kan sees i bilde under:

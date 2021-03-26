@@ -170,7 +170,6 @@ at...."._ I dette tilfellet er det en feil som må rettes opp i selve IntelliJ, 
 skjekk at lib mappen ligger i pathen til prosjektet høyre klikk på prosjekt mappen Team-Agile -> Open Module Settings -> Dependencies tab -> helt nederst av listen er det et "+" tegn.
 -> Jars and Directories -> Velg ``lib`` som ligger i prosjekt mappen og apply.
 
-Om man prøver å koble til Main instanser til GameServer for fort, kan føre til at Server/Client kræsjer.
-Vent etter hver oppstart av instans til at programmet får loadet og startet skikkelig eller prøv igjen.
+Om man venter for lenge vil serveren timeout og miste connection, må isåfall starte på nytt.
 
 
