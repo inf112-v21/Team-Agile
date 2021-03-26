@@ -26,10 +26,7 @@ import inf112.skeleton.app.object.InputHandler;
 import inf112.skeleton.app.object.Player;
 import inf112.skeleton.app.object.Robot;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 
 public class RoboRally extends InputAdapter implements ApplicationListener {
     public SpriteBatch batch;
@@ -203,7 +200,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         float x = laserpos.x;
         float y = laserpos.y;
         HashMap<Integer, Robot> robotsDistanceToLaser = new HashMap<>();
-        int distance;
+        Integer distance;
         int laserdamage = 1;
 
         if (laser.getCellId() == Laser.laserSOUTH) {
@@ -218,7 +215,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             }
         } else if (laser.getCellId() == Laser.laserWEST) {
             for (int i = (int) x; i < boardWidth; i++) {
-                //if (playerLayer.getCell(i, (int) y) != null) {
                 for (Robot r: robots) {
                     if (r.getX() == i && r.getY() == y) {
                         distance = (int) Math.abs(r.getX() - x);
@@ -228,7 +224,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             }
         } else if (laser.getCellId() == Laser.laserEAST) {
             for (int i = (int) x; i > 0; i--) {
-                //if (playerLayer.getCell(i, (int) y) != null) {
                 for (Robot r: robots) {
                     if (r.getX() == i && r.getY() == y) {
                         distance = (int) Math.abs(r.getX() - x);
@@ -238,7 +233,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             }
         } else if (laser.getCellId() == Laser.doubleLaserEAST) {
             for (int i = (int) x; i > 0; i--) {
-                //if (playerLayer.getCell(i, (int) y) != null) {
                 for (Robot r: robots) {
                     if (r.getX() == i && r.getY() == y) {
                         laserdamage = 2;
@@ -251,7 +245,26 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             System.out.println("No players hit by lasers.");
         }
 
-        Integer min = Collections.min(robotsDistanceToLaser.keySet());
+        //Integer min;
+
+        /*
+        Map.Entry<Robot, Integer> min = null;
+        for (Map.Entry<Robot, Integer> entry : robotsDistanceToLaser.keySet()) {
+            if (min == null || min.getKey() > entry.getKey()) {
+                min = entry;
+            }
+        }
+        */
+        Integer min = Integer.MAX_VALUE;
+        Integer temp = Integer.MAX_VALUE;
+        for (Integer key : robotsDistanceToLaser.keySet()) {
+            if (key < temp) {
+                min = key;
+            }
+            temp = min;
+        }
+
+        //min = Collections.min(robotsDistanceToLaser.keySet());
         Robot robot = robotsDistanceToLaser.get(min);
         robot.decreaseRobotHealthpoint(laserdamage);
         robot.renderHud("You lost 1 HP", batch, 0);
