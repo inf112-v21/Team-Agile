@@ -185,6 +185,16 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 **Hva vi ikke har fått til av kode:**
 ***
 
+* Spillet vårt går foreløpig ikke i en loop, som sjekker conditions sporadisk, så derfor har vi midlertidlig lagt til en funksjon hvor du gjøre tastetrykk
+  "c" inne i spillet, da den vil sjekke conditions for den ruten du er i. Med neste innlevering så ønsker vi å implementere ferdig game-loop som sporadisk sjekker 
+  Tile brukeren står i, og gir informasjon om hva den aktuelle Tilen gjør.
+* Lasere fungerer foreløpig ikke på en slik måte at den stopper når den treffer en robot. Per nå så treffer laseren alle robotene som står i samme linje som laser. 
+* HUD er ikke ferdig implementert enda, da det mangler litt mer spill-logikk for at denne skal bli fullstendig.
+Mangler også fullstendig game-loop for at HUD-informasjonen skal kunne vises for hver condition som skjer (tatt flagg, mistet hp, power down etc). 
+  Men foreløpig resultat for HUD, og hvordan den er tenkt til å brukes, kan sees i bilde under: 
+
+![](/Deliverables/Images/HUD.png "HUD")
+
 ### Manuelle tester
 
 **Multiplayer**
