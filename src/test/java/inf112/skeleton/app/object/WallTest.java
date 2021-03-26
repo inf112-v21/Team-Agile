@@ -73,18 +73,18 @@ public class WallTest {
     @Test
     public void testIfWallIsInFrontOfPlayerSouth(){
         setUpNewWall(29); //setter opp type vegg, her står veggen sør for spiller men på samme tile som spiller
-        robot.setRotation(0); // når spiller skal bevege seg sørover er
-        assertEquals(3, (int) robot.getX());
-        assertEquals(3, (int) robot.getY());
+        robot.setRotation(0); // når spiller skal bevege seg sørover er rotasjonen til spiller = 0
+        robot.move(1); // tar et steg for å sjekke om man stoppes av veggen
+        assertEquals(3, (int) robot.getX()); // når vi skal bevege oss sørover, vil x posisjon bevege seg, men siden det skal være vegg der forventer vi samme posisjon
+        assertEquals(3, (int) robot.getY());//forventer samme posisjon for y uansett om spiller beveger seg eller ikke
     }
 
     @Test
     public void testIfWallIsInFrontOfPlayerNorth(){
-        robot.setRotation(180);
-        setUpNewWall(31);
-        robot.move(1);
-        robot.move(1);
-        assertEquals(3, (int) robot.getX());
+        robot.setRotation(180); // når man skal nord må man rotere 180 grader
+        setUpNewWall(31); //vegg som står i nord posisjon har celle id 31
+        robot.move(1);//tar et steg
+        assertEquals(3, (int) robot.getX());//
         assertEquals(3, (int) robot.getY());
     }
     @Test

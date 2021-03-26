@@ -127,11 +127,12 @@ For å kunne spille flere spillere med flere PC-er , kan dette gjøres ved å be
 
 Link for oppsett av Hamachi: https://lifehacker.com/how-to-set-up-a-personal-private-vpn-with-hamachi-5902468
 
-* Før man kobler til gjennom hamachi må man navigere seg i prosjektmappen network -> NetworkHandler og finne variabelen ``IPAdress`` og endre til IPadressen til nettverket som man er koblet til i Hamachi.
+* Før man kjører noen instanser må du inn gjennom mappestrukturen network -> NetworkHandler og finne variabelen ``IPAdress`` og endre til IPadressen til nettverket som man er koblet til i Hamachi.
+``IPAdress`` skal samsvare med ipen til nettverket man er koblet til gjennom hamachi som under.
 
-![](/Deliverables/Images/NetworkHandler.png "") ![](/Deliverables/Images/Hamachi.png "")
+![](/Deliverables/Images/NetworkHandler.png "") ![](/Deliverables/Images/Hamaci.png "")
 
-* Gjør samme fremgangsmåte som over på samme PC, men hver spiller starter Main selv på sin PC etter at en av spillerene har startet å Hoste GameServer.
+* Gjør samme fremgangsmåte som over på samme PC, Hosten av Hamachi starter GameServer instans først, deretter 
 
 
 
