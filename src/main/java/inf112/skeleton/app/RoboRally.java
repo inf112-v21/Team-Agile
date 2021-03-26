@@ -245,30 +245,18 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             System.out.println("No players hit by lasers.");
         }
 
-        //Integer min;
-
-        /*
-        Map.Entry<Robot, Integer> min = null;
-        for (Map.Entry<Robot, Integer> entry : robotsDistanceToLaser.keySet()) {
-            if (min == null || min.getKey() > entry.getKey()) {
-                min = entry;
-            }
-        }
-        */
         Integer min = Integer.MAX_VALUE;
-        Integer temp = Integer.MAX_VALUE;
         for (Integer key : robotsDistanceToLaser.keySet()) {
-            if (key < temp) {
+            if (key < min) {
                 min = key;
             }
-            temp = min;
         }
 
-        //min = Collections.min(robotsDistanceToLaser.keySet());
-        Robot robot = robotsDistanceToLaser.get(min);
-        robot.decreaseRobotHealthpoint(laserdamage);
-        robot.renderHud("You lost 1 HP", batch, 0);
-
+        if (!robotsDistanceToLaser.isEmpty()) {
+            Robot robot = robotsDistanceToLaser.get(min);
+            robot.decreaseRobotHealthpoint(laserdamage);
+            robot.renderHud("You lost 1 HP", batch, 0);
+        }
     }
 
     public void checkrobotStates(ArrayList<Robot> robotliste) {
