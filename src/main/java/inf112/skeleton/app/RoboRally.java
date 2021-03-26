@@ -205,7 +205,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         if (laser.getCellId() == Laser.laserSOUTH) {
             for (int i = (int) y; i < boardHeight; i++) {
-                //if (playerLayer.getCell((int) x, i) != null) {
                 for (Robot r: robots) {
                     if (r.getX() == x && r.getY() == i) {
                         distance = (int) Math.abs(r.getY() - y);
