@@ -28,6 +28,7 @@ import inf112.skeleton.app.object.Robot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class RoboRally extends InputAdapter implements ApplicationListener {
@@ -169,6 +170,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     }
 
+    /*
     private void robotHitByLaser(ArrayList<Robot> robotsInLine, int damage, Laser laser) {
         for (Robot r : robotsInLine) {
 
@@ -186,13 +188,22 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         return true;
     }
+    */
+
+    private void checkLaserBeams(ArrayList<Laser> lasers) {
+        for (Laser l : lasers) {
+            System.out.println(l);
+            dealDamageFromLaser(l);
+        }
+    }
 
     private void dealDamageFromLaser(Laser laser) {
         Vector2 laserpos = laser.getLaserPos();
         System.out.println(laserpos);
         float x = laserpos.x;
         float y = laserpos.y;
-        ArrayList<Robot> inLineOfFire = new ArrayList<>();
+        HashMap<Integer, Robot> robotsDistanceToLaser = new HashMap<>();
+        int distance;
         int laserdamage = 1;
 
         if (laser.getCellId() == Laser.laserSOUTH) {
@@ -200,113 +211,50 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                 //if (playerLayer.getCell((int) x, i) != null) {
                 for (Robot r: robots) {
                     if (r.getX() == x && r.getY() == i) {
-                        inLineOfFire.add(r);
-                        if(noAnotherRobotsInLine(inLineOfFire, r.getX(), r.getY()+1)){
-                            r.decreaseRobotHealthpoint(1);
-                            r.renderHud("You lost 1 HP", batch, 0);
-                        }
-
-                        //inLineOfFire.add(r);
-                        //robotHitByLaser(inLineOfFire, laserdamage, laser);
-                        //r.decreaseRobotHealthpoint(1);
-                        //r.renderHud("You lost 1 HP", batch, 0);
-                        }
+                        distance = (int) Math.abs(r.getY() - y);
+                        robotsDistanceToLaser.put(distance, r);
                     }
                 }
-
+            }
         } else if (laser.getCellId() == Laser.laserWEST) {
             for (int i = (int) x; i < boardWidth; i++) {
                 //if (playerLayer.getCell(i, (int) y) != null) {
                 for (Robot r: robots) {
                     if (r.getX() == i && r.getY() == y) {
-                        r.decreaseRobotHealthpoint(1);
-                        r.renderHud("You lost 1 HP", batch, 0);
-                        }
+                        distance = (int) Math.abs(r.getX() - x);
+                        robotsDistanceToLaser.put(distance, r);
                     }
-
+                }
             }
         } else if (laser.getCellId() == Laser.laserEAST) {
             for (int i = (int) x; i > 0; i--) {
                 //if (playerLayer.getCell(i, (int) y) != null) {
                 for (Robot r: robots) {
                     if (r.getX() == i && r.getY() == y) {
-                        r.decreaseRobotHealthpoint(1);
-                        r.renderHud("You lost 1 HP", batch, 0);
-                        }
+                        distance = (int) Math.abs(r.getX() - x);
+                        robotsDistanceToLaser.put(distance, r);
                     }
                 }
+            }
         } else if (laser.getCellId() == Laser.doubleLaserEAST) {
             for (int i = (int) x; i > 0; i--) {
                 //if (playerLayer.getCell(i, (int) y) != null) {
                 for (Robot r: robots) {
                     if (r.getX() == i && r.getY() == y) {
-
                         laserdamage = 2;
-                        r.decreaseRobotHealthpoint(2);
-                        r.renderHud("You lost 2 HP", batch, 0);
-                        }
+                        distance = (int) Math.abs(r.getX() - x);
+                        robotsDistanceToLaser.put(distance, r);
                     }
                 }
+            }
         } else {
             System.out.println("No players hit by lasers.");
         }
-    }
 
-    private void checkLaserBeams(ArrayList<Laser> lasers) {
-        for (Laser l : lasers) {
-            System.out.println(l);
-            dealDamageFromLaser(l);
-        }
-
-
-        /*
-        HashMap<Robot,Float> laserxcoords = new HashMap<>();
-        HashMap<Robot,Float> laserycoords = new HashMap<>();
-        HashMap<Robot,Integer> distanceToLaser = new HashMap<>();
-        for(Robot r : robotliste) {
-            if (laserLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
-                inLineOfLaser.add(r);
-                float x = r.getX();
-                laserxcoords.put(r,x);
-                float y = r.getY();
-                laserycoords.put(r,y);
-
-                r.decreaseRobotHealthpoint(1);
-                r.renderHud("You lost 1 HP", batch, 0);
-            }
-        }
-
-        int xwall = 0;
-        int ywall = 0;
-        for (Robot r : inLineOfLaser) {
-            boolean donex = false;
-            boolean foundx = false;
-            float xcoord = r.getX();
-            float ycoord = 0;
-            float xdiff = 0;
-            float ydiff = 0;
-
-
-         */
-
-
-            /*
-            while (!donex) {
-                if (wallLayer.getCell((int) xcoord, (int) ycoord) != null && laserLayer.getCell((int) xcoord, (int) ycoord) != null) {
-                    xwall = (int)xcoord;
-                    xdiff = Math.abs(xcoord - xwall);
-                    laserxcoords.put(r,xcoord);
-                    foundx = true;
-                    donex = true;
-                }
-                if (ycoord >= boardHeight) {
-                    donex = true;
-                }
-                ycoord++;
-            }
-             */
-
-
+        Integer min = Collections.min(robotsDistanceToLaser.keySet());
+        Robot robot = robotsDistanceToLaser.get(min);
+        robot.decreaseRobotHealthpoint(laserdamage);
+        robot.renderHud("You lost 1 HP", batch, 0);
 
     }
 
