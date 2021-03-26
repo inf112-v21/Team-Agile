@@ -75,6 +75,12 @@ eget krav han kunne jobbe med denne tiden. Han tok HUD.
   Etter endelig å ha merget ferdig fortsatte Anthony og Marius med debugging av koden
 * Petter ble med klokken 11:00 og forstatte hvor johnny slapp på markdown doc.
 
+**26.03.2021 : 10-15 - 1200**
+* Johnny fortsetter på Markdown doc og oppdaterer klassediagrammet
+* Tore
+* Marius 
+* Petter
+* Marius 
 
 ## Teambeskrivelse og rollefordeling
 
@@ -176,17 +182,19 @@ Frem til nå har vi nesten kun parprogrammert og har brukt Code With Me. Prøver
 **Akseptansekriterier**
 * laser må ta liv fra spiller som er på laser tile. 
 * jo flere lasere jo flere liv tas. 
-* 
+* Når en spiller står foran en laser, så vil ikke laseret fortsette bak spilleren
 
 **Arbeidsoppgaver**
+* Implimenter at spiller mister hp ved å komme borti laser
+* Implimenter at laser stopper "ruten sin" dersom det er en spiller i veien
+* I ruter der det er flere laser, så skal antall liv mistet være lik antall laser
 
 <br/>
 
 **Implementasjon av HUD**
-* Som Spiller ønsker jeg å få nødvendig info tilbake fra spillet.
-* Når jeg mister liv eller når jeg dør. 
-* hvor mange flagg jeg har samlet av kanskje hvor mange jeg skal ha.
-* Så vil få vite all informasjon som er relevant. vinner, powerdown, flagg og hp.
+* Som Spiller ønsker jeg å få nødvendig info tilbake fra spillet, slik at jeg kan lage en strategi ut ifra informasjonen
+* Som spiller ønsker jeg å se hvor mye liv jeg har igjen, slik at jeg vet hvor mye hp jeg har igjen til jeg dør
+* Som spiller ønsker jeg å se hvor mange flagg jeg har samlet, slik at jeg vet hvor mange flagg jeg har igjen
 
 **Akseptansekriterier**
 * HUD må kunne vise fremgang i spillet, hva fremgangen gjelder og hvem det gjelder. 
@@ -194,9 +202,8 @@ Frem til nå har vi nesten kun parprogrammert og har brukt Code With Me. Prøver
   hvor mye liv en har, dersom man mister liv skal det oppdateres for riktig spiller og gis bedskjed om.
   
 **Arbeidsoppgaver**
-
-
-
+* Implementer sånn at det HUDen viser nødvendig informasjon. Powerdown, flagg, hp og vinner 
+* Legg informasjon på riktig posisjon så det ikke dekker eller står i veien for andre elementer i spillet
 
 debugging: 25:03
 * har merga sammen branche mapdesign med master, men marius og anthony har begge endret mye på spillet hver 
