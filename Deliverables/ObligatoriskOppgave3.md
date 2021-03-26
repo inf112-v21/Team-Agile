@@ -118,13 +118,13 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 * viser alle spiller på et og samme brett på hver datamaskin.
 * bevege alle spillere på hver sin datamaskin og vise det likt på alle andre maskiner.
 
-**
+***
 
 <br/>
 
 **Implementasjon av vegger**
 * Som spiller vil jeg det skal være hindinger på brettet slik at det gjør spillet mer utfordrene.
-* Vil at hindringer skal gjør spillet vanskeligere og ikke kan bare gå hvor enn man vil.
+* Som spiller vil jeg at hindringer skal gjør spillet vanskeligere o ikke kan bare gå hvor enn man vil.
 
 
 **Akseptansekriterier**
