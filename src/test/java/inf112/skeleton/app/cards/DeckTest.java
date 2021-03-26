@@ -21,7 +21,7 @@ public class DeckTest {
     Robot player2;
     Robot player3;
     ArrayList<Robot> players;
-    RoboRally game = new RoboRally("tutorial.tmx");
+    RoboRally game = new RoboRally("tutorial.tmx", true);
 
 
     @Before

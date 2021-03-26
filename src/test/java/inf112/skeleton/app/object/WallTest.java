@@ -24,7 +24,7 @@ public class WallTest {
     Vector2 wallPos;
     int cellID;
     Robot robot, robot2, robot3, robot4, robot5;
-    RoboRally game = new RoboRally("tutorial.tmx");
+    RoboRally game = new RoboRally("tutorial.tmx" , true);
 
     /**
      * Setter opp robot og adder posisjon av vegg til liste, og tester at dersom man beveger ved hjelp av funksjonen

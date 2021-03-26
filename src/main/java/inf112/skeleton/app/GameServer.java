@@ -55,9 +55,9 @@ public class GameServer extends Listener{
                 server.sendToAllTCP(spillerliste);
 
                 Scanner sc = new Scanner(System.in);
-                System.out.println("Accept player? yes/no");
+                System.out.println("Start) yes/no");
                 if(sc.nextLine().equals("yes")) {
-                    server.sendToTCP(c.getID() , new CardsPacket());
+                    server.sendToAllTCP(new CardsPacket());
                 }
 
                 System.out.println("Currently Connected players: " + playerlist.size());
@@ -133,6 +133,7 @@ public class GameServer extends Listener{
         server.sendToAllTCP(cards);
     }
 
+    /*
     public static void main(String[] args) {
 
        GameServer server = new GameServer();
@@ -147,6 +148,8 @@ public class GameServer extends Listener{
            }, cfg);
 
     }
+
+     */
 
 
 }

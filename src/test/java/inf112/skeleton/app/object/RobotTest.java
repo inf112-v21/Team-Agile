@@ -24,7 +24,7 @@ public class RobotTest {
     Vector2 pos;
     InputHandler handler;
 
-    RoboRally game = new RoboRally("tutorial.tmx");
+    RoboRally game = new RoboRally("tutorial.tmx", true);
 
     @Before
     public void setUp() throws Exception {

@@ -21,7 +21,7 @@ public class PlayingCardTest {
     PlayingCard card;
     InputHandler handler;
 
-    RoboRally game = new RoboRally("tutorial.tmx");
+    RoboRally game = new RoboRally("tutorial.tmx", true);
 
 
     @Before
