@@ -65,6 +65,7 @@ public class WallTest {
      * @param id
      */
 
+    // setter opp vegg, og gir mulighet for å bestemme hvilken type vegg som skal brukes
     public void setUpNewWall(int id){
         wall = new Wall(new Vector2(3,3), id);
         game.allWalls.add(wall);
@@ -72,41 +73,41 @@ public class WallTest {
 
     @Test
     public void testIfWallIsInFrontOfPlayerSouth(){
-        setUpNewWall(29); //setter opp type vegg, her står veggen sør for spiller men på samme tile som spiller
+        setUpNewWall(29); // setter opp type vegg, her står veggen sør for spiller men på samme tile som spiller
         robot.setRotation(0); // når spiller skal bevege seg sørover er rotasjonen til spiller = 0
         robot.move(1); // tar et steg for å sjekke om man stoppes av veggen
-        assertEquals(3, (int) robot.getX()); // når vi skal bevege oss sørover, vil x posisjon bevege seg, men siden det skal være vegg der forventer vi samme posisjon
-        assertEquals(3, (int) robot.getY());//forventer samme posisjon for y uansett om spiller beveger seg eller ikke
+        assertEquals(3, (int) robot.getX()); // skal få samme posisjon siden hvis man beveger seg i sør retning vil x posisjon forbli den samme
+        assertEquals(3, (int) robot.getY()); // vil ha samme posisjon tilbake for å bevise at det finnes vegg i veien for spiller
     }
 
     @Test
     public void testIfWallIsInFrontOfPlayerNorth(){
         robot.setRotation(180); // når man skal nord må man rotere 180 grader
-        setUpNewWall(31); //vegg som står i nord posisjon har celle id 31
-        robot.move(1);//tar et steg
-        assertEquals(3, (int) robot.getX());//
-        assertEquals(3, (int) robot.getY());
+        setUpNewWall(31); // vegg som står i nord posisjon har celle id 31
+        robot.move(1); // tar et steg
+        assertEquals(3, (int) robot.getX()); // her skal posisjonen uansett være den samme
+        assertEquals(3, (int) robot.getY()); // her skulle egentlig posisjonen vert +1, men siden vegg er i veien forventes samme posisjon
     }
     @Test
     public void testIfWallIsInFrontOfPlayerEast(){
-        robot.setRotation(90);
-        setUpNewWall(23);
-        robot.move(1);
-        assertEquals(3, (int) robot.getX());
-        assertEquals(3,(int) robot.getY());
+        robot.setRotation(90); // rotasjon for å kunne gå øst
+        setUpNewWall(23); // vegg i øst retning for spiller
+        robot.move(1); // går et steg
+        assertEquals(3, (int) robot.getX()); // sjekker at selv om man går et steg til høyre vil man ha samme x-posisjon pga vegg.
+        assertEquals(3,(int) robot.getY()); // vil få samme posisjon uansett om vegg eller ikke
 
     }
     @Test
     public void testIfWallIsInFrontOfPlayerWest(){
-        robot.setRotation(270);
-        setUpNewWall(30);
-        robot.move(1);
-        assertEquals(3, (int) robot.getX());
-        assertEquals(3, (int) robot.getY());
+        robot.setRotation(270); // rotasjon mot vest
+        setUpNewWall(30); // setter opp vegg i vest retning for spiller
+        robot.move(1); // beveger oss vestover
+        assertEquals(3, (int) robot.getX()); // skal sjekke at spiller ikke beveger seg vestover pga vegg
+        assertEquals(3, (int) robot.getY()); // vil få samme posisjon uansett.
     }
 
-    public void setUpNewWallInTileInFrontOfPlayer(int cellId){
-        wall = new Wall(new Vector2(4,4),cellId); // NORTH
+    public void setUpNewWallInTileInFrontOfPlayer(int cellId){ // Til å sette opp vegger i tile foran spiller
+        wall = new Wall(new Vector2(4,4),cellId);
         game.allWalls.add(wall);
     }
 

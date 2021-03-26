@@ -3,10 +3,26 @@
 [![Build Status](https://travis-ci.com/inf112-v21/Team-Agile.svg?branch=master)](https://travis-ci.com/inf112-v21/Team-Agile)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/718749febaf34563a55ed57f8cb05f60)](https://www.codacy.com/gh/inf112-v21/Team-Agile/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=inf112-v21/Team-Agile&amp;utm_campaign=Badge_Grade)
 
+## ROBORALLY
+
+Roborally er et brettspill for opp til 1-8 spillere. 
+
+Roborally sin egen Wiki er å finne her: _[RoboRally Wiki](https://www.wikiwand.com/en/RoboRally)_
+
+Regler finnes her: _[Roborally Regler](https://www.fgbradleys.com/rules/rules4/Robo%20Rally%20-%20rules.pdf)_
+
+
 ### Build og versjoner
+
+#### Build-krav: 
 * Maven
 * Java 15.02
-* JUnit 4.11
+* JUnit 4.11 (for testing)
+
+#### Operativssystemer:
+* MacOS
+* Windows
+* Linux
   
 ## HVORDAN LASTE NED PROSJEKTET OG STARTE SPILLET
 
@@ -127,15 +143,14 @@ For å kunne spille flere spillere med flere PC-er , kan dette gjøres ved å be
 
 Link for oppsett av Hamachi: https://lifehacker.com/how-to-set-up-a-personal-private-vpn-with-hamachi-5902468
 
-* Før man kjører noen instanser må du inn gjennom mappestrukturen network -> NetworkHandler og finne variabelen ``IPAdress`` og endre til IPadressen til nettverket som man er koblet til i Hamachi.
+* Før man kjører noen instanser må du inn i mappestrukturen network -> NetworkHandler og finne variabelen ``IPAdress`` og endre IPadressen til nettverket som man er koblet til i Hamachi.
 ``IPAdress`` skal samsvare med ipen til nettverket man er koblet til gjennom hamachi som under.
 
 ![](/Deliverables/Images/NetworkHandler.png "") ![](/Deliverables/Images/Hamaci.png "")
 
-* Gjør samme fremgangsmåte som over på samme PC, Hosten av Hamachi starter GameServer instans først, deretter 
+* Gjør samme fremgangsmåte som over på samme PC, Hosten av Hamachi starter GameServer instans først, deretter trenger de andre spillerene som skal koble seg til å starte en Main instans.
 
-
-
+* For hver tilkobling må den som Hoster GameServer skrive ``yes`` i terminalen til GameServer for å godta tilkoblingen til server.
 
 
 ## Known bugs
@@ -149,7 +164,7 @@ at...."._ I dette tilfellet er det en feil som må rettes opp i selve IntelliJ, 
    * MERK at denne må legges inn både under main og under testene! 
 3. Apply settings og lukk dialogboksen. Du skal nå kunne starte spillet. 
 
-**Multiplayer ikke starter korrekt**
+**Multiplayer ikke starter korrekt:**
 
 Om man prøver å koble til Main instanser til GameServer for fort, kan føre til at Server/Client kræsjer.
 Vent etter hver oppstart av instans til at programmet får loadet og startet skikkelig eller prøv igjen.

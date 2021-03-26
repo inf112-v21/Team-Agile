@@ -109,7 +109,27 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 * viser alle spiller på et og samme brett på hver datamaskin.
 * bevege alle spillere på hver sin datamaskin og vise det likt på alle andre maskiner.
 
-<br/>
+**Manuel Test for Multiplayer med flere instanser på samme PC**
+
+Spillet er per nå konfiguert til å kjøre på samme pc med flere instanser av spillet for hver spiller. Kan gjøres med 2 ulike PC-er ved bruk av hamachi om ønskelig, les i Readme for oppsett
+av Hamachi.
+
+
+Før man starter må man tillate at flere instanser av Main tillates. Åpne opp Main gå i menylinjen, og naviger deg til
+run -> edit configurations -> modify options -> huke av på ``Allow multiple instances``
+
+(les Known Bugs i ``Readme.md`` om feil oppstår ved gjennomføring av test)
+
+* Start GameServer instans
+* Start Main instans, i GameServer terminalen skriv ``yes`` da kobles den Main instansen til Server.
+* Start en ny Main instans til, og i GameServer ``yes``
+* Nå skal 2 seperate spillvinduer være oppe , hvor hver av de har egne brukertaster og styrer hver sin robot.
+* Gjennomfør noen av robot styringene ved hjelp av piltastene. Styringen av robot skal skje på begge spillvinduene synkronisert.
+* På hver av spillvinduene: Velg 5 kort med venstre museklikk og trykk ``ENTER`` for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt. Viktig at 5 kort velges før ``Enter``
+  trykkes visst ikke vil gameserver kræsje siden den forventer 5 kort fra hver spiller per nå.
+* Når valgte kort er sendt fra begge spillvinduer, utføres kortene i sekvens for alle spillvinduene.
+* Etter alle kortene er utført vil begge spillvinduer få nye kort og, stegene over kan gjøres på nytt.
+
 <br/> 
 
 **Implementasjon av vegger**
@@ -195,25 +215,7 @@ Mangler også fullstendig game-loop for at HUD-informasjonen skal kunne vises fo
 
 ![](/Deliverables/Images/HUD.png "HUD")
 
-### Manuelle tester
 
-**Multiplayer**
-
-Før man starter må man tillate at flere instanser av Main tillates. Åpne opp Main gå i menylinjen, og naviger deg til
-run -> edit configurations -> modify options -> huke av på ``Allow multiple instances``
-
-(les Known Bugs i ``Readme.md`` om feil oppstår ved gjennomføring av test)
-
-* Start GameServer instans
-* Start Main instans, i GameServer terminalen skriv ``yes`` da kobles den Main instansen til Server.
-* Start en ny Main instans til, og i GameServer ``yes``
-* Nå skal 2 seperate spillvinduer være oppe , hvor hver av de har egne brukertaster og styrer hver sin robot.
-* Gjennomfør noen av robot styringene ved hjelp av piltastene. Spilleren som flytter på seg flytter seg på samme måte i begge spillvinduene.
-* Velg 5 kort med tastetrykkene fra 1-9 og trykk ``ENTER`` for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt.
-* Når valgte kort er sendt fra begge spillvinduer, utføres kortene i sekvens for alle spillvinduene.
-* Etter alle kortene er utført vil begge spillvinduer få nye kort og, stegene over kan gjøres på nytt.
-
-<br/>
 
 ***
 ## Teambeskrivelse og rollefordeling

@@ -64,10 +64,12 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     public ArrayList<Laser> allLasers = new ArrayList<>();
     public HashMap<Integer, Spawn> spawns = new HashMap<>();
     public String gameState = "pickCards";
+    private Boolean host;
 
 
     public RoboRally(String mapChosen){
         this.mapChosen = mapChosen;
+
     }
 
 
@@ -111,6 +113,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         robots = new ArrayList<>();
         registerWallsAndLasers();
         registerSpawns();
+
+
 
         try {
             client = new GameClient(this);
