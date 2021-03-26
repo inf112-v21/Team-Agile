@@ -32,39 +32,28 @@ public class WallTest {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("CLOSE THIS WINDOW TO START THE TESTS");
         cfg.setWindowedMode(500, 100);
-
-
-
         new Lwjgl3Application(new Game() {
             @Override
             public void create() {
                 Gdx.app.exit();
             }
         }, cfg);
+
+        robot = new Robot(3,3, Color.BLACK,1,game);
+        robot.setRotation(0);
+        wall = new Wall(new Vector2(3,3), 29 );
+        game.allWalls.add(wall);
+        robot.move(1);
     }
 
     @Test
     public void testIfWallIsInFrontOfPlayerSouth(){
-         robot = new Robot(3,3, Color.BLACK,1,game);
-         robot.setRotation(0);
-         wall = new Wall(new Vector2(3,3), 29 );
-         game.allWalls.add(wall);
-         robot.move(1);
-
-
          assertEquals(3, (int) robot.getX());
          assertEquals(3, (int) robot.getY());
     }
 
     @Test
     public void testIfWallIsInFrontOfPlayerNorth(){
-        robot = new Robot(3,3, Color.BLACK,1,game);
-        robot.setRotation(0);
-        wall = new Wall(new Vector2(3,3), 29 );
-        game.allWalls.add(wall);
-        robot.move(1);
-
-
         assertEquals(3, (int) robot.getX());
         assertEquals(3, (int) robot.getY());
     }
