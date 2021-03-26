@@ -8,7 +8,7 @@ public class Main {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("RoboRally Game");
         //format 2.0711:1
-        cfg.setWindowedMode(1864,900);
+        cfg.setWindowedMode(1398,675);
         cfg.setResizable(false);
 
 

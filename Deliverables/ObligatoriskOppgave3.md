@@ -123,8 +123,7 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 <br/>
 
 **Implementasjon av vegger**
-* Som spiller vil jeg det skal være hindinger på brettet slik at det gjør spillet mer utfordrene.
-* Som spiller vil jeg at hindringer skal gjør spillet vanskeligere o ikke kan bare gå hvor enn man vil.
+* Som spiller vil jeg det skal være hindinger som vegger på brettet slik at det gjør spillet mer utfordrene og at en ikke kan gå hvor en vil.
 
 
 **Akseptansekriterier**
@@ -141,13 +140,12 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 
 
 **Implementasjon av laser**
-* Som spiller ønsker jeg at det skal være en ekstra spenning med spillet, som for.eks å miste liv / dø i spillet.
-* Så vil at spillet skal ha ekstra element utenom blokkeringer slik som vegger.
+* Som spiller ønsker jeg at det skal være en ekstra spenning med spillet, som for.eks å miste liv / dø i spillet når en treffer en laser.
 
 
 **Akseptansekriterier**
-* laser må ta liv fra spiller som er på laser tile.
-* jo flere lasere jo flere liv tas.
+* Laser må ta liv fra spiller som er på laser tile.
+* Flere lasere, jo flere liv tas.
 * Når en spiller står foran en laser, så vil ikke laseret fortsette bak spilleren
 
 **Arbeidsoppgaver**
