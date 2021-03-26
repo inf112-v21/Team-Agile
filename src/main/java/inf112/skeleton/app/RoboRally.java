@@ -167,26 +167,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     }
 
-    /*
-    private void robotHitByLaser(ArrayList<Robot> robotsInLine, int damage, Laser laser) {
-        for (Robot r : robotsInLine) {
-
-            r.decreaseRobotHealthpoint(damage);
-            r.renderHud("You lost " + damage + " HP", batch, 0);
-        }
-    }
-
-    private Boolean noAnotherRobotsInLine(ArrayList<Robot> robotsInLine, float x, float y){
-        for (Robot r : robotsInLine) {
-            if((r.getX() == x) && (r.getY() == y)){
-                return false;
-            }
-        }
-
-        return true;
-    }
-    */
-
     private void checkLaserBeams(ArrayList<Laser> lasers) {
         for (Laser l : lasers) {
             System.out.println(l);
@@ -205,7 +185,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         if (laser.getCellId() == Laser.laserSOUTH) {
             for (int i = (int) y; i < boardHeight; i++) {
-                //if (playerLayer.getCell((int) x, i) != null) {
                 for (Robot r: robots) {
                     if (r.getX() == x && r.getY() == i) {
                         distance = (int) Math.abs(r.getY() - y);
