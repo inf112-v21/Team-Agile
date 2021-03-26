@@ -6,16 +6,13 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.map.Spawn;
@@ -30,7 +27,7 @@ import inf112.skeleton.app.object.Robot;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Vector;
+
 
 public class RoboRally extends InputAdapter implements ApplicationListener {
     public SpriteBatch batch;
@@ -40,12 +37,8 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     private OrthogonalTiledMapRenderer render;
     private Integer flagsToTake = 4;
     private OrthographicCamera camera, font_cam;
-    //private ExtendViewport viewport;
     private FitViewport viewport;
     private String mapChosen;
-
-
-    Robot test;
 
     public Deck deck;
     public ArrayList<Player> players;
@@ -72,11 +65,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         this.mapChosen = mapChosen;
         this.host = host;
     }
-
-
-
-
-
 
     @Override
     public void create() {
@@ -107,15 +95,13 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
 
-
-        //Texture texture = new Texture("player.png");
         deck = new Deck();
         players = new ArrayList<>();
         robots = new ArrayList<>();
         registerWallsAndLasers();
         registerSpawns();
 
-        if(host == true) {
+        if(host) {
             try {
                 GameServer server = new GameServer();
             } catch (Exception e) {
@@ -183,14 +169,85 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
         batch.end();
 
-    if(clientPlayer != null && gameState == "check") {
+    if(clientPlayer != null && gameState.equals("check")) {
         checkrobotStates(robots);
         checkFlags(robots);
         allFlagsTaken(robots);
+        checkLaserBeams(allLasers);
         gameState = "pickCards";
         }
 
     }
+    private void checkLaserBeams(ArrayList<Laser> lasers) {
+        for (Laser l : lasers) {
+            System.out.println(l);
+            dealDamageFromLaser(l);
+        }
+    }
+
+    private void dealDamageFromLaser(Laser laser) {
+        Vector2 laserpos = laser.getLaserPos();
+        System.out.println(laserpos);
+        float x = laserpos.x;
+        float y = laserpos.y;
+        HashMap<Integer, Robot> robotsDistanceToLaser = new HashMap<>();
+        Integer distance;
+        int laserdamage = 1;
+
+        if (laser.getCellId() == Laser.laserSOUTH) {
+            for (int i = (int) y; i < boardHeight; i++) {
+                for (Robot r: robots) {
+                    if (r.getX() == x && r.getY() == i) {
+                        distance = (int) Math.abs(r.getY() - y);
+                        robotsDistanceToLaser.put(distance, r);
+                    }
+                }
+            }
+        } else if (laser.getCellId() == Laser.laserWEST) {
+            for (int i = (int) x; i < boardWidth; i++) {
+                for (Robot r: robots) {
+                    if (r.getX() == i && r.getY() == y) {
+                        distance = (int) Math.abs(r.getX() - x);
+                        robotsDistanceToLaser.put(distance, r);
+                    }
+                }
+            }
+        } else if (laser.getCellId() == Laser.laserEAST) {
+            for (int i = (int) x; i > 0; i--) {
+                for (Robot r: robots) {
+                    if (r.getX() == i && r.getY() == y) {
+                        distance = (int) Math.abs(r.getX() - x);
+                        robotsDistanceToLaser.put(distance, r);
+                    }
+                }
+            }
+        } else if (laser.getCellId() == Laser.doubleLaserEAST) {
+            for (int i = (int) x; i > 0; i--) {
+                for (Robot r: robots) {
+                    if (r.getX() == i && r.getY() == y) {
+                        laserdamage = 2;
+                        distance = (int) Math.abs(r.getX() - x);
+                        robotsDistanceToLaser.put(distance, r);
+                    }
+                }
+            }
+        } else {
+            System.out.println("No players hit by lasers.");
+        }
+
+        if (!robotsDistanceToLaser.isEmpty()) {
+            Integer min = Integer.MAX_VALUE;
+            for (Integer key : robotsDistanceToLaser.keySet()) {
+                if (key < min) {
+                    min = key;
+                }
+            }
+            Robot robot = robotsDistanceToLaser.get(min);
+            robot.decreaseRobotHealthpoint(laserdamage);
+            robot.renderHud("You lost 1 HP", batch, 0);
+        }
+    }
+
     public void checkrobotStates(ArrayList<Robot> robotliste) {
         for(Robot r : robotliste) {
             if (holeLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
@@ -237,17 +294,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                     }
                 }
             }
-        /*
-        spawns.add(new Spawn(new Vector2(1,8)));
-        spawns.add(new Spawn(new Vector2(1,7)));
-        spawns.add(new Spawn(new Vector2(1,10)));
-        spawns.add(new Spawn(new Vector2(1,5)));
-        spawns.add(new Spawn(new Vector2(1,12)));
-        spawns.add(new Spawn(new Vector2(1,3)));
-        spawns.add(new Spawn(new Vector2(1,8)));
-        spawns.add(new Spawn(new Vector2(1,2)));
-
-         */
     }
 
     public void registerWallsAndLasers(){
@@ -258,7 +304,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                 if (wallTile != null){
                     int wallid = wallTile.getTile().getId();
                     if (wallid == Laser.laserSOUTH || wallid == Laser.laserWEST || wallid == Laser.laserEAST || wallid == Laser.doubleLaserEAST) {
-                        allLasers.add(new Laser(new Vector2(i,j), wallTile, wallTile.getTile().getId()));
+                        allLasers.add(new Laser(new Vector2(i,j), wallTile.getTile().getId()));
                     }
                     allWalls.add(new Wall(new Vector2(i,j), wallTile.getTile().getId()));
                 }
@@ -293,10 +339,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
                 r.renderHud("Flag: " + 3 + " was taken by player " + r.id, batch, 0);
             }
         }
-
     }
-
-
 
 
     @Override
@@ -320,15 +363,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
             }
         }
     }
-      /*
-    public void allFlagsTaken(ArrayList<Robot> robots) {
-                if (player.getFlag().equals(flagsToTake)) {
-                player.renderHud("Player " + player.getName() + " won the game!\nRestart the game to start again", batch, 2);
-                }
-            }
-    }
-
-       */
 
     public static TiledMapTileLayer getLaserLayer() {
         return laserLayer;

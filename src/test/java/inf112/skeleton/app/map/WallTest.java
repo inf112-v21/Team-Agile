@@ -1,4 +1,4 @@
-package inf112.skeleton.app.object;
+package inf112.skeleton.app.map;
 
 
 import com.badlogic.gdx.Game;
@@ -12,8 +12,6 @@ import inf112.skeleton.app.map.Wall;
 import inf112.skeleton.app.object.Robot;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 

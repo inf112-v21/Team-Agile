@@ -129,11 +129,10 @@ run -> edit configurations -> modify options -> huke av på ``Allow multiple ins
 ![](/Deliverables/Images/Multipleinstances.png "")
 
 Kjøre multiplayer med flere instanser av Main på samme PC:
-* Start en instans av Main 
-* Deretter i Main skjekk at host
-  ![](/Deliverables/Images/Main.png "")  
-
-
+* Start en instans av Main, første instans av Main vil være hosten av serveren. Og skrive i terminalen til denne instansen ``no``.
+* Deretter i Main skjekk at ``host`` variabl er satt til ``false`` og kjør flere instanser av Main for å koble nye instansen til hosten. 
+  For hver nye Main instanser som blir kjørt må det i første Main instansen som er Host skrive ``yes`` vist du ikke ønsker å koble til flere Main instanser, ``no`` visst du skal koble til flere.
+  ![](/Deliverables/Images/Main.png "")
 * Når ønsket antall instanser av Main for antall spillere er oppnådd, bruker man brukertastene oppgitt over for å spille spillet.
 * Når antall spillere tilkoblet har sendt de valgte kortene sine til Server ved å trykke ``Enter`` vil Serveren utføre de valgte kortene i riktig
 rekkefølge.
@@ -146,12 +145,12 @@ Link for oppsett av Hamachi: https://lifehacker.com/how-to-set-up-a-personal-pri
 
 * Før man kjører noen instanser må du inn i mappestrukturen network -> NetworkHandler og finne variabelen ``IPAdress`` og endre IPadressen til nettverket som man er koblet til i Hamachi.
 ``IPAdress`` skal samsvare med ipen til nettverket man er koblet til gjennom hamachi som under.
-
+* Deretter gjørs samme fremgangsmåte som beskrevet over hvor hosten av Hamachi starter Main instans med ``host`` variablene satt til true, og etterfølgende eksterne tilkoblinger setter ``host`` til false.
+For hver tilkobling må Hosten i sin terminal svare ``yes/no`` om han venter på flere tilkoblinger. 
+  
 ![](/Deliverables/Images/NetworkHandler.png "") ![](/Deliverables/Images/Hamaci.png "")
 
-* Gjør samme fremgangsmåte som over på samme PC, Hosten av Hamachi starter GameServer instans først, deretter trenger de andre spillerene som skal koble seg til å starte en Main instans.
 
-* For hver tilkobling må den som Hoster GameServer skrive ``yes`` i terminalen til GameServer for å godta tilkoblingen til server.
 
 
 ## Known bugs

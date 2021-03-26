@@ -4,7 +4,6 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 import inf112.skeleton.app.RoboRally;
-import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.PlayingCard;
 import inf112.skeleton.app.map.Laser;
 import inf112.skeleton.app.map.Wall;

@@ -1,6 +1,5 @@
 package inf112.skeleton.app.network.Packets;
 
-import inf112.skeleton.app.cards.PlayingCard;
 
 import java.util.ArrayList;
 

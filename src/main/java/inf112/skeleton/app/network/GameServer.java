@@ -1,13 +1,8 @@
 package inf112.skeleton.app.network;
 
-
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
-import inf112.skeleton.app.network.NetworkHandler;
 import inf112.skeleton.app.network.Packets.*;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;

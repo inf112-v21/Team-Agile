@@ -1,6 +1,5 @@
 package inf112.skeleton.app.cards;
 
-import com.badlogic.gdx.utils.Array;
 import inf112.skeleton.app.object.Robot;
 import java.util.*;
 

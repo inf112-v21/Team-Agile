@@ -13,7 +13,6 @@ import inf112.skeleton.app.network.Packets.*;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 import inf112.skeleton.app.network.Packets.Initialize.CardsPacket;
-import inf112.skeleton.app.network.Packets.Initialize.InputhandlerPacket;
 import inf112.skeleton.app.network.Packets.Initialize.PlayerList;
 import inf112.skeleton.app.object.InputHandler;
 import inf112.skeleton.app.object.Player;

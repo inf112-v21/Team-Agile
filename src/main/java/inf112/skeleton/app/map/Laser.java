@@ -7,8 +7,6 @@ import inf112.skeleton.app.object.Robot;
 
 public class Laser extends Wall {
 
-    TiledMapTileLayer.Cell cell;
-    Integer wallID;
     Vector2 wallPos;
     int cellId;
 
@@ -20,51 +18,29 @@ public class Laser extends Wall {
 
     //laser shoots towards west
     public static int laserEAST = 46;
-
     //laser shoots towards west
     public static int doubleLaserEAST = 95;
 
     TiledMapTileLayer laserLayer = RoboRally.getLaserLayer();
 
 
-    public Laser(Vector2 wallPos, TiledMapTileLayer.Cell cell, int cellId) {
-        super(wallPos, cellId);
+    public Laser(Vector2 wallPos, int cellId) {
+        this.wallPos = wallPos;
+        this.cellId = cellId;
     }
 
-    public Boolean isLaserInFrontOfPlayer(Robot player){
+    public Vector2 getLaserPos() {
+        return this.wallPos;
+    }
+
+    public Boolean isLaserInFrontOfPlayer(Robot player) {
         int xTest = ((int) player.getX());
         int yTest = ((int) player.getY());
         return (laserLayer.getCell(xTest, yTest).getTile().getId()) != 0;
+    }
 
-        //int wallid = cell.getTile().getId();
-        /*
-        if ((x == laserXPos && y < laserYPos) && (cellId == laserSOUTH)) {
-            System.out.println("Laser shooting towards NORTH");
-
-            //TiledMapTileLayer.Cell wallTile = wallLayer.getCell(x,y);
-            //if (wallTile != null)
-            //cell.getTile().getId();
-            for (float i = laserYPos; i > y; i--) {
-                if (RoboRally.boardLayer.getCell(x,i)
-            }
-
-        }
-
-        if ((x == laserXPos && y > laserYPos) && (cellId == WEST)) {
-            System.out.println("Laser shooting towards EAST");
-            return true;
-        }
-
-        if ((y == laserYPos && x < laserXPos) && (cellId == laserNORTH)) {
-            System.out.println("Laser shooting towards SOUTH");
-            return true;
-        }
-
-        if ((y == laserYPos && x > laserXPos) && (cellId == EAST)) {
-            System.out.println("Wall facing EAST");
-            return true;
-        }
-        */
+    public int getCellId() {
+        return this.cellId;
     }
 
 }
