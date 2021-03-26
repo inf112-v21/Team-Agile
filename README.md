@@ -88,7 +88,7 @@ Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere M
 Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjon på hvilke funksjoner som kan utføres i spillet:
 
 For å starte å spillet kjøres 1 instans av GameServer først også 1 instans av Main, deretter for å starte å kunne gjøre bevegelser
-skrive ``yes`` og enter i terminalen til GameServer som spillet kjøres på. Hvordan spille flere spillere sammen beskrives i [multiplayer] (#multiplayer)
+skrive ``yes`` og enter i terminalen til GameServer som spillet kjøres på. Hvordan spille flere spillere sammen beskrives under i Multiplayer
 
 * Når du starter spillet så vil brettet laste. Du vil da se en spiller (ugle), en checkpoint (flagg) og et hull.
 * Du vinner av å besøke alle flaggene i riktig prioritert rekkefølge (se nummereringen).
@@ -112,12 +112,7 @@ Spillet er per nå konfiguert til å kjøre på samme pc med flere instanser av 
 Før man starter må man tillate at flere instanser av Main tillates. Åpne opp Main gå i menylinjen, og naviger deg til 
 run -> edit configurations -> modify options -> huke av på ``Allow multiple instances``
 
-
-
-(insert screenshot here)
-
-(kan me gjør ein antagelse på at brukeren kan oppsett av hamachi ettersom multiplayer e straight ``POOP`` ellers?)
- 
+![](/Deliverables/Images/Multipleinstances.png "")
 
 Kjøre multiplayer med flere instanser av Main på samme PC:
 
@@ -130,7 +125,14 @@ rekkefølge.
   
 Kjøre multiplayer ved hjelp av Hamachi:
 
-* Før man kobler til gjennom hamachi må man navigere seg i prosjektmappen network -> NetworkHandler og finne variabelen ``IPAdress`` og endre til IPadressen til koblingen man er koblet gjennom Hamachi.
+For å kunne spille flere spillere med flere PC-er , kan dette gjøres ved å benytte seg av Hamachi hvor alle kobler seg til samme nettverk gjennom hamachi
+
+Link for oppsett av Hamachi: https://lifehacker.com/how-to-set-up-a-personal-private-vpn-with-hamachi-5902468
+
+* Før man kobler til gjennom hamachi må man navigere seg i prosjektmappen network -> NetworkHandler og finne variabelen ``IPAdress`` og endre til IPadressen til nettverket som man er koblet til i Hamachi.
+
+![](/Deliverables/Images/NetworkHandler.png "") ![](/Deliverables/Images/Hamachi.png "")
+
 * Gjør samme fremgangsmåte som over på samme PC, men hver spiller starter Main selv på sin PC etter at en av spillerene har startet å Hoste GameServer.
 
 
