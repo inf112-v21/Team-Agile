@@ -30,15 +30,16 @@ import java.util.HashMap;
 
 
 public class RoboRally extends InputAdapter implements ApplicationListener {
+
     public SpriteBatch batch;
     private BitmapFont font;
-    private TiledMap map;
-    private static TiledMapTileLayer boardLayer, playerLayer, holeLayer, flagLayer, wallLayer, laserLayer, flag1, flag2, flag3, startPositions;
-    private OrthogonalTiledMapRenderer render;
-    private Integer flagsToTake = 4;
+    public TiledMap map;
+    public static TiledMapTileLayer boardLayer, playerLayer, holeLayer, wallLayer, laserLayer, flag1, flag2, flag3, startPositions;
+    public OrthogonalTiledMapRenderer render;
+    public Integer flagsToTake = 4;
     private OrthographicCamera camera, font_cam;
     private FitViewport viewport;
-    private String mapChosen;
+    public String mapChosen;
 
     public Deck deck;
     public ArrayList<Player> players;
@@ -60,14 +61,20 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     public String gameState = "pickCards";
     private boolean host;
 
+    private CreateGame newGame;
+    public CheckEvents checkevent;
+
 
     public RoboRally(String mapChosen, boolean host){
         this.mapChosen = mapChosen;
         this.host = host;
+        newGame = new CreateGame(this);
+        checkevent = new CheckEvents(this);
     }
 
     @Override
     public void create() {
+
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
         colors = new ArrayList<>(Arrays.asList(Color.WHITE,Color.GREEN, Color.LIGHT_GRAY,  Color.FIREBRICK , Color.ORANGE, Color.LIME, Color.YELLOW,  Color.FOREST));
@@ -76,30 +83,9 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         viewport = new FitViewport(29,14);
         font_cam = new OrthographicCamera();
         font_cam.setToOrtho(false, 1339,750);
-
-        TmxMapLoader loader = new TmxMapLoader();
-        map = loader.load("assets/maps/" + mapChosen);
-
-        //Layers initialize
-        boardLayer = (TiledMapTileLayer) map.getLayers().get("BaseLayer");
-        playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
-        holeLayer = (TiledMapTileLayer) map.getLayers().get("Holes");
-        wallLayer = (TiledMapTileLayer) map.getLayers().get("Walls");
-        laserLayer = (TiledMapTileLayer) map.getLayers().get("Laser");
-        startPositions = (TiledMapTileLayer) map.getLayers().get("StartPositions");
-
-
-        flag1 = (TiledMapTileLayer) map.getLayers().get("Flag1");
-        flag2 = (TiledMapTileLayer) map.getLayers().get("Flag2");
-        flag3 = (TiledMapTileLayer) map.getLayers().get("Flag3");
+        newGame.initalize();
 
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
-
-        deck = new Deck();
-        players = new ArrayList<>();
-        robots = new ArrayList<>();
-        registerWallsAndLasers();
-        registerSpawns();
 
         if(host) {
             try {
@@ -133,8 +119,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         return robots;
     }
 
-
-
     public void drawPlayers(ArrayList<Robot> spillerliste, SpriteBatch batch) {
         for(Robot r : spillerliste) {
             r.draw(batch);
@@ -156,205 +140,27 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         batch.begin();
         drawPlayers(robots, batch);
 
-        if(clientPlayer != null && !clientPlayer.cards.isEmpty()) {
+        if (clientPlayer != null && !clientPlayer.cards.isEmpty()) {
             clientPlayer.renderCards(batch);
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.renderPriority(batch);
 
         }
-        if(clientPlayer != null) {
+        if (clientPlayer != null) {
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.initializeHud(batch);
         }
 
         batch.end();
 
-    if(clientPlayer != null && gameState.equals("check")) {
-        checkrobotStates(robots);
-        checkFlags(robots);
-        allFlagsTaken(robots);
-        checkLaserBeams(allLasers);
-        gameState = "pickCards";
+        if (clientPlayer != null && gameState.equals("check")) {
+            checkevent.checkrobotStates(robots);
+            checkevent.checkFlags(robots);
+            checkevent.allFlagsTaken(robots);
+            checkevent.checkLaserBeams(allLasers);
+            gameState = "pickCards";
         }
 
-    }
-    public void checkLaserBeams(ArrayList<Laser> lasers) {
-        for (Laser l : lasers) {
-            System.out.println(l);
-            dealDamageFromLaser(l);
-        }
-    }
-
-    private void dealDamageFromLaser(Laser laser) {
-        Vector2 laserpos = laser.getLaserPos();
-        System.out.println(laserpos);
-        float x = laserpos.x;
-        float y = laserpos.y;
-        HashMap<Integer, Robot> robotsDistanceToLaser = new HashMap<>();
-        Integer distance;
-        int laserdamage = 1;
-
-        if (laser.getCellId() == Laser.laserSOUTH) {
-            for (int i = (int) y; i < boardHeight; i++) {
-                TiledMapTileLayer.Cell wallTile = wallLayer.getCell((int)x,i);
-                if (wallTile != null && i > y) {
-                    break;
-                }
-                for (Robot r: robots) {
-                    if (r.getX() == x && r.getY() == i) {
-                        distance = (int) Math.abs(r.getY() - y);
-                        robotsDistanceToLaser.put(distance, r);
-                    }
-                }
-            }
-        } else if (laser.getCellId() == Laser.laserWEST) {
-            for (int i = (int) x; i < boardWidth; i++) {
-                TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,(int)y);
-                if (wallTile != null && i > x) {
-                    break;
-                }
-                for (Robot r: robots) {
-                    if (r.getX() == i && r.getY() == y) {
-                        distance = (int) Math.abs(r.getX() - x);
-                        robotsDistanceToLaser.put(distance, r);
-                    }
-                }
-            }
-        } else if (laser.getCellId() == Laser.laserEAST) {
-            for (int i = (int) x; i > 0; i--) {
-                TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,(int)y);
-                if (wallTile != null && i < x) {
-                    break;
-                }
-                for (Robot r: robots) {
-                    if (r.getX() == i && r.getY() == y) {
-                        distance = (int) Math.abs(r.getX() - x);
-                        robotsDistanceToLaser.put(distance, r);
-                    }
-                }
-            }
-        } else if (laser.getCellId() == Laser.doubleLaserEAST) {
-            for (int i = (int) x; i > 0; i--) {
-                TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,(int)y);
-                if (wallTile != null && i < x) {
-                    break;
-                }
-                for (Robot r: robots) {
-                    if (r.getX() == i && r.getY() == y) {
-                        laserdamage = 2;
-                        distance = (int) Math.abs(r.getX() - x);
-                        robotsDistanceToLaser.put(distance, r);
-                    }
-                }
-            }
-        } else {
-            System.out.println("No players hit by lasers.");
-        }
-
-        if (!robotsDistanceToLaser.isEmpty()) {
-            Integer min = Integer.MAX_VALUE;
-            for (Integer key : robotsDistanceToLaser.keySet()) {
-                if (key < min) {
-                    min = key;
-                }
-            }
-            Robot robot = robotsDistanceToLaser.get(min);
-            robot.decreaseRobotHealthpoint(laserdamage);
-            robot.renderHud("You lost 1 HP", batch, 0);
-        }
-    }
-
-    public void checkrobotStates(ArrayList<Robot> robotliste) {
-        for(Robot r : robotliste) {
-            if (holeLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
-                r.changeState("dead");
-                r.decreaseRobotHealthpoint(1);
-                r.renderHud("You lost 1 HP", batch, 0);
-            } else {
-                r.changeState("normal");
-            }
-        }
-        allFlagsTaken(robots);
-    }
-
-    public void registerSpawns() {
-        for(int i = 0; i < boardWidth; i++){
-            for(int j = 0; j < boardHeight; j++) {
-                TiledMapTileLayer.Cell spawntile = startPositions.getCell(i,j);
-                if(spawntile != null) {
-                    if(spawntile.getTile().getId() == Spawn.spawn1) {
-                        spawns.put(0,new Spawn(new Vector2(i,j)));
-                        }
-                    if(spawntile.getTile().getId() == Spawn.spawn2) {
-                        spawns.put(1,new Spawn(new Vector2(i,j)));
-                    }
-                    if(spawntile.getTile().getId() == Spawn.spawn3) {
-                        spawns.put(2,new Spawn(new Vector2(i,j)));
-                    }
-                    if(spawntile.getTile().getId() == Spawn.spawn4) {
-                        spawns.put(3,new Spawn(new Vector2(i,j)));
-                    }
-                    if(spawntile.getTile().getId() == Spawn.spawn5) {
-                        spawns.put(4,new Spawn(new Vector2(i,j)));
-                    }
-                    if(spawntile.getTile().getId() == Spawn.spawn6) {
-                        spawns.put(5,new Spawn(new Vector2(i,j)));
-                    }
-                    if(spawntile.getTile().getId() == Spawn.spawn7) {
-                        spawns.put(6,new Spawn(new Vector2(i,j)));
-                    }
-                    if(spawntile.getTile().getId() == Spawn.spawn8) {
-                        spawns.put(7,new Spawn(new Vector2(i,j)));
-                    }
-
-                    }
-                }
-            }
-    }
-
-    public void registerWallsAndLasers(){
-        // register all walls created in the map design
-        for(int i = 0; i < boardWidth; i++){
-            for(int j = 0; j < boardHeight; j++){
-                TiledMapTileLayer.Cell wallTile = wallLayer.getCell(i,j);
-                if (wallTile != null){
-                    int wallid = wallTile.getTile().getId();
-                    if (wallid == Laser.laserSOUTH || wallid == Laser.laserWEST || wallid == Laser.laserEAST || wallid == Laser.doubleLaserEAST) {
-                        allLasers.add(new Laser(new Vector2(i,j), wallTile.getTile().getId()));
-                    }
-                    allWalls.add(new Wall(new Vector2(i,j), wallTile.getTile().getId()));
-                }
-            }
-        }
-
-        // register of outer vertical walls in map
-        for(int i = boardHeightStartPos; i <= boardHeight; i++){
-            allWalls.add(new Wall(new Vector2(boardWidth,i), Wall.outerWallEAST));
-            allWalls.add(new Wall(new Vector2(0, i), Wall.outerWallWEST));
-        }
-
-        // register of outer horizontal walls in map
-        for(int i = 0; i <= boardWidth; i++){
-            allWalls.add(new Wall(new Vector2(i,boardHeightStartPos), Wall.outerWallSOUTH));
-            allWalls.add(new Wall(new Vector2(i,boardHeight), Wall.outerWallNORTH));
-        }
-
-    }
-
-    public void checkFlags(ArrayList<Robot> robotliste) {
-
-        for(Robot r : robotliste) {
-            if (flag1.getCell((int) r.getX(), (int) r.getY()) != null) {
-                r.visitFlag(1);
-                r.renderHud("Flag: " + 1 + " was taken by player " + r.id, batch, 0);
-            } else if (flag2.getCell((int) r.getX(), (int) r.getY()) != null) {
-                r.visitFlag(2);
-                r.renderHud("Flag: " + 2 + " was taken by player " + r.id, batch, 0);
-            } else if (flag3.getCell((int) r.getX(), (int) r.getY()) != null) {
-                r.visitFlag(3);
-                r.renderHud("Flag: " + 3 + " was taken by player " + r.id, batch, 0);
-            }
-        }
     }
 
 
@@ -370,14 +176,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     @Override
     public void resume() {
-    }
-
-    public void allFlagsTaken(ArrayList<Robot> robotliste) {
-        for (Robot r : robotliste) {
-            if (r.getFlag() == flagsToTake) {
-                r.renderHud("Player " + r.id + " won the game!\nRestart the game to start again", batch, 2);
-            }
-        }
     }
 
     public static TiledMapTileLayer getLaserLayer() {

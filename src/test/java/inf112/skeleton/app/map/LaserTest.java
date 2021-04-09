@@ -20,6 +20,7 @@ public class LaserTest {
     Robot robot, robot2, robot3, robot4, robot5;
     RoboRally game = new RoboRally("MapNumber1.tmx" , true);
 
+
     @Before
     public void setUp() throws Exception {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
@@ -54,7 +55,7 @@ public class LaserTest {
         int healthRobotBeforeHit = robot.getRobotHealthPoint();
 
         //fire lasers
-        game.checkLaserBeams(game.allLasers);
+        game.checkevent.checkLaserBeams(game.allLasers);
 
         //health after hit by laser
         int healthRobotAfterHit = robot.getRobotHealthPoint();
@@ -73,7 +74,7 @@ public class LaserTest {
         int healthRobot2BeforeLaser = robot2.getRobotHealthPoint();
 
         //fire lasers
-        game.checkLaserBeams(game.allLasers);
+        game.checkevent.checkLaserBeams(game.allLasers);
 
         //health after laser
         int healthrobot1afterlaser = robot.getRobotHealthPoint();
@@ -95,7 +96,7 @@ public class LaserTest {
         int healthRobotBeforeHit = robot4.getRobotHealthPoint();
 
         //fire lasers
-        game.checkLaserBeams(game.allLasers);
+        game.checkevent.checkLaserBeams(game.allLasers);
 
         //health after hit by laser
         int healthRobotAfterHit = robot4.getRobotHealthPoint();
@@ -110,7 +111,7 @@ public class LaserTest {
         int healthRobotBeforeHit = robot3.getRobotHealthPoint();
 
         //fire lasers
-        game.checkLaserBeams(game.allLasers);
+        game.checkevent.checkLaserBeams(game.allLasers);
 
         int healthRobotAfterHit = robot3.getRobotHealthPoint();
 
