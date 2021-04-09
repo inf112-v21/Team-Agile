@@ -52,13 +52,15 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 
 ### Brukerhistorier
 
-**P**
+**Implimentering av Boosters**
+* Som spiller ønsker jeg å bli beveget framover når jeg står på en booster slik at jeg kan planlegge ruten min
 
 **Akseptansekriterier:**
-* 
+* Må kunne bevege meg i retningen som boosterene viser
+* Må flytte spilleren 1-2 tiles etter runden
 
 **Arbeidsoppgaver:**
-* S
+* 
 
 ***
 
