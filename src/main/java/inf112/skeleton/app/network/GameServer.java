@@ -21,6 +21,7 @@ public class GameServer extends Listener{
     public PlayerList spillerliste = new PlayerList();
     public HashMap<Integer, Player> playerlist = new HashMap<>();
     public int recievedRegisters;
+    public Gameloop gameloop;
 
     public GameServer() {
         server = new Server();
@@ -30,6 +31,7 @@ public class GameServer extends Listener{
         System.out.println("Server started");
         server.start();
         network.register(server);
+        gameloop = new Gameloop(this);
 
         try {
             server.bind(network.PORT, network.PORT);
@@ -50,7 +52,7 @@ public class GameServer extends Listener{
                 server.sendToAllTCP(spillerliste);
 
                 Scanner sc = new Scanner(System.in);
-                System.out.println("Start) yes/no");
+                System.out.println("Start? yes/no");
                 if(sc.nextLine().equals("yes")) {
                     server.sendToAllTCP(new CardsPacket());
                 }
@@ -75,76 +77,18 @@ public class GameServer extends Listener{
             System.out.println(c.getID());
 
             if(recievedRegisters == playerlist.size()) {
-                gameloop();
-
-
+                gameloop.performTurn();
             }
 
         }
     }
 
-    public void gameloop() {
 
-        for(int i = 0 ; i < 5 ; i ++) {
-            int finalI = i;
-            PriorityQueue<Player> spillere = new PriorityQueue<Player>(new Comparator<Player>() {
-                @Override
-                public int compare(Player o1, Player o2) {
-                    return Integer.compare(o1.lockedHand.get(finalI).priority, o2.lockedHand.get(finalI).priority);
-                }
-            });
-            spillere.addAll(playerlist.values());
-
-            for(Player p : spillere) {
-                PlayingCardPair kortet = p.lockedHand.get(i);
-
-                if(kortet.move >= (-1) && kortet.move < 90) {
-                    MoveEvent event = new MoveEvent(p.id, kortet.move);
-                    server.sendToAllTCP(event);
-                } else {
-                    RotationEvent event = new RotationEvent(p.id, kortet.move);
-                    server.sendToAllTCP(event);
-                }
-
-                long start = new Date().getTime();
-                while(new Date().getTime() - start < 1000L){
-
-                }
-/*
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-*/
-
-            }
-        }
-        recievedRegisters = 0;
-        server.sendToAllTCP(new CardsPacket());
-    }
 
     public void sendNewCards(CardsPacket cards) {
         server.sendToAllTCP(cards);
     }
 
-    /*
-    public static void main(String[] args) {
-
-       GameServer server = new GameServer();
-
-       Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-       cfg.setTitle("Server Running");
-       cfg.setWindowedMode(500, 100);
-       new Lwjgl3Application(new Game() {
-           @Override
-           public void create() {
-                }
-           }, cfg);
-
-    }
-
-     */
 
 
 }

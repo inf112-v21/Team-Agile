@@ -100,8 +100,6 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
     @Override
