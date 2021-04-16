@@ -13,7 +13,7 @@ public class Main {
         cfg.setWindowedMode(1398,675);
         cfg.setResizable(false);
 
-        new Lwjgl3Application(new MainMenu());
+        new Lwjgl3Application(new StartGame(), cfg);
 
 
         /*

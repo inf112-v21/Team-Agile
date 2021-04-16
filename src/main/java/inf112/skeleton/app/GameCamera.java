@@ -8,6 +8,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
+//har her brukt kode fra https://github.com/hollowbit/libgdx-2d-tutorial/blob/master/core/src/net/hollowbit/spacegame/tools/GameCamera.java
+
 public class GameCamera {
 
     private OrthographicCamera cam;

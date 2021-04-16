@@ -3,6 +3,7 @@ package inf112.skeleton.app;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -29,7 +30,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 
-public class RoboRally extends InputAdapter implements ApplicationListener {
+public class RoboRally extends InputAdapter implements Screen {
 
     public SpriteBatch batch;
     private BitmapFont font;
@@ -73,7 +74,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
     }
 
     @Override
-    public void create() {
+    public void show() {
 
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
@@ -127,7 +128,7 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
 
     @Override
-    public void render() {
+    public void render(float v) {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
         Gdx.input.setInputProcessor(handler);
@@ -176,6 +177,11 @@ public class RoboRally extends InputAdapter implements ApplicationListener {
 
     @Override
     public void resume() {
+    }
+
+    @Override
+    public void hide() {
+
     }
 
     public static TiledMapTileLayer getLaserLayer() {

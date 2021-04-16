@@ -29,7 +29,7 @@ public class LaserTest {
         new Lwjgl3Application(new Game() {
             @Override
             public void create() {
-                game.create();
+                game.show();
                 Gdx.app.exit();
             }
         }, cfg);
