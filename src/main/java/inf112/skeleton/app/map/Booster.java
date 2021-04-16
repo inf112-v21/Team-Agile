@@ -1,6 +1,16 @@
 package inf112.skeleton.app.map;
 
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.Vector2;
+
 public class Booster {
+
+    TiledMapTileLayer.Cell cell;
+
+    Vector2 position; //(x,y)
+    int direction; //0, 90, 180, 270
+    int speed; //1, 2
+    boolean turn; //true , false
 
 
     //Single straight booster
@@ -24,6 +34,15 @@ public class Booster {
     //med klokken
     public static int DOWNLEFT = 28;
     public static int LEFTUPUP = 77;
+
+    public Booster(Vector2 position, int direction, int speed, boolean turn) {
+        this.position = position;
+        this.direction = direction;
+        this.speed = speed;
+        this.turn = turn;
+    }
+
+    public
 
 
 
