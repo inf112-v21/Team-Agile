@@ -10,6 +10,7 @@ import com.esotericsoftware.kryonet.Listener;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.PlayingCard;
 import inf112.skeleton.app.network.Packets.*;
+import inf112.skeleton.app.network.Packets.Events.ChangePhase;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 import inf112.skeleton.app.network.Packets.Initialize.CardsPacket;
@@ -66,7 +67,7 @@ public class GameClient extends Listener {
                 @Override
                 public void run() {
                     game.robots = game.playerToRobot(game.players);
-                    game.handler = new InputHandler(game, game.robots.get(c.getID() - 1));
+                    game.clientPlayer = game.robots.get(c.getID() - 1);
                         }
                     });
                 }
@@ -76,8 +77,8 @@ public class GameClient extends Listener {
             Gdx.app.postRunnable(new Runnable() {
                 @Override
                 public void run() {
+                    game.handler = new InputHandler(game, game.clientPlayer);
                     game.deck.createDeck();
-                    game.clientPlayer = game.robots.get(c.getID() - 1);
                     game.deck.dealOutCards(game.robots);
                     game.clientPlayer.playerCardstoHand(game.clientPlayer.getCards());
                 }
@@ -104,6 +105,15 @@ public class GameClient extends Listener {
                     Robot robot = game.robots.get(event.id - 1);
                     robot.rotate(event.rotation);
                     System.out.println(robot.id + " roterte seg " + event.rotation);
+                }
+            });
+        }
+
+        if(object instanceof ChangePhase) {
+            Gdx.app.postRunnable(new Runnable() {
+                @Override
+                public void run() {
+                    game.phase = "check";
                 }
             });
         }

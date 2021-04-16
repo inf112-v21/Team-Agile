@@ -1,11 +1,15 @@
 package inf112.skeleton.app.network;
 
+import com.badlogic.gdx.utils.Timer;
 import com.esotericsoftware.kryonet.Server;
+import inf112.skeleton.app.cards.PlayingCard;
+import inf112.skeleton.app.network.Packets.Events.ChangePhase;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 import inf112.skeleton.app.network.Packets.Initialize.CardsPacket;
 import inf112.skeleton.app.network.Packets.PlayingCardPair;
 import inf112.skeleton.app.object.Player;
+import com.badlogic.gdx.utils.Timer;
 
 import java.util.Comparator;
 import java.util.Date;
@@ -15,6 +19,7 @@ public class Gameloop {
 
     int round;
     GameServer server;
+    PriorityQueue<PlayingCardPair> lockedregisters;
 
     public Gameloop(GameServer server) {
         this.round = 0;
@@ -33,43 +38,59 @@ public class Gameloop {
 
 
         for (int i = 0; i < 5; i++) {
-            performCard(i);
+            performRound(i);
+            checkEvents();
+            System.out.println("RUNDE " + i );
 
         }
+        delay(1000);
         server.recievedRegisters = 0;
+        System.out.println("kort deles");
         server.server.sendToAllTCP(new CardsPacket());
     }
 
-    private void performCard(int i) {
+    private void checkEvents() {
+        server.server.sendToAllTCP(new ChangePhase());
+    }
+
+    private void performRound(int i) {
 
         int finalI = i;
         PriorityQueue<Player> spillere = new PriorityQueue<Player>(new Comparator<Player>() {
             @Override
             public int compare(Player o1, Player o2) {
-                return Integer.compare(o1.lockedHand.get(finalI).priority, o2.lockedHand.get(finalI).priority);
+                try {
+                    return Integer.compare(o1.lockedHand.get(finalI).priority, o2.lockedHand.get(finalI).priority);
+                }catch (Exception e) {
+                }
+                return 0;
             }
         });
         spillere.addAll(server.playerlist.values());
 
         for (Player p : spillere) {
-
-            if( p.lockedHand.size() > i) {
+            delay(300);
+            if (p.lockedHand.size() > i) {
                 PlayingCardPair kortet = p.lockedHand.get(i);
 
                 if (kortet.move >= (-1) && kortet.move < 90) {
                     MoveEvent event = new MoveEvent(p.id, kortet.move);
                     server.server.sendToAllTCP(event);
-
                 } else {
                     RotationEvent event = new RotationEvent(p.id, kortet.move);
                     server.server.sendToAllTCP(event);
                 }
 
-                long start = new Date().getTime();
-                while (new Date().getTime() - start < 300L) {
-                }
             }
         }
+    }
+
+    private void delay(int ms) {
+
+        long start = new Date().getTime();
+        while (new Date().getTime() - start < ms) {
+        }
+
     }
 
 }

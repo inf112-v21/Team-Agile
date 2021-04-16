@@ -4,6 +4,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.EndPoint;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.network.Packets.*;
+import inf112.skeleton.app.network.Packets.Events.ChangePhase;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 import inf112.skeleton.app.network.Packets.Initialize.CardsPacket;
@@ -33,6 +34,7 @@ public class NetworkHandler {
         kryo.register(PlayerCards.class);
         kryo.register(PlayingCardPair.class);
         kryo.register(InputhandlerPacket.class);
+        kryo.register(ChangePhase.class);
 
     }
 }

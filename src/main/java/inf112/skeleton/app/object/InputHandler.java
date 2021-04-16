@@ -90,7 +90,7 @@ public class InputHandler extends InputAdapter implements InputProcessor {
                 game.clientPlayer.cards.clear();
                 break;
             case Input.Keys.C:
-                game.gameState = "check";
+                game.phase = "check";
                 break;
         }
         return false;
