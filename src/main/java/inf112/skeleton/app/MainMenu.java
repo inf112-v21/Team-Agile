@@ -3,6 +3,8 @@ package inf112.skeleton.app;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -45,7 +47,7 @@ public class MainMenu implements Screen {
 
     Texture logo;
 
-    public MainMenu (){
+    public MainMenu(){
 
         this.game = new RoboRally("mapNumber1.png" , true);
 		MultiplayerButtonActive = new Texture("play_button_active.png");
@@ -65,17 +67,30 @@ public class MainMenu implements Screen {
 			public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 				//Exit button
 				//int x = SpaceGame.WIDTH / 2 - EXIT_BUTTON_WIDTH / 2;
-                int x =
-				if (cam.getInputInGameWorld().x < x + EXIT_BUTTON_WIDTH && cam.getInputInGameWorld().x > x && SpaceGame.HEIGHT - cam.getInputInGameWorld().y < EXIT_BUTTON_Y + EXIT_BUTTON_HEIGHT && SpaceGame.HEIGHT - game.cam.getInputInGameWorld().y > EXIT_BUTTON_Y) {
+                int x = MAINMENU_WIDTH / 2 - EXIT_BUTTON_WIDTH;
+				if (cam.getInputInGameWorld().x < x + EXIT_BUTTON_WIDTH && cam.getInputInGameWorld().x > x &&
+                        MAINMENU_HEIGHT - cam.getInputInGameWorld().y < EXIT_BUTTON_Y + EXIT_BUTTON_HEIGHT &&
+                        MAINMENU_HEIGHT - cam.getInputInGameWorld().y > EXIT_BUTTON_Y) {
 					mainMenuScreen.dispose();
 					Gdx.app.exit();
 				}
 
 				//Play game button
 				//x = SpaceGame.WIDTH / 2 - PLAY_BUTTON_WIDTH / 2;
-				if (cam.getInputInGameWorld().x < x + MULTIPLAYER_BUTTON_Y && cam.getInputInGameWorld().x > x && SpaceGame.HEIGHT - cam.getInputInGameWorld().y < MULTIPLAYER_BUTTON_Y + MULTIPLAYER_BUTTON_HEIGHT && SpaceGame.HEIGHT - cam.getInputInGameWorld().y > MULTIPLAYER_BUTTON_Y) {
+				if (cam.getInputInGameWorld().x < x + MULTIPLAYER_BUTTON_Y &&
+                        cam.getInputInGameWorld().x > x &&
+                        MAINMENU_HEIGHT - cam.getInputInGameWorld().y < MULTIPLAYER_BUTTON_Y + MULTIPLAYER_BUTTON_HEIGHT &&
+                        MAINMENU_HEIGHT - cam.getInputInGameWorld().y > MULTIPLAYER_BUTTON_Y) {
 					mainMenuScreen.dispose();
-					game.setScreen(new MainGameScreen(game));
+					//starting RoboRally game from main menu
+                    Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+                    cfg.setTitle("RoboRally Game");
+                    //format 2.0711:1
+                    cfg.setWindowedMode(1398,675);
+                    cfg.setResizable(false);
+
+                    new Lwjgl3Application(new RoboRally("MapNumber1.tmx", true), cfg);
+				//	game.setScreen(new MainGameScreen(game));
 				}
 
 				return super.touchUp(screenX, screenY, pointer, button);
@@ -102,7 +117,9 @@ public class MainMenu implements Screen {
         //game.scrollingBackground.updateAndRender(delta, game.batch);
 
         int x = MAINMENU_WIDTH / 2 - EXIT_BUTTON_WIDTH / 2;
-        if (game.cam.getInputInGameWorld().x < x + EXIT_BUTTON_WIDTH && game.cam.getInputInGameWorld().x > x && SpaceGame.HEIGHT - game.cam.getInputInGameWorld().y < EXIT_BUTTON_Y + EXIT_BUTTON_HEIGHT && SpaceGame.HEIGHT - game.cam.getInputInGameWorld().y > EXIT_BUTTON_Y) {
+        if (cam.getInputInGameWorld().x < x + EXIT_BUTTON_WIDTH && cam.getInputInGameWorld().x > x &&
+                MAINMENU_HEIGHT - cam.getInputInGameWorld().y < EXIT_BUTTON_Y + EXIT_BUTTON_HEIGHT &&
+                MAINMENU_HEIGHT - cam.getInputInGameWorld().y > EXIT_BUTTON_Y) {
             game.batch.draw(exitButtonActive, x, EXIT_BUTTON_Y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
             if (Gdx.input.isTouched()) {
 
@@ -112,16 +129,19 @@ public class MainMenu implements Screen {
         }
 
         //x = SpaceGame.WIDTH / 2 - PLAY_BUTTON_WIDTH / 2;
-        if (game.cam.getInputInGameWorld().x < x + MULTIPLAYER_BUTTON_WIDTH && game.cam.getInputInGameWorld().x > x && SpaceGame.HEIGHT - game.cam.getInputInGameWorld().y < MULTIPLAYER_BUTTON_Y + MULTIPLAYER_BUTTON_HEIGHT && SpaceGame.HEIGHT - game.cam.getInputInGameWorld().y > MULTIPLAYER_BUTTON_Y) {
-            game.batch.draw(playButtonActive, x, MULTIPLAYER_BUTTON_Y, MULTIPLAYER_BUTTON_WIDTH, MULTIPLAYER_BUTTON_HEIGHT);
+        if (cam.getInputInGameWorld().x < x + MULTIPLAYER_BUTTON_WIDTH &&
+                cam.getInputInGameWorld().x > x &&
+                MAINMENU_HEIGHT - cam.getInputInGameWorld().y < MULTIPLAYER_BUTTON_Y + MULTIPLAYER_BUTTON_HEIGHT &&
+                MAINMENU_HEIGHT - cam.getInputInGameWorld().y > MULTIPLAYER_BUTTON_Y) {
+            game.batch.draw(MultiplayerButtonActive, x, MULTIPLAYER_BUTTON_Y, MULTIPLAYER_BUTTON_WIDTH, MULTIPLAYER_BUTTON_HEIGHT);
             if (Gdx.input.isTouched()) {
 
             }
         } else {
-            game.batch.draw(playButtonInactive, x, MULTIPLAYER_BUTTON_Y, MULTIPLAYER_BUTTON_WIDTH, MULTIPLAYER_BUTTON_HEIGHT);
+            game.batch.draw(MultiplayerButtonInactive, x, MULTIPLAYER_BUTTON_Y, MULTIPLAYER_BUTTON_WIDTH, MULTIPLAYER_BUTTON_HEIGHT);
         }
 
-        game.batch.draw(logo, SpaceGame.WIDTH / 2 - LOGO_WIDTH / 2, LOGO_Y, LOGO_WIDTH, LOGO_HEIGHT);
+        game.batch.draw(logo, MAINMENU_WIDTH / 2 - LOGO_WIDTH / 2, LOGO_Y, LOGO_WIDTH, LOGO_HEIGHT);
 
         game.batch.end();
 
