@@ -1,4 +1,4 @@
-# Oblig 3
+# Oblig 4
 
 ## Teamet
 **Gruppenavn:** Team Agile
@@ -27,7 +27,7 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
     * **Marius:** Power Down & Repair
     * **Anthony:** abstrakt -> game loop 
     * **Leif Petter:** Lage startup-meny
-    * **Tore:** abstrakt-greier -> gui og flytting av spillere som dyttes
+    * **Tore:** abstrakt-greier -> flytting av spillere som dyttes, og gui
     * **Johnny:** Boostere 
     
     
@@ -92,10 +92,9 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 ![](/Deliverables/Images/ClassDiagramRoboRally2.png "Class Diagram")
 
 **Hva vi ikke har fått til av kode:**
+* sds
 ***
 
-* P
-![](/Deliverables/Images/HUD.png "HUD")
 
 ### Manuelle tester
 
@@ -119,10 +118,10 @@ Kjøre multiplayer med 2 instanser av Main på samme PC:
 * Velg 5 kort med tastetrykkene fra 1-9 og trykk ``ENTER`` for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt.
 * Når valgte kort er sendt fra begge spillvinduer, utføres kortene i sekvens for alle spillvinduene.
 * Etter alle kortene er utført vil begge spillvinduer få nye kort og, stegene over kan gjøres på nytt.
-
 <br/>
-
 ***
+
+
 ## Teambeskrivelse og rollefordeling
 ### Roller
 
