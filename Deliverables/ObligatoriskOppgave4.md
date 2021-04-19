@@ -29,7 +29,24 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
     * **Leif Petter:** Lage startup-meny
     * **Tore:** abstrakt-greier -> gui og flytting av spillere som dyttes
     * **Johnny:** Boostere 
-    
+  
+**16.04.2021 : 10:15 - 12:00** 
+* Alle møtte opp
+* Tore og Petter hadde startet litt på GUI før dette møte, men ville ha litt info fra gruppa hvordan 
+  oppsettet skulle være på koden.
+* Fikk senere hjelp fra Anthony med å fortsette på koden til Menu branch, og marius som var med på å designe
+  bakgrunn til mainmenu og kanppene "start game" og "exit game"
+* Fikk implementert knappene "Start Game" og "Exit Game" på menyen. slik at spillet startet og avsluttet.
+* Johnny var litt syk denne dagen, men møtte fortsatt opp på discord å fortsatte med implementasjonen av Boostere
+
+**19.04.2021 : 12:15 - 14:00**
+* Denne dagen var Marius på jobb og Johnny hadde en ærend, så han kom en 45 min etter de andre. 
+* Vi fikk merget inn både Menu branchen og Gameloop branchen til master. 
+* Tore startet på ny branch for å implementere "Pushing" på robotene. slik at dersom de traff hverandre vil
+  robot bli dyttet.
+* Petter fortsatte på markdown dokumentet.
+* Anthony fortsetter på main menu, for å implementere multiplayer knappen.
+
     
 ***
 ## Krav for denne inneleveringen:
@@ -52,10 +69,14 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 
 ### Brukerhistorier
 
-**P**
+**Implementasjon av Main Menu**
+* Som bruker ønsker jeg å bli møtt med en meny som er oversiktilig, lett å forstå og som gjerne kan vise frem
+  hvilket spill jeg faktisk spiller. 
 
 **Akseptansekriterier:**
-* 
+* spiller skal kunne bruke muse-klikk for at noe skal skje i main menu. 
+* Som spiller vil jeg at jeg skal kunne starte spillet som single player og multiplayer
+* Som spiller vil jeg kunne avsluttet spillet fra meny-en. 
 
 **Arbeidsoppgaver:**
 * S
@@ -64,14 +85,46 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 
 <br/>
 
-***
+**Implementasjon av Pushing**
+* Som spiller vil jeg at spille skal være "realistisk", så når jeg som spiller treffer en annen spiller, 
+  vil jeg at han skal flyttes i samme retning.
+* Som spiller vil jeg ikke bli hindret av andre, samtidig som jeg vil ha muligheten for å kunne sabotere litt for andre.
+
+**Akseptansekriterier**
+* Spiller skal ikke bli stoppet av andre spillere. Motspillere skal heller bli flyttet av spiller, dersom de skulle 
+  kollidert.
+* dersom det to spillere kolliderer men retningen til spiller som skal flyttes blir blokert av vegg, skal ingen av 
+  spillerne flyttes.
+
+**Arbeidsoppgaver:**
+
 
 <br/>
 
-***
+**Implementasjon av GameLoop** 
+* Som bruker ønsker jeg at spillet skal gå av seg selv. 
+* Ønsker at spillet skal holde styr på runder og faser i spillet.
+
+
+**Akseptansekriterier**
+* Som Spiller vil jeg at trekkene til spillerne går i rekkefølge, og at spillere går en etter en. 
+* Som Spiller vil jeg at spillet selv skal holde styr på hvor mange kort jeg skal kunne velge mellom, og at for hver 
+  runde så får jeg nye valg muligheter.
+
+**Arbeidsoppgaver:**
 
 <br/>
 
+**Implementasjon av Boostere/rullebaner** 
+* Som spiller ønsker jeg at det skal være mulighet for å komme fortere fremover eller andre muligheter for bevegelse 
+  utenom egne steg. 
+
+
+**Akseptansekriterier**
+* Spiller må kunne beve seg i samme retningen som pilene på booseteren viser.
+* Spiller skal flyttes 1 eller 2 tiles etter hvilken type booster, etter runden er ferdig.
+
+**Arbeidsoppgaver:**
 
 ***
 ## Produktleveranse / kode
