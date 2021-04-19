@@ -29,9 +29,6 @@ public class GameClient extends Listener {
     final RoboRally game;
     ArrayList<Player> nySpillerListe;
 
-
-
-
     public GameClient(RoboRally game) {
         this.client = new Client();
         this.game = game;
@@ -69,6 +66,7 @@ public class GameClient extends Listener {
                 @Override
                 public void run() {
                     game.robots = game.playerToRobot(game.players);
+                    game.handler = new InputHandler(game, game.robots.get(c.getID() - 1));
                         }
                     });
                 }
@@ -79,7 +77,6 @@ public class GameClient extends Listener {
                 @Override
                 public void run() {
                     game.deck.createDeck();
-                    game.handler = new InputHandler(game, game.robots.get(c.getID() - 1));
                     game.clientPlayer = game.robots.get(c.getID() - 1);
                     game.deck.dealOutCards(game.robots);
                     game.clientPlayer.playerCardstoHand(game.clientPlayer.getCards());

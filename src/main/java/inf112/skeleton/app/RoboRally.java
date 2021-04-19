@@ -101,8 +101,6 @@ public class RoboRally extends InputAdapter implements Screen {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
     @Override
