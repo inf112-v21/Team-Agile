@@ -19,6 +19,8 @@ public class Robot extends Sprite {
     private final int WIDTH = 1;
     private final int HEIGHT = 1;
 
+    private boolean cannotmove = false;
+
     public int robotHealthPoint;
 
     RoboRally game;
@@ -110,13 +112,10 @@ public class Robot extends Sprite {
         }
     }
 
-    public void push(Robot otherplayer) {
+    public void getPushed(Robot otherplayer) {
+        //the player gets pushed and gets moved
         //if the player is pushing another robot, it needs to make sure that
         //the other player is being moved
-    }
-
-    public void getPushed() {
-        //the player gets pushed and gets moved
     }
 
     public boolean isPushing(Robot otherplayer) {
@@ -131,6 +130,47 @@ public class Robot extends Sprite {
             return true;
         }
         return false;
+    }
+
+    public boolean cannotMove() {
+        return this.cannotmove;
+    }
+
+    public void setCannotMove(boolean cannotmove) {
+        this.cannotmove = cannotmove;
+    }
+
+    public Robot checkForPlayer(int rot) {
+        int x = (int) this.getX();
+        int y = (int) this.getY();
+        int rotation = rot;
+        for (Robot r : game.robots) {
+            int otherx = (int) r.getX();
+            int othery = (int) r.getY();
+            switch(rotation) {
+                case (0):
+                    if (x == otherx && othery == y-1) {
+                        return r;
+                    }
+                    break;
+                case (90):
+                    if (x+1 == otherx && othery == y) {
+                        return r;
+                    }
+                    break;
+                case (180):
+                    if (x == otherx && othery == y+1) {
+                        return r;
+                    }
+                    break;
+                case (270):
+                    if (x-1 == otherx && othery == y) {
+                        return r;
+                    }
+                    break;
+            }
+        }
+        return null;
     }
 
 
@@ -226,6 +266,7 @@ public class Robot extends Sprite {
 
 
     public void move(int steps) {
+
         int moveby;
         if (steps < 0) {
             moveby = -1;
@@ -238,6 +279,13 @@ public class Robot extends Sprite {
                 for(int i = 1; i <= Math.abs(steps); i++){
                     if(checkForWall(this, 0, -1)){
                     }
+                    else if (checkForPlayer((int) this.getRotation()) != null) {
+                        Robot pushedrobot = checkForPlayer((int) this.getRotation());
+                        if (checkForWall(pushedrobot, 0, -2) || pushedrobot.cannotMove()) {
+                            pushedrobot.setCannotMove(true);
+                            this.setCannotMove(true);
+                        }
+                    }
                     else{ this.setPosition(this.getX(), this.getY() - moveby); }
                 }
                 break;
@@ -245,6 +293,13 @@ public class Robot extends Sprite {
             case(90):
                 for(int i = 1; i <= Math.abs(steps); i++){
                     if(checkForWall(this, 1, 0)){
+                    }
+                    else if (checkForPlayer((int) this.getRotation()) != null) {
+                        Robot pushedrobot = checkForPlayer((int) this.getRotation());
+                        if (checkForWall(pushedrobot, 2, 0) || pushedrobot.cannotMove()) {
+                            pushedrobot.setCannotMove(true);
+                            this.setCannotMove(true);
+                        }
                     }
                     else{
                         this.setPosition(this.getX() + moveby, this.getY());}
@@ -255,6 +310,13 @@ public class Robot extends Sprite {
                 for(int i = 1; i <= Math.abs(steps); i++){
                     if(checkForWall(this, 0, 1)){
                     }
+                    else if (checkForPlayer((int) this.getRotation()) != null) {
+                        Robot pushedrobot = checkForPlayer((int) this.getRotation());
+                        if (checkForWall(pushedrobot, 0, 2) || pushedrobot.cannotMove()) {
+                            pushedrobot.setCannotMove(true);
+                            this.setCannotMove(true);
+                        }
+                    }
                     else{this.setPosition(this.getX(), this.getY() + moveby);}
                 }
                 break;
@@ -263,6 +325,13 @@ public class Robot extends Sprite {
                 for(int i = 1; i <= Math.abs(steps); i++){
                     if(checkForWall(this, -1, 0)){
 
+                    }
+                    else if (checkForPlayer((int) this.getRotation()) != null) {
+                        Robot pushedrobot = checkForPlayer((int) this.getRotation());
+                        if (checkForWall(pushedrobot, -2, 0) || pushedrobot.cannotMove()) {
+                            pushedrobot.setCannotMove(true);
+                            this.setCannotMove(true);
+                        }
                     }
                     else{this.setPosition(this.getX() - moveby, this.getY());}
                 }
