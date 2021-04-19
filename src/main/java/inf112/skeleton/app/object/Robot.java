@@ -281,12 +281,15 @@ public class Robot extends Sprite {
                     }
                     else if (checkForPlayer((int) this.getRotation()) != null) {
                         Robot pushedrobot = checkForPlayer((int) this.getRotation());
-                        if (checkForWall(pushedrobot, 0, -2) || pushedrobot.cannotMove()) {
+                        if (checkForWall(pushedrobot, 0, -1) || pushedrobot.cannotMove()) {
                             pushedrobot.setCannotMove(true);
                             this.setCannotMove(true);
+                        } else {
+                            pushedrobot.setPosition(pushedrobot.getX(), pushedrobot.getY() - moveby);
+                            this.setPosition(this.getX(), this.getY() - moveby);
                         }
                     }
-                    else{ this.setPosition(this.getX(), this.getY() - moveby); }
+                    else{ this.setPosition(this.getX(), this.getY() - moveby); this.setCannotMove(false); }
                 }
                 break;
 
@@ -296,13 +299,16 @@ public class Robot extends Sprite {
                     }
                     else if (checkForPlayer((int) this.getRotation()) != null) {
                         Robot pushedrobot = checkForPlayer((int) this.getRotation());
-                        if (checkForWall(pushedrobot, 2, 0) || pushedrobot.cannotMove()) {
+                        if (checkForWall(pushedrobot, 1, 0) || pushedrobot.cannotMove()) {
                             pushedrobot.setCannotMove(true);
                             this.setCannotMove(true);
+                        } else {
+                            pushedrobot.setPosition(pushedrobot.getX() + moveby, pushedrobot.getY());
+                            this.setPosition(this.getX() + moveby, this.getY());
                         }
                     }
                     else{
-                        this.setPosition(this.getX() + moveby, this.getY());}
+                        this.setPosition(this.getX() + moveby, this.getY()); this.setCannotMove(false);}
                 }
                 break;
 
@@ -312,12 +318,15 @@ public class Robot extends Sprite {
                     }
                     else if (checkForPlayer((int) this.getRotation()) != null) {
                         Robot pushedrobot = checkForPlayer((int) this.getRotation());
-                        if (checkForWall(pushedrobot, 0, 2) || pushedrobot.cannotMove()) {
+                        if (checkForWall(pushedrobot, 0, 1) || pushedrobot.cannotMove()) {
                             pushedrobot.setCannotMove(true);
                             this.setCannotMove(true);
+                        } else {
+                            pushedrobot.setPosition(pushedrobot.getX(), pushedrobot.getY() + moveby);
+                            this.setPosition(this.getX(), this.getY() + moveby);
                         }
                     }
-                    else{this.setPosition(this.getX(), this.getY() + moveby);}
+                    else{this.setPosition(this.getX(), this.getY() + moveby); this.setCannotMove(false);}
                 }
                 break;
 
@@ -328,12 +337,15 @@ public class Robot extends Sprite {
                     }
                     else if (checkForPlayer((int) this.getRotation()) != null) {
                         Robot pushedrobot = checkForPlayer((int) this.getRotation());
-                        if (checkForWall(pushedrobot, -2, 0) || pushedrobot.cannotMove()) {
+                        if (checkForWall(pushedrobot, -1, 0) || pushedrobot.cannotMove()) {
                             pushedrobot.setCannotMove(true);
                             this.setCannotMove(true);
+                        } else {
+                            pushedrobot.setPosition(pushedrobot.getX() - moveby, pushedrobot.getY());
+                            this.setPosition(this.getX() - moveby, this.getY());
                         }
                     }
-                    else{this.setPosition(this.getX() - moveby, this.getY());}
+                    else{this.setPosition(this.getX() - moveby, this.getY()); this.setCannotMove(false);}
                 }
                 break;
 
