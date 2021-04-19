@@ -62,6 +62,7 @@ public class GameServer extends Listener{
     }
 
     public void received (Connection c, Object object) {
+
         if(object instanceof MoveEvent) {
             MoveEvent event = (MoveEvent)object;
             server.sendToAllExceptTCP(c.getID(), event);

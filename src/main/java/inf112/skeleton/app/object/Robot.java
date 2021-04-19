@@ -220,79 +220,58 @@ public class Robot extends Sprite {
             System.out.println("player " + this.id + " next flag to take " + flagToTake);
         }
     }
-
     public Integer getFlag() {
         return flagToTake;
     }
-/*
+
+
     public void move(int steps) {
+        int moveby;
+        if (steps < 0) {
+            moveby = -1;
+        } else {
+            moveby = 1;
+        }
+
         switch ((int) this.getRotation()) {
             case(0):
-                this.setPosition(this.getX(), this.getY() - steps);
+                for(int i = 1; i <= Math.abs(steps); i++){
+                    if(checkForWall(this, 0, -1)){
+                    }
+                    else{ this.setPosition(this.getX(), this.getY() - moveby); }
+                }
                 break;
+
             case(90):
-                this.setPosition(this.getX() + steps, this.getY());
+                for(int i = 1; i <= Math.abs(steps); i++){
+                    if(checkForWall(this, 1, 0)){
+                    }
+                    else{
+                        this.setPosition(this.getX() + moveby, this.getY());}
+                }
                 break;
+
             case(180):
-                this.setPosition(this.getX(), this.getY() + steps);
+                for(int i = 1; i <= Math.abs(steps); i++){
+                    if(checkForWall(this, 0, 1)){
+                    }
+                    else{this.setPosition(this.getX(), this.getY() + moveby);}
+                }
                 break;
+
             case(270):
-                this.setPosition(this.getX() - steps, this.getY());
+                for(int i = 1; i <= Math.abs(steps); i++){
+                    if(checkForWall(this, -1, 0)){
+
+                    }
+                    else{this.setPosition(this.getX() - moveby, this.getY());}
+                }
                 break;
+
         }
     }
-
- */
-public void move(int steps) {
-    int moveby;
-    if (steps < 0) {
-        moveby = -1;
-    } else {
-        moveby = 1;
-    }
-
-    switch ((int) this.getRotation()) {
-        case(0):
-            for(int i = 1; i <= Math.abs(steps); i++){
-                if(checkForWall(this, 0, -1)){
-                    System.out.println("1aNot possible to make that move, because of wall");
-                }
-                else{ this.setPosition(this.getX(), this.getY() - moveby); }
-            }
-            break;
-
-        case(90):
-            for(int i = 1; i <= Math.abs(steps); i++){
-                if(checkForWall(this, 1, 0)){
-                    System.out.println("2aNot possible to make that move, because of wall");
-                }
-                else{
-                    this.setPosition(this.getX() + moveby, this.getY());}
-            }
-            break;
-
-        case(180):
-            for(int i = 1; i <= Math.abs(steps); i++){
-                if(checkForWall(this, 0, 1)){
-                    System.out.println("3Not possible to make that move, because of wall");
-                }
-                else{this.setPosition(this.getX(), this.getY() + moveby);}
-            }
-            break;
-
-        case(270):
-            for(int i = 1; i <= Math.abs(steps); i++){
-                if(checkForWall(this, -1, 0)){
-                    System.out.println("4Not possible to make that move, because of wall");
-                }
-                else{this.setPosition(this.getX() - moveby, this.getY());}
-            }
-            break;
-
-    }
-}
     public boolean checkForWall(Robot player, int xDiff, int yDiff){
-        System.out.println("checkwall");
+
         for (Wall wall : game.allWalls){
             if(wall.isWallInFrontOfPlayer(player) || wall.isWallInNextTile(player, xDiff, yDiff)) {
                 return true;

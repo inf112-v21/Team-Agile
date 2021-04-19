@@ -18,14 +18,14 @@ public class CheckEvents {
 
     public void checkLaserBeams(ArrayList<Laser> lasers) {
         for (Laser l : lasers) {
-            System.out.println(l);
+
             dealDamageFromLaser(l);
         }
     }
 
     private void dealDamageFromLaser(Laser laser) {
         Vector2 laserpos = laser.getLaserPos();
-        System.out.println(laserpos);
+
         float x = laserpos.x;
         float y = laserpos.y;
         HashMap<Integer, Robot> robotsDistanceToLaser = new HashMap<>();

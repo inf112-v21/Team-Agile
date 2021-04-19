@@ -59,7 +59,7 @@ public class RoboRally extends InputAdapter implements Screen {
     public ArrayList<Wall> allWalls = new ArrayList<>();
     public ArrayList<Laser> allLasers = new ArrayList<>();
     public HashMap<Integer, Spawn> spawns = new HashMap<>();
-    public String gameState = "pickCards";
+    public String phase = "chooseCards";
     private boolean host;
 
     private CreateGame newGame;
@@ -139,12 +139,14 @@ public class RoboRally extends InputAdapter implements Screen {
         batch.begin();
         drawPlayers(robots, batch);
 
+
+
         if (clientPlayer != null && !clientPlayer.cards.isEmpty()) {
             clientPlayer.renderCards(batch);
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.renderPriority(batch);
-
         }
+
         if (clientPlayer != null) {
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.initializeHud(batch);
@@ -152,12 +154,14 @@ public class RoboRally extends InputAdapter implements Screen {
 
         batch.end();
 
-        if (clientPlayer != null && gameState.equals("check")) {
+        if (clientPlayer != null && phase.equals("check")) {
+            checkevent.checkLaserBeams(allLasers);
+            //checkboosters
+            //firelaser
             checkevent.checkrobotStates(robots);
             checkevent.checkFlags(robots);
             checkevent.allFlagsTaken(robots);
-            checkevent.checkLaserBeams(allLasers);
-            gameState = "pickCards";
+            phase = "pickCards";
         }
 
     }
