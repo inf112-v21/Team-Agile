@@ -11,6 +11,7 @@ public class Booster {
     DirectionEnum direction; //NORTH, EAST, SOUTH, WEST
     int speed; //1, 2
     boolean turn; //true , false
+    boolean clockwise; //true = med klokken (-90), false = mot klokken (+90)
 
 
 
@@ -43,7 +44,7 @@ public class Booster {
         this.turn = turn;
     }
 
-    public static Vector2 GoInDir(Vector2 position, DirectionEnum direction) {
+    public static Vector2 GoInDir(Vector2 position, DirectionEnum direction, boolean turn, boolean clockwise) {
         Vector2 nextPosition = position.cpy();
 
         switch (direction) {
@@ -56,9 +57,20 @@ public class Booster {
             case EAST:
                 return nextPosition.add(1, 0);
         }
-        return nextPosition;
+
+        if (turn == true) {
+            if (clockwise == true) {
+                //player.rotate(-90);
+            } else {
+                //player.rotate(+90);
+            }
+            return nextPosition;
+        }
+
+        else {
+            return nextPosition;
+
+        }
+
     }
-
-    
-
 }
