@@ -17,15 +17,16 @@ public class GameServer extends Listener{
 
     public NetworkHandler network = new NetworkHandler();
     public Server server;
-    public int numplayers;
+    public int numplayersconnected;
     public PlayerList spillerliste = new PlayerList();
     public HashMap<Integer, Player> playerlist = new HashMap<>();
     public int recievedRegisters;
     public Gameloop gameloop;
+    public int numplayers = 2;
 
     public GameServer() {
         server = new Server();
-        numplayers = 0;
+        numplayersconnected = 0;
         recievedRegisters = 0;
 
         System.out.println("Server started");
@@ -51,9 +52,7 @@ public class GameServer extends Listener{
 
                 server.sendToAllTCP(spillerliste);
 
-                Scanner sc = new Scanner(System.in);
-                System.out.println("Start? yes/no");
-                if(sc.nextLine().equals("yes")) {
+                if(numplayers == numplayersconnected) {
                     server.sendToAllTCP(new CardsPacket());
                 }
 
