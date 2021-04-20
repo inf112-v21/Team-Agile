@@ -40,6 +40,8 @@ public class Robot extends Sprite {
         return lockedHand;
     }
 
+    ArrayList<Robot> otherrobots;
+
 
 
     public int flagToTake;
@@ -68,6 +70,8 @@ public class Robot extends Sprite {
         this.robotHealthPoint = 9;
         this.cards = new ArrayList<>(robotHealthPoint);
         this.lockedHand = new ArrayList<>();
+        this.otherrobots = new ArrayList<>();
+
         this.flagToTake = 1;
     }
 
@@ -85,6 +89,8 @@ public class Robot extends Sprite {
         this.robotHealthPoint = 9;
         this.cards = new ArrayList<>(robotHealthPoint);
         this.lockedHand = new ArrayList<>();
+        this.otherrobots = new ArrayList<>();
+
         this.flagToTake = 1;
         this.id = id;
         setColor(color);
@@ -121,19 +127,20 @@ public class Robot extends Sprite {
 
         if (playerstomove != null) {
             while (!playerstomove.isEmpty()) {
-                Robot robot = playerstomove.pop();
+                Robot r = playerstomove.pop();
+                System.out.println("Moving robot blocking the way: player " + r.id);
                 switch (rotation) {
                     case (0):
-                        robot.setPosition(robot.getX(), robot.getY()-1);
+                        r.setPosition(r.getX(), r.getY()-1);
                         break;
                     case (90):
-                        robot.setPosition(robot.getX()+1, robot.getY());
+                        r.setPosition(r.getX()+1, r.getY());
                         break;
                     case (180):
-                        robot.setPosition(robot.getX(), robot.getY()+1);
+                        r.setPosition(r.getX(), r.getY()+1);
                         break;
                     case (270):
-                        robot.setPosition(robot.getX()-1, robot.getY());
+                        r.setPosition(r.getX()-1, r.getY());
                         break;
                 }
             }
@@ -147,28 +154,28 @@ public class Robot extends Sprite {
         switch (rot) {
             case (0):
                 for (Robot r : game.robots) {
-                    if (x == r.getX() && y == r.getY() - 1) {
+                    if (x == r.getX() && (y - 1) == r.getY()) {
                         return true;
                     }
                 }
                 break;
             case (90):
                 for (Robot r : game.robots) {
-                    if (x == r.getX() + 1 && y == r.getY()) {
+                    if ((x + 1) == r.getX() && y == r.getY()) {
                         return true;
                     }
                 }
                 break;
             case (180):
                 for (Robot r : game.robots) {
-                    if (x == r.getX() && y == r.getY() + 1) {
+                    if (x == r.getX() && y + 1 == r.getY()) {
                         return true;
                     }
                 }
                 break;
             case (270):
                 for (Robot r : game.robots) {
-                    if (x == r.getX() - 1 && y == r.getY()) {
+                    if (x - 1 == r.getX() && y == r.getY()) {
                         return true;
                     }
                 }
@@ -179,26 +186,25 @@ public class Robot extends Sprite {
 
     public Stack<Robot> checkForPlayersToMove(int rot) {
         Stack<Robot> robotstack = new Stack<>();
-        ArrayList<Robot> allrobots = new ArrayList<>();
+        ArrayList<Robot> otherrobots = new ArrayList<>();
         for (Robot r : game.robots) {
-            allrobots.add(r);
+            otherrobots.add(r);
         }
-        allrobots.remove(this);
+        otherrobots.remove(this);
         int x = (int) this.getX();
         int y = (int) this.getY();
         int rotation = rot;
-        while (!allrobots.isEmpty()) {
+        while (!otherrobots.isEmpty()) {
             switch(rotation) {
                 case (0):
                     for (int i = y; i < game.getBoardHeight(); i--) {
                         TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
-                        if (wallTile != null) {
-                            return null;
-                        }
-                        for (Robot r: game.robots) {
-                            if (r.getX() == x && r.getY() == i) {
+                        for (Robot r: otherrobots) {
+                            if ((int) r.getX() == x && (int) r.getY() == i) {
                                 robotstack.push(r);
-                                allrobots.remove(r);
+                                otherrobots.remove(r);
+                            } else if (wallTile != null) {
+                                return null;
                             } else {
                                 return robotstack;
                             }
@@ -208,13 +214,12 @@ public class Robot extends Sprite {
                 case (90):
                     for (int i = x; i < game.getBoardWidth(); i++) {
                         TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)i,y);
-                        if (wallTile != null) {
-                            return null;
-                        }
-                        for (Robot r: game.robots) {
-                            if (r.getX() == i && r.getY() == y) {
+                        for (Robot r: otherrobots) {
+                            if ((int) r.getX() == i && (int) r.getY() == y) {
                                 robotstack.push(r);
-                                allrobots.remove(r);
+                                otherrobots.remove(r);
+                            } else if (wallTile != null) {
+                                return null;
                             } else {
                                 return robotstack;
                             }
@@ -224,13 +229,12 @@ public class Robot extends Sprite {
                 case (180):
                     for (int i = y; i < game.getBoardHeight(); i++) {
                         TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
-                        if (wallTile != null) {
-                            return null;
-                        }
-                        for (Robot r: game.robots) {
-                            if (r.getX() == x && r.getY() == i) {
+                        for (Robot r: otherrobots) {
+                            if ((int) r.getX() == x && (int) r.getY() == i) {
                                 robotstack.push(r);
-                                allrobots.remove(r);
+                                otherrobots.remove(r);
+                            } else if (wallTile != null) {
+                                return null;
                             } else {
                                 return robotstack;
                             }
@@ -240,14 +244,14 @@ public class Robot extends Sprite {
                 case (270):
                     for (int i = x; i < game.getBoardWidth(); i--) {
                         TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)i,y);
-                        if (wallTile != null) {
-                            return null;
-                        }
-                        for (Robot r: game.robots) {
-                            if (r.getX() == i && r.getY() == y) {
+                        for (Robot r: otherrobots) {
+                            if ((int) r.getX() == i && (int) r.getY() == y) {
                                 robotstack.push(r);
-                                allrobots.remove(r);
-                            } else {
+                                otherrobots.remove(r);
+                            } else if (wallTile != null) {
+                                return null;
+                            }
+                            else {
                                 return robotstack;
                             }
                         }
