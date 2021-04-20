@@ -33,7 +33,7 @@ public class CreateGame {
         game.wallLayer = (TiledMapTileLayer) game.map.getLayers().get("Walls");
         game.laserLayer = (TiledMapTileLayer) game.map.getLayers().get("Laser");
         game.startPositions = (TiledMapTileLayer) game.map.getLayers().get("StartPositions");
-
+        game.boosterLayer = (TiledMapTileLayer) game.map.getLayers().get("Boostere");
 
         game.flag1 = (TiledMapTileLayer) game.map.getLayers().get("Flag1");
         game.flag2 = (TiledMapTileLayer) game.map.getLayers().get("Flag2");
@@ -45,6 +45,7 @@ public class CreateGame {
 
         registerSpawns();
         registerWallsAndLasers();
+        registerBoosters();
     }
 
     public void registerSpawns() {
@@ -112,8 +113,8 @@ public class CreateGame {
     }
 
     public void registerBoosters() {
-        for (int i = 0; i < game.boardWidth; i++) {
-            for (int j = 0; j < game.boardHeight; j++) {
+        for (int i = 0; i < game.boardWidth + 1; i++) {
+            for (int j = 0; j < game.boardHeight + 1; j++) {
                 TiledMapTileLayer.Cell boosterTile = game.boosterLayer.getCell(i,j);
                 if (boosterTile != null){
                     int boosterId = boosterTile.getTile().getId();
@@ -148,7 +149,7 @@ public class CreateGame {
                         game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.WEST, 2, 0));
                     }
                     if(boosterId == Booster.LEFTUPUP) {
-                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.NORTH, 2, 0));
+                        //game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.NORTH, 2, 0));
                         game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.NORTH, 2, -90));
                     }
                 }

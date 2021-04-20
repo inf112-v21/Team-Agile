@@ -146,7 +146,46 @@ public class CheckEvents {
         for (Robot r : robotliste) {
             Vector2 robotPosition = new Vector2(r.getX(), r.getY());
             for (Booster b : game.allBoosters){
-
+                if(robotPosition.x == b.getPosition().x && robotPosition.y == b.getPosition().y) {
+                    switch (b.getDirection()) {
+                        case SOUTH:
+                            r.setPosition(r.getX() , r.getY() - b.getSpeed());
+                            if(b.getTurn() == 90) {
+                                r.rotate(90);
+                            }
+                            if(b.getTurn() == -90) {
+                                r.rotate(-90);
+                            }
+                            break;
+                        case WEST:
+                            r.setPosition(r.getX() - b.getSpeed() , r.getY());
+                            if(b.getTurn() == 90) {
+                                r.rotate(90);
+                            }
+                            if(b.getTurn() == -90) {
+                                r.rotate(-90);
+                            }
+                            break;
+                        case NORTH:
+                            r.setPosition(r.getX() , r.getY() + b.getSpeed());
+                            if(b.getTurn() == 90) {
+                                r.rotate(90);
+                            }
+                            if(b.getTurn() == -90) {
+                                r.rotate(-90);
+                            }
+                            break;
+                        case EAST:
+                            r.setPosition(r.getX() + b.getSpeed() , r.getY());
+                            if(b.getTurn() == 90) {
+                                r.rotate(90);
+                            }
+                            if(b.getTurn() == -90) {
+                                r.rotate(-90);
+                            }
+                            break;
+                    }
+                }
             }
         }
     }

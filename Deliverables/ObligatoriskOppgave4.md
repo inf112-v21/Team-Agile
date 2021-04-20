@@ -238,14 +238,23 @@ Vi har ikke forandret noe på rollene fra første oblig, men rollene er ikke så
 
 **Projektmetodikk:**
 
-Vi
+Prosjektmetodikken har holdt seg ganske konsekvent gjennom alle obligene. Har gjerne mindre definerte grupper enn før. 
+Vi deler mer opp etter hvilke oppgaver som krever flere personer.
+Så vi beholder fortsatt illusjonen av en sprint mellom innleveringsdatoene og prøver å holde en WIP limit slik at vi 
+starter kun på oppgaver når vi er ferdig med en annen. 
+Denne gangen hadde vi ingen krav som overskredet sprinten så dermed fikk vi beholdt scrum delen av metodikken vi ville 
+prøve å utføre. 
+Så vi beholder en konsekvent metodikk med Kanban og litt Scrum. 
 
 **Prosjektstruktur og gjennomførelse hittil:**
 
-Vi
+Selve strukturen ved å jobbe sammen på bestemte tidspunkt har sine positive og negative sider. Siden ikke alle er like 
+sterke på kode delen, er det lettere for dem å spør og komme videre med krav de har fått. Mens av og til blir det gjerne
+litt mye diskusjon om bagteller som kanskje løser seg selv dersom man bare starter. 
+Men det er også mulighet for å jobbe alene dersom man øsnker det. 
 
 **3 forbedringspunkter:**
-1. O
+1. Starte på obligen tidligere(hvertfall på denne obligen). 
 2. 
 3. 
 
@@ -258,7 +267,12 @@ Vi
 <br/> 
 
 **Gruppedynamikk og kommunikasjon:**
-
+Alle i gruppen er nok meget fornøyd med dynamikken og kommunikasjonen mellom hverandre. Vi er flinke til å spør om hjelp
+dersom noen sliter, vi er gode på å finne nytt arbeid dersom vi ser noe mangler eller ender opp med å bli ferdig med 
+et krav vi har satt oss. Og dersom noen ikke finner noe så spør vi om noen andre trenger hjelp med noe. De som er litt
+sterkere å kode tar å hjelper litt ekstra dem som kanskje sliter litt mer, men alle er med på kodingen. Dersom noe 
+ikke er forstått av oppgaver, eller dersom en implementasjon henger sammen med noe annet så er det aldri et problem 
+at vi forklarer hva som er blitt gjort slik at det blir enklest mulig for alle parter å samarbeide/forstå andres kode. 
 
 
 <br/> 
