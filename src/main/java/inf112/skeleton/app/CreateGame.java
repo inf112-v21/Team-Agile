@@ -8,9 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.Deck;
-import inf112.skeleton.app.map.Laser;
-import inf112.skeleton.app.map.Spawn;
-import inf112.skeleton.app.map.Wall;
+import inf112.skeleton.app.map.*;
 
 import java.util.ArrayList;
 
@@ -111,5 +109,50 @@ public class CreateGame {
             game.allWalls.add(new Wall(new Vector2(i,game.boardHeight), Wall.outerWallNORTH));
         }
 
+    }
+
+    public void registerBoosters() {
+        for (int i = 0; i < game.boardWidth; i++) {
+            for (int j = 0; j < game.boardHeight; j++) {
+                TiledMapTileLayer.Cell boosterTile = game.boosterLayer.getCell(i,j);
+                if (boosterTile != null){
+                    int boosterId = boosterTile.getTile().getId();
+                    if(boosterId == Booster.UP) {
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.NORTH, 1, 0));
+                    }
+                    if(boosterId == Booster.DOWN) {
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.SOUTH, 1, 0));
+                    }
+                    if(boosterId == Booster.LEFT) {
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.WEST, 1, 0));
+                    }
+                    if(boosterId == Booster.RIGHT) {
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.EAST, 1, 0));
+                    }
+                    if(boosterId == Booster.LEFTDOWN) {
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.SOUTH, 1, 90));
+                    }
+                    if(boosterId == Booster.RIGHTDOWN) {
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.SOUTH, 1, -90));
+                    }
+                    if(boosterId == Booster.UPP) {
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.NORTH, 2, 0));
+                    }
+                    if(boosterId == Booster.DOWNN) {
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.SOUTH, 2, 0));
+                    }
+                    if(boosterId == Booster.LEFT) {
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.WEST, 2, 0));
+                    }
+                    if(boosterId == Booster.DOWNLEFT) {
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.WEST, 2, 0));
+                    }
+                    if(boosterId == Booster.LEFTUPUP) {
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.NORTH, 2, 0));
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.L, 1, 0));
+                    }
+                }
+            }
+        }
     }
 }
