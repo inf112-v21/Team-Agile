@@ -21,12 +21,12 @@ public class Robot extends Sprite {
     private final int WIDTH = 1;
     private final int HEIGHT = 1;
 
-    private RoboRally game;
+    //private RoboRally game;
     //private boolean cannotmove = false;
 
     public int robotHealthPoint;
 
-    //RoboRally game;
+    RoboRally game;
 
     public String getName() {
         return name;
@@ -204,8 +204,8 @@ public class Robot extends Sprite {
                     break;
                 case (90):
                     for (int i = x; i < game.getBoardWidth(); i++) {
-                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
-                        if (wallTile != null &) {
+                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)i,y);
+                        if (wallTile != null) {
                             return null;
                         }
                         for (Robot r: game.robots) {
@@ -221,7 +221,7 @@ public class Robot extends Sprite {
                 case (180):
                     for (int i = y; i < game.getBoardHeight(); i--) {
                         TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
-                        if (wallTile != null &) {
+                        if (wallTile != null) {
                             return null;
                         }
                         for (Robot r: game.robots) {
@@ -236,8 +236,8 @@ public class Robot extends Sprite {
                     break;
                 case (270):
                     for (int i = x; i < game.getBoardWidth(); i--) {
-                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
-                        if (wallTile != null &) {
+                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)i,y);
+                        if (wallTile != null) {
                             return null;
                         }
                         for (Robot r: game.robots) {
@@ -396,7 +396,6 @@ public class Robot extends Sprite {
             case(270):
                 for(int i = 1; i <= Math.abs(steps); i++){
                     if(checkForWall(this, -1, 0)){
-
                     }
                     else if (checkForPlayer((int) this.getRotation())) {
                         pushPlayers();
