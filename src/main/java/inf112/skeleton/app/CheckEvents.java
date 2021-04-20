@@ -138,6 +138,7 @@ public class CheckEvents {
         for(Robot r : robotliste) {
             if (game.holeLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
                 r.setPosition(r.getCheckpoint().x , r.getCheckpoint().y);
+                r.lives -= 1;
             }
         }
     }
