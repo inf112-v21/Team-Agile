@@ -10,8 +10,8 @@ public class Booster {
     Vector2 position; //(x,y)
     DirectionEnum direction; //NORTH, EAST, SOUTH, WEST
     int speed; //1, 2
-    boolean turn; //true , false
-    boolean clockwise; //true = med klokken (-90), false = mot klokken (+90)
+    int turn; //-90, 0, +90
+
 
 
 
@@ -37,14 +37,18 @@ public class Booster {
     public static int DOWNLEFT = 28; //-x (WEST), 2step, -90
     public static int LEFTUPUP = 77; //+y (NORTH), 2step, kommer du fra høyre side (-90), kommer du nedifra (0)
 
-    public Booster(Vector2 position, DirectionEnum direction, int speed, boolean turn) {
+    public Booster(Vector2 position, DirectionEnum direction, int speed, int turn) {
         this.position = position;
         this.direction = direction;
         this.speed = speed;
         this.turn = turn;
     }
 
-    public static Vector2 GoInDir(Vector2 position, DirectionEnum direction, boolean turn, boolean clockwise) {
+    public int getSpeed(){
+        return this.speed;
+    }
+
+    public static Vector2 GoInDir(Vector2 position, DirectionEnum direction) {
         Vector2 nextPosition = position.cpy();
 
         switch (direction) {
@@ -56,21 +60,13 @@ public class Booster {
                 return nextPosition.add(-1, 0);
             case EAST:
                 return nextPosition.add(1, 0);
-        }
 
-        if (turn == true) {
-            if (clockwise == true) {
-                //player.rotate(-90);
-            } else {
-                //player.rotate(+90);
-            }
-            return nextPosition;
+            default: throw new IllegalArgumentException("Illegal direction.");
         }
+    }
 
-        else {
-            return nextPosition;
-
-        }
+    public static void isThisTurn(){
 
     }
 }
+
