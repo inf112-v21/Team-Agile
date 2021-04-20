@@ -63,7 +63,7 @@ public class StartGame extends Game implements ApplicationListener {
     }
 
     public void setGameScreen(){
-        gameScreen = new RoboRally("MapNumber1.tmx", true);
+        gameScreen = new RoboRally("MapNumber1.tmx", false);
         this.setScreen(gameScreen);
     }
 }
