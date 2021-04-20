@@ -115,36 +115,67 @@ public class Robot extends Sprite {
         }
     }
 
-    public void getPushed(Robot otherplayer) {
-        //the player gets pushed and gets moved
-        //if the player is pushing another robot, it needs to make sure that
-        //the other player is being moved
+    public void pushPlayers() {
+        int rotation = (int) this.getRotation();
+        Stack<Robot> playerstomove = checkForPlayersToMove(rotation);
+
+        while (!playerstomove.isEmpty()) {
+            Robot robot = playerstomove.pop();
+            switch (rotation) {
+                case (0):
+                    robot.setPosition(robot.getX(), robot.getY()+1);
+                    break;
+                case (90):
+                    robot.setPosition(robot.getX()+1, robot.getY());
+                    break;
+                case (180):
+                    robot.setPosition(robot.getX(), robot.getY()-1);
+                    break;
+                case (270):
+                    robot.setPosition(robot.getX()-1, robot.getY());
+                    break;
+            }
+        }
     }
 
-    public boolean isPushing(Robot otherplayer) {
-        //check for if the player is moving towards another player and doing a push
-        return true;
-    }
+    public boolean checkForPlayer(int rot) {
+        int x = (int) this.getX();
+        int y = (int) this.getY();
 
-    public boolean isBeingpushed(Robot player, Robot otherplayer) {
-        //if the player is being pushed and hits a wall, both the player and the
-        //other player must stop
-        if (otherplayer.isPushing(player)) {
-            return true;
+        switch (rot) {
+            case (0):
+                for (Robot r : game.robots) {
+                    if (x == r.getX() && y == r.getY() + 1) {
+                        return true;
+                    }
+                }
+                break;
+            case (90):
+                for (Robot r : game.robots) {
+                    if (x == r.getX() + 1 && y == r.getY()) {
+                        return true;
+                    }
+                }
+                break;
+            case (180):
+                for (Robot r : game.robots) {
+                    if (x == r.getX() && y == r.getY() - 1) {
+                        return true;
+                    }
+                }
+                break;
+            case (270):
+                for (Robot r : game.robots) {
+                    if (x == r.getX() - 1 && y == r.getY()) {
+                        return true;
+                    }
+                }
+                break;
         }
         return false;
-    }
+        }
 
-    /*
-    public boolean cannotMove() {
-        return this.cannotmove;
-    }
-
-    public void setCannotMove(boolean cannotmove) {
-        this.cannotmove = cannotmove;
-    }*/
-
-    public Stack<Robot> checkForPlayers(int rot) {
+    public Stack<Robot> checkForPlayersToMove(int rot) {
         Stack<Robot> robotstack = new Stack<>();
         ArrayList<Robot> allrobots = new ArrayList<>();
         for (Robot r : game.robots) {
@@ -178,7 +209,7 @@ public class Robot extends Sprite {
                             return null;
                         }
                         for (Robot r: game.robots) {
-                            if (r.getX() == x && r.getY() == i) {
+                            if (r.getX() == i && r.getY() == y) {
                                 robotstack.push(r);
                                 allrobots.remove(r);
                             } else {
@@ -187,13 +218,8 @@ public class Robot extends Sprite {
                         }
                     }
                     break;
-                    /*
-                    if (x+1 == otherx && othery == y) {
-                        return r;
-                    }
-                    break;*/
                 case (180):
-                    for (int i = x; i < game.getBoardHeight(); i++) {
+                    for (int i = y; i < game.getBoardHeight(); i--) {
                         TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
                         if (wallTile != null &) {
                             return null;
@@ -208,19 +234,14 @@ public class Robot extends Sprite {
                         }
                     }
                     break;
-                    /*
-                    if (x == otherx && othery == y+1) {
-                        return r;
-                    }
-                    break;*/
                 case (270):
-                    for (int i = x; i < game.getBoardWidth(); i++) {
+                    for (int i = x; i < game.getBoardWidth(); i--) {
                         TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
                         if (wallTile != null &) {
                             return null;
                         }
                         for (Robot r: game.robots) {
-                            if (r.getX() == x && r.getY() == i) {
+                            if (r.getX() == i && r.getY() == y) {
                                 robotstack.push(r);
                                 allrobots.remove(r);
                             } else {
@@ -229,11 +250,6 @@ public class Robot extends Sprite {
                         }
                     }
                     break;
-                    /*
-                    if (x-1 == otherx && othery == y) {
-                        return r;
-                    }
-                    break;*/
             }
         }
         return null;
@@ -345,17 +361,11 @@ public class Robot extends Sprite {
                 for(int i = 1; i <= Math.abs(steps); i++){
                     if(checkForWall(this, 0, -1)){
                     }
-                    else if (checkForPlayer((int) this.getRotation()) != null) {
-                        Robot pushedrobot = checkForPlayer((int) this.getRotation());
-                        if (checkForWall(pushedrobot, 0, -1) || pushedrobot.cannotMove()) {
-                            pushedrobot.setCannotMove(true);
-                            this.setCannotMove(true);
-                        } else {
-                            pushedrobot.setPosition(pushedrobot.getX(), pushedrobot.getY() - moveby);
-                            this.setPosition(this.getX(), this.getY() - moveby);
-                        }
+                    else if (checkForPlayer((int)this.getRotation())) {
+                        pushPlayers();
+                        this.setPosition(this.getX(), this.getY() - moveby);
                     }
-                    else{ this.setPosition(this.getX(), this.getY() - moveby); this.setCannotMove(false); }
+                    else{ this.setPosition(this.getX(), this.getY() - moveby); }
                 }
                 break;
 
@@ -363,36 +373,23 @@ public class Robot extends Sprite {
                 for(int i = 1; i <= Math.abs(steps); i++){
                     if(checkForWall(this, 1, 0)){
                     }
-                    else if (checkForPlayer((int) this.getRotation()) != null) {
-                        Robot pushedrobot = checkForPlayer((int) this.getRotation());
-                        if (checkForWall(pushedrobot, 1, 0) || pushedrobot.cannotMove()) {
-                            pushedrobot.setCannotMove(true);
-                            this.setCannotMove(true);
-                        } else {
-                            pushedrobot.setPosition(pushedrobot.getX() + moveby, pushedrobot.getY());
-                            this.setPosition(this.getX() + moveby, this.getY());
+                    else if (checkForPlayer((int) this.getRotation())) {
+                        pushPlayers();
+                        this.setPosition(this.getX() + moveby, this.getY());
                         }
+                    else { this.setPosition(this.getX() + moveby, this.getY()); }
                     }
-                    else{
-                        this.setPosition(this.getX() + moveby, this.getY()); this.setCannotMove(false);}
-                }
                 break;
 
             case(180):
                 for(int i = 1; i <= Math.abs(steps); i++){
                     if(checkForWall(this, 0, 1)){
                     }
-                    else if (checkForPlayer((int) this.getRotation()) != null) {
-                        Robot pushedrobot = checkForPlayer((int) this.getRotation());
-                        if (checkForWall(pushedrobot, 0, 1) || pushedrobot.cannotMove()) {
-                            pushedrobot.setCannotMove(true);
-                            this.setCannotMove(true);
-                        } else {
-                            pushedrobot.setPosition(pushedrobot.getX(), pushedrobot.getY() + moveby);
-                            this.setPosition(this.getX(), this.getY() + moveby);
-                        }
+                    else if (checkForPlayer((int) this.getRotation())) {
+                        pushPlayers();
+                        this.setPosition(this.getX(), this.getY() + moveby);
                     }
-                    else{this.setPosition(this.getX(), this.getY() + moveby); this.setCannotMove(false);}
+                    else { this.setPosition(this.getX(), this.getY() + moveby); }
                 }
                 break;
 
@@ -401,17 +398,11 @@ public class Robot extends Sprite {
                     if(checkForWall(this, -1, 0)){
 
                     }
-                    else if (checkForPlayer((int) this.getRotation()) != null) {
-                        Robot pushedrobot = checkForPlayer((int) this.getRotation());
-                        if (checkForWall(pushedrobot, -1, 0) || pushedrobot.cannotMove()) {
-                            pushedrobot.setCannotMove(true);
-                            this.setCannotMove(true);
-                        } else {
-                            pushedrobot.setPosition(pushedrobot.getX() - moveby, pushedrobot.getY());
-                            this.setPosition(this.getX() - moveby, this.getY());
-                        }
+                    else if (checkForPlayer((int) this.getRotation())) {
+                        pushPlayers();
+                        this.setPosition(this.getX() - moveby, this.getY());
                     }
-                    else{this.setPosition(this.getX() - moveby, this.getY()); this.setCannotMove(false);}
+                    else { this.setPosition(this.getX() - moveby, this.getY()); }
                 }
                 break;
 
