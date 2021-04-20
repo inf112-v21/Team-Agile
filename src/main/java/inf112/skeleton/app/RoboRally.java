@@ -169,6 +169,7 @@ public class RoboRally extends InputAdapter implements Screen {
         if (clientPlayer != null && phase.equals("check")) {
             checkevent.checkLaserBeams(allLasers);
             checkevent.checkBoosters(robots);
+            checkevent.checkHole(robots);
             //firelaser
             checkevent.checkrobotStates(robots);
             checkevent.checkFlags(robots);

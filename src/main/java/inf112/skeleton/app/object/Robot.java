@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.PlayingCard;
 import inf112.skeleton.app.map.Wall;
@@ -51,6 +52,8 @@ public class Robot extends Sprite {
     TextureRegion deadState;
     TextureRegion winState;
     public int id;
+    public Vector2 checkpoint;
+    public int lives;
 
     BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
     BitmapFont hudFont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
@@ -95,6 +98,8 @@ public class Robot extends Sprite {
         this.id = id;
         setColor(color);
         this.game = game;
+        this.checkpoint = new Vector2(xstart,ystart);
+        this.lives = 3;
     }
 
 
@@ -105,6 +110,14 @@ public class Robot extends Sprite {
         normalState = tr[0][0];
         deadState = tr[0][1];
         winState = tr[0][2];
+    }
+
+    public Vector2 getCheckpoint() {
+        return checkpoint;
+    }
+
+    public void setCheckpoint(Vector2 checkpoint) {
+        this.checkpoint = checkpoint;
     }
 
     public void changeState(String state) {
@@ -233,6 +246,9 @@ public class Robot extends Sprite {
     public void initializeHud(Batch batch){
         hudFont.draw(batch, ("Player: " + id), 30, 80);
         hudFont.draw(batch, ("HP = " + robotHealthPoint), 715, 80);
+        hudFont.draw(batch, ("Flag to take = " + flagToTake), 30, 30);
+        hudFont.draw(batch, ("Lives = " + flagToTake), 715, 30);
+
     }
 
     public void renderHud(String text, SpriteBatch batch, int hudPosition){
