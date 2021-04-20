@@ -43,7 +43,7 @@ public class Gameloop {
             System.out.println("RUNDE " + i );
 
         }
-        delay(1000);
+        //delay(1000);
         server.recievedRegisters = 0;
         System.out.println("kort deles");
         server.server.sendToAllTCP(new CardsPacket());
@@ -69,7 +69,7 @@ public class Gameloop {
         spillere.addAll(server.playerlist.values());
 
         for (Player p : spillere) {
-            delay(300);
+
             if (p.lockedHand.size() > i) {
                 PlayingCardPair kortet = p.lockedHand.get(i);
 
@@ -80,7 +80,7 @@ public class Gameloop {
                     RotationEvent event = new RotationEvent(p.id, kortet.move);
                     server.server.sendToAllTCP(event);
                 }
-
+                delay(200);
             }
         }
     }

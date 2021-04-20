@@ -61,6 +61,7 @@ public class RoboRally extends InputAdapter implements Screen {
     public HashMap<Integer, Spawn> spawns = new HashMap<>();
     public String phase = "chooseCards";
     private boolean host;
+    public int numberofplayers;
 
     private CreateGame newGame;
     public CheckEvents checkevent;
@@ -72,9 +73,18 @@ public class RoboRally extends InputAdapter implements Screen {
         newGame = new CreateGame(this);
         checkevent = new CheckEvents(this);
     }
+    public RoboRally(String mapChosen, boolean host, int players) {
+        this.mapChosen = mapChosen;
+        this.host = host;
+        newGame = new CreateGame(this);
+        checkevent = new CheckEvents(this);
+        this.numberofplayers = players;
+
+    }
 
     @Override
     public void show() {
+
 
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
@@ -90,7 +100,7 @@ public class RoboRally extends InputAdapter implements Screen {
 
         if(host) {
             try {
-                GameServer server = new GameServer();
+                GameServer server = new GameServer(numberofplayers);
             } catch (Exception e) {
                 e.printStackTrace();
             }
