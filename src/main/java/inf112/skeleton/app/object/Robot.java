@@ -131,16 +131,16 @@ public class Robot extends Sprite {
                 System.out.println("Moving robot blocking the way: player " + r.id);
                 switch (rotation) {
                     case (0):
-                        r.setPosition(r.getX(), r.getY()-1);
+                        r.setPosition(r.getX(), r.getY() - 1);
                         break;
                     case (90):
-                        r.setPosition(r.getX()+1, r.getY());
+                        r.setPosition(r.getX() + 1, r.getY());
                         break;
                     case (180):
-                        r.setPosition(r.getX(), r.getY()+1);
+                        r.setPosition(r.getX(), r.getY() + 1);
                         break;
                     case (270):
-                        r.setPosition(r.getX()-1, r.getY());
+                        r.setPosition(r.getX() - 1, r.getY());
                         break;
                 }
             }
@@ -155,6 +155,8 @@ public class Robot extends Sprite {
             case (0):
                 for (Robot r : game.robots) {
                     if (x == r.getX() && (y - 1) == r.getY()) {
+                        if(checkForWall(r, 0, -1)){
+                        } else { r.setPosition(r.getX(), r.getY() -1); }
                         return true;
                     }
                 }
@@ -162,6 +164,8 @@ public class Robot extends Sprite {
             case (90):
                 for (Robot r : game.robots) {
                     if ((x + 1) == r.getX() && y == r.getY()) {
+                        if(checkForWall(r, 1, 0)){
+                        } else { r.setPosition(r.getX() + 1, r.getY()); }
                         return true;
                     }
                 }
@@ -169,6 +173,8 @@ public class Robot extends Sprite {
             case (180):
                 for (Robot r : game.robots) {
                     if (x == r.getX() && y + 1 == r.getY()) {
+                        if(checkForWall(r, 0, 1)){
+                        } else { r.setPosition(r.getX(), r.getY() + 1); }
                         return true;
                     }
                 }
@@ -176,6 +182,8 @@ public class Robot extends Sprite {
             case (270):
                 for (Robot r : game.robots) {
                     if (x - 1 == r.getX() && y == r.getY()) {
+                        if(checkForWall(r, -1, 0)){
+                        } else { r.setPosition(r.getX() - 1, r.getY()); }
                         return true;
                     }
                 }
@@ -369,7 +377,8 @@ public class Robot extends Sprite {
                     if(checkForWall(this, 0, -1)){
                     }
                     else if (checkForPlayer((int)this.getRotation())) {
-                        pushPlayers();
+                        System.out.println("Other robot in front of player");
+                        //pushPlayers();
                         this.setPosition(this.getX(), this.getY() - moveby);
                     }
                     else{ this.setPosition(this.getX(), this.getY() - moveby); }
@@ -381,7 +390,8 @@ public class Robot extends Sprite {
                     if(checkForWall(this, 1, 0)){
                     }
                     else if (checkForPlayer((int) this.getRotation())) {
-                        pushPlayers();
+                        System.out.println("Other robot in front of player");
+                        //pushPlayers();
                         this.setPosition(this.getX() + moveby, this.getY());
                         }
                     else { this.setPosition(this.getX() + moveby, this.getY()); }
@@ -393,7 +403,8 @@ public class Robot extends Sprite {
                     if(checkForWall(this, 0, 1)){
                     }
                     else if (checkForPlayer((int) this.getRotation())) {
-                        pushPlayers();
+                        System.out.println("Other robot in front of player");
+                        //pushPlayers();
                         this.setPosition(this.getX(), this.getY() + moveby);
                     }
                     else { this.setPosition(this.getX(), this.getY() + moveby); }
@@ -405,7 +416,8 @@ public class Robot extends Sprite {
                     if(checkForWall(this, -1, 0)){
                     }
                     else if (checkForPlayer((int) this.getRotation())) {
-                        pushPlayers();
+                        System.out.println("Other robot in front of player");
+                        //pushPlayers();
                         this.setPosition(this.getX() - moveby, this.getY());
                     }
                     else { this.setPosition(this.getX() - moveby, this.getY()); }
