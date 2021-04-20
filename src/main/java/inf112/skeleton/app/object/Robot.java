@@ -154,7 +154,7 @@ public class Robot extends Sprite {
         switch (rot) {
             case (0):
                 for (Robot r : game.robots) {
-                    if (x == r.getX() && (y - 1) == r.getY()) {
+                    if ((x == r.getX()) && ((y - 1) == r.getY())) {
                         if(checkForWall(r, 0, -1)){
                         } else { r.setPosition(r.getX(), r.getY() -1); }
                         return true;
@@ -172,7 +172,7 @@ public class Robot extends Sprite {
                 break;
             case (180):
                 for (Robot r : game.robots) {
-                    if (x == r.getX() && y + 1 == r.getY()) {
+                    if ((x == r.getX()) && ((y + 1) == r.getY())) {
                         if(checkForWall(r, 0, 1)){
                         } else { r.setPosition(r.getX(), r.getY() + 1); }
                         return true;
