@@ -121,32 +121,6 @@ public class Robot extends Sprite {
         }
     }
 
-    public void pushPlayers() {
-        int rotation = (int) this.getRotation();
-        Stack<Robot> playerstomove = checkForPlayersToMove(rotation);
-
-        if (playerstomove != null) {
-            while (!playerstomove.isEmpty()) {
-                Robot r = playerstomove.pop();
-                System.out.println("Moving robot blocking the way: player " + r.id);
-                switch (rotation) {
-                    case (0):
-                        r.setPosition(r.getX(), r.getY() - 1);
-                        break;
-                    case (90):
-                        r.setPosition(r.getX() + 1, r.getY());
-                        break;
-                    case (180):
-                        r.setPosition(r.getX(), r.getY() + 1);
-                        break;
-                    case (270):
-                        r.setPosition(r.getX() - 1, r.getY());
-                        break;
-                }
-            }
-        }
-    }
-
     public boolean checkForPlayer(int rot) {
         int x = (int) this.getX();
         int y = (int) this.getY();
@@ -155,7 +129,7 @@ public class Robot extends Sprite {
             case (0):
                 for (Robot r : game.robots) {
                     if ((x == r.getX()) && ((y - 1) == r.getY())) {
-                        if(checkForWall(r, 0, -1)){
+                        if(checkForWall(r, 0, -1)) {
                         } else { r.setPosition(r.getX(), r.getY() -1); }
                         return true;
                     }
@@ -164,7 +138,7 @@ public class Robot extends Sprite {
             case (90):
                 for (Robot r : game.robots) {
                     if ((x + 1) == r.getX() && y == r.getY()) {
-                        if(checkForWall(r, 1, 0)){
+                        if(checkForWall(r, 1, 0)) {
                         } else { r.setPosition(r.getX() + 1, r.getY()); }
                         return true;
                     }
@@ -173,7 +147,7 @@ public class Robot extends Sprite {
             case (180):
                 for (Robot r : game.robots) {
                     if ((x == r.getX()) && ((y + 1) == r.getY())) {
-                        if(checkForWall(r, 0, 1)){
+                        if(checkForWall(r, 0, 1)) {
                         } else { r.setPosition(r.getX(), r.getY() + 1); }
                         return true;
                     }
@@ -182,7 +156,7 @@ public class Robot extends Sprite {
             case (270):
                 for (Robot r : game.robots) {
                     if (x - 1 == r.getX() && y == r.getY()) {
-                        if(checkForWall(r, -1, 0)){
+                        if(checkForWall(r, -1, 0)) {
                         } else { r.setPosition(r.getX() - 1, r.getY()); }
                         return true;
                     }
@@ -191,84 +165,6 @@ public class Robot extends Sprite {
         }
         return false;
         }
-
-    public Stack<Robot> checkForPlayersToMove(int rot) {
-        Stack<Robot> robotstack = new Stack<>();
-        ArrayList<Robot> otherrobots = new ArrayList<>();
-        for (Robot r : game.robots) {
-            otherrobots.add(r);
-        }
-        otherrobots.remove(this);
-        int x = (int) this.getX();
-        int y = (int) this.getY();
-        int rotation = rot;
-        while (!otherrobots.isEmpty()) {
-            switch(rotation) {
-                case (0):
-                    for (int i = y; i < game.getBoardHeight(); i--) {
-                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
-                        for (Robot r: otherrobots) {
-                            if ((int) r.getX() == x && (int) r.getY() == i) {
-                                robotstack.push(r);
-                                otherrobots.remove(r);
-                            } else if (wallTile != null) {
-                                return null;
-                            } else {
-                                return robotstack;
-                            }
-                        }
-                    }
-                    break;
-                case (90):
-                    for (int i = x; i < game.getBoardWidth(); i++) {
-                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)i,y);
-                        for (Robot r: otherrobots) {
-                            if ((int) r.getX() == i && (int) r.getY() == y) {
-                                robotstack.push(r);
-                                otherrobots.remove(r);
-                            } else if (wallTile != null) {
-                                return null;
-                            } else {
-                                return robotstack;
-                            }
-                        }
-                    }
-                    break;
-                case (180):
-                    for (int i = y; i < game.getBoardHeight(); i++) {
-                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
-                        for (Robot r: otherrobots) {
-                            if ((int) r.getX() == x && (int) r.getY() == i) {
-                                robotstack.push(r);
-                                otherrobots.remove(r);
-                            } else if (wallTile != null) {
-                                return null;
-                            } else {
-                                return robotstack;
-                            }
-                        }
-                    }
-                    break;
-                case (270):
-                    for (int i = x; i < game.getBoardWidth(); i--) {
-                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)i,y);
-                        for (Robot r: otherrobots) {
-                            if ((int) r.getX() == i && (int) r.getY() == y) {
-                                robotstack.push(r);
-                                otherrobots.remove(r);
-                            } else if (wallTile != null) {
-                                return null;
-                            }
-                            else {
-                                return robotstack;
-                            }
-                        }
-                    }
-                    break;
-            }
-        }
-        return null;
-    }
 
 
     public ArrayList<PlayingCard> getCards() {
@@ -378,7 +274,6 @@ public class Robot extends Sprite {
                     }
                     else if (checkForPlayer((int)this.getRotation())) {
                         System.out.println("Other robot in front of player");
-                        //pushPlayers();
                         this.setPosition(this.getX(), this.getY() - moveby);
                     }
                     else{ this.setPosition(this.getX(), this.getY() - moveby); }
@@ -391,7 +286,6 @@ public class Robot extends Sprite {
                     }
                     else if (checkForPlayer((int) this.getRotation())) {
                         System.out.println("Other robot in front of player");
-                        //pushPlayers();
                         this.setPosition(this.getX() + moveby, this.getY());
                         }
                     else { this.setPosition(this.getX() + moveby, this.getY()); }
@@ -404,7 +298,6 @@ public class Robot extends Sprite {
                     }
                     else if (checkForPlayer((int) this.getRotation())) {
                         System.out.println("Other robot in front of player");
-                        //pushPlayers();
                         this.setPosition(this.getX(), this.getY() + moveby);
                     }
                     else { this.setPosition(this.getX(), this.getY() + moveby); }
@@ -417,7 +310,6 @@ public class Robot extends Sprite {
                     }
                     else if (checkForPlayer((int) this.getRotation())) {
                         System.out.println("Other robot in front of player");
-                        //pushPlayers();
                         this.setPosition(this.getX() - moveby, this.getY());
                     }
                     else { this.setPosition(this.getX() - moveby, this.getY()); }
