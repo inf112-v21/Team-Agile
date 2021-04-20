@@ -135,6 +135,12 @@ public class Robot extends Sprite {
     }
 
     public boolean checkForPlayer(int rot) {
+        //kjente bugs:
+        //med checkForWall er det noen vegger som ikke
+        //registreres (øst og vest), og det ser ut til at
+        //laserlayer (lasterstråler) gjør at en spiller henger fast
+        //og ikke kan dyttes
+
         int x = (int) this.getX();
         int y = (int) this.getY();
 
