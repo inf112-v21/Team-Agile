@@ -47,6 +47,11 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Petter fortsatte på markdown dokumentet.
 * Anthony fortsetter på main menu, for å implementere multiplayer knappen.
 
+**20.04.2021 : 12:15 -**
+* Alle var tilstede. Marius dro får å arbeide alene på powerdown og repair.
+* Johnny og Athony jobbet på Boostere.
+* Tore fortsatte pushing av roboter. 
+* Petter fortsatte å oppdatere marcdown.doc. 
     
 ***
 ## Krav for denne inneleveringen:
@@ -79,7 +84,8 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 * Som spiller vil jeg kunne avsluttet spillet fra meny-en. 
 
 **Arbeidsoppgaver:**
-* S
+* Design av bagrunn og knapper på Main menu. 
+* implementasjon av posisjon til 
 
 ***
 
@@ -112,6 +118,8 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
   runde så får jeg nye valg muligheter.
 
 **Arbeidsoppgaver:**
+* Gameloop skal kalles på når antall registers mottat av serveren er lik antall tilkoblinger til spillet. f.eks. 2 spillere , da kalles gameloop så fort serveren mottar 
+register fra hver av spillerene
 
 <br/>
 
@@ -125,6 +133,33 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 * Spiller skal flyttes 1 eller 2 tiles etter hvilken type booster, etter runden er ferdig.
 
 **Arbeidsoppgaver:**
+
+<br/>
+
+**Implementasjon av Repair**
+* Som spiller ønsker jeg å ha muligheten til å kunne få tilbake liv i spillet.
+
+**Akseptansekriterier**
+* Som spiller vil jeg kunne få tilbake liv slik det er mulig å miste liv med f.eks lasere.
+
+**Arbeidsoppgaver:**
+
+
+<br/>
+
+**Implementasjon av PowerDown**
+* Som spiller ønsker jeg at det skal finnes en PowerDown mulighet, slik at jeg ikke beveger og dermed hopper over min tur.
+
+**Akseptansekriterier** 
+* Som spiller ønsker jeg at en PowerDown skal være mulig.
+* En PowerDown skal kun gjøre slik at spiller ikke beveger seg av kortene. 
+* Dersom spiller står i laser eller på Booster så vil spiller miste liv eller bli beveget i retning av Booster.
+* For at spiller mister trekkene sine skal spiller få noe tilbake. x-antall hp.
+
+**Arbeidsoppgaver:**
+
+
+<br/>
 
 ***
 ## Produktleveranse / kode
