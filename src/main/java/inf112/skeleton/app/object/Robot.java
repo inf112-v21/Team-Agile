@@ -119,21 +119,23 @@ public class Robot extends Sprite {
         int rotation = (int) this.getRotation();
         Stack<Robot> playerstomove = checkForPlayersToMove(rotation);
 
-        while (!playerstomove.isEmpty()) {
-            Robot robot = playerstomove.pop();
-            switch (rotation) {
-                case (0):
-                    robot.setPosition(robot.getX(), robot.getY()+1);
-                    break;
-                case (90):
-                    robot.setPosition(robot.getX()+1, robot.getY());
-                    break;
-                case (180):
-                    robot.setPosition(robot.getX(), robot.getY()-1);
-                    break;
-                case (270):
-                    robot.setPosition(robot.getX()-1, robot.getY());
-                    break;
+        if (playerstomove != null) {
+            while (!playerstomove.isEmpty()) {
+                Robot robot = playerstomove.pop();
+                switch (rotation) {
+                    case (0):
+                        robot.setPosition(robot.getX(), robot.getY()-1);
+                        break;
+                    case (90):
+                        robot.setPosition(robot.getX()+1, robot.getY());
+                        break;
+                    case (180):
+                        robot.setPosition(robot.getX(), robot.getY()+1);
+                        break;
+                    case (270):
+                        robot.setPosition(robot.getX()-1, robot.getY());
+                        break;
+                }
             }
         }
     }
@@ -145,7 +147,7 @@ public class Robot extends Sprite {
         switch (rot) {
             case (0):
                 for (Robot r : game.robots) {
-                    if (x == r.getX() && y == r.getY() + 1) {
+                    if (x == r.getX() && y == r.getY() - 1) {
                         return true;
                     }
                 }
@@ -159,7 +161,7 @@ public class Robot extends Sprite {
                 break;
             case (180):
                 for (Robot r : game.robots) {
-                    if (x == r.getX() && y == r.getY() - 1) {
+                    if (x == r.getX() && y == r.getY() + 1) {
                         return true;
                     }
                 }
@@ -181,13 +183,14 @@ public class Robot extends Sprite {
         for (Robot r : game.robots) {
             allrobots.add(r);
         }
+        allrobots.remove(this);
         int x = (int) this.getX();
         int y = (int) this.getY();
         int rotation = rot;
         while (!allrobots.isEmpty()) {
             switch(rotation) {
                 case (0):
-                    for (int i = y; i < game.getBoardHeight(); i++) {
+                    for (int i = y; i < game.getBoardHeight(); i--) {
                         TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
                         if (wallTile != null) {
                             return null;
@@ -219,7 +222,7 @@ public class Robot extends Sprite {
                     }
                     break;
                 case (180):
-                    for (int i = y; i < game.getBoardHeight(); i--) {
+                    for (int i = y; i < game.getBoardHeight(); i++) {
                         TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
                         if (wallTile != null) {
                             return null;
