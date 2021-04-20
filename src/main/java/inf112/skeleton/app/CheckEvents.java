@@ -2,7 +2,9 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.map.Booster;
 import inf112.skeleton.app.map.Laser;
+import inf112.skeleton.app.map.Wall;
 import inf112.skeleton.app.object.Robot;
 
 import java.util.ArrayList;
@@ -136,6 +138,15 @@ public class CheckEvents {
         for (Robot r : robotliste) {
             if (r.getFlag() == game.flagsToTake) {
                 r.renderHud("Player " + r.id + " won the game!\nRestart the game to start again", game.batch, 2);
+            }
+        }
+    }
+
+    public void checkboosters(ArrayList<Robot> robotliste) {
+        for (Robot r : robotliste) {
+            Vector2 robotposition = new Vector2(r.getX(), r.getY());
+            for (Booster b : game.allBoosters){
+
             }
         }
     }

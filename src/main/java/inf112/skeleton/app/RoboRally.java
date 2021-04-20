@@ -16,6 +16,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import inf112.skeleton.app.cards.Deck;
+import inf112.skeleton.app.map.Booster;
 import inf112.skeleton.app.map.Spawn;
 import inf112.skeleton.app.network.GameClient;
 import inf112.skeleton.app.map.Laser;
@@ -35,7 +36,7 @@ public class RoboRally extends InputAdapter implements Screen {
     public SpriteBatch batch;
     private BitmapFont font;
     public TiledMap map;
-    public static TiledMapTileLayer boardLayer, playerLayer, holeLayer, wallLayer, laserLayer, flag1, flag2, flag3, startPositions;
+    public static TiledMapTileLayer boardLayer, playerLayer, holeLayer, wallLayer, boosterLayer, laserLayer, flag1, flag2, flag3, startPositions;
     public OrthogonalTiledMapRenderer render;
     public Integer flagsToTake = 4;
     private OrthographicCamera camera, font_cam;
@@ -58,6 +59,7 @@ public class RoboRally extends InputAdapter implements Screen {
 
     public ArrayList<Wall> allWalls = new ArrayList<>();
     public ArrayList<Laser> allLasers = new ArrayList<>();
+    public ArrayList<Booster> allBoosters = new ArrayList<>();
     public HashMap<Integer, Spawn> spawns = new HashMap<>();
     public String phase = "chooseCards";
     private boolean host;
