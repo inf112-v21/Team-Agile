@@ -141,7 +141,7 @@ public class CreateGame {
                     if(boosterId == Booster.DOWNN) {
                         game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.SOUTH, 2, 0));
                     }
-                    if(boosterId == Booster.LEFT) {
+                    if(boosterId == Booster.LEFTT) {
                         game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.WEST, 2, 0));
                     }
                     if(boosterId == Booster.DOWNLEFT) {
@@ -149,7 +149,7 @@ public class CreateGame {
                     }
                     if(boosterId == Booster.LEFTUPUP) {
                         game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.NORTH, 2, 0));
-                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.L, 1, 0));
+                        game.allBoosters.add(new Booster(new Vector2(i,j), DirectionEnum.NORTH, 2, -90));
                     }
                 }
             }

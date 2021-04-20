@@ -142,9 +142,9 @@ public class CheckEvents {
         }
     }
 
-    public void checkboosters(ArrayList<Robot> robotliste) {
+    public void checkBoosters(ArrayList<Robot> robotliste) {
         for (Robot r : robotliste) {
-            Vector2 robotposition = new Vector2(r.getX(), r.getY());
+            Vector2 robotPosition = new Vector2(r.getX(), r.getY());
             for (Booster b : game.allBoosters){
 
             }

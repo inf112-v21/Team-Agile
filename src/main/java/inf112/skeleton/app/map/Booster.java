@@ -42,6 +42,12 @@ public class Booster {
 
 
      */
+    public Booster(Vector2 position, DirectionEnum direction, int speed, int turn) {
+        this.position = position;
+        this.direction = direction;
+        this.speed = speed;
+        this.turn = turn;
+    }
 
     public Vector2 getPosition() {
         return position;
@@ -59,31 +65,7 @@ public class Booster {
         return this.speed;
     }
 
-    public Booster(Vector2 position, DirectionEnum direction, int speed, int turn) {
-        this.position = position;
-        this.direction = direction;
-        this.speed = speed;
-        this.turn = turn;
-    }
 
-    public static Vector2 GoInDir(Vector2 position, DirectionEnum direction) {
-        Vector2 nextPosition = position.cpy();
-
-
-
-        switch (direction) {
-            case NORTH:
-                return nextPosition.add(0, 1);
-            case SOUTH:
-                return nextPosition.add(0, -1);
-            case WEST:
-                return nextPosition.add(-1, 0);
-            case EAST:
-                return nextPosition.add(1, 0);
-
-            default: throw new IllegalArgumentException("Illegal direction.");
-        }
-    }
 
     public static void isThisTurn(){
 
