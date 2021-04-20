@@ -1,8 +1,9 @@
-package inf112.skeleton.app;
+package inf112.skeleton.app.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import inf112.skeleton.app.RoboRally;
 
 public class GameScreen implements Screen {
 
@@ -22,7 +23,6 @@ public class GameScreen implements Screen {
     public void render(float v) {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
 
     }
 

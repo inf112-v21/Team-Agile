@@ -17,21 +17,23 @@ public class GameServer extends Listener{
 
     public NetworkHandler network = new NetworkHandler();
     public Server server;
-    public int numplayers;
+    public int numplayersconnected;
     public PlayerList spillerliste = new PlayerList();
     public HashMap<Integer, Player> playerlist = new HashMap<>();
     public int recievedRegisters;
     public Gameloop gameloop;
+    public int numplayers;
 
-    public GameServer() {
+    public GameServer(int numberofplayers) {
         server = new Server();
-        numplayers = 0;
+        numplayersconnected = 0;
         recievedRegisters = 0;
 
         System.out.println("Server started");
         server.start();
         network.register(server);
         gameloop = new Gameloop(this);
+        this.numplayers = numberofplayers;
 
         try {
             server.bind(network.PORT, network.PORT);
@@ -44,16 +46,15 @@ public class GameServer extends Listener{
     }
         public void connected(Connection c) {
                 System.out.println("Recieved a connection from " + c.getRemoteAddressTCP().getHostString());
-                numplayers++;
+                numplayersconnected++;
                 Player newPlayer = new Player(c.getID());
                 playerlist.put(c.getID(), newPlayer);
                 spillerliste.spillerliste.add(newPlayer);
 
                 server.sendToAllTCP(spillerliste);
 
-                Scanner sc = new Scanner(System.in);
-                System.out.println("Start? yes/no");
-                if(sc.nextLine().equals("yes")) {
+
+                if(numplayers == numplayersconnected) {
                     server.sendToAllTCP(new CardsPacket());
                 }
 
