@@ -8,22 +8,25 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.PlayingCard;
 import inf112.skeleton.app.map.Wall;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Robot extends Sprite {
 
     private final int WIDTH = 1;
     private final int HEIGHT = 1;
 
-    private boolean cannotmove = false;
+    private RoboRally game;
+    //private boolean cannotmove = false;
 
     public int robotHealthPoint;
 
-    RoboRally game;
+    //RoboRally game;
 
     public String getName() {
         return name;
@@ -132,42 +135,105 @@ public class Robot extends Sprite {
         return false;
     }
 
+    /*
     public boolean cannotMove() {
         return this.cannotmove;
     }
 
     public void setCannotMove(boolean cannotmove) {
         this.cannotmove = cannotmove;
-    }
+    }*/
 
-    public Robot checkForPlayer(int rot) {
+    public Stack<Robot> checkForPlayers(int rot) {
+        Stack<Robot> robotstack = new Stack<>();
+        ArrayList<Robot> allrobots = new ArrayList<>();
+        for (Robot r : game.robots) {
+            allrobots.add(r);
+        }
         int x = (int) this.getX();
         int y = (int) this.getY();
         int rotation = rot;
-        for (Robot r : game.robots) {
-            int otherx = (int) r.getX();
-            int othery = (int) r.getY();
+        while (!allrobots.isEmpty()) {
             switch(rotation) {
                 case (0):
-                    if (x == otherx && othery == y-1) {
-                        return r;
+                    for (int i = y; i < game.getBoardHeight(); i++) {
+                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
+                        if (wallTile != null) {
+                            return null;
+                        }
+                        for (Robot r: game.robots) {
+                            if (r.getX() == x && r.getY() == i) {
+                                robotstack.push(r);
+                                allrobots.remove(r);
+                            } else {
+                                return robotstack;
+                            }
+                        }
                     }
                     break;
                 case (90):
+                    for (int i = x; i < game.getBoardWidth(); i++) {
+                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
+                        if (wallTile != null &) {
+                            return null;
+                        }
+                        for (Robot r: game.robots) {
+                            if (r.getX() == x && r.getY() == i) {
+                                robotstack.push(r);
+                                allrobots.remove(r);
+                            } else {
+                                return robotstack;
+                            }
+                        }
+                    }
+                    break;
+                    /*
                     if (x+1 == otherx && othery == y) {
                         return r;
                     }
-                    break;
+                    break;*/
                 case (180):
+                    for (int i = x; i < game.getBoardHeight(); i++) {
+                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
+                        if (wallTile != null &) {
+                            return null;
+                        }
+                        for (Robot r: game.robots) {
+                            if (r.getX() == x && r.getY() == i) {
+                                robotstack.push(r);
+                                allrobots.remove(r);
+                            } else {
+                                return robotstack;
+                            }
+                        }
+                    }
+                    break;
+                    /*
                     if (x == otherx && othery == y+1) {
                         return r;
                     }
-                    break;
+                    break;*/
                 case (270):
+                    for (int i = x; i < game.getBoardWidth(); i++) {
+                        TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int)x,i);
+                        if (wallTile != null &) {
+                            return null;
+                        }
+                        for (Robot r: game.robots) {
+                            if (r.getX() == x && r.getY() == i) {
+                                robotstack.push(r);
+                                allrobots.remove(r);
+                            } else {
+                                return robotstack;
+                            }
+                        }
+                    }
+                    break;
+                    /*
                     if (x-1 == otherx && othery == y) {
                         return r;
                     }
-                    break;
+                    break;*/
             }
         }
         return null;

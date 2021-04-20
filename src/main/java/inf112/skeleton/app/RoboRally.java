@@ -190,4 +190,11 @@ public class RoboRally extends InputAdapter implements Screen {
         return laserLayer;
     }
 
+    public int getBoardHeight() {
+        return boardHeight;
+    }
+
+    public int getBoardWidth() {
+        return boardWidth;
+    }
 }
