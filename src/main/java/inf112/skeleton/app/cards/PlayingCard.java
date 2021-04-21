@@ -3,6 +3,15 @@ package inf112.skeleton.app.cards;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
+/**
+ * PlayingCard oppretter et objekt for et enkelt
+ * spillkort, og tar inn en type fra enumen
+ * MoveType og en prioritet som bestemmer hvilken
+ * rekkefølge hver av spillernes kort velges.
+ *
+ * @author Team Agile
+ *
+ */
 
 public class PlayingCard extends Sprite {
 

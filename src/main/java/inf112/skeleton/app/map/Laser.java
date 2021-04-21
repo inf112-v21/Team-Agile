@@ -5,6 +5,18 @@ import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.object.Robot;
 
+/**
+ * Laser extender Wall og oppretter et objekt som
+ * representerer en Laser, det vil si en vegg som
+ * har egenskapen å kunne avfyre en laserstråle.
+ * Lasere legges til ArrayListen allwalls, og i tillegg
+ * legges de til en egen ArrayList som kun inneholder
+ * lasere, slik at de også kan behandles seperat som lasere.
+ *
+ * @author Team Agile
+ *
+ */
+
 public class Laser extends Wall {
 
     Vector2 wallPos;

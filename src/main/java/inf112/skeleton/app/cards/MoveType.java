@@ -2,6 +2,16 @@ package inf112.skeleton.app.cards;
 
 import com.badlogic.gdx.graphics.Texture;
 
+/**
+ * Enum som representerer de forskjellige kortenes
+ * egenskaper, sammen med en int som bestemmer hvilken
+ * move kortene representerer for roboten til spilleren,
+ * når et bestemt kort benyttes.
+ *
+ * @author Team Agile
+ *
+ */
+
 public enum MoveType {
     BACKUP((-1), new Texture("cards/backUp.png")),
     UTURN(180, new Texture("cards/rotate.png")),

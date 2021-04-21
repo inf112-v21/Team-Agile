@@ -3,6 +3,16 @@ package inf112.skeleton.app.map;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * Et booster objekt representerer et rullebånd
+ * på mapet, som kan ha forskjellige egenskaper i
+ * forhold til hvor fort det går, om det roterer
+ * og i hvilken retning det går i.
+ *
+ * @author Team Agile
+ *
+ */
+
 public class Booster {
 
     TiledMapTileLayer.Cell cell;

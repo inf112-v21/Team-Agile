@@ -13,6 +13,20 @@ import inf112.skeleton.app.object.Player;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * GameServer klassen bruker biblioteket Kryonet til å
+ * opprette en server instans, som bruker Listener fra
+ * dette biblioteket til å lytte på tilkoblinger fra
+ * klienter. Når det er oppstått en eller flere tilkoblinger
+ * kan spillet startes, og derfra håndterer GameServer
+ * sending og mottak av forskjellige typer pakker mellom
+ * server og klienter, for sending og mottak av forskjellig
+ * type informasjon om tilstander i spillet hos spillerne.
+ *
+ * @author Team Agile
+ *
+ */
+
 public class GameServer extends Listener{
 
     public NetworkHandler network = new NetworkHandler();
