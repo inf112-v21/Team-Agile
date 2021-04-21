@@ -45,6 +45,7 @@ public class CreateGame {
         registerWallsAndLasers();
         registerBoosters();
         registerRepairTiles();
+        registerRotateTiles();
     }
 
     public void registerSpawns() {
@@ -118,6 +119,20 @@ public class CreateGame {
                     int repairId = repairTile.getTile().getId();
                     if(repairId == Repair.repairOneHealth || repairId == Repair.repairTwoHealth){
                         game.allRepair.add(new Repair(new Vector2(i,j), repairTile.getTile().getId()));
+                    }
+                }
+            }
+        }
+    }
+
+    public void registerRotateTiles() {
+        for (int i = 0; i < game.boardWidth + 1; i++) {
+            for ( int j = 0; j < game.boardHeight + 1; j++ ) {
+                TiledMapTileLayer.Cell rotateTile = RoboRally.rotationLayer.getCell(i, j);
+                if (rotateTile != null){
+                    int repairId = rotateTile.getTile().getId();
+                    if(repairId == Repair.repairOneHealth || repairId == Repair.repairTwoHealth){
+                        game.allRotation.add(new Rotation(new Vector2(i,j), rotateTile.getTile().getId()));
                     }
                 }
             }

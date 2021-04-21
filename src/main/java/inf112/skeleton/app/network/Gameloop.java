@@ -39,6 +39,7 @@ public class Gameloop {
 
         for (int i = 0; i < 5; i++) {
             performRound(i);
+            delay(200);
             checkEvents();
             System.out.println("RUNDE " + i );
 

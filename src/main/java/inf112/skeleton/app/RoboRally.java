@@ -24,6 +24,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * RoboRally klassen er klasse som holder styr på alle regler, den tar og henter informasjon fra
+ * as
+ *
+ */
 
 public class RoboRally extends InputAdapter implements Screen {
 
@@ -55,6 +60,7 @@ public class RoboRally extends InputAdapter implements Screen {
     public ArrayList<Laser> allLasers = new ArrayList<>();
     public ArrayList<Booster> allBoosters = new ArrayList<>();
     public ArrayList<Repair> allRepair = new ArrayList<>();
+    public ArrayList<Rotation> allRotation = new ArrayList<>();
     public HashMap<Integer, Spawn> spawns = new HashMap<>();
     public String phase = "chooseCards";
     private boolean host;
@@ -166,6 +172,7 @@ public class RoboRally extends InputAdapter implements Screen {
             checkevent.checkBoosters(robots);
             checkevent.checkHole(robots);
             checkevent.checkRepair(robots);
+            checkevent.checkRotate(robots);
             //firelaser
             checkevent.checkrobotStates(robots);
             checkevent.checkFlags(robots);

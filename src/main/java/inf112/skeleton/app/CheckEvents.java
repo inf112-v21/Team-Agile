@@ -2,13 +2,19 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
-import inf112.skeleton.app.map.Booster;
-import inf112.skeleton.app.map.Laser;
-import inf112.skeleton.app.map.Repair;
+import inf112.skeleton.app.map.*;
 import inf112.skeleton.app.object.Robot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+/**
+ * CheckEvents holder styr på hendelser som gjentas hver runde,
+ * og har metoder for
+ *
+ * @author Team Agile
+ *
+ */
 
 public class CheckEvents {
 
@@ -137,8 +143,7 @@ public class CheckEvents {
     public void checkHole(ArrayList<Robot> robotList) {
         for(Robot r : robotList) {
             if (game.holeLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
-                r.setPosition(r.getCheckpoint().x , r.getCheckpoint().y);
-                r.lives -= 1;
+                r.respawn();
             }
         }
     }
@@ -148,16 +153,38 @@ public class CheckEvents {
             Vector2 robotPosition = new Vector2(r.getX(), r.getY());
             for (Repair repairs : game.allRepair){
                 if(robotPosition.x == repairs.getPosition().x && robotPosition.y == repairs.getPosition().y){
-                    if(repairs.getCellId() == Repair.repairOneHealth){
-                        r.lives += 1;
-                    }
-                    else if (repairs.getCellId() == Repair.repairTwoHealth){
-                        r.lives += 2;
+                    if (r.getRobotHealthPoint() > 9){ // robot kan ha maks 9hp
+                        if(repairs.getCellId() == Repair.repairOneHealth){
+                            r.robotHealthPoint += 1;
+                        }
+                        else if (repairs.getCellId() == Repair.repairTwoHealth){
+                            if(r.getRobotHealthPoint() == 9){
+                                r.robotHealthPoint += 1; }
+                            else{ r.robotHealthPoint += 2; }
+                        }
                     }
                 }
             }
         }
     }
+
+    public void checkRotate(ArrayList<Robot> robotList) {
+        for (Robot r : robotList) {
+            Vector2 robotPosition = new Vector2(r.getX(), r.getY());
+            for (Rotation rot : game.allRotation){
+                System.out.println("ROTATION LISTE: " + rot);
+                if(robotPosition.x == rot.getPosition().x && robotPosition.y == rot.getPosition().y){
+                    if(rot.getCellId() == Rotation.rotateLeft){
+                        r.rotate(90);
+                    }
+                    else if (rot.getCellId() == Rotation.rotateRight){
+                        r.rotate(-90);
+                    }
+                }
+            }
+        }
+    }
+
 
     public void allFlagsTaken(ArrayList<Robot> robotList) {
         for (Robot r : robotList) {

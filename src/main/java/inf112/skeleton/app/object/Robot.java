@@ -17,6 +17,16 @@ import inf112.skeleton.app.map.Wall;
 import java.util.ArrayList;
 import java.util.Stack;
 
+/**
+ * Robot klassen holder styr på alle egenskaper til roboten
+ * som styres av en spiller. Klassen holder styr på nåværende
+ * helsepoeng, logikk for bevegelse og hvordan roboten
+ * interakterer med andre spilleres robot.
+ *
+ * @author Team Agile
+ *
+ */
+
 public class Robot extends Sprite {
 
     private final int WIDTH = 1;
@@ -253,7 +263,7 @@ public class Robot extends Sprite {
         hudFont.draw(batch, ("Player: " + id), 30, 80);
         hudFont.draw(batch, ("HP = " + robotHealthPoint), 715, 80);
         hudFont.draw(batch, ("Flag to take = " + flagToTake), 30, 30);
-        hudFont.draw(batch, ("Lives = " + flagToTake), 715, 30);
+        hudFont.draw(batch, ("Lives = " + lives), 700, 30);
 
     }
 
@@ -369,7 +379,11 @@ public class Robot extends Sprite {
         this.robotHealthPoint -= healthpoint;
     }
 
-
+    public void respawn() {
+        this.robotHealthPoint = 9;
+        this.lives -= 1;
+        this.setPosition(checkpoint.x, checkpoint.y);
+    }
 
 }
 
