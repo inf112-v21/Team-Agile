@@ -5,6 +5,7 @@ import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 import inf112.skeleton.app.network.Packets.*;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
+import inf112.skeleton.app.network.Packets.Events.PowerDown;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 import inf112.skeleton.app.network.Packets.Initialize.CardsPacket;
 import inf112.skeleton.app.network.Packets.Initialize.PlayerList;
@@ -82,6 +83,9 @@ public class GameServer extends Listener{
                 gameloop.performTurn();
             }
 
+        }
+        if( object instanceof PowerDown) {
+            server.sendToAllTCP(new PowerDown());
         }
     }
 

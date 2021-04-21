@@ -6,6 +6,7 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.network.Packets.*;
 import inf112.skeleton.app.network.Packets.Events.ChangePhase;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
+import inf112.skeleton.app.network.Packets.Events.PowerDown;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 import inf112.skeleton.app.network.Packets.Initialize.CardsPacket;
 import inf112.skeleton.app.network.Packets.Initialize.CreateRobot;
@@ -35,6 +36,7 @@ public class NetworkHandler {
         kryo.register(PlayingCardPair.class);
         kryo.register(InputhandlerPacket.class);
         kryo.register(ChangePhase.class);
+        kryo.register(PowerDown.class);
 
     }
 }

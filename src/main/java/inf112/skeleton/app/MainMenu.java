@@ -39,7 +39,6 @@ public class MainMenu extends InputAdapter implements Screen {
         StartGameImage = new Texture("assets/Start_Game.png");
         MultiplayerButton = new Texture("assets/Start_Game.png");
         BackgroundImage = new Texture("assets/background1.png");
-        ExitGameImage = new Texture("assets/Exit_game.png");
 
 
 

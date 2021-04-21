@@ -3,6 +3,7 @@ package inf112.skeleton.app.object;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.PlayingCard;
 import inf112.skeleton.app.map.Laser;
@@ -10,6 +11,7 @@ import inf112.skeleton.app.map.Wall;
 
 import java.util.ArrayList;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
+import inf112.skeleton.app.network.Packets.Events.PowerDown;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 
 public class InputHandler extends InputAdapter implements InputProcessor {
@@ -89,6 +91,8 @@ public class InputHandler extends InputAdapter implements InputProcessor {
                 game.clientPlayer.getLockedHand().clear();
                 game.clientPlayer.cards.clear();
                 break;
+            case Input.Keys.P:
+                powerDown();
             case Input.Keys.C:
                 game.phase = "check";
                 break;
@@ -126,6 +130,10 @@ public class InputHandler extends InputAdapter implements InputProcessor {
             if(screenX > 1190 && screenX < 1280 && screenY > 190 && screenY < 336 ) {
                 moveToLocked(8);
             }
+            if(screenX > 1033 && screenX < 1196 && screenY > 360 && screenY < 403 ) {
+                powerDown();
+            }
+
         }
         if(button == Input.Buttons.RIGHT) {
             resetLockedHand();
@@ -239,6 +247,12 @@ public class InputHandler extends InputAdapter implements InputProcessor {
                 break;
 
         }
+    }
+    public void powerDown() {
+        game.client.sendPowerDown(new PowerDown(game.client.getID()));
+        game.clientPlayer.getLockedHand().clear();
+        game.clientPlayer.cards.clear();
+        game.client.sendCards(game.clientPlayer.lockedHand);
     }
 
 

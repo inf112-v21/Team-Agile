@@ -65,6 +65,12 @@ public class Robot extends Sprite {
     public Vector2 checkpoint;
     public int lives;
 
+    public void setPowerdownpos(Vector2 powerdownpos) {
+        this.powerdownpos = powerdownpos;
+    }
+
+    public Vector2 powerdownpos;
+
     BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
     BitmapFont hudFont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
 
@@ -84,7 +90,6 @@ public class Robot extends Sprite {
         this.cards = new ArrayList<>(robotHealthPoint);
         this.lockedHand = new ArrayList<>();
         this.otherrobots = new ArrayList<>();
-
         this.flagToTake = 1;
     }
 
@@ -110,6 +115,7 @@ public class Robot extends Sprite {
         this.game = game;
         this.checkpoint = new Vector2(xstart,ystart);
         this.lives = 3;
+
     }
 
 

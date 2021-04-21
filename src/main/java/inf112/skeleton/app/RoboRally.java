@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -68,6 +69,7 @@ public class RoboRally extends InputAdapter implements Screen {
 
     private CreateGame newGame;
     public CheckEvents checkevent;
+    public Texture powerdown;
 
 
     public RoboRally(String mapChosen, boolean host){
@@ -92,7 +94,7 @@ public class RoboRally extends InputAdapter implements Screen {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
         colors = new ArrayList<>(Arrays.asList(Color.WHITE,Color.GREEN, Color.LIGHT_GRAY,  Color.FIREBRICK , Color.ORANGE, Color.LIME, Color.YELLOW,  Color.FOREST));
-
+        powerdown = new Texture("exitGame.png");
         camera = new OrthographicCamera();
         viewport = new FitViewport(29,14);
         font_cam = new OrthographicCamera();
@@ -158,12 +160,14 @@ public class RoboRally extends InputAdapter implements Screen {
             clientPlayer.renderCards(batch);
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.renderPriority(batch);
+            batch.draw(powerdown, 981, 291);
         }
 
         if (clientPlayer != null) {
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.initializeHud(batch);
         }
+
 
         batch.end();
 
@@ -212,5 +216,15 @@ public class RoboRally extends InputAdapter implements Screen {
 
     public int getBoardWidth() {
         return boardWidth;
+    }
+
+
+    public void backfromPowerDown(ArrayList<Robot> robotliste) {
+        for ( Robot r : robotliste ) {
+            if (r.getX() == -1 && r.getY() == -1) {
+                r.setPosition(r.powerdownpos.x, r.powerdownpos.y);
+                r.robotHealthPoint = 9;
+            }
+        }
     }
 }

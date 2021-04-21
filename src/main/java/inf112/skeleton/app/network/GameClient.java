@@ -3,6 +3,7 @@ package inf112.skeleton.app.network;
 
 import com.badlogic.gdx.Gdx;
 
+import com.badlogic.gdx.math.Vector2;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
@@ -12,6 +13,7 @@ import inf112.skeleton.app.cards.PlayingCard;
 import inf112.skeleton.app.network.Packets.*;
 import inf112.skeleton.app.network.Packets.Events.ChangePhase;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
+import inf112.skeleton.app.network.Packets.Events.PowerDown;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 import inf112.skeleton.app.network.Packets.Initialize.CardsPacket;
 import inf112.skeleton.app.network.Packets.Initialize.PlayerList;
@@ -78,6 +80,7 @@ public class GameClient extends Listener {
                 @Override
                 public void run() {
                     game.handler = new InputHandler(game, game.clientPlayer);
+                    game.backfromPowerDown(game.robots);
                     game.deck.createDeck();
                     game.deck.dealOutCards(game.robots);
                     game.clientPlayer.playerCardstoHand(game.clientPlayer.getCards());
@@ -118,6 +121,18 @@ public class GameClient extends Listener {
             });
         }
 
+        if(object instanceof PowerDown) {
+            PowerDown robotid = (PowerDown)object;
+            Gdx.app.postRunnable(new Runnable() {
+                @Override
+                public void run() {
+                   Robot robot = game.robots.get(robotid.id);
+                   robot.setPowerdownpos(new Vector2(robot.getX(), robot.getY()));
+                   robot.setPosition(-1,-1);
+                }
+            });
+        }
+
 
     }
 
@@ -137,6 +152,9 @@ public class GameClient extends Listener {
         }
         client.sendTCP(spillerskort);
 
+    }
+    public void sendPowerDown(PowerDown robot) {
+        client.sendTCP(robot);
     }
 
 
