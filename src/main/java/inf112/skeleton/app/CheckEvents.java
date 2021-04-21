@@ -4,7 +4,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.map.Booster;
 import inf112.skeleton.app.map.Laser;
-import inf112.skeleton.app.map.Wall;
+import inf112.skeleton.app.map.Repair;
 import inf112.skeleton.app.object.Robot;
 
 import java.util.ArrayList;
@@ -118,9 +118,9 @@ public class CheckEvents {
         allFlagsTaken(game.robots);
     }
 
-    public void checkFlags(ArrayList<Robot> robotliste) {
+    public void checkFlags(ArrayList<Robot> robotList) {
 
-        for (Robot r : robotliste) {
+        for (Robot r : robotList) {
             if (game.flag1.getCell((int) r.getX(), (int) r.getY()) != null) {
                 r.visitFlag(1);
                 r.renderHud("Flag: " + 1 + " was taken by player " + r.id, game.batch, 0);
@@ -134,8 +134,8 @@ public class CheckEvents {
         }
     }
 
-    public void checkHole(ArrayList<Robot> robotliste) {
-        for(Robot r : robotliste) {
+    public void checkHole(ArrayList<Robot> robotList) {
+        for(Robot r : robotList) {
             if (game.holeLayer.getCell((int) r.getX(), (int) r.getY()) != null) {
                 r.setPosition(r.getCheckpoint().x , r.getCheckpoint().y);
                 r.lives -= 1;
@@ -143,17 +143,32 @@ public class CheckEvents {
         }
     }
 
-    public void allFlagsTaken(ArrayList<Robot> robotliste) {
-        for (Robot r : robotliste) {
+    public void checkRepair(ArrayList<Robot> robotList) {
+        for (Robot r : robotList) {
+            Vector2 robotPosition = new Vector2(r.getX(), r.getY());
+            for (Repair repairs : game.allRepair){
+                if(robotPosition.x == repairs.getPosition().x && robotPosition.y == repairs.getPosition().y){
+                    if(repairs.getCellId() == Repair.repairOneHealth){
+                        r.lives += 1;
+                    }
+                    else if (repairs.getCellId() == Repair.repairTwoHealth){
+                        r.lives += 2;
+                    }
+                }
+            }
+        }
+    }
+
+    public void allFlagsTaken(ArrayList<Robot> robotList) {
+        for (Robot r : robotList) {
             if (r.getFlag() == game.flagsToTake) {
                 r.renderHud("Player " + r.id + " won the game!\nRestart the game to start again", game.batch, 2);
             }
         }
     }
 
-
-    public void checkBoosters(ArrayList<Robot> robotliste) {
-        for (Robot r : robotliste) {
+    public void checkBoosters(ArrayList<Robot> robotList) {
+        for (Robot r : robotList) {
             Vector2 robotPosition = new Vector2(r.getX(), r.getY());
             for (Booster start : game.allBoosters){
                 if(robotPosition.x == start.getPosition().x && robotPosition.y == start.getPosition().y) {

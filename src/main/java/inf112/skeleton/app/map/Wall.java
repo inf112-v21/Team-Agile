@@ -6,7 +6,6 @@ import inf112.skeleton.app.object.Robot;
 
 public class Wall {
 
-    TiledMapTileLayer.Cell cell;
     Vector2 wallPos;
     int cellId;
 
@@ -66,16 +65,16 @@ public class Wall {
 
 
         if (playerCoordinate.equals(wallPos) && northCheck && rotation == 0) {
-            System.out.println("Wall facing SOUTH");
+            //System.out.println("Wall facing SOUTH");
             return true; }
         else if (playerCoordinate.equals(wallPos) && westCheck && rotation == 90) {
-            System.out.println("Wall facing EAST");
+            //System.out.println("Wall facing EAST");
             return true; }
         else if (playerCoordinate.equals(wallPos) && southCheck && rotation == 180) {
-            System.out.println("Wall facing NORTH");
+            //System.out.println("Wall facing NORTH");
             return true; }
         else if (playerCoordinate.equals(wallPos) && eastCheck && rotation == 270) {
-            System.out.println("Wall facing WEST");
+            //System.out.println("Wall facing WEST");
             return true; }
         else return false;
     }

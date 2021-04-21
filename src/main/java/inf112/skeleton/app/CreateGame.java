@@ -1,9 +1,5 @@
 package inf112.skeleton.app;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
@@ -27,17 +23,19 @@ public class CreateGame {
         game.map = loader.load("assets/maps/" + game.mapChosen);
 
         //Layers initialize
-        game.boardLayer = (TiledMapTileLayer) game.map.getLayers().get("BaseLayer");
-        game.playerLayer = (TiledMapTileLayer) game.map.getLayers().get("Player");
-        game.holeLayer = (TiledMapTileLayer) game.map.getLayers().get("Holes");
-        game.wallLayer = (TiledMapTileLayer) game.map.getLayers().get("Walls");
-        game.laserLayer = (TiledMapTileLayer) game.map.getLayers().get("Laser");
-        game.startPositions = (TiledMapTileLayer) game.map.getLayers().get("StartPositions");
-        game.boosterLayer = (TiledMapTileLayer) game.map.getLayers().get("Boostere");
+        RoboRally.boardLayer = (TiledMapTileLayer) game.map.getLayers().get("BaseLayer");
+        RoboRally.playerLayer = (TiledMapTileLayer) game.map.getLayers().get("Player");
+        RoboRally.holeLayer = (TiledMapTileLayer) game.map.getLayers().get("Holes");
+        RoboRally.wallLayer = (TiledMapTileLayer) game.map.getLayers().get("Walls");
+        RoboRally.laserLayer = (TiledMapTileLayer) game.map.getLayers().get("Laser");
+        RoboRally.startPositions = (TiledMapTileLayer) game.map.getLayers().get("StartPositions");
+        RoboRally.boosterLayer = (TiledMapTileLayer) game.map.getLayers().get("Boostere");
+        RoboRally.repairLayer = (TiledMapTileLayer) game.map.getLayers().get("Repair");
+        RoboRally.rotationLayer = (TiledMapTileLayer) game.map.getLayers().get("Rotation");
 
-        game.flag1 = (TiledMapTileLayer) game.map.getLayers().get("Flag1");
-        game.flag2 = (TiledMapTileLayer) game.map.getLayers().get("Flag2");
-        game.flag3 = (TiledMapTileLayer) game.map.getLayers().get("Flag3");
+        RoboRally.flag1 = (TiledMapTileLayer) game.map.getLayers().get("Flag1");
+        RoboRally.flag2 = (TiledMapTileLayer) game.map.getLayers().get("Flag2");
+        RoboRally.flag3 = (TiledMapTileLayer) game.map.getLayers().get("Flag3");
 
         game.deck = new Deck();
         game.players = new ArrayList<>();
@@ -46,12 +44,13 @@ public class CreateGame {
         registerSpawns();
         registerWallsAndLasers();
         registerBoosters();
+        registerRepairTiles();
     }
 
     public void registerSpawns() {
         for (int i = 0; i < game.boardWidth; i++) {
             for (int j = 0; j < game.boardHeight; j++) {
-                TiledMapTileLayer.Cell spawntile = game.startPositions.getCell(i, j);
+                TiledMapTileLayer.Cell spawntile = RoboRally.startPositions.getCell(i, j);
                 if (spawntile != null) {
                     if (spawntile.getTile().getId() == Spawn.spawn1) {
                         game.spawns.put(0, new Spawn(new Vector2(i, j)));
@@ -87,7 +86,7 @@ public class CreateGame {
         // register all walls created in the map design
         for(int i = 0; i < game.boardWidth; i++){
             for(int j = 0; j < game.boardHeight; j++){
-                TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell(i,j);
+                TiledMapTileLayer.Cell wallTile = RoboRally.wallLayer.getCell(i,j);
                 if (wallTile != null){
                     int wallid = wallTile.getTile().getId();
                     if (wallid == Laser.laserSOUTH || wallid == Laser.laserWEST || wallid == Laser.laserEAST || wallid == Laser.doubleLaserEAST) {
@@ -109,13 +108,26 @@ public class CreateGame {
             game.allWalls.add(new Wall(new Vector2(i,game.boardHeightStartPos), Wall.outerWallSOUTH));
             game.allWalls.add(new Wall(new Vector2(i,game.boardHeight), Wall.outerWallNORTH));
         }
+    }
 
+    public void registerRepairTiles() {
+        for (int i = 0; i < game.boardWidth + 1; i++) {
+            for ( int j = 0; j < game.boardHeight + 1; j++ ) {
+                TiledMapTileLayer.Cell repairTile = RoboRally.repairLayer.getCell(i, j);
+                if (repairTile != null){
+                    int repairId = repairTile.getTile().getId();
+                    if(repairId == Repair.repairOneHealth || repairId == Repair.repairTwoHealth){
+                        game.allRepair.add(new Repair(new Vector2(i,j), repairTile.getTile().getId()));
+                    }
+                }
+            }
+        }
     }
 
     public void registerBoosters() {
         for (int i = 0; i < game.boardWidth + 1; i++) {
             for (int j = 0; j < game.boardHeight + 1; j++) {
-                TiledMapTileLayer.Cell boosterTile = game.boosterLayer.getCell(i,j);
+                TiledMapTileLayer.Cell boosterTile = RoboRally.boosterLayer.getCell(i,j);
                 if (boosterTile != null){
                     int boosterId = boosterTile.getTile().getId();
                     if(boosterId == Booster.UP) {

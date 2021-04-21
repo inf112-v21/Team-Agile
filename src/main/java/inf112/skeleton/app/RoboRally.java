@@ -1,6 +1,5 @@
 package inf112.skeleton.app;
 
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
@@ -11,16 +10,11 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import inf112.skeleton.app.cards.Deck;
-import inf112.skeleton.app.map.Booster;
-import inf112.skeleton.app.map.Spawn;
+import inf112.skeleton.app.map.*;
 import inf112.skeleton.app.network.GameClient;
-import inf112.skeleton.app.map.Laser;
-import inf112.skeleton.app.map.Wall;
 import inf112.skeleton.app.network.GameServer;
 import inf112.skeleton.app.object.InputHandler;
 import inf112.skeleton.app.object.Player;
@@ -36,7 +30,7 @@ public class RoboRally extends InputAdapter implements Screen {
     public SpriteBatch batch;
     private BitmapFont font;
     public TiledMap map;
-    public static TiledMapTileLayer boardLayer, playerLayer, holeLayer, wallLayer, boosterLayer, laserLayer, flag1, flag2, flag3, startPositions;
+    public static TiledMapTileLayer boardLayer, playerLayer, holeLayer, wallLayer, boosterLayer, repairLayer, rotationLayer, laserLayer, flag1, flag2, flag3, startPositions;
     public OrthogonalTiledMapRenderer render;
     public Integer flagsToTake = 4;
     private OrthographicCamera camera, font_cam;
@@ -60,6 +54,7 @@ public class RoboRally extends InputAdapter implements Screen {
     public ArrayList<Wall> allWalls = new ArrayList<>();
     public ArrayList<Laser> allLasers = new ArrayList<>();
     public ArrayList<Booster> allBoosters = new ArrayList<>();
+    public ArrayList<Repair> allRepair = new ArrayList<>();
     public HashMap<Integer, Spawn> spawns = new HashMap<>();
     public String phase = "chooseCards";
     private boolean host;
@@ -170,6 +165,7 @@ public class RoboRally extends InputAdapter implements Screen {
             checkevent.checkLaserBeams(allLasers);
             checkevent.checkBoosters(robots);
             checkevent.checkHole(robots);
+            checkevent.checkRepair(robots);
             //firelaser
             checkevent.checkrobotStates(robots);
             checkevent.checkFlags(robots);
