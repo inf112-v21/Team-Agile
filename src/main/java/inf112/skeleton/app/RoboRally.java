@@ -25,8 +25,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- * RoboRally klassen er klasse som holder styr på alle regler, den tar og henter informasjon fra
- * as
+ * RoboRally klassen er klassen som holder styr på alle regler, den tar og henter informasjon fra
+ * alle diverse andre klasser, slik som hører til spi
  *
  */
 

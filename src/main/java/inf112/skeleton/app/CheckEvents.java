@@ -10,7 +10,8 @@ import java.util.HashMap;
 
 /**
  * CheckEvents holder styr på hendelser som gjentas hver runde,
- * og har metoder for
+ * og har metoder for å eksekvere disse hendelsene, f.eks
+ * avfyring av lasere, å holde styr
  *
  * @author Team Agile
  *
