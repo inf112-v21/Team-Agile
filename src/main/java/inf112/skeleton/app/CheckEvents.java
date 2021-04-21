@@ -173,7 +173,6 @@ public class CheckEvents {
         for (Robot r : robotList) {
             Vector2 robotPosition = new Vector2(r.getX(), r.getY());
             for (Rotation rot : game.allRotation){
-                System.out.println("ROTATION LISTE: " + rot);
                 if(robotPosition.x == rot.getPosition().x && robotPosition.y == rot.getPosition().y){
                     if(rot.getCellId() == Rotation.rotateLeft){
                         r.rotate(90);

@@ -131,7 +131,7 @@ public class CreateGame {
                 TiledMapTileLayer.Cell rotateTile = RoboRally.rotationLayer.getCell(i, j);
                 if (rotateTile != null){
                     int repairId = rotateTile.getTile().getId();
-                    if(repairId == Repair.repairOneHealth || repairId == Repair.repairTwoHealth){
+                    if(repairId == Rotation.rotateLeft || repairId == Rotation.rotateRight){
                         game.allRotation.add(new Rotation(new Vector2(i,j), rotateTile.getTile().getId()));
                     }
                 }
