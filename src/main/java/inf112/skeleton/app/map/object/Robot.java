@@ -310,15 +310,26 @@ public class Robot extends Sprite {
             moveby = 1;
         }
 
-        switch ((int) this.getRotation()) {
+        int robotRotation = (int) this.getRotation();
+/**
+        if(moveby != 1) {
+            robotRotation += 180;
+            if (robotRotation == 360) {
+                robotRotation = 0;
+            }
+        }
+*/
+        System.out.println("MOVEBY = " + moveby);
+        //System.out.println("FAKTISK ROTATION ROBOT = " + this.getRotation() + " JUKSEROTATION = " + robotRotation);
+        switch ((int) robotRotation) {
             case(0): // robot oppreist -- peker mot sør
                 for(int i = 1; i <= Math.abs(steps); i++){
-                        if( moveby == 1 && checkForWall(this, 0, -1)){
-                            System.out.println("WALL IN FRONT");
+                        if(moveby == 1 && checkForWall(this, 0, -1)){
+                            System.out.println("11111");
                         }
-                        else if(moveby == -1 && checkForWall(this, 0, 1)){
-                            System.out.println("WALL IN FRONT");
-                         }
+                        else if((moveby == -1 && checkForWall(this, 0, 1))) {
+                            System.out.println("22222");
+                        }
                         else if (checkForPlayer((int)this.getRotation()) && (moveby == 1)) {
                             System.out.println("Other robot in front of player");
                             this.setPosition(this.getX(), this.getY() - moveby);
@@ -334,7 +345,7 @@ public class Robot extends Sprite {
             case(90):
                 for(int i = 1; i <= Math.abs(steps); i++){
                     if(checkForWall(this, 1, 0)){
-                        System.out.println("WALL IN FRONT");
+                        //System.out.println("WALL IN FRONT");
                     }
                     else if (checkForPlayer((int) this.getRotation()) && (moveby > 0)) {
                         System.out.println("Other robot in front of player");
@@ -350,7 +361,7 @@ public class Robot extends Sprite {
             case(180):
                 for(int i = 1; i <= Math.abs(steps); i++){
                     if(checkForWall(this, 0, 1)){
-                        System.out.println("WALL IN FRONT");
+                        //System.out.println("WALL IN FRONT");
                     }
                     else if (checkForPlayer((int) this.getRotation()) && (moveby > 0)) {
                         System.out.println("Other robot in front of player");
@@ -366,7 +377,7 @@ public class Robot extends Sprite {
             case(270):
                 for(int i = 1; i <= Math.abs(steps); i++){
                     if(checkForWall(this, -1, 0)){
-                        System.out.println("WALL IN FRONT");
+                        //System.out.println("WALL IN FRONT");
                     }
                     else if (checkForPlayer((int) this.getRotation()) && (moveby > 0)) {
                         System.out.println("Other robot in front of player");
@@ -383,7 +394,7 @@ public class Robot extends Sprite {
     }
     public boolean checkForWall(Robot player, int xDiff, int yDiff){
         for (Wall wall : game.allWalls){
-            if(wall.isWallInFrontOfPlayer(player) || wall.IsWallInNextTileInFrontOfPlayer(player, xDiff, yDiff)) {
+            if(wall.isWallInSameTileInFrontOfPlayer(player, xDiff, yDiff) || wall.IsWallInNextTileInFrontOfPlayer(player, xDiff, yDiff)) {
                 return true;
             }
         }
