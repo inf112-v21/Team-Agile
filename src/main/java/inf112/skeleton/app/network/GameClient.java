@@ -95,7 +95,7 @@ public class GameClient extends Listener {
                 public void run() {
                     Robot robot = game.robots.get(event.id - 1);
                     robot.move(event.move);
-                    System.out.println(robot.id + " flyttet seg " + event.move);
+                    //System.out.println(robot.id + " flyttet seg " + event.move);
                 }
             });
         }
@@ -106,7 +106,7 @@ public class GameClient extends Listener {
                 public void run() {
                     Robot robot = game.robots.get(event.id - 1);
                     robot.rotate(event.rotation);
-                    System.out.println(robot.id + " roterte seg " + event.rotation);
+                    //System.out.println(robot.id + " roterte seg " + event.rotation);
                 }
             });
         }
