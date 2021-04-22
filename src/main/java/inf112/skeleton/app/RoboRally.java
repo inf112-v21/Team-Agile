@@ -47,7 +47,12 @@ public class RoboRally extends InputAdapter implements Screen {
 
     public GameClient client;
     public InputHandler handler;
-    public ArrayList<Color> colors;
+    public static ArrayList<Color> colors;
+
+
+    public static ArrayList<Color> getColors() {
+        return colors;
+    }
 
     public Robot clientPlayer;
 

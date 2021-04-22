@@ -56,8 +56,7 @@ public class Robot extends Sprite {
 
     ArrayList<Robot> otherrobots;
 
-
-
+    public int totalFlags = 3;
     public int flagToTake;
     Texture texture;
     TextureRegion[][] tr;
@@ -67,6 +66,7 @@ public class Robot extends Sprite {
     public int id;
     public Vector2 checkpoint;
     public int lives;
+
 
     public void setPowerdownpos(Vector2 powerdownpos) {
         this.powerdownpos = powerdownpos;
@@ -271,10 +271,21 @@ public class Robot extends Sprite {
         }
     }
 
+    private String getColorType(int id){
+        if(this.id == 1) return "White";
+        else if(this.id == 2) return "Green";
+        else if(this.id == 3) return "Light Gray";
+        else if(this.id == 4) return "FireBrick";
+        else if(this.id == 5) return "Orange";
+        else if(this.id == 6) return "Lime";
+        else if(this.id == 7) return "Yellow";
+        else return "Forest"; }
+
     public void initializeHud(Batch batch){
-        hudFont.draw(batch, ("Player: " + id), 30, 80);
+        //Color col = RoboRally.getColors().get(id);
+        hudFont.draw(batch, ("Player: " + id + " | Color: " + getColorType(id)), 30, 80);
         hudFont.draw(batch, ("HP = " + robotHealthPoint), 715, 80);
-        hudFont.draw(batch, ("Flag to take = " + flagToTake), 30, 30);
+        hudFont.draw(batch, ("Flags: " + (flagToTake-1) + "/" + totalFlags + " | Next flag nr: " + flagToTake), 30, 30);
         hudFont.draw(batch, ("Lives = " + lives), 700, 30);
 
     }
@@ -316,9 +327,7 @@ public class Robot extends Sprite {
             case(0): // robot oppreist -- peker mot sør
                 for(int i = 1; i <= Math.abs(steps); i++){
                         if(moveby == 1 && checkForWall(this, 0, -1)){
-                            System.out.println("11111");
                         } else if (moveby == -1 && checkForWall(this, 0, 1)) {
-                            System.out.println("22222");
                         }
                         else{ this.setPosition(this.getX(), this.getY() - moveby); }
 

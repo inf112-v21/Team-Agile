@@ -1,5 +1,6 @@
 package inf112.skeleton.app.map.object;
 
+import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.network.Packets.PlayingCardPair;
 
 import java.util.ArrayList;
@@ -17,3 +18,5 @@ public class Player {
         this.lockedHand = new ArrayList<>();
     }
 }
+
+
