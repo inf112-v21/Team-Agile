@@ -127,14 +127,17 @@ public class InputHandler extends InputAdapter implements InputProcessor {
             if(screenX > 1190 && screenX < 1280 && screenY > 190 && screenY < 336 ) {
                 moveToLocked(8);
             }
-            if(screenX > 925 && screenX < 1095 && screenY > 360 && screenY < 403 ) {
+            if(screenX > 1136 && screenX < 1304 && screenY > 564 && screenY < 630 ) {
                 powerDown();
             }
-            if(screenX > 1140 && screenX < 1302 && screenY > 360 && screenY < 403 ) {
+            if(screenX > 909 && screenX < 1084 && screenY > 564 && screenY < 630 ) {
                 lockInHand();
             }
-            if(screenX > 1060 && screenX < 1191 && screenY > 600 && screenY < 637 ) {
+            if(screenX > 1365 && screenX < 1399 && screenY > 0 && screenY < 25 ) {
                 exitGame();
+            }
+            if(screenX > 985 && screenX < 1235 && screenY > 323 && screenY < 364 ) {
+                resetLockedHand();
             }
 
         }
@@ -206,6 +209,7 @@ public class InputHandler extends InputAdapter implements InputProcessor {
 
     public void exitGame(){
         Gdx.app.exit();
+        System.exit(0);
     }
 
     public void setHandler(Robot robot) {

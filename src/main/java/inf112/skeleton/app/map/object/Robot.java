@@ -229,7 +229,7 @@ public class Robot extends Sprite {
 
     public void playerLocked(ArrayList<PlayingCard> lockedkort) {
         int x = 18;
-        int y = 2;
+        int y = 3;
         for (int i = 0; i < lockedkort.size() ; i++ ) {
             PlayingCard kort = lockedkort.get(i);
             kort.setPosition( x, y);
@@ -263,11 +263,11 @@ public class Robot extends Sprite {
             }
         }
         xStart = 883;
-        yStart = 252;
+        yStart = 306;
         for (PlayingCard locked : lockedHand) {
             int priority = locked.getPriority();
             priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
-            xStart += 92;
+            xStart += 93;
         }
     }
 
@@ -311,18 +311,7 @@ public class Robot extends Sprite {
         }
 
         int robotRotation = (int) this.getRotation();
-/**
-        if(moveby != 1) {
-            robotRotation += 180;
-            if (robotRotation == 360) {
-                robotRotation = 0;
-            }
-        }
-*/
-        System.out.println("MOVEBY = " + moveby);
 
-
-        System.out.println("FAKTISK ROTATION ROBOT = " + this.getRotation());
         switch ((int) robotRotation) {
             case(0): // robot oppreist -- peker mot sør
                 for(int i = 1; i <= Math.abs(steps); i++){
@@ -331,13 +320,6 @@ public class Robot extends Sprite {
                         } else if (moveby == -1 && checkForWall(this, 0, 1)) {
                             System.out.println("22222");
                         }
-                        /**else if (checkForPlayer((int)this.getRotation()) && (moveby == 1)) {
-                            System.out.println("Other robot in front of player");
-                            this.setPosition(this.getX(), this.getY() - moveby);
-                        }
-                        else if (checkForPlayer(180)) {
-                            this.setPosition(this.getX(), this.getY() - moveby);
-                        }*/
                         else{ this.setPosition(this.getX(), this.getY() - moveby); }
 
                 }

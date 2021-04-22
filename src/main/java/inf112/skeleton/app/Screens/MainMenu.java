@@ -14,30 +14,18 @@ import inf112.skeleton.app.Screens.StartGame;
 public class MainMenu extends InputAdapter implements Screen {
 
     private SpriteBatch batch;
-
-
-    Texture MultiplayerButton;
     Texture BackgroundImage;
-    Texture exitButtonActive;
-    Texture exitButtonInactive;
-    Texture StartGameImage;
-    Texture ExitGameImage;
 
     private TextButton joinGame;
     private TextButton hostGame;
     private TextButton exitGame;
     private Stage stage;
 
-    Texture logo;
-
     private StartGame game;
 
     public MainMenu(StartGame game){
         this.game = game;
         batch = new SpriteBatch();
-
-        StartGameImage = new Texture("assets/Start_Game.png");
-        MultiplayerButton = new Texture("assets/Start_Game.png");
         BackgroundImage = new Texture("assets/background1.png");
     }
 
