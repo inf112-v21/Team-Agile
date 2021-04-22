@@ -1,12 +1,11 @@
-package inf112.skeleton.app.object;
+package inf112.skeleton.app.map.object;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.PlayingCard;
-import inf112.skeleton.app.map.Laser;
 import inf112.skeleton.app.map.Wall;
 
 import java.util.ArrayList;
@@ -87,9 +86,7 @@ public class InputHandler extends InputAdapter implements InputProcessor {
                 performCardinRegister();
                 break;
             case Input.Keys.ENTER:
-                game.client.sendCards(game.clientPlayer.lockedHand);
-                game.clientPlayer.getLockedHand().clear();
-                game.clientPlayer.cards.clear();
+                lockInHand();
                 break;
             case Input.Keys.P:
                 powerDown();
@@ -130,8 +127,14 @@ public class InputHandler extends InputAdapter implements InputProcessor {
             if(screenX > 1190 && screenX < 1280 && screenY > 190 && screenY < 336 ) {
                 moveToLocked(8);
             }
-            if(screenX > 1033 && screenX < 1196 && screenY > 360 && screenY < 403 ) {
+            if(screenX > 925 && screenX < 1095 && screenY > 360 && screenY < 403 ) {
                 powerDown();
+            }
+            if(screenX > 1140 && screenX < 1302 && screenY > 360 && screenY < 403 ) {
+                lockInHand();
+            }
+            if(screenX > 1060 && screenX < 1191 && screenY > 600 && screenY < 637 ) {
+                exitGame();
             }
 
         }
@@ -245,7 +248,6 @@ public class InputHandler extends InputAdapter implements InputProcessor {
                     else{player.setPosition(player.getX() - 1, player.getY());}
                 }
                 break;
-
         }
     }
     public void powerDown() {
@@ -255,7 +257,15 @@ public class InputHandler extends InputAdapter implements InputProcessor {
         game.client.sendCards(game.clientPlayer.lockedHand);
     }
 
+    public void lockInHand() {
+        game.client.sendCards(game.clientPlayer.lockedHand);
+        game.clientPlayer.getLockedHand().clear();
+        game.clientPlayer.cards.clear();
+    }
 
+    public void exitGame(){
+        Gdx.app.exit();
+    }
 
     public void setHandler(Robot robot) {
         player = robot;

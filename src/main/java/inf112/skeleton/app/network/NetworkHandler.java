@@ -12,7 +12,7 @@ import inf112.skeleton.app.network.Packets.Initialize.CardsPacket;
 import inf112.skeleton.app.network.Packets.Initialize.CreateRobot;
 import inf112.skeleton.app.network.Packets.Initialize.InputhandlerPacket;
 import inf112.skeleton.app.network.Packets.Initialize.PlayerList;
-import inf112.skeleton.app.object.Player;
+import inf112.skeleton.app.map.object.Player;
 
 import java.util.ArrayList;
 

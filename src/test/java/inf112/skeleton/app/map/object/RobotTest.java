@@ -1,4 +1,4 @@
-package inf112.skeleton.app.object;
+package inf112.skeleton.app.map.object;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;

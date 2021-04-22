@@ -17,9 +17,7 @@ import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.map.*;
 import inf112.skeleton.app.network.GameClient;
 import inf112.skeleton.app.network.GameServer;
-import inf112.skeleton.app.object.InputHandler;
-import inf112.skeleton.app.object.Player;
-import inf112.skeleton.app.object.Robot;
+import inf112.skeleton.app.map.object.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,7 +67,7 @@ public class RoboRally extends InputAdapter implements Screen {
 
     private CreateGame newGame;
     public CheckEvents checkevent;
-    public Texture powerdown;
+    public Texture powerdown, lockInHand, exitGame;
 
 
     public RoboRally(String mapChosen, boolean host){
@@ -94,7 +92,9 @@ public class RoboRally extends InputAdapter implements Screen {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
         colors = new ArrayList<>(Arrays.asList(Color.WHITE,Color.GREEN, Color.LIGHT_GRAY,  Color.FIREBRICK , Color.ORANGE, Color.LIME, Color.YELLOW,  Color.FOREST));
-        powerdown = new Texture("exitGame.png");
+        powerdown = new Texture("power_down.png");
+        lockInHand = new Texture("lock_in_cards.png");
+        exitGame = new Texture("exitGame.png");
         camera = new OrthographicCamera();
         viewport = new FitViewport(29,14);
         font_cam = new OrthographicCamera();
@@ -102,6 +102,15 @@ public class RoboRally extends InputAdapter implements Screen {
         newGame.initalize();
 
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
+
+
+
+        //MapLayers mapLayers = map.getLayers();
+        //backgroundLayer = (TextureMapObject) mapLayers.get("Background");
+
+
+
+
 
         if(host) {
             try {
@@ -152,15 +161,12 @@ public class RoboRally extends InputAdapter implements Screen {
 
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
-        drawPlayers(robots, batch);
-
-
 
         if (clientPlayer != null && !clientPlayer.cards.isEmpty()) {
             clientPlayer.renderCards(batch);
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.renderPriority(batch);
-            batch.draw(powerdown, 981, 291);
+            batch.draw(powerdown, 1090, 300);
         }
 
         if (clientPlayer != null) {
@@ -168,7 +174,8 @@ public class RoboRally extends InputAdapter implements Screen {
             clientPlayer.initializeHud(batch);
         }
 
-
+        batch.draw(lockInHand, 881, 300);
+        batch.draw(exitGame, 1013, 40);
         batch.end();
 
         if (clientPlayer != null && phase.equals("check")) {

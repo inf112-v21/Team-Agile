@@ -17,9 +17,9 @@ import inf112.skeleton.app.network.Packets.Events.PowerDown;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 import inf112.skeleton.app.network.Packets.Initialize.CardsPacket;
 import inf112.skeleton.app.network.Packets.Initialize.PlayerList;
-import inf112.skeleton.app.object.InputHandler;
-import inf112.skeleton.app.object.Player;
-import inf112.skeleton.app.object.Robot;
+import inf112.skeleton.app.map.object.InputHandler;
+import inf112.skeleton.app.map.object.Player;
+import inf112.skeleton.app.map.object.Robot;
 
 import java.io.IOException;
 

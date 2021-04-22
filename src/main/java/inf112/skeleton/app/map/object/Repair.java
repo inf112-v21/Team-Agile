@@ -1,4 +1,4 @@
-package inf112.skeleton.app.map;
+package inf112.skeleton.app.map.object;
 import com.badlogic.gdx.math.Vector2;
 
 public class Repair {

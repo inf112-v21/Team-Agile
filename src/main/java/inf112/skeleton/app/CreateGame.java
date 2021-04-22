@@ -5,6 +5,10 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.map.*;
+import inf112.skeleton.app.map.object.Booster;
+import inf112.skeleton.app.map.object.Laser;
+import inf112.skeleton.app.map.object.Repair;
+import inf112.skeleton.app.map.object.Rotation;
 
 import java.util.ArrayList;
 

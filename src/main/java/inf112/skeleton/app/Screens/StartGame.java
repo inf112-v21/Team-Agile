@@ -6,9 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import inf112.skeleton.app.MainMenu;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.Screens.MultiplayerScreen;
 
 public class StartGame extends Game implements ApplicationListener {
 
@@ -33,6 +31,7 @@ public class StartGame extends Game implements ApplicationListener {
 
     @Override
     public void render() {
+
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.G)) {
             setGameScreen();

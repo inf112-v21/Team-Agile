@@ -1,9 +1,9 @@
-package inf112.skeleton.app.map;
+package inf112.skeleton.app.map.object;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.object.Robot;
+import inf112.skeleton.app.map.Wall;
 
 public class Laser extends Wall {
 

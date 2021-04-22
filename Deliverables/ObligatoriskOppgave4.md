@@ -24,7 +24,7 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Laget nytt markdown-doc. 
 * Blitt enige om hvilke krav vi ønsker å fullføre for denne innleveringen og notert ned i markdown-doc. 
 * Fordelt ut oppgaver til hver av oss: 
-    * **Marius:** Power Down & Repair
+    * **Marius:** Power Down, Rotation & Repair
     * **Anthony:** abstrakt -> game loop 
     * **Leif Petter:** Lage startup-meny
     * **Tore:** abstrakt-greier -> gui og flytting av spillere som dyttes
@@ -34,7 +34,7 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Alle møtte opp
 * Tore og Petter hadde startet litt på GUI før dette møte, men ville ha litt info fra gruppa hvordan 
   oppsettet skulle være på koden.
-* Fikk senere hjelp fra Anthony med å fortsette på koden til Menu branch, og marius som var med på å designe
+* Fikk senere hjelp fra Anthony med å fortsette på koden til Menu branch, og Marius som var med på å designe
   bakgrunn til mainmenu og kanppene "start game" og "exit game"
 * Fikk implementert knappene "Start Game" og "Exit Game" på menyen. slik at spillet startet og avsluttet.
 * Johnny var litt syk denne dagen, men møtte fortsatt opp på discord å fortsatte med implementasjonen av Boostere
@@ -48,11 +48,22 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Anthony fortsetter på main menu, for å implementere multiplayer knappen.
 
 **20.04.2021 : 12:15 -**
-* Alle var tilstede. Marius dro får å arbeide alene på powerdown og repair.
+* Alle var tilstede. Marius dro for å arbeide alene på powerdown, rotation og repair.
 * Johnny og Athony jobbet på Boostere.
 * Tore fortsatte pushing av roboter. 
 * Petter fortsatte å oppdatere marcdown.doc. 
-    
+
+**21.04.2021 : 12:15 -**
+* Alle tilstede
+* Johnny og Anthony fikk gjort mye på klassediagram
+* Tore og Leif Petter fikk startet på javadoc-dokumentasjon
+* Marius fikk ferdigimplementert Rotation-klassen og repair-klassen. Fikk også implementert PowerDown, sammen med Anthony. 
+
+**22.04.2021 : 12:15 -**
+* Alle var tilstede.
+* I forkant av dette møtet hadde Marius fått ferdigstilt tester til Repair og Rotation, samt startet på powerDown. 
+  Også fått gjort litt designendringer. 
+  
 ***
 ## Krav for denne inneleveringen:
 _Dette er målene vi har satt oss for å klare å fullføre for denne obligatoriske innleveringen:_
@@ -137,15 +148,37 @@ register fra hver av spillerene
 <br/>
 
 **Implementasjon av Repair**
-* Som spiller ønsker jeg å ha muligheten til å kunne få tilbake liv i spillet.
+* Som spiller ønsker jeg å ha muligheten til å kunne få tilbake liv i spillet ved å gå på repair-tiles
 
 **Akseptansekriterier**
-* Som spiller vil jeg kunne få tilbake liv slik det er mulig å miste liv med f.eks lasere.
+* Som spiller vil jeg kunne få tilbake liv når jeg går på de ulike repair-tiles. 
+* Når jeg går på en tile med to repair-verktøy så skal jeg kunne få to healthpoints. 
+* Når jeg går på en tile med ett repair-verktøy så skal jeg kunne få ett healthpoints.
 
 **Arbeidsoppgaver:**
-
+* Lage en egen klasse for repair
+* Lage en egen layer i map for repair
+* Registere alle repair-tiles i en liste, slik at en kan iterere over de
+* Lage en check som sjekker for hver gang spilleren står på en repair tile, og i så tilfelle så skal spilleren få hp
+* Sjekke at spilleren ikke kan få mer enn 9 hp. F.eks om spilleren havner på en dobbel-repair når en har 8 hp --> så skal en bare ende opp med 9 hp maks. 
 
 <br/>
+
+**Implementasjon av Rotation**
+* Som spiller ønsker jeg å rotere når jeg lander på en rute med rotering. 
+
+**Akseptansekriterier**
+* Som spiller vil jeg rotere til venstre eller høgre når jeg havner på en av de to rotation-flisene. 
+* En skal bare rotere en gang (+90 eller -90, avhengig av retning.)
+
+**Arbeidsoppgaver:**
+* Lage en egen klasse for rotation
+* Lage en egen layer i map for rotation
+* Registere alle rotation-tiles i en liste, slik at en kan iterere over de
+* Lage en check som sjekker for hver gang spilleren står på en rotation tile, og i så tilfelle så skal spilleren roteres mot retningen tilen representerer
+
+<br/>
+
 
 **Implementasjon av PowerDown**
 * Som spiller ønsker jeg at det skal finnes en PowerDown mulighet, slik at jeg ikke beveger og dermed hopper over min tur.
@@ -155,9 +188,12 @@ register fra hver av spillerene
 * En PowerDown skal kun gjøre slik at spiller ikke beveger seg av kortene. 
 * Dersom spiller står i laser eller på Booster så vil spiller miste liv eller bli beveget i retning av Booster.
 * For at spiller mister trekkene sine skal spiller få noe tilbake. x-antall hp.
+* Alle spillerene må både kunne se seg selv og andre som gjør PowerDown
 
 **Arbeidsoppgaver:**
-
+* Legge inn en knapp hvor en kan trykke på powerDown i starten av hver runde
+* Implementere inn PowerDown for alle spillere, også slik at de ser sine motsandere som har PowerDown
+* Påse at PowerDown beholder samme tile-lokasjon ved neste runde
 
 <br/>
 
@@ -218,8 +254,6 @@ Kjøre multiplayer med 2 instanser av Main på samme PC:
 
 Vi har ikke forandret noe på rollene fra første oblig, men rollene er ikke så fastsatt. Alle er med å bidrar sånn at arbeidet blir gjort.
 
-
-
 **Teamleder:** Johnny (holde overordnet styr på alt som må bli gjort)
 
 **Kundekontakt:** Marius (holder kontakt med gruppeleder)
@@ -249,9 +283,9 @@ Så vi beholder en konsekvent metodikk med Kanban og litt Scrum.
 **Prosjektstruktur og gjennomførelse hittil:**
 
 Selve strukturen ved å jobbe sammen på bestemte tidspunkt har sine positive og negative sider. Siden ikke alle er like 
-sterke på kode delen, er det lettere for dem å spør og komme videre med krav de har fått. Mens av og til blir det gjerne
-litt mye diskusjon om bagteller som kanskje løser seg selv dersom man bare starter. 
-Men det er også mulighet for å jobbe alene dersom man øsnker det. 
+sterke på kodedelen, er det lettere for de å spørre og komme videre med krav de har fått. Men noen ganger er det også gjerne
+mye diskusjon om småting som løser seg selv dersom man bare starter. 
+Men det er også mulighet for å jobbe alene dersom man ønsker det. 
 
 **3 forbedringspunkter:**
 1. Starte på obligen tidligere(hvertfall på denne obligen). 

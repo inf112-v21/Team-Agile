@@ -2,8 +2,7 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
-import inf112.skeleton.app.map.*;
-import inf112.skeleton.app.object.Robot;
+import inf112.skeleton.app.map.object.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -152,16 +151,17 @@ public class CheckEvents {
     public void checkRepair(ArrayList<Robot> robotList) {
         for (Robot r : robotList) {
             Vector2 robotPosition = new Vector2(r.getX(), r.getY());
-            for (Repair repairs : game.allRepair){
+            for ( Repair repairs : game.allRepair){
                 if(robotPosition.x == repairs.getPosition().x && robotPosition.y == repairs.getPosition().y){
-                    if (r.getRobotHealthPoint() > 9){ // robot kan ha maks 9hp
+                    if (r.getRobotHealthPoint() < 9){ // robot kan ha maks 9hp
                         if(repairs.getCellId() == Repair.repairOneHealth){
                             r.robotHealthPoint += 1;
                         }
                         else if (repairs.getCellId() == Repair.repairTwoHealth){
-                            if(r.getRobotHealthPoint() == 9){
+                            if(r.getRobotHealthPoint() == 8){
                                 r.robotHealthPoint += 1; }
-                            else{ r.robotHealthPoint += 2; }
+                            else{
+                                r.robotHealthPoint += 2; }
                         }
                     }
                 }
@@ -172,7 +172,7 @@ public class CheckEvents {
     public void checkRotate(ArrayList<Robot> robotList) {
         for (Robot r : robotList) {
             Vector2 robotPosition = new Vector2(r.getX(), r.getY());
-            for (Rotation rot : game.allRotation){
+            for ( Rotation rot : game.allRotation){
                 if(robotPosition.x == rot.getPosition().x && robotPosition.y == rot.getPosition().y){
                     if(rot.getCellId() == Rotation.rotateLeft){
                         r.rotate(90);
@@ -197,7 +197,7 @@ public class CheckEvents {
     public void checkBoosters(ArrayList<Robot> robotList) {
         for (Robot r : robotList) {
             Vector2 robotPosition = new Vector2(r.getX(), r.getY());
-            for (Booster start : game.allBoosters){
+            for ( Booster start : game.allBoosters){
                 if(robotPosition.x == start.getPosition().x && robotPosition.y == start.getPosition().y) {
                     for(int i = 0 ; i < start.getSpeed(); i++) {
                         for (Booster b : game.allBoosters) {

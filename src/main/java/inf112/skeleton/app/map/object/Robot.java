@@ -1,4 +1,4 @@
-package inf112.skeleton.app.object;
+package inf112.skeleton.app.map.object;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.*;
@@ -8,14 +8,12 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.PlayingCard;
 import inf112.skeleton.app.map.Wall;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
 /**
  * Robot klassen holder styr på alle egenskaper til roboten
@@ -34,6 +32,10 @@ public class Robot extends Sprite {
 
     //private RoboRally game;
     //private boolean cannotmove = false;
+
+    public void setRobotHealthPoint(int robotHealthPoint) {
+        this.robotHealthPoint = robotHealthPoint;
+    }
 
     public int robotHealthPoint;
 
@@ -223,7 +225,7 @@ public class Robot extends Sprite {
 
     public void playerLocked(ArrayList<PlayingCard> lockedkort) {
         int x = 18;
-        int y = 3;
+        int y = 2;
         for (int i = 0; i < lockedkort.size() ; i++ ) {
             PlayingCard kort = lockedkort.get(i);
             kort.setPosition( x, y);
@@ -257,7 +259,7 @@ public class Robot extends Sprite {
             }
         }
         xStart = 883;
-        yStart = 305;
+        yStart = 252;
         for (PlayingCard locked : lockedHand) {
             int priority = locked.getPriority();
             priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);

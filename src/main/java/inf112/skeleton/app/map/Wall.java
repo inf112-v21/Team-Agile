@@ -1,8 +1,8 @@
 package inf112.skeleton.app.map;
 
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
-import inf112.skeleton.app.object.Robot;
+import inf112.skeleton.app.map.object.Laser;
+import inf112.skeleton.app.map.object.Robot;
 
 public class Wall {
 

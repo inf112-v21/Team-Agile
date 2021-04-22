@@ -1,15 +1,11 @@
 package inf112.skeleton.app.network;
 
-import com.badlogic.gdx.utils.Timer;
-import com.esotericsoftware.kryonet.Server;
-import inf112.skeleton.app.cards.PlayingCard;
 import inf112.skeleton.app.network.Packets.Events.ChangePhase;
 import inf112.skeleton.app.network.Packets.Events.MoveEvent;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 import inf112.skeleton.app.network.Packets.Initialize.CardsPacket;
 import inf112.skeleton.app.network.Packets.PlayingCardPair;
-import inf112.skeleton.app.object.Player;
-import com.badlogic.gdx.utils.Timer;
+import inf112.skeleton.app.map.object.Player;
 
 import java.util.Comparator;
 import java.util.Date;

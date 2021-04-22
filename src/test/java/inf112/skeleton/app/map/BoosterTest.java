@@ -5,9 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.object.Robot;
+import inf112.skeleton.app.map.object.Robot;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +16,6 @@ public class BoosterTest {
 
     Robot robot;
     RoboRally game = new RoboRally("MapNumber1.tmx" , true);
-
 
     @Before
     public void setUp() throws Exception {
@@ -31,9 +29,6 @@ public class BoosterTest {
                 Gdx.app.exit();
             }
         }, cfg);
-
-
-
     }
 
 
