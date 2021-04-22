@@ -67,11 +67,11 @@ public class GameServer extends Listener{
 
         if(object instanceof MoveEvent) {
             MoveEvent event = (MoveEvent)object;
-            server.sendToAllExceptTCP(c.getID(), event);
+            server.sendToAllTCP(event);
         }
         if (object instanceof RotationEvent) {
             RotationEvent event = (RotationEvent)object;
-            server.sendToAllExceptTCP(c.getID(), event);
+            server.sendToAllTCP(event);
         }
         if( object instanceof PlayerCards) {
             recievedRegisters++;

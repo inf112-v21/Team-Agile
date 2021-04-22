@@ -16,12 +16,12 @@ import static org.junit.Assert.*;
 public class RobotTest {
 
     TiledMapTileLayer playerLayer;
-    Robot player;
+    Robot player, player2;
     Robot testPlayer;
     Vector2 pos;
     InputHandler handler;
 
-    RoboRally game = new RoboRally("tutorial.tmx", true);
+    RoboRally game = new RoboRally("MapNumber1.tmx", true);
 
     @Before
     public void setUp() throws Exception {
@@ -31,17 +31,18 @@ public class RobotTest {
         new Lwjgl3Application(new Game() {
             @Override
             public void create() {
+
                 Gdx.app.exit();
             }
         }, cfg);
+        /**
+        oppsett av variabler som trengs for testene.
+        TiledMapTileLayer for å skjekke om spiller objektet eksisterer på nåværende celle, og forsvinner fra den cellen
+        når en bevegelse utføres.
 
-        //oppsett av variabler som trengs for testene.
-        //TiledMapTileLayer for å skjekke om spiller objektet eksisterer på nåværende celle, og forsvinner fra den cellen
-        //når en bevegelse utføres.
-
-        //Robot klassen som skal testes med bevegelse funksjon. Roboten starter med retning mot Øst , ettersom det er det
-        //den skal i forhold til spillkartet.
-
+        Robot klassen som skal testes med bevegelse funksjon. Roboten starter med retning mot Øst , ettersom det er det
+        den skal i forhold til spillkartet.
+        */
 
         playerLayer = new TiledMapTileLayer(5,5,300,300);
         pos = new Vector2(1,1);
@@ -49,6 +50,18 @@ public class RobotTest {
 
         player = new Robot(3,3, Color.BLACK, 1, game);
         playerLayer.setCell((int) player.getX(), (int) player.getY(), cell);
+
+
+
+        /*
+        playerLayer = new TiledMapTileLayer(5,5,300,300);
+        //pos = new Vector2(1,1);
+        TiledMapTileLayer.Cell cell2 = new TiledMapTileLayer.Cell();
+
+        player2 = new Robot(4,3, Color.BLACK, 2, game);
+        playerLayer.setCell((int) player.getX(), (int) player.getY(), cell2);
+
+         */
     }
 
 
@@ -158,6 +171,18 @@ public class RobotTest {
     @Test
     public void robotWalksIntoAnotherRobotAndShouldPushOtherRobot() {
 
+        Robot robot2 = new Robot(4,3, Color.BLACK, 2, game);
+
+        game.robots.add(player);
+        game.robots.add(robot2);
+
+        int playerxbefore = (int) player.getX();
+        int player2xbefore = (int) robot2.getX();
+
+        player.move(1);
+
+        assertEquals((int) player.getX(), playerxbefore + 1);
+        assertEquals((int) robot2.getX(), player2xbefore + 1);
 
     }
 

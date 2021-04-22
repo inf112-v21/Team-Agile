@@ -240,11 +240,21 @@ Kjøre multiplayer med 2 instanser av Main på samme PC:
 * Start en ny instans til av Main, på denne instans velger du Join Game og instansene kobles til den forrige instansen som hostet game.
 * Nå skal 2 seperate spillvinduer være oppe og spillet startes, hvor hver av de har egne brukertaster og styrer hver sin robot.
 * Gjennomfør noen av robot styringene ved hjelp av piltastene. Spilleren som flytter på seg flytter seg på samme måte i begge spillvinduene.
-* Velg 1-5 kort med tastetrykkene fra 1-9 eller ved museklikk på kortene, og trykk ``ENTER`` for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt.
+* Velg 1-5 kort med tastetrykkene fra 1-9 eller ved museklikk på kortene, og trykk ``ENTER``/``Lock Cards`` knappen for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt.
 * Når valgte kort er sendt fra begge spillvinduer, utføres kortene i sekvens for alle spillvinduene.
 * Serveren utfører gameloopen og en hel runde av spillet utføres.
 * Etter alle kortene er utført vil begge spillvinduer få nye kort og, stegene over kan gjøres på nytt.
 
+
+Teste PowerDown på spiller.
+* start spillet, gjerne går slik at spiller mister hp.
+* deretter gå tilbake til posisjon hvor spiller ikke mister hp, trykk powerdown, eller knappen ``p``.
+* forventes da at du skal få 9 hp, som er maks hp. men skal ikke kunne bevege deg før neste runde.
+* dersom du tar powerdown og står i et felt med laser.
+* skal du får 9 hp i starten og miste 1 hp for hver fase i hver runde.
+* så du kan forvente å ha 4 hp igjen etter en full runde med en spiller som har brukt powerdown som også
+  blir truffet av laser.
+  
 <br/>
 
 ***

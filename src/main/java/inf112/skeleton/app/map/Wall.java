@@ -21,11 +21,6 @@ public class Wall {
     public static int outerWallNORTH = 310;
     public static int outerWallEAST = 230;
 
-    private boolean southCheck = ((cellId == SOUTH) || (cellId == Laser.laserSOUTH) || (cellId == outerWallSOUTH));
-    private boolean northCheck = (cellId == NORTH || (cellId == outerWallNORTH));
-    private boolean eastCheck = ((cellId == EAST) || (cellId == Laser.laserEAST) || (cellId == Laser.doubleLaserEAST) || (cellId == outerWallEAST));
-    private boolean westCheck = ((cellId == WEST) || (cellId == Laser.laserWEST) || (cellId == outerWallWEST));
-
 
     public Wall() {
         wallPos = null;
@@ -38,6 +33,14 @@ public class Wall {
     }
 
     public Boolean isWallInFrontOfPlayer(Robot player) {
+
+        boolean southCheck = ((cellId == SOUTH) || (cellId == Laser.laserSOUTH) || (cellId == outerWallSOUTH));
+        boolean northCheck = (cellId == NORTH || (cellId == outerWallNORTH));
+        boolean eastCheck = ((cellId == EAST) || (cellId == Laser.laserEAST) || (cellId == Laser.doubleLaserEAST) || (cellId == outerWallEAST));
+        boolean westCheck = ((cellId == WEST) || (cellId == Laser.laserWEST) || (cellId == outerWallWEST));
+
+
+        System.out.println("WALL IN FRONT");
         Vector2 playerCoordinate = new Vector2(player.getX(), player.getY());
         float rotation = player.getRotation();
 
@@ -57,6 +60,11 @@ public class Wall {
     }
 
     public boolean IsWallInNextTileInFrontOfPlayer(Robot player, int xDiff, int yDiff) {
+        boolean southCheck = ((cellId == SOUTH) || (cellId == Laser.laserSOUTH) || (cellId == outerWallSOUTH));
+        boolean northCheck = (cellId == NORTH || (cellId == outerWallNORTH));
+        boolean eastCheck = ((cellId == EAST) || (cellId == Laser.laserEAST) || (cellId == Laser.doubleLaserEAST) || (cellId == outerWallEAST));
+        boolean westCheck = ((cellId == WEST) || (cellId == Laser.laserWEST) || (cellId == outerWallWEST));
+
         float rotation = player.getRotation();
         Vector2 playerCoordinate = new Vector2(player.getX()+xDiff, player.getY()+yDiff);
 
@@ -76,6 +84,10 @@ public class Wall {
     }
 
     public Boolean isWallBehindPlayer(Robot player) {
+        boolean southCheck = ((cellId == SOUTH) || (cellId == Laser.laserSOUTH) || (cellId == outerWallSOUTH));
+        boolean northCheck = (cellId == NORTH || (cellId == outerWallNORTH));
+        boolean eastCheck = ((cellId == EAST) || (cellId == Laser.laserEAST) || (cellId == Laser.doubleLaserEAST) || (cellId == outerWallEAST));
+        boolean westCheck = ((cellId == WEST) || (cellId == Laser.laserWEST) || (cellId == outerWallWEST));
         Vector2 playerCoordinate = new Vector2(player.getX(), player.getY());
         float rotation = player.getRotation();
 
@@ -95,6 +107,10 @@ public class Wall {
     }
 
     public boolean IsWallInNextTileBehindPlayer(Robot player, int xDiff, int yDiff) {
+        boolean southCheck = ((cellId == SOUTH) || (cellId == Laser.laserSOUTH) || (cellId == outerWallSOUTH));
+        boolean northCheck = (cellId == NORTH || (cellId == outerWallNORTH));
+        boolean eastCheck = ((cellId == EAST) || (cellId == Laser.laserEAST) || (cellId == Laser.doubleLaserEAST) || (cellId == outerWallEAST));
+        boolean westCheck = ((cellId == WEST) || (cellId == Laser.laserWEST) || (cellId == outerWallWEST));
         float rotation = player.getRotation();
         Vector2 playerCoordinate = new Vector2(player.getX()+xDiff, player.getY()+yDiff);
 

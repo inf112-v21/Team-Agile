@@ -33,23 +33,23 @@ public class InputHandler extends InputAdapter implements InputProcessor {
     public boolean keyUp(int keycode) {
         switch (keycode) {
             case Input.Keys.UP:
-                player.move(1);
+                //player.move(1);
                 game.client.sendMove(new MoveEvent(game.client.getID(), 1));
                 break;
             case Input.Keys.DOWN:
-                player.move(-1);
+                //player.move(-1);
                 game.client.sendMove(new MoveEvent(game.client.getID(), -1));
                 break;
             case Input.Keys.LEFT:
-                player.rotate(90);
+                //player.rotate(90);
                 game.client.sendRotation(new RotationEvent(game.client.getID(), 90));
                 break;
             case Input.Keys.RIGHT:
-                rotate(-90);
+                //rotate(-90);
                 game.client.sendRotation(new RotationEvent(game.client.getID(), -90));
                 break;
             case Input.Keys.R:
-                rotate(180);
+                //rotate(180);
                 game.client.sendRotation(new RotationEvent(game.client.getID(), 180));
                 break;
             case Input.Keys.NUM_1:
@@ -191,65 +191,6 @@ public class InputHandler extends InputAdapter implements InputProcessor {
         resetDegrees((int) player.getRotation());
     }
 
-    public boolean checkForWall(Robot player, int xDiff, int yDiff){
-        for (Wall wall : walls){
-            if(wall.isWallInFrontOfPlayer(player) || wall.IsWallInNextTileInFrontOfPlayer(player, xDiff, yDiff)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean checkForLaser(Robot player){
-        for (Laser laser : lasers){
-            if(laser.isLaserInFrontOfPlayer(player)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    public void move(int steps) {
-        switch ((int) player.getRotation()) {
-            case(0):
-                for(int i = 1; i <= steps; i++){
-                    if(checkForWall(player, 0, -1)){
-                        System.out.println("Not possible to make that move, because of wall");
-                    }
-                    else{ player.setPosition(player.getX(), player.getY() - 1); }
-                }
-                break;
-
-            case(90):
-                for(int i = 1; i <= steps; i++){
-                    if(checkForWall(player, 1, 0)){
-                        System.out.println("Not possible to make that move, because of wall");
-                    }
-                    else{
-                        player.setPosition(player.getX() + 1, player.getY());}
-                }
-                break;
-
-            case(180):
-                for(int i = 1; i <= steps; i++){
-                    if(checkForWall(player, 0, 1)){
-                        System.out.println("Not possible to make that move, because of wall");
-                    }
-                    else{player.setPosition(player.getX(), player.getY() + 1);}
-                }
-                break;
-
-            case(270):
-                for(int i = 1; i <= steps; i++){
-                    if(checkForWall(player, -1, 0)){
-                        System.out.println("Not possible to make that move, because of wall");
-                    }
-                    else{player.setPosition(player.getX() - 1, player.getY());}
-                }
-                break;
-        }
-    }
     public void powerDown() {
         game.client.sendPowerDown(new PowerDown(game.client.getID()));
         game.clientPlayer.getLockedHand().clear();
