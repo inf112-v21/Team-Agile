@@ -40,7 +40,7 @@ public class Gameloop {
             System.out.println("RUNDE " + i );
 
         }
-        //delay(1000);
+        delay(200);
         server.recievedRegisters = 0;
         System.out.println("kort deles");
         server.server.sendToAllTCP(new CardsPacket());

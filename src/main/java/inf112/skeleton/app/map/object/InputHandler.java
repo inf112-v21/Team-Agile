@@ -193,7 +193,7 @@ public class InputHandler extends InputAdapter implements InputProcessor {
 
     public boolean checkForWall(Robot player, int xDiff, int yDiff){
         for (Wall wall : walls){
-            if(wall.isWallInFrontOfPlayer(player) || wall.isWallInNextTile(player, xDiff, yDiff)) {
+            if(wall.isWallInFrontOfPlayer(player) || wall.IsWallInNextTileInFrontOfPlayer(player, xDiff, yDiff)) {
                 return true;
             }
         }

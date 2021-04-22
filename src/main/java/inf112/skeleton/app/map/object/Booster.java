@@ -36,7 +36,6 @@ public class Booster {
     //Double turn booster
     //med klokken
     public static int DOWNLEFT = 28; //-x (WEST), 2step, -90
-    public static int LEFTUPUP = 77; //+y (NORTH), 2step, kommer du fra høyre side (-90), kommer du nedifra (0)
 
     /*
     UP id 49

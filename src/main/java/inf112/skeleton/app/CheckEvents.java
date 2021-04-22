@@ -39,12 +39,13 @@ public class CheckEvents {
         HashMap<Integer, Robot> robotsDistanceToLaser = new HashMap<>();
         Integer distance;
         int laserdamage = 1;
+        boolean last = false;
 
         if (laser.getCellId() == Laser.laserSOUTH) {
             for (int i = (int) y; i < game.boardHeight; i++) {
                 TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell((int) x, i);
                 if (wallTile != null && i > y) {
-                    break;
+                    last = true;
                 }
                 for (Robot r : game.robots) {
                     if (r.getX() == x && r.getY() == i) {
@@ -52,19 +53,25 @@ public class CheckEvents {
                         robotsDistanceToLaser.put(distance, r);
                     }
                 }
+                if (last) {
+                    break;
+                }
             }
         }
         if (laser.getCellId() == Laser.laserWEST) {
             for (int i = (int) x; i < game.boardWidth; i++) {
                 TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell(i, (int) y);
                 if (wallTile != null && i > x) {
-                    break;
+                    last = true;
                 }
                 for (Robot r : game.robots) {
                     if (r.getX() == i && r.getY() == y) {
                         distance = (int) Math.abs(r.getX() - x);
                         robotsDistanceToLaser.put(distance, r);
                     }
+                }
+                if (last) {
+                    break;
                 }
             }
         }
@@ -72,13 +79,16 @@ public class CheckEvents {
             for (int i = (int) x; i > 0; i--) {
                 TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell(i, (int) y);
                 if (wallTile != null && i < x) {
-                    break;
+                    last = true;
                 }
                 for (Robot r : game.robots) {
                     if (r.getX() == i && r.getY() == y) {
                         distance = (int) Math.abs(r.getX() - x);
                         robotsDistanceToLaser.put(distance, r);
                     }
+                }
+                if (last) {
+                    break;
                 }
             }
         }
@@ -86,7 +96,7 @@ public class CheckEvents {
             for (int i = (int) x; i > 0; i--) {
                 TiledMapTileLayer.Cell wallTile = game.wallLayer.getCell(i, (int) y);
                 if (wallTile != null && i < x) {
-                    break;
+                    last = true;
                 }
                 for (Robot r : game.robots) {
                     if (r.getX() == i && r.getY() == y) {
@@ -94,6 +104,9 @@ public class CheckEvents {
                         distance = (int) Math.abs(r.getX() - x);
                         robotsDistanceToLaser.put(distance, r);
                     }
+                }
+                if (last) {
+                    break;
                 }
             }
         }

@@ -161,6 +161,7 @@ public class RoboRally extends InputAdapter implements Screen {
 
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
+        drawPlayers(robots, batch);
 
         if (clientPlayer != null && !clientPlayer.cards.isEmpty()) {
             clientPlayer.renderCards(batch);
@@ -225,13 +226,4 @@ public class RoboRally extends InputAdapter implements Screen {
         return boardWidth;
     }
 
-
-    public void backfromPowerDown(ArrayList<Robot> robotliste) {
-        for ( Robot r : robotliste ) {
-            if (r.getX() == -1 && r.getY() == -1) {
-                r.setPosition(r.powerdownpos.x, r.powerdownpos.y);
-                r.robotHealthPoint = 9;
-            }
-        }
-    }
 }

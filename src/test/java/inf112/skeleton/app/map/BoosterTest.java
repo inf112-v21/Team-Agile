@@ -76,16 +76,16 @@ public class BoosterTest {
         robot = new Robot(7,6, Color.BLACK,1,game);
         game.robots.add(robot);
         game.checkevent.checkBoosters(game.robots);
-        assertEquals(5, (int) robot.getX());
-        assertEquals(5, (int) robot.getY());
+        assertEquals(7, (int) robot.getX());
+        assertEquals(8, (int) robot.getY());
     }
     @Test
     public void testDoubleBoosterSouthDirection(){
         robot = new Robot(9,13, Color.BLACK,1,game);
         game.robots.add(robot);
         game.checkevent.checkBoosters(game.robots);
-        assertEquals(5, (int) robot.getX());
-        assertEquals(5, (int) robot.getY());
+        assertEquals(9, (int) robot.getX());
+        assertEquals(11, (int) robot.getY());
     }
 
     @Test
@@ -93,7 +93,39 @@ public class BoosterTest {
         robot = new Robot(8,11, Color.BLACK,1,game);
         game.robots.add(robot);
         game.checkevent.checkBoosters(game.robots);
+        assertEquals(6, (int) robot.getX());
+        assertEquals(11, (int) robot.getY());
+    }
+
+    @Test
+    public void testSingleTurnLeftDown() {
+        robot = new Robot(10, 8, Color.BLACK, 1, game);
+        game.robots.add(robot);
+        game.checkevent.checkBoosters(game.robots);
+        assertEquals(10, (int) robot.getX());
+        assertEquals(7, (int) robot.getY());
+        assertEquals(180, (int) robot.getRotation());
+
+    }
+
+    @Test
+    public void testSingleTurnRightDown() {
+        robot = new Robot(5, 7, Color.BLACK, 1, game);
+        game.robots.add(robot);
+        game.checkevent.checkBoosters(game.robots);
         assertEquals(5, (int) robot.getX());
-        assertEquals(5, (int) robot.getY());
+        assertEquals(6, (int) robot.getY());
+        assertEquals(0, (int) robot.getRotation());
+
+    }
+    @Test
+    public void testDoubleTurnDownLeft() {
+        robot = new Robot(9, 11, Color.BLACK, 1, game);
+        game.robots.add(robot);
+        game.checkevent.checkBoosters(game.robots);
+        assertEquals(7, (int) robot.getX());
+        assertEquals(11, (int) robot.getY());
+        assertEquals(0, (int) robot.getRotation());
+
     }
 }

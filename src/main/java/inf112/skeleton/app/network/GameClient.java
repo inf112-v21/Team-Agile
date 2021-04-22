@@ -80,7 +80,6 @@ public class GameClient extends Listener {
                 @Override
                 public void run() {
                     game.handler = new InputHandler(game, game.clientPlayer);
-                    game.backfromPowerDown(game.robots);
                     game.deck.createDeck();
                     game.deck.dealOutCards(game.robots);
                     game.clientPlayer.playerCardstoHand(game.clientPlayer.getCards());
@@ -127,8 +126,7 @@ public class GameClient extends Listener {
                 @Override
                 public void run() {
                    Robot robot = game.robots.get(robotid.id);
-                   robot.setPowerdownpos(new Vector2(robot.getX(), robot.getY()));
-                   robot.setPosition(-1,-1);
+                   robot.robotHealthPoint = 9;
                 }
             });
         }
