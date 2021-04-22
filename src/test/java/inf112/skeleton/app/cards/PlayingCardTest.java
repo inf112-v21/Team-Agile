@@ -85,7 +85,7 @@ public class PlayingCardTest {
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVEONE, 10);
 
-        //handler.move(card.getMove());
+        player.move(card.getMove());
 
         assertEquals(2, (int) player.getY());
     }
@@ -96,7 +96,7 @@ public class PlayingCardTest {
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVETWO, 10);
 
-        //handler.move(card.getMove());
+        player.move(card.getMove());
 
         assertEquals(1, (int) player.getY());
     }
@@ -108,7 +108,7 @@ public class PlayingCardTest {
         player.setRotation(0);
         card = new PlayingCard(MoveType.MOVETHREE, 10);
 
-        //handler.move(card.getMove());
+        player.move(card.getMove());
 
         assertEquals(0, (int) player.getY());
     }
