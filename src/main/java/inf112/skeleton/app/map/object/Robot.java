@@ -393,8 +393,7 @@ public class Robot extends Sprite {
     }
     public boolean checkForWall(Robot player, int xDiff, int yDiff){
         for (Wall wall : game.allWalls){
-            if(wall.isWallInSameTileInFrontOfPlayer(player, xDiff, yDiff) || wall.IsWallInNextTileInFrontOfPlayer(player, xDiff, yDiff)) {
-            //if(wall.isWallInSameTileInFrontOfPlayer(player, xDiff, yDiff)){
+            if(wall.isWallInSameTileInFrontOfPlayer(player) || wall.IsWallInNextTileInFrontOfPlayer(player, xDiff, yDiff)) {
             return true;
             }
         }
