@@ -130,7 +130,8 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 
 **Arbeidsoppgaver:**
 * Gameloop skal kalles på når antall registers mottat av serveren er lik antall tilkoblinger til spillet. f.eks. 2 spillere , da kalles gameloop så fort serveren mottar 
-register fra hver av spillerene
+register fra hver av spillerene.
+* Gameloop utfører alle Phasene i hver runde i riktig rekkefølge.
 
 <br/>
 
@@ -225,7 +226,8 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 
 **Multiplayer test med flere instanser på samme PC**
 Vi hadde problemer med å hente modulene fra pom.xml filen derfor må du skjekke at lib mappen ligger i pathen til prosjektet høyre klikk på prosjekt mappen Team-Agile -> Open Module Settings -> Dependencies tab -> helt nederst av listen er det et "+" tegn.
--> Jars and Directories -> Velg ``lib`` som ligger i prosjekt mappen og apply.
+-> Jars and Directories -> Velg ``lib`` som ligger i prosjekt mappen og apply. Har funnet ut i etterkant at vi får problemer om vi laster ned kryonet modulene gjennom pom.xml filen ettersom kryonet versjonen gjennom maven er en annen versjon enn det vi har brukt når vi implementerte multiplayer, dermed må vi benytte oss 
+av den manuelle måten for å laste modulene for at ting skal funke.
 
 Før man starter må man tillate at flere instanser av Main tillates. Åpne opp Main gå i menylinjen, og naviger deg til
 run -> edit configurations -> modify options -> huke av på ``Allow multiple instances``
@@ -234,14 +236,13 @@ run -> edit configurations -> modify options -> huke av på ``Allow multiple ins
 
 Kjøre multiplayer med 2 instanser av Main på samme PC:
 
-* Start en instans av Main, første instans av Main vil være hosten av serveren. Og skrive i terminalen til denne instansen ``no``.
-* Deretter i Main skjekk at ``host`` variabel er satt til ``false`` og kjør flere instanser av Main for å koble nye instansen til hosten.
-  For hver nye Main instanser som blir kjørt må det i første Main instansen som er Host skrive ``no`` visst du skal koble til flere instanser ellers ``yes`` for å starte og få tilgang til brukertaster(les i Multiplayer i readme.md for mer detaljert stegvis oppstart av Multiplayer)
-* Start en ny Main instans til, og i første Main instansen som ble kjørt skriv ``yes``
-* Nå skal 2 seperate spillvinduer være oppe , hvor hver av de har egne brukertaster og styrer hver sin robot.
+* Start en instans av Main, en Main menu screen vil komme opp, hvor man får valgene mellom Join Game/Host Game/Exit Game. Første instans velger man Host Game og i tastefeltet skriver inn 2 for å teste med 2 roboter, deretter ``continue`` og hele spillet vil vises.
+* Start en ny instans til av Main, på denne instans velger du Join Game og instansene kobles til den forrige instansen som hostet game.
+* Nå skal 2 seperate spillvinduer være oppe og spillet startes, hvor hver av de har egne brukertaster og styrer hver sin robot.
 * Gjennomfør noen av robot styringene ved hjelp av piltastene. Spilleren som flytter på seg flytter seg på samme måte i begge spillvinduene.
-* Velg 5 kort med tastetrykkene fra 1-9 og trykk ``ENTER`` for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt.
+* Velg 1-5 kort med tastetrykkene fra 1-9 eller ved museklikk på kortene, og trykk ``ENTER`` for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt.
 * Når valgte kort er sendt fra begge spillvinduer, utføres kortene i sekvens for alle spillvinduene.
+* Serveren utfører gameloopen og en hel runde av spillet utføres.
 * Etter alle kortene er utført vil begge spillvinduer få nye kort og, stegene over kan gjøres på nytt.
 
 <br/>

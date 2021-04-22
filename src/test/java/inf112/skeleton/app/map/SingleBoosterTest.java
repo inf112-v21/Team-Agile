@@ -9,10 +9,11 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.map.object.Robot;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.Assert.assertEquals;
 
-public class BoosterTest {
+public class SingleBoosterTest {
 
     Robot robot;
     RoboRally game = new RoboRally("MapNumber1.tmx" , true);
@@ -29,24 +30,44 @@ public class BoosterTest {
                 Gdx.app.exit();
             }
         }, cfg);
+        robot = new Robot(5,8, Color.BLACK,1,game);
+        game.robots.clear();
+        game.robots.add(robot);
+    }
+/*
+    @BeforeEach
+    public void setUpRobot() throws Exception {
+        robot = new Robot(5,8, Color.BLACK,1,game);
+        game.robots.add(robot);
+
+        //game.robots.remove(robot);
+
     }
 
+ */
 
 
     @Test
     public void testSingleBoosterWestDirection(){
+        /*
         robot = new Robot(5,8, Color.BLACK,1,game);
         game.robots.add(robot);
+
+         */
+        robot.setPosition(5,8);
         game.checkevent.checkBoosters(game.robots);
         assertEquals(4, (int) robot.getX());
         assertEquals(8, (int) robot.getY());
-
     }
 
     @Test
     public void testSingleBoosterEastDirection(){
+        /*
         robot = new Robot(9,9, Color.BLACK,1,game);
         game.robots.add(robot);
+
+         */
+        robot.setPosition(9,9);
         game.checkevent.checkBoosters(game.robots);
         assertEquals(10, (int) robot.getX());
         assertEquals(9, (int) robot.getY());
@@ -54,8 +75,12 @@ public class BoosterTest {
 
     @Test
     public void testSingleBoosterNorthDirection(){
+        /*
         robot = new Robot(7,2, Color.BLACK,1,game);
         game.robots.add(robot);
+
+         */
+        robot.setPosition(7,2);
         game.checkevent.checkBoosters(game.robots);
         assertEquals(7, (int) robot.getX());
         assertEquals(3, (int) robot.getY());
@@ -63,38 +88,15 @@ public class BoosterTest {
 
     @Test
     public void testSingleBoosterSouthDirection(){
+        /*
         robot = new Robot(5,6, Color.BLACK,1,game);
         game.robots.add(robot);
+
+         */
+        robot.setPosition(5,6);
         game.checkevent.checkBoosters(game.robots);
         assertEquals(5, (int) robot.getX());
         assertEquals(5, (int) robot.getY());
-    }
-
-
-    @Test
-    public void testDoubleBoosterNorthDirection(){
-        robot = new Robot(7,6, Color.BLACK,1,game);
-        game.robots.add(robot);
-        game.checkevent.checkBoosters(game.robots);
-        assertEquals(7, (int) robot.getX());
-        assertEquals(8, (int) robot.getY());
-    }
-    @Test
-    public void testDoubleBoosterSouthDirection(){
-        robot = new Robot(9,13, Color.BLACK,1,game);
-        game.robots.add(robot);
-        game.checkevent.checkBoosters(game.robots);
-        assertEquals(9, (int) robot.getX());
-        assertEquals(11, (int) robot.getY());
-    }
-
-    @Test
-    public void testDoubleBoosterWestDirection(){
-        robot = new Robot(8,11, Color.BLACK,1,game);
-        game.robots.add(robot);
-        game.checkevent.checkBoosters(game.robots);
-        assertEquals(6, (int) robot.getX());
-        assertEquals(11, (int) robot.getY());
     }
 
     @Test
@@ -115,16 +117,6 @@ public class BoosterTest {
         game.checkevent.checkBoosters(game.robots);
         assertEquals(5, (int) robot.getX());
         assertEquals(6, (int) robot.getY());
-        assertEquals(0, (int) robot.getRotation());
-
-    }
-    @Test
-    public void testDoubleTurnDownLeft() {
-        robot = new Robot(9, 11, Color.BLACK, 1, game);
-        game.robots.add(robot);
-        game.checkevent.checkBoosters(game.robots);
-        assertEquals(7, (int) robot.getX());
-        assertEquals(11, (int) robot.getY());
         assertEquals(0, (int) robot.getRotation());
 
     }
