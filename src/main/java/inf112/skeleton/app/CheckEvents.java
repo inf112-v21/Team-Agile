@@ -222,7 +222,7 @@ public class CheckEvents {
     public void allFlagsTaken(ArrayList<Robot> robotList) {
         for (Robot r : robotList) {
             if (r.getFlag() == game.flagsToTake) {
-                game.screen.setWinGameScreen(r.id);
+                System.out.println("PLayer " + r.id + "WON");
             }
         }
     }

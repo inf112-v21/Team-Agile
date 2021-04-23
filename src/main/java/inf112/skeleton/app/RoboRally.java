@@ -78,6 +78,7 @@ public class RoboRally extends InputAdapter implements Screen {
     public StartGame screen;
 
 
+
     public RoboRally(String mapChosen, boolean host){
         this.mapChosen = mapChosen;
         this.host = host;
@@ -172,7 +173,7 @@ public class RoboRally extends InputAdapter implements Screen {
 
         batch.draw(background2, 0,0, 29,14);
 
-        if (clientPlayer != null && !clientPlayer.cards.isEmpty()) {
+        if (clientPlayer != null) {
             clientPlayer.renderCards(batch);
             batch.draw(background2, 0,0, 29,14);
             batch.setProjectionMatrix(font_cam.combined);
