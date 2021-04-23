@@ -13,6 +13,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import inf112.skeleton.app.Screens.GameScreen;
+import inf112.skeleton.app.Screens.StartGame;
 import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.map.*;
 import inf112.skeleton.app.network.GameClient;
@@ -73,6 +75,7 @@ public class RoboRally extends InputAdapter implements Screen {
     private CreateGame newGame;
     public CheckEvents checkevent;
     public Texture powerDown, background2;
+    public StartGame screen;
 
 
     public RoboRally(String mapChosen, boolean host){
@@ -81,12 +84,21 @@ public class RoboRally extends InputAdapter implements Screen {
         newGame = new CreateGame(this);
         checkevent = new CheckEvents(this);
     }
-    public RoboRally(String mapChosen, boolean host, int players) {
+    public RoboRally(String mapChosen, boolean host, StartGame screen){
+        this.mapChosen = mapChosen;
+        this.host = host;
+        newGame = new CreateGame(this);
+        checkevent = new CheckEvents(this);
+        this.screen = screen;
+    }
+
+    public RoboRally(String mapChosen, boolean host, int players, StartGame screen) {
         this.mapChosen = mapChosen;
         this.host = host;
         newGame = new CreateGame(this);
         checkevent = new CheckEvents(this);
         this.numberofplayers = players;
+        this.screen = screen;
 
     }
 
@@ -166,10 +178,6 @@ public class RoboRally extends InputAdapter implements Screen {
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.renderPriority(batch);
             batch.draw(powerDown, 1090, 49, 170, 76);
-
-        }
-
-        if (clientPlayer != null) {
             //batch.draw(background2, 0, 0, 1339, 750);
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.initializeHud(batch);
@@ -184,6 +192,7 @@ public class RoboRally extends InputAdapter implements Screen {
             checkevent.checkRotate(robots);
             //firelaser
             checkevent.checkrobotStates(robots);
+            checkevent.checkIfSomeoneDead(robots);
             checkevent.checkFlags(robots);
             checkevent.allFlagsTaken(robots);
             phase = "pickCards";

@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class PowerDownTest {
     Robot robot;
-    RoboRally game = new RoboRally("MapNumber1.tmx" , true, 1);
+    RoboRally game = new RoboRally("MapNumber1.tmx" , true);
     ArrayList<Robot> robots = new ArrayList();
     int healthBefore;
     int healthAfter;

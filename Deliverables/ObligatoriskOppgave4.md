@@ -111,7 +111,19 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 * Knapp for å starte spill og joine spill, valg av antall spillere. 
 * 
 
+## krav for Innlevering 4.
+* Implementasjon av Pushing av spillere.
+* Implementasjon av Main menu/GUI.
+* Implementasjon av GameLoop.
+* Implementasjin av Boostere/Rullebaner.
+* Implementasjon av Repair.
+* Implementasjon av Rotation på brettet.
+* Implementasjon av PowerDown.
+
+
 ***
+
+
 
 <br/>
 
@@ -158,6 +170,10 @@ register fra hver av spillerene.
 * Spiller skal flyttes 1 eller 2 tiles etter hvilken type booster, etter runden er ferdig.
 
 **Arbeidsoppgaver:**
+* Boostere skal bevege spiller i retning som booster peker. 
+* Dersom det er en booster med sving skal også spiller rotere 90 grader i den retningen slik som en "rullebane".
+* den skal bli brukt for hver fase av spillet, så dersom en står på single booster, og tar powerdown. skal
+  spiller bli beveget 5 steg i retning booster så lenge den ikke faller av
 
 <br/>
 
@@ -210,6 +226,9 @@ register fra hver av spillerene.
 * Påse at PowerDown beholder samme tile-lokasjon ved neste runde
 
 <br/>
+
+
+
 
 ***
 ## Produktleveranse / kode
@@ -333,11 +352,12 @@ ikke er forstått av oppgaver, eller dersom en implementasjon henger sammen med 
 at vi forklarer hva som er blitt gjort slik at det blir enklest mulig for alle parter å samarbeide/forstå andres kode.
 
 I forhold til starten er det blitt letter å si ifra eller å snakke om mulige bugs for å få hjelp. Var aldri et veldig 
-stort problem ettersom fire av oss var kjent fra før. For siste mann merket han at det ble også lettere å diskutere 
+stort problem ettersom fire av oss var kjent fra før. For siste mann merket han at det også ble lettere å diskutere 
 med oss andre ettersom han ble bedre kjent med oss gjennom alle arbeidsoppgavene vi hadde sammen. 
-Men i oblig 3 og 4 har vi prøvd å fordele mer av oppgavene hver for oss, slik at det skulle være litt mer effektivt 
-med jobben som skulle bli gjort. Så en stor forskjell er at vi har klart å jobbe litt mer effektivt enn før selv om 
-vi alltid har jobbet på samme tidspunkter slik som før. 
+Men i oblig 3 og 4 har vi prøvd å fordele mer av oppgavene hver for oss, slik at det skulle være litt mer effektiv
+jobbing enn i de 2 første Obligene. Så en stor forskjell er at vi har klart å jobbe litt mer effektivt enn før selv om 
+vi alltid har jobbet på samme tidspunktene slik som før. 
+
 
 **Retrospektivt av Prosjektet**
 

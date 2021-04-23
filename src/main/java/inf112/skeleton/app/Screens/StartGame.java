@@ -13,6 +13,7 @@ public class StartGame extends Game implements ApplicationListener {
     private MainMenu mainMenu;
     private RoboRally gameScreen;
     private MultiplayerScreen multiplayerScreen;
+    private WinGameScreen wingameScreen;
     public SpriteBatch batch;
     public BitmapFont font;
 
@@ -73,7 +74,7 @@ public class StartGame extends Game implements ApplicationListener {
     }
 
     public void hostGameScreen(int players) {
-        gameScreen = new RoboRally("MapNumber1.tmx", true , players);
+        gameScreen = new RoboRally("MapNumber1.tmx", true , players, this);
         dispose();
         this.setScreen(gameScreen);
     }
@@ -83,5 +84,9 @@ public class StartGame extends Game implements ApplicationListener {
         dispose();
         this.setScreen(multiplayerScreen);
 
+    }
+    public void setWinGameScreen(int id) {
+        wingameScreen = new WinGameScreen(this, id);
+        this.setScreen(wingameScreen);
     }
 }

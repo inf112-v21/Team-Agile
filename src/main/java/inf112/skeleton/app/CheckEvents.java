@@ -161,6 +161,14 @@ public class CheckEvents {
         }
     }
 
+    public void checkIfSomeoneDead(ArrayList<Robot> robotliste) {
+        for(Robot r : robotliste) {
+            if (r.robotHealthPoint == 0) {
+                r.respawn();
+            }
+        }
+    }
+
     public void checkRepair(ArrayList<Robot> robotList) {
         for (Robot r : robotList) {
             Vector2 robotPosition = new Vector2(r.getX(), r.getY());
@@ -202,7 +210,7 @@ public class CheckEvents {
     public void allFlagsTaken(ArrayList<Robot> robotList) {
         for (Robot r : robotList) {
             if (r.getFlag() == game.flagsToTake) {
-                r.renderHud("Player " + r.id + " won the game!\nRestart the game to start again", game.batch, 2);
+                game.screen.setWinGameScreen(r.id);
             }
         }
     }
