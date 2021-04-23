@@ -40,7 +40,7 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Johnny var litt syk denne dagen, men møtte fortsatt opp på discord å fortsatte med implementasjonen av Boostere
 
 **19.04.2021 : 12:15 - 14:00**
-* Denne dagen var Marius på jobb og Johnny hadde en ærend, så han kom en 45 min etter de andre. 
+* Denne dagen var Marius på jobb og Johnny hadde en ærend, så Johnny kom 45 min etter de andre. 
 * Vi fikk merget inn både Menu branchen og Gameloop branchen til master. 
 * Tore startet på ny branch for å implementere "Pushing" på robotene. slik at dersom de traff hverandre vil
   robot bli dyttet.
@@ -53,16 +53,25 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Tore fortsatte pushing av roboter. 
 * Petter fortsatte å oppdatere marcdown.doc. 
 
-**21.04.2021 : 12:15 -**
+**21.04.2021 : 12:15 - 16:00**
 * Alle tilstede
 * Johnny og Anthony fikk gjort mye på klassediagram
 * Tore og Leif Petter fikk startet på javadoc-dokumentasjon
 * Marius fikk ferdigimplementert Rotation-klassen og repair-klassen. Fikk også implementert PowerDown, sammen med Anthony. 
 
-**22.04.2021 : 12:15 -**
+**22.04.2021 : 12:15 -18:00**
 * Alle var tilstede.
 * I forkant av dette møtet hadde Marius fått ferdigstilt tester til Repair og Rotation, samt startet på powerDown. 
-  Også fått gjort litt designendringer. 
+  Også fått gjort litt designendringer.
+* I løpet av møtet fant vi litt bugs som måtte fikses f.eks. Lasere skøyt forbi vegger, veggen kunne vi gå gjennom, men
+  det ble også fikset i løpet av dagen, av Marius og Anthony som satt litt ekstra for å fikse veggene helt.
+* fant en bug om at hvis man står ved siden av en motspiller i retning mot den spilleren og går bakover, 
+  altså ikke mot spiller, så ville mot spiller bli pushet og spiller ville gå bakover. 
+* Det ble også skrevet en manuell test for PowerDown i dette dokumentet lengre nede. 
+* BoosterTest ble også ferdig, både for single og dobble boostere/rullebaner. 
+
+  
+  
   
 ***
 ## Krav for denne inneleveringen:
@@ -130,7 +139,8 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 
 **Arbeidsoppgaver:**
 * Gameloop skal kalles på når antall registers mottat av serveren er lik antall tilkoblinger til spillet. f.eks. 2 spillere , da kalles gameloop så fort serveren mottar 
-register fra hver av spillerene
+register fra hver av spillerene.
+* Gameloop utfører alle Phasene i hver runde i riktig rekkefølge.
 
 <br/>
 
@@ -225,7 +235,8 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 
 **Multiplayer test med flere instanser på samme PC**
 Vi hadde problemer med å hente modulene fra pom.xml filen derfor må du skjekke at lib mappen ligger i pathen til prosjektet høyre klikk på prosjekt mappen Team-Agile -> Open Module Settings -> Dependencies tab -> helt nederst av listen er det et "+" tegn.
--> Jars and Directories -> Velg ``lib`` som ligger i prosjekt mappen og apply.
+-> Jars and Directories -> Velg ``lib`` som ligger i prosjekt mappen og apply. Har funnet ut i etterkant at vi får problemer om vi laster ned kryonet modulene gjennom pom.xml filen ettersom kryonet versjonen gjennom maven er en annen versjon enn det vi har brukt når vi implementerte multiplayer, dermed må vi benytte oss 
+av den manuelle måten for å laste modulene for at ting skal funke.
 
 Før man starter må man tillate at flere instanser av Main tillates. Åpne opp Main gå i menylinjen, og naviger deg til
 run -> edit configurations -> modify options -> huke av på ``Allow multiple instances``
@@ -234,16 +245,25 @@ run -> edit configurations -> modify options -> huke av på ``Allow multiple ins
 
 Kjøre multiplayer med 2 instanser av Main på samme PC:
 
-* Start en instans av Main, første instans av Main vil være hosten av serveren. Og skrive i terminalen til denne instansen ``no``.
-* Deretter i Main skjekk at ``host`` variabel er satt til ``false`` og kjør flere instanser av Main for å koble nye instansen til hosten.
-  For hver nye Main instanser som blir kjørt må det i første Main instansen som er Host skrive ``no`` visst du skal koble til flere instanser ellers ``yes`` for å starte og få tilgang til brukertaster(les i Multiplayer i readme.md for mer detaljert stegvis oppstart av Multiplayer)
-* Start en ny Main instans til, og i første Main instansen som ble kjørt skriv ``yes``
-* Nå skal 2 seperate spillvinduer være oppe , hvor hver av de har egne brukertaster og styrer hver sin robot.
+* Start en instans av Main, en Main menu screen vil komme opp, hvor man får valgene mellom Join Game/Host Game/Exit Game. Første instans velger man Host Game og i tastefeltet skriver inn 2 for å teste med 2 roboter, deretter ``continue`` og hele spillet vil vises.
+* Start en ny instans til av Main, på denne instans velger du Join Game og instansene kobles til den forrige instansen som hostet game.
+* Nå skal 2 seperate spillvinduer være oppe og spillet startes, hvor hver av de har egne brukertaster og styrer hver sin robot.
 * Gjennomfør noen av robot styringene ved hjelp av piltastene. Spilleren som flytter på seg flytter seg på samme måte i begge spillvinduene.
-* Velg 5 kort med tastetrykkene fra 1-9 og trykk ``ENTER`` for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt.
+* Velg 1-5 kort med tastetrykkene fra 1-9 eller ved museklikk på kortene, og trykk ``ENTER``/``Lock Cards`` knappen for å sende de valgte kortene til Server. Gjørs på begge spillvinduer individuelt.
 * Når valgte kort er sendt fra begge spillvinduer, utføres kortene i sekvens for alle spillvinduene.
+* Serveren utfører gameloopen og en hel runde av spillet utføres.
 * Etter alle kortene er utført vil begge spillvinduer få nye kort og, stegene over kan gjøres på nytt.
 
+
+Teste PowerDown på spiller.
+* start spillet, gjerne går slik at spiller mister hp.
+* deretter gå tilbake til posisjon hvor spiller ikke mister hp, trykk powerdown, eller knappen ``p``.
+* forventes da at du skal få 9 hp, som er maks hp. men skal ikke kunne bevege deg før neste runde.
+* dersom du tar powerdown og står i et felt med laser.
+* skal du får 9 hp i starten og miste 1 hp for hver fase i hver runde.
+* så du kan forvente å ha 4 hp igjen etter en full runde med en spiller som har brukt powerdown som også
+  blir truffet av laser.
+  
 <br/>
 
 ***

@@ -14,8 +14,11 @@ import static org.junit.Assert.*;
 
 public class PowerDownTest {
     Robot robot;
-    RoboRally game = new RoboRally("MapNumber1.tmx" , true);
+    RoboRally game = new RoboRally("MapNumber1.tmx" , true, 1);
     ArrayList<Robot> robots = new ArrayList();
+    int healthBefore;
+    int healthAfter;
+    InputHandler handler;
 
     @Before
     public void setUp() throws Exception {
@@ -32,12 +35,17 @@ public class PowerDownTest {
 
         robot = new Robot(4,13, Color.BLACK, 1, game);  // placing robot on position on one-health repair tile
         robots.add(robot);
+        handler = new InputHandler(game, robot);
 
     }
 
     @Test
-    public void testThatPowerDownRestoresFullHealth(){
-        robot.setRobotHealthPoint(2);
+    public void testThatPowerDownRestoresFullHealth() {
+         robot.setRobotHealthPoint(2);
+         int startHp = robot.robotHealthPoint;
+         handler.powerDown();
+         int endHp = robot.robotHealthPoint;
+         assertEquals(9, endHp);
 
     }
 

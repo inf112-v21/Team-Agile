@@ -47,7 +47,12 @@ public class RoboRally extends InputAdapter implements Screen {
 
     public GameClient client;
     public InputHandler handler;
-    public ArrayList<Color> colors;
+    public static ArrayList<Color> colors;
+
+
+    public static ArrayList<Color> getColors() {
+        return colors;
+    }
 
     public Robot clientPlayer;
 
@@ -67,7 +72,7 @@ public class RoboRally extends InputAdapter implements Screen {
 
     private CreateGame newGame;
     public CheckEvents checkevent;
-    public Texture powerdown, lockInHand, exitGame;
+    public Texture powerDown, background2;
 
 
     public RoboRally(String mapChosen, boolean host){
@@ -92,9 +97,8 @@ public class RoboRally extends InputAdapter implements Screen {
         batch = new SpriteBatch();
         font = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
         colors = new ArrayList<>(Arrays.asList(Color.WHITE,Color.GREEN, Color.LIGHT_GRAY,  Color.FIREBRICK , Color.ORANGE, Color.LIME, Color.YELLOW,  Color.FOREST));
-        powerdown = new Texture("power_down.png");
-        lockInHand = new Texture("lock_in_cards.png");
-        exitGame = new Texture("exitGame.png");
+        background2 = new Texture("background2.png");
+        powerDown = new Texture("power_down.png");
         camera = new OrthographicCamera();
         viewport = new FitViewport(29,14);
         font_cam = new OrthographicCamera();
@@ -102,15 +106,6 @@ public class RoboRally extends InputAdapter implements Screen {
         newGame.initalize();
 
         render = new OrthogonalTiledMapRenderer(map , 1/300f);
-
-
-
-        //MapLayers mapLayers = map.getLayers();
-        //backgroundLayer = (TextureMapObject) mapLayers.get("Background");
-
-
-
-
 
         if(host) {
             try {
@@ -163,20 +158,23 @@ public class RoboRally extends InputAdapter implements Screen {
         batch.begin();
         drawPlayers(robots, batch);
 
+        batch.draw(background2, 0,0, 29,14);
+
         if (clientPlayer != null && !clientPlayer.cards.isEmpty()) {
             clientPlayer.renderCards(batch);
+            batch.draw(background2, 0,0, 29,14);
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.renderPriority(batch);
-            batch.draw(powerdown, 1090, 300);
+            //batch.draw(powerDown, 1072, 32, 199, 106);
+            batch.draw(powerDown, 1090, 49, 170, 76);
+
         }
 
         if (clientPlayer != null) {
+            //batch.draw(background2, 0, 0, 1339, 750);
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.initializeHud(batch);
         }
-
-        batch.draw(lockInHand, 881, 300);
-        batch.draw(exitGame, 1013, 40);
         batch.end();
 
         if (clientPlayer != null && phase.equals("check")) {

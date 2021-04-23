@@ -48,6 +48,7 @@ public class Robot extends Sprite {
     public String name;
     public ArrayList<PlayingCard> cards;
     public ArrayList<PlayingCard> lockedHand;
+    public int moveby;
 
     public ArrayList<PlayingCard> getLockedHand() {
         return lockedHand;
@@ -55,8 +56,7 @@ public class Robot extends Sprite {
 
     ArrayList<Robot> otherrobots;
 
-
-
+    public int totalFlags = 3;
     public int flagToTake;
     Texture texture;
     TextureRegion[][] tr;
@@ -66,6 +66,7 @@ public class Robot extends Sprite {
     public int id;
     public Vector2 checkpoint;
     public int lives;
+
 
     public void setPowerdownpos(Vector2 powerdownpos) {
         this.powerdownpos = powerdownpos;
@@ -154,10 +155,9 @@ public class Robot extends Sprite {
 
     public boolean checkForPlayer(int rot) {
         //kjente bugs:
-        //med checkForWall er det noen vegger som ikke
-        //registreres (øst og vest), og det ser ut til at
-        //laserlayer (lasterstråler) gjør at en spiller henger fast
-        //og ikke kan dyttes
+        //om spilleren går baklengs mens han
+        //står mot en annen spiller, så
+        //backer begge off (feature, not a bug?)
 
         int x = (int) this.getX();
         int y = (int) this.getY();
@@ -174,7 +174,7 @@ public class Robot extends Sprite {
                 break;
             case (90):
                 for (Robot r : game.robots) {
-                    if ((x + 1) == r.getX() && y == r.getY()) {
+                    if (((x + 1) == r.getX()) && (y == r.getY())) {
                         if(checkForWall(r, 1, 0)) {
                         } else { r.setPosition(r.getX() + 1, r.getY()); }
                         return true;
@@ -184,15 +184,19 @@ public class Robot extends Sprite {
             case (180):
                 for (Robot r : game.robots) {
                     if ((x == r.getX()) && ((y + 1) == r.getY())) {
-                        if(checkForWall(r, 0, 1)) {
-                        } else { r.setPosition(r.getX(), r.getY() + 1); }
+                        if (checkForWall(r, 0, 1)) {
+
+                        }
+                        else {
+                            r.setPosition(r.getX(), r.getY() + 1);
+                        }
                         return true;
                     }
                 }
                 break;
             case (270):
                 for (Robot r : game.robots) {
-                    if (x - 1 == r.getX() && y == r.getY()) {
+                    if (((x - 1) == r.getX()) && (y == r.getY())) {
                         if(checkForWall(r, -1, 0)) {
                         } else { r.setPosition(r.getX() - 1, r.getY()); }
                         return true;
@@ -225,7 +229,7 @@ public class Robot extends Sprite {
 
     public void playerLocked(ArrayList<PlayingCard> lockedkort) {
         int x = 18;
-        int y = 2;
+        int y = 3;
         for (int i = 0; i < lockedkort.size() ; i++ ) {
             PlayingCard kort = lockedkort.get(i);
             kort.setPosition( x, y);
@@ -259,18 +263,29 @@ public class Robot extends Sprite {
             }
         }
         xStart = 883;
-        yStart = 252;
+        yStart = 306;
         for (PlayingCard locked : lockedHand) {
             int priority = locked.getPriority();
             priorityfont.draw(batch, Integer.toString(priority), xStart , yStart);
-            xStart += 92;
+            xStart += 93;
         }
     }
 
+    private String getColorType(int id){
+        if(this.id == 1) return "White";
+        else if(this.id == 2) return "Green";
+        else if(this.id == 3) return "Light Gray";
+        else if(this.id == 4) return "FireBrick";
+        else if(this.id == 5) return "Orange";
+        else if(this.id == 6) return "Lime";
+        else if(this.id == 7) return "Yellow";
+        else return "Forest"; }
+
     public void initializeHud(Batch batch){
-        hudFont.draw(batch, ("Player: " + id), 30, 80);
+        //Color col = RoboRally.getColors().get(id);
+        hudFont.draw(batch, ("Player: " + id + " | Color: " + getColorType(id)), 30, 80);
         hudFont.draw(batch, ("HP = " + robotHealthPoint), 715, 80);
-        hudFont.draw(batch, ("Flag to take = " + flagToTake), 30, 30);
+        hudFont.draw(batch, ("Flags: " + (flagToTake-1) + "/" + totalFlags + " | Next flag nr: " + flagToTake), 30, 30);
         hudFont.draw(batch, ("Lives = " + lives), 700, 30);
 
     }
@@ -300,44 +315,50 @@ public class Robot extends Sprite {
 
     public void move(int steps) {
 
-        int moveby;
         if (steps < 0) {
             moveby = -1;
         } else {
             moveby = 1;
         }
 
-        switch ((int) this.getRotation()) {
-            case(0):
+        int robotRotation = (int) this.getRotation();
+
+        switch ((int) robotRotation) {
+            case(0): // robot oppreist -- peker mot sør
                 for(int i = 1; i <= Math.abs(steps); i++){
-                    if(checkForWall(this, 0, -1)){
-                    }
-                    else if (checkForPlayer((int)this.getRotation())) {
-                        System.out.println("Other robot in front of player");
-                        this.setPosition(this.getX(), this.getY() - moveby);
-                    }
-                    else{ this.setPosition(this.getX(), this.getY() - moveby); }
+                        if(moveby == 1 && checkForWall(this, 0, -1)){
+                        } else if (moveby == -1 && checkForWall(this, 0, 1)) {
+                        }
+                        else{ this.setPosition(this.getX(), this.getY() - moveby); }
+
                 }
                 break;
 
             case(90):
                 for(int i = 1; i <= Math.abs(steps); i++){
-                    if(checkForWall(this, 1, 0)){
-                    }
-                    else if (checkForPlayer((int) this.getRotation())) {
+
+                    if(moveby == 1 && checkForWall(this, 1, 0)){
+                    }else if (moveby == -1 && checkForWall(this, -1, 0)){}
+                    else if (checkForPlayer((int) this.getRotation()) && (moveby > 0)) {
                         System.out.println("Other robot in front of player");
                         this.setPosition(this.getX() + moveby, this.getY());
                         }
+                    else if (checkForPlayer(270)) {
+                        this.setPosition(this.getX() + moveby, this.getY());
+                    }
                     else { this.setPosition(this.getX() + moveby, this.getY()); }
                     }
                 break;
 
             case(180):
                 for(int i = 1; i <= Math.abs(steps); i++){
-                    if(checkForWall(this, 0, 1)){
-                    }
-                    else if (checkForPlayer((int) this.getRotation())) {
+                    if(moveby == 1 && checkForWall(this, 0, 1)){
+                    } else if (moveby == -1 && checkForWall(this, 0, -1)){}
+                    else if (checkForPlayer((int) this.getRotation()) && (moveby > 0)) {
                         System.out.println("Other robot in front of player");
+                        this.setPosition(this.getX(), this.getY() + moveby);
+                    }
+                    else if (checkForPlayer(0)) {
                         this.setPosition(this.getX(), this.getY() + moveby);
                     }
                     else { this.setPosition(this.getX(), this.getY() + moveby); }
@@ -346,10 +367,13 @@ public class Robot extends Sprite {
 
             case(270):
                 for(int i = 1; i <= Math.abs(steps); i++){
-                    if(checkForWall(this, -1, 0)){
-                    }
-                    else if (checkForPlayer((int) this.getRotation())) {
+                    if(moveby == 1 && checkForWall(this, -1, 0)){
+                    }else if (moveby == -1 && checkForWall(this, 1, 0)){}
+                    else if (checkForPlayer((int) this.getRotation()) && (moveby > 0)) {
                         System.out.println("Other robot in front of player");
+                        this.setPosition(this.getX() - moveby, this.getY());
+                    }
+                    else if (checkForPlayer(90)) {
                         this.setPosition(this.getX() - moveby, this.getY());
                     }
                     else { this.setPosition(this.getX() - moveby, this.getY()); }
@@ -360,8 +384,8 @@ public class Robot extends Sprite {
     }
     public boolean checkForWall(Robot player, int xDiff, int yDiff){
         for (Wall wall : game.allWalls){
-            if(wall.isWallInFrontOfPlayer(player) || wall.IsWallInNextTileInFrontOfPlayer(player, xDiff, yDiff)) {
-                return true;
+            if(wall.isWallInSameTileInFrontOfPlayer(player) || wall.IsWallInNextTileInFrontOfPlayer(player, xDiff, yDiff)) {
+            return true;
             }
         }
         return false;

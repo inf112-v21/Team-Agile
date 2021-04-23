@@ -33,23 +33,23 @@ public class InputHandler extends InputAdapter implements InputProcessor {
     public boolean keyUp(int keycode) {
         switch (keycode) {
             case Input.Keys.UP:
-                player.move(1);
+                //player.move(1);
                 game.client.sendMove(new MoveEvent(game.client.getID(), 1));
                 break;
             case Input.Keys.DOWN:
-                player.move(-1);
+                //player.move(-1);
                 game.client.sendMove(new MoveEvent(game.client.getID(), -1));
                 break;
             case Input.Keys.LEFT:
-                player.rotate(90);
+                //player.rotate(90);
                 game.client.sendRotation(new RotationEvent(game.client.getID(), 90));
                 break;
             case Input.Keys.RIGHT:
-                rotate(-90);
+                //rotate(-90);
                 game.client.sendRotation(new RotationEvent(game.client.getID(), -90));
                 break;
             case Input.Keys.R:
-                rotate(180);
+                //rotate(180);
                 game.client.sendRotation(new RotationEvent(game.client.getID(), 180));
                 break;
             case Input.Keys.NUM_1:
@@ -127,14 +127,17 @@ public class InputHandler extends InputAdapter implements InputProcessor {
             if(screenX > 1190 && screenX < 1280 && screenY > 190 && screenY < 336 ) {
                 moveToLocked(8);
             }
-            if(screenX > 925 && screenX < 1095 && screenY > 360 && screenY < 403 ) {
+            if(screenX > 1136 && screenX < 1304 && screenY > 564 && screenY < 630 ) {
                 powerDown();
             }
-            if(screenX > 1140 && screenX < 1302 && screenY > 360 && screenY < 403 ) {
+            if(screenX > 909 && screenX < 1084 && screenY > 564 && screenY < 630 ) {
                 lockInHand();
             }
-            if(screenX > 1060 && screenX < 1191 && screenY > 600 && screenY < 637 ) {
+            if(screenX > 1365 && screenX < 1399 && screenY > 0 && screenY < 25 ) {
                 exitGame();
+            }
+            if(screenX > 985 && screenX < 1235 && screenY > 323 && screenY < 364 ) {
+                resetLockedHand();
             }
 
         }
@@ -191,65 +194,6 @@ public class InputHandler extends InputAdapter implements InputProcessor {
         resetDegrees((int) player.getRotation());
     }
 
-    public boolean checkForWall(Robot player, int xDiff, int yDiff){
-        for (Wall wall : walls){
-            if(wall.isWallInFrontOfPlayer(player) || wall.IsWallInNextTileInFrontOfPlayer(player, xDiff, yDiff)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean checkForLaser(Robot player){
-        for (Laser laser : lasers){
-            if(laser.isLaserInFrontOfPlayer(player)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    public void move(int steps) {
-        switch ((int) player.getRotation()) {
-            case(0):
-                for(int i = 1; i <= steps; i++){
-                    if(checkForWall(player, 0, -1)){
-                        System.out.println("Not possible to make that move, because of wall");
-                    }
-                    else{ player.setPosition(player.getX(), player.getY() - 1); }
-                }
-                break;
-
-            case(90):
-                for(int i = 1; i <= steps; i++){
-                    if(checkForWall(player, 1, 0)){
-                        System.out.println("Not possible to make that move, because of wall");
-                    }
-                    else{
-                        player.setPosition(player.getX() + 1, player.getY());}
-                }
-                break;
-
-            case(180):
-                for(int i = 1; i <= steps; i++){
-                    if(checkForWall(player, 0, 1)){
-                        System.out.println("Not possible to make that move, because of wall");
-                    }
-                    else{player.setPosition(player.getX(), player.getY() + 1);}
-                }
-                break;
-
-            case(270):
-                for(int i = 1; i <= steps; i++){
-                    if(checkForWall(player, -1, 0)){
-                        System.out.println("Not possible to make that move, because of wall");
-                    }
-                    else{player.setPosition(player.getX() - 1, player.getY());}
-                }
-                break;
-        }
-    }
     public void powerDown() {
         game.client.sendPowerDown(new PowerDown(game.client.getID()));
         game.clientPlayer.getLockedHand().clear();
@@ -265,6 +209,7 @@ public class InputHandler extends InputAdapter implements InputProcessor {
 
     public void exitGame(){
         Gdx.app.exit();
+        System.exit(0);
     }
 
     public void setHandler(Robot robot) {
