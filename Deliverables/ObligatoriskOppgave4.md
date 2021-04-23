@@ -139,6 +139,10 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
   spillerne flyttes.
 
 **Arbeidsoppgaver:**
+* Spiller skal flytte motspiller som er ved siden av og i samme retning som spiller skal bevege seg i.
+* Spiller skal ta over motspiller sin posisjon.
+* Dersom en vegg er på andre siden av motspiller som skal bli dyttet i samme retning skal ingenting skje. (blir stoppet av veggen)
+
 
 
 <br/>
@@ -173,7 +177,7 @@ register fra hver av spillerene.
 * Boostere skal bevege spiller i retning som booster peker. 
 * Dersom det er en booster med sving skal også spiller rotere 90 grader i den retningen slik som en "rullebane".
 * den skal bli brukt for hver fase av spillet, så dersom en står på single booster, og tar powerdown. skal
-  spiller bli beveget 5 steg i retning booster så lenge den ikke faller av
+  spiller bli beveget 5 steg i retning booster så lenge spiller ikke faller av.
 
 <br/>
 

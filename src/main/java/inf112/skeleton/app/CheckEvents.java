@@ -49,6 +49,9 @@ public class CheckEvents {
                 }
                 for (Robot r : game.robots) {
                     if (r.getX() == x && r.getY() == i) {
+                        if (r.isGettingPushed()) {
+                            break;
+                        }
                         distance = (int) Math.abs(r.getY() - y);
                         robotsDistanceToLaser.put(distance, r);
                     }
@@ -66,6 +69,9 @@ public class CheckEvents {
                 }
                 for (Robot r : game.robots) {
                     if (r.getX() == i && r.getY() == y) {
+                        if (r.isGettingPushed()) {
+                        break;
+                    }
                         distance = (int) Math.abs(r.getX() - x);
                         robotsDistanceToLaser.put(distance, r);
                     }
@@ -83,6 +89,9 @@ public class CheckEvents {
                 }
                 for (Robot r : game.robots) {
                     if (r.getX() == i && r.getY() == y) {
+                        if (r.isGettingPushed()) {
+                            break;
+                        }
                         distance = (int) Math.abs(r.getX() - x);
                         robotsDistanceToLaser.put(distance, r);
                     }
@@ -100,6 +109,9 @@ public class CheckEvents {
                 }
                 for (Robot r : game.robots) {
                     if (r.getX() == i && r.getY() == y) {
+                        if (r.isGettingPushed()) {
+                            break;
+                        }
                         laserdamage = 2;
                         distance = (int) Math.abs(r.getX() - x);
                         robotsDistanceToLaser.put(distance, r);
@@ -224,15 +236,22 @@ public class CheckEvents {
                         for (Booster b : game.allBoosters) {
                             if(robotPosition.x == b.getPosition().x && robotPosition.y == b.getPosition().y) {
 
-                        switch (b.getDirection()) {
-                            case SOUTH:
-                                r.setPosition(r.getX() , r.getY() - 1);
-                                if(b.getTurn() == 90) {
-                                    r.rotate(90);
-                                }
-                                if(b.getTurn() == -90) {
-                                    r.rotate(-90);
-                                }
+                                switch (b.getDirection()) {
+                                    case SOUTH:
+                                        if (r.checkForWall(r, (int) r.getX(), (int) r.getY() - 1)) {
+
+                                        } else {
+                                            r.setPosition(r.getX(), r.getY() - 1);
+                                            if (b.getTurn() == 90) {
+                                                r.rotate(90);
+                                            }
+                                            if (b.getTurn() == -90) {
+                                                r.rotate(-90);
+                                            }
+                                        }
+
+
+
                                 break;
                             case WEST:
                                 r.setPosition(r.getX() - 1 , r.getY());

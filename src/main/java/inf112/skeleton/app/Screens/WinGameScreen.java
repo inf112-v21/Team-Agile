@@ -14,10 +14,13 @@ public class WinGameScreen implements Screen{
         private SpriteBatch batch;
         private BitmapFont font;
         public String text;
+        private StartGame game;
 
 
-        public WinGameScreen(StartGame,int id) {
+        public WinGameScreen(StartGame game, int id) {
             this.playerIdwon = id;
+            this.game = game;
+            batch = new SpriteBatch();
 
         }
 
