@@ -168,4 +168,8 @@ skjekk at lib mappen ligger i pathen til prosjektet høyre klikk på prosjekt ma
 ** Main Menu **
 Kan hende i noen tilfeller at museklikk i Main Menu er lite responsiv, som gjør at man ikke kommer seg videre inn i Host Game, prøv å dobbelt klikk evt. starte Main på nytt. Trykke seg ut og inn av spillevinduet kan også gjøre at museklikk blir mer responsiv.
 
-
+**Spill Bugs**
+når man spiller spillet er det et par bugs man må vite. dersom man står på en booster som er på vei ut av mappet, må man stå i samme retning som boosteren peker
+for å ikke bli dyttet ut av brettet. dersom man faktisk blir dyttet ut, vil det ikke være mulig å komme seg inn på brettet igjen. 
+Har også en bug med pushing av spiller. dersom spiller som skal bli dyttet står i retning av en vegg, og en annen skal prøve å dytte denne spilleren, så vil 
+spiller som dytter ende på samme tile som den spilleren som står i samme retning hvor veggen er. 
