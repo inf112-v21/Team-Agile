@@ -40,7 +40,6 @@ public class BoosterTest {
         game.checkevent.checkBoosters(game.robots);
         assertEquals(4, (int) robot.getX());
         assertEquals(8, (int) robot.getY());
-
     }
 
     @Test
