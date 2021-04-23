@@ -254,30 +254,42 @@ public class CheckEvents {
 
                                 break;
                             case WEST:
-                                r.setPosition(r.getX() - 1 , r.getY());
-                                if(b.getTurn() == 90) {
-                                    r.rotate(90);
-                                }
-                                if(b.getTurn() == -90) {
-                                    r.rotate(-90);
+                                if (r.checkForWall(r, (int) r.getX(), (int) r.getY() - 1)) {
+
+                                } else {
+                                    r.setPosition(r.getX() - 1, r.getY());
+                                    if (b.getTurn() == 90) {
+                                        r.rotate(90);
+                                    }
+                                    if (b.getTurn() == -90) {
+                                        r.rotate(-90);
+                                    }
                                 }
                                 break;
                             case NORTH:
-                                r.setPosition(r.getX() , r.getY() + 1);
-                                if(b.getTurn() == 90) {
-                                    r.rotate(90);
-                                }
-                                if(b.getTurn() == -90) {
-                                    r.rotate(-90);
+                                if (r.checkForWall(r, (int) r.getX(), (int) r.getY() - 1)) {
+
+                                } else {
+                                    r.setPosition(r.getX(), r.getY() + 1);
+                                    if (b.getTurn() == 90) {
+                                        r.rotate(90);
+                                    }
+                                    if (b.getTurn() == -90) {
+                                        r.rotate(-90);
+                                    }
                                 }
                                 break;
                             case EAST:
-                                r.setPosition(r.getX() + 1 , r.getY());
-                                if(b.getTurn() == 90) {
-                                    r.rotate(90);
-                                }
-                                if(b.getTurn() == -90) {
-                                    r.rotate(-90);
+                                if (r.checkForWall(r, (int) r.getX(), (int) r.getY() - 1)) {
+
+                                } else {
+                                    r.setPosition(r.getX() + 1, r.getY());
+                                    if (b.getTurn() == 90) {
+                                        r.rotate(90);
+                                    }
+                                    if (b.getTurn() == -90) {
+                                        r.rotate(-90);
+                                    }
                                 }
                                 break;
                         }
