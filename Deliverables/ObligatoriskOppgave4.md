@@ -71,7 +71,7 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Det ble også skrevet en manuell test for PowerDown i dette dokumentet lengre nede. 
 * BoosterTest ble også ferdig, både for single og dobble boostere/rullebaner. 
 
-**23.04.2021 : 10:00 -**
+**23.04.2021 : 10:00 - 16:00**
 * Alle møtte opp.
 * Petter skrev på md dokumentene.
 * Johnny & Anthony fikset at robot skal respawner på nytt når den har mistet alle sine HP, og at spillvinduet endrer seg til et nytt vindu når en robot tar alle flag, som indikerer at en spiller har vunnet og spillet er ferdig. Det nye vinduet er bare en lilla skjerm, mangler 
@@ -299,7 +299,7 @@ run -> edit configurations -> modify options -> huke av på ``Allow multiple ins
 * Da skal du få 9 hp, som er maks hp.
 * Naviger deg til en laser tile og gjennomfør en powerdown med ``p`` eller klikk powerdown, da vil roboten stå stille i feltet og fortsatt ta skade for hver fase i runden som gjennomføres.
 * Du kan forvente å ha 4 hp igjen etter en full runde med en spiller som har brukt powerdown i et laser Tile.
-* PowerDown i andre typer tile en laser som Booster eller tannhjul vil også påvirke roboten om man gjennomfører en powerdown i de nevnte tilene.
+* PowerDown i andre typer tile enn laser som Booster eller tannhjul vil også påvirke roboten om man gjennomfører en powerdown i de nevnte tilene.
   
 <br/>
 
@@ -365,9 +365,9 @@ Men det er også mulighet for å jobbe alene dersom man ønsker det.
 
 Alle i gruppen er nok meget fornøyd med dynamikken og kommunikasjonen mellom hverandre. Vi er flinke til å spør om hjelp
 dersom noen sliter, vi er gode på å finne nytt arbeid dersom vi ser noe mangler eller ender opp med å bli ferdig med 
-et krav vi har satt oss. Og dersom noen ikke finner noe så spør vi om noen andre trenger hjelp med noe. De som er litt
+et krav vi har satt oss. Og dersom noen ikke finner noe å gjøre, så spør vi om noen andre trenger hjelp med noe. De som er litt
 sterkere å kode tar å hjelper litt ekstra dem som kanskje sliter litt mer, men alle er med på kodingen. Dersom noe 
-ikke er forstått av oppgaver, eller dersom en implementasjon henger sammen med noe annet så er det aldri et problem 
+ikke er forstått noe av oppgaven, eller dersom en implementasjon henger sammen med noe annet så er det aldri et problem 
 at vi forklarer hva som er blitt gjort slik at det blir enklest mulig for alle parter å samarbeide/forstå andres kode.
 
 I forhold til starten er det blitt lettere å si ifra eller å snakke om mulige bugs for å få hjelp. Var aldri et veldig 
