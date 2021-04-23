@@ -70,8 +70,9 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Det ble også skrevet en manuell test for PowerDown i dette dokumentet lengre nede. 
 * BoosterTest ble også ferdig, både for single og dobble boostere/rullebaner. 
 
-  
-  
+**23.04.2021 : 10:00 -**
+* Alle møtte opp.
+* 
   
 ***
 ## Krav for denne inneleveringen:
@@ -105,7 +106,10 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 
 **Arbeidsoppgaver:**
 * Design av bagrunn og knapper på Main menu. 
-* implementasjon av posisjon til 
+* implementasjon av posisjon til knappene, slik at du kan trykke hvor som helst på knappen og den gjør det
+  den skal.
+* Knapp for å starte spill og joine spill, valg av antall spillere. 
+* 
 
 ***
 
@@ -326,7 +330,17 @@ dersom noen sliter, vi er gode på å finne nytt arbeid dersom vi ser noe mangle
 et krav vi har satt oss. Og dersom noen ikke finner noe så spør vi om noen andre trenger hjelp med noe. De som er litt
 sterkere å kode tar å hjelper litt ekstra dem som kanskje sliter litt mer, men alle er med på kodingen. Dersom noe 
 ikke er forstått av oppgaver, eller dersom en implementasjon henger sammen med noe annet så er det aldri et problem 
-at vi forklarer hva som er blitt gjort slik at det blir enklest mulig for alle parter å samarbeide/forstå andres kode. 
+at vi forklarer hva som er blitt gjort slik at det blir enklest mulig for alle parter å samarbeide/forstå andres kode.
+
+I forhold til starten er det blitt letter å si ifra eller å snakke om mulige bugs for å få hjelp. Var aldri et veldig 
+stort problem ettersom fire av oss var kjent fra før. For siste mann merket han at det ble også lettere å diskutere 
+med oss andre ettersom han ble bedre kjent med oss gjennom alle arbeidsoppgavene vi hadde sammen. 
+Men i oblig 3 og 4 har vi prøvd å fordele mer av oppgavene hver for oss, slik at det skulle være litt mer effektivt 
+med jobben som skulle bli gjort. Så en stor forskjell er at vi har klart å jobbe litt mer effektivt enn før selv om 
+vi alltid har jobbet på samme tidspunkter slik som før. 
+
+**Retrospektivt av Prosjektet**
+
 
 
 <br/> 

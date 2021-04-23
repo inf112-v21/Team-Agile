@@ -165,7 +165,6 @@ public class RoboRally extends InputAdapter implements Screen {
             batch.draw(background2, 0,0, 29,14);
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.renderPriority(batch);
-            //batch.draw(powerDown, 1072, 32, 199, 106);
             batch.draw(powerDown, 1090, 49, 170, 76);
 
         }

@@ -136,7 +136,7 @@ public class InputHandler extends InputAdapter implements InputProcessor {
             if(screenX > 1365 && screenX < 1399 && screenY > 0 && screenY < 25 ) {
                 exitGame();
             }
-            if(screenX > 985 && screenX < 1235 && screenY > 323 && screenY < 364 ) {
+            if(screenX > 1017 && screenX < 1195 && screenY > 314 && screenY < 348 ) {
                 resetLockedHand();
             }
 
