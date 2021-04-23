@@ -162,6 +162,13 @@ public class Robot extends Sprite {
                 for (Robot r : game.robots) {
                     if ((x == r.getX()) && ((y - 1) == r.getY())) {
                         if(checkForWall(r, 0, -1)) {
+                            if (this.getRotation() != r.getRotation()) {
+                                r.setIsGettingPushed(true);
+                                r.setPosition(r.getX(), r.getY() -1);
+                                r.setIsGettingPushed(false);
+                            } else {
+                                return false;
+                            }
                         } else {
                             r.setIsGettingPushed(true);
                             r.setPosition(r.getX(), r.getY() -1);
@@ -175,6 +182,13 @@ public class Robot extends Sprite {
                 for (Robot r : game.robots) {
                     if (((x + 1) == r.getX()) && (y == r.getY())) {
                         if(checkForWall(r, 1, 0)) {
+                            if (this.getRotation() != r.getRotation()) {
+                                r.setIsGettingPushed(true);
+                                r.setPosition(r.getX() + 1, r.getY());
+                                r.setIsGettingPushed(false);
+                            } else {
+                                return false;
+                            }
                         } else {
                             r.setIsGettingPushed(true);
                             r.setPosition(r.getX() + 1, r.getY());
@@ -188,7 +202,13 @@ public class Robot extends Sprite {
                 for (Robot r : game.robots) {
                     if ((x == r.getX()) && ((y + 1) == r.getY())) {
                         if (checkForWall(r, 0, 1)) {
-
+                            if (this.getRotation() != r.getRotation()) {
+                                r.setIsGettingPushed(true);
+                                r.setPosition(r.getX(), r.getY() + 1);
+                                r.setIsGettingPushed(false);
+                            } else {
+                                return false;
+                            }
                         }
                         else {
                             r.setIsGettingPushed(true);
@@ -203,6 +223,13 @@ public class Robot extends Sprite {
                 for (Robot r : game.robots) {
                     if (((x - 1) == r.getX()) && (y == r.getY())) {
                         if(checkForWall(r, -1, 0)) {
+                            if (this.getRotation() != r.getRotation()) {
+                                r.setIsGettingPushed(true);
+                                r.setPosition(r.getX() - 1, r.getY());
+                                r.setIsGettingPushed(false);
+                            } else {
+                                return false;
+                            }
                         } else {
                             r.setIsGettingPushed(true);
                             r.setPosition(r.getX() - 1, r.getY());
@@ -337,9 +364,14 @@ public class Robot extends Sprite {
                         } else if (moveby == -1 && checkForWall(this, 0, 1)) {
                         } else if (moveby == 1 && checkForPlayer( (int) this.getRotation())) {
                             this.setPosition(this.getX(), this.getY() - moveby); }
+                        else if (moveby == 1 && !checkForPlayer( (int) this.getRotation())) {
+                        }
                         else if (moveby == -1 && checkForPlayer(180)) {
                             this.setPosition(this.getX(), this.getY() - moveby);
-                        } else { this.setPosition(this.getX(), this.getY() - moveby); }
+                        }
+                        else if (moveby == -1 && !checkForPlayer(180)) {
+                        }
+                        else { this.setPosition(this.getX(), this.getY() - moveby); }
                 }
                 break;
 
@@ -350,9 +382,14 @@ public class Robot extends Sprite {
                     else if (moveby == 1 && checkForPlayer( (int) this.getRotation())) {
                         this.setPosition(this.getX() + moveby, this.getY());
                     }
+                    else if (moveby == 1 && !checkForPlayer( (int) this.getRotation())) {
+                    }
                     else if (moveby == -1 && checkForPlayer(270)) {
                         this.setPosition(this.getX() + moveby, this.getY());
-                    }  else { this.setPosition(this.getX() + moveby, this.getY()); }
+                    }
+                     else if (moveby == -1 && !checkForPlayer(270)) {
+                    }
+                      else { this.setPosition(this.getX() + moveby, this.getY()); }
                 }
                 break;
 
@@ -363,9 +400,14 @@ public class Robot extends Sprite {
                     else if (moveby == 1 && checkForPlayer( (int) this.getRotation())) {
                         this.setPosition(this.getX(), this.getY() + moveby);
                     }
+                    else if (moveby == 1 && !checkForPlayer( (int) this.getRotation())) {
+                    }
                     else if (moveby == -1 && checkForPlayer(0)) {
                         this.setPosition(this.getX(), this.getY() + moveby);
-                    }  else { this.setPosition(this.getX(), this.getY() + moveby); }
+                    }
+                    else if (moveby == -1 && !checkForPlayer(0)) {
+                    }
+                      else { this.setPosition(this.getX(), this.getY() + moveby); }
                 }
                 break;
 
@@ -376,9 +418,14 @@ public class Robot extends Sprite {
                     else if (moveby == 1 && checkForPlayer( (int) this.getRotation())) {
                         this.setPosition(this.getX() - moveby, this.getY());
                     }
+                    else if (moveby == 1 && !checkForPlayer( (int) this.getRotation())) {
+                    }
                     else if (moveby == -1 && checkForPlayer(90)) {
                         this.setPosition(this.getX() - moveby, this.getY());
-                    }  else { this.setPosition(this.getX() - moveby, this.getY()); }
+                    }
+                    else if (moveby == -1 && !checkForPlayer(90)) {
+                    }
+                    else { this.setPosition(this.getX() - moveby, this.getY()); }
                 }
                 break;
 
