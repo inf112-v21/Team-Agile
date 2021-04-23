@@ -19,6 +19,8 @@ _Notater for hva som ble gjort og hva som er litt avklart er notert ned selve da
 MERK: Ingen arbeid er blitt gjort mellom møtene av noen i gruppen, såfremt det ikke er nevnt i selve møtereferatet.
 Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 
+test
+
 **09.04.2021 : 10:15 - 12:00**
 * Alle møtes
 * Laget nytt markdown-doc. 
