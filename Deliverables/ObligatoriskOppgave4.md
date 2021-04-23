@@ -252,7 +252,7 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 
 #### Klassediagram
 
-![](/Deliverables/Images/ClassDiagramRoboRally2.png "Class Diagram")
+![](/Deliverables/Images/ClassDiagramRoboRally3.png "Class Diagram")
 
 **Hva vi ikke har fått til av kode:**
 * Ikke fått til full implementasjon av HUD. Skulle gjerne hatt det slik at vår HUD viser all informasjon for også motstanderspiller, 
