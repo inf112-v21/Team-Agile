@@ -101,25 +101,24 @@ Dersom ingen av mvn-kommandoene i steg 5 fungerer så må du først installere M
    
 
 ## HVORDAN SPILLE SPILLET
-Spillet er ikke enda ferdigutviklet, men under finner du foreløpig dokumentasjon på hvilke funksjoner som kan utføres i spillet:
+Spillet er så og si ferdigutviklet, men mangler noen funksjoner fra den originale RoboRally spillet. Under finner du beskrivelse på det som faktisk fungerer: 
 
-For å starte spillet start en Main instans deretter for å starte å kunne gjøre bevegelser
-skrive ``yes`` og enter i terminalen til Main som spillet kjøres på. Hvordan spille flere spillere sammen beskrives under i Multiplayer
+* Start spillet ved å gjennomføre veiledningen i punktene over. 
+* Velg om du vil starte ved å hoste game eller å joine. For detaljert beskrivelse av hvordan Multiplayer fungerer, se dokumentasjon for Multiplayer under. 
+* Dersom du skal hoste, så må du velge hvor mange spillere som skal være med. Spillet starter ikke før alle valgte spillere har joinet. Om du eksempelvis
+vil teste ut spillet alene så velger du ``HostGame`` og skriver inn tallet ``1``.
 
-* Når du starter spillet så vil brettet laste. Du vil da se en spiller (ugle), en checkpoint (flagg) og et hull.
+  
+* Når du starter spillet så vil brettet laste. Du vil da se alle spillere, representert ved en ugle, checkpoints og andre kart-objekter. 
+* Velg deg 5 kort fra kortstokken øverst i høgre hjørne. Disse kan velges ved bruk av museklikk eller piltaster, hvorav kort fra venstre->høgre er representert fra 1->5. 
+* Trykk ```Lock in Cards``` når du har valgt alle kortene du ønsker å bruke i første trekk. Om du skulle velge feil så kan du trykke ```Reset deck``` for å velge på nytt. 
+* Når alle spillere har valgt sine kort, så vil kortenes funksjon utføres. 
+* Om du eksempelvis skulle ha behov for PowerDown så trykker du ```PowerDown``` før du velger kort. Du vil da stå over en runde for å kunne få tilbake HP, men andre spillere kan dytte deg, eller du tar damage av lasere. 
+
+
 * Du vinner av å besøke alle flaggene i riktig prioritert rekkefølge (se nummereringen).
-* Du navigerer ved å bruke piltastene: 
-    * **Pil opp**: Flytter roboten 1 steg framover i retningen den står i.
-    * **Pil ned**: Flytter roboten 1 steg bakover i forhold til retningen den står i.
-    * **Pil høyre**: Roterer roboten til høyre.
-    * **Pil venstre**: Roterer roboten til venstre.
-    * **R**: Roter roboten 180 grader (UTURN).
-    * **C**: Plukke opp ``flag`` eller ta ``skade`` når roboten befinner seg i en av de rutene. 
-* Velge ut kort ved med ``Venstre museklikk`` på valgte kort.
-* Angre valgte kort ``Høyre museklikk``
-* Utføre valgte kort som ligger i Register-feltet: 
-    * **SPACEBAR** Utfører kortet som ligger først fra venstre.
-    * **ENTER** Sender de valgte kortene til Server.
+* Du taper om du går tom for liv. Du mister liv ved at HP går til 0, eller at du går i et hull. 
+
     
 ## Multiplayer
 Spillet er per nå konfiguert til å kjøre på samme pc med flere instanser av spillet for hver spiller.
@@ -166,6 +165,7 @@ at...."._ I dette tilfellet er det en feil som må rettes opp i selve IntelliJ, 
 skjekk at lib mappen ligger i pathen til prosjektet høyre klikk på prosjekt mappen Team-Agile -> Open Module Settings -> Dependencies tab -> helt nederst av listen er det et "+" tegn.
 -> Jars and Directories -> Velg ``lib`` som ligger i prosjekt mappen og apply.
 
-Om man venter for lenge vil serveren timeout og miste connection, må isåfall starte på nytt.
+** Main Menu **
+Kan hende i noen tilfeller at museklikk i Main Menu er lite responsiv, som gjør at man ikke kommer seg videre inn i Host Game, prøv å dobbelt klikk evt. starte Main på nytt. Trykke seg ut og inn av spillevinduet kan også gjøre at museklikk blir mer responsiv.
 
 

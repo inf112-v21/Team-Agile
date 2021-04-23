@@ -93,32 +93,34 @@ _Dette er målene vi har satt oss for å klare å fullføre for denne obligatori
 ***
 ## Spesifikasjoner
 
+### Implementasjoner som skal gjennomføres for innlevering 4.
+* Implementasjon av Pushing av spillere.
+* Implementasjon av Main menu/GUI.
+* Implementasjon av GameLoop.
+* Implementasjon av Boostere/Rullebaner.
+* Implementasjon av Repair.
+* Implementasjon av Rotation på brettet.
+* Implementasjon av PowerDown.
+
 ### Brukerhistorier
 
 **Implementasjon av Main Menu**
 * Som bruker ønsker jeg å bli møtt med en meny som er oversiktilig, lett å forstå og som gjerne kan vise frem
-  hvilket spill jeg faktisk spiller. 
+  hvilket spill jeg faktisk spiller.
 
-**Akseptansekriterier:**
-* spiller skal kunne bruke muse-klikk for at noe skal skje i main menu. 
+
+  **Akseptansekriterier:**
+* spiller skal kunne bruke muse-klikk for at noe skal skje i main menu.
 * Som spiller vil jeg at jeg skal kunne starte spillet som single player og multiplayer
-* Som spiller vil jeg kunne avsluttet spillet fra meny-en. 
+* Som spiller vil jeg kunne avsluttet spillet fra meny-en.
 
-**Arbeidsoppgaver:**
+
+  **Arbeidsoppgaver:**
 * Design av bagrunn og knapper på Main menu. 
 * implementasjon av posisjon til knappene, slik at du kan trykke hvor som helst på knappen og den gjør det
   den skal.
 * Knapp for å starte spill og joine spill, valg av antall spillere. 
-* 
 
-## krav for Innlevering 4.
-* Implementasjon av Pushing av spillere.
-* Implementasjon av Main menu/GUI.
-* Implementasjon av GameLoop.
-* Implementasjin av Boostere/Rullebaner.
-* Implementasjon av Repair.
-* Implementasjon av Rotation på brettet.
-* Implementasjon av PowerDown.
 
 
 ***
@@ -250,13 +252,14 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 
 #### Klassediagram
 
-![](/Deliverables/Images/ClassDiagramRoboRally2.png "Class Diagram")
+![](/Deliverables/Images/ClassDiagramRoboRally3.png "Class Diagram")
 
 **Hva vi ikke har fått til av kode:**
-***
+* Ikke fått til full implementasjon av HUD. Skulle gjerne hatt det slik at vår HUD viser all informasjon for også motstanderspiller, 
+  men foreløpig så printes denne informasjonen i terminal.
+* Ikke fått til at koden vil bygge i Travis. 
 
-* P
-![](/Deliverables/Images/HUD.png "HUD")
+***
 
 ### Manuelle tester
 
@@ -270,7 +273,7 @@ run -> edit configurations -> modify options -> huke av på ``Allow multiple ins
 
 (les Known Bugs i ``Readme.md`` om feil oppstår ved gjennomføring av test)
 
-Kjøre multiplayer med 2 instanser av Main på samme PC:
+####Kjøre multiplayer med 2 instanser av Main på samme PC:
 
 * Start en instans av Main, en Main menu screen vil komme opp, hvor man får valgene mellom Join Game/Host Game/Exit Game. Første instans velger man Host Game og i tastefeltet skriver inn 2 for å teste med 2 roboter, deretter ``continue`` og hele spillet vil vises.
 * Start en ny instans til av Main, på denne instans velger du Join Game og instansene kobles til den forrige instansen som hostet game.
@@ -282,16 +285,20 @@ Kjøre multiplayer med 2 instanser av Main på samme PC:
 * Etter alle kortene er utført vil begge spillvinduer få nye kort og, stegene over kan gjøres på nytt.
 
 
-Teste PowerDown på spiller.
-* start spillet, gjerne går slik at spiller mister hp.
-* deretter gå tilbake til posisjon hvor spiller ikke mister hp, trykk powerdown, eller knappen ``p``.
-* forventes da at du skal få 9 hp, som er maks hp. men skal ikke kunne bevege deg før neste runde.
-* dersom du tar powerdown og står i et felt med laser.
-* skal du får 9 hp i starten og miste 1 hp for hver fase i hver runde.
-* så du kan forvente å ha 4 hp igjen etter en full runde med en spiller som har brukt powerdown som også
-  blir truffet av laser.
+####Teste PowerDown på spiller. 1 Instans
+* Start spillet, naviger deg med piltastene til en tile med laser og trykk tastetrykk ``c`` for å ta skade på roboten.
+* Deretter beveg deg ut fra laser tile, trykk powerdown, eller knappen ``p``.
+* Da skal du få 9 hp, som er maks hp.
+* Naviger deg til en laser tile og gjennomfør en powerdown med ``p`` eller klikk powerdown, da vil roboten stå stille i feltet og fortsatt ta skade for hver fase i runden som gjennomføres.
+* Du kan forvente å ha 4 hp igjen etter en full runde med en spiller som har brukt powerdown i et laser Tile.
+* PowerDown i andre typer tile en laser som Booster eller tannhjul vil også påvirke roboten om man gjennomfører en powerdown i de nevnte tilene.
   
 <br/>
+
+###Teste at spiller vinner ved å ta alle flaggen. 1 Instans
+* Naviger deg til flagg nr. 1 og trykk ``c`` roboten plukker opp da flagget.
+* Fortsett til flagg nr. 2 og deretter flagg nr. 3 og trykk ``c`` på hver av de. Når alle flaggene er plukket endres spillvinduet til et lilla skjerm som er vinduet som vises når en spiller vinner. Mangler design til det vinduet grunnet ikke nok tid til å implementere.
+
 
 ***
 ## Teambeskrivelse og rollefordeling
@@ -339,15 +346,15 @@ Men det er også mulighet for å jobbe alene dersom man ønsker det.
 2. 
 3. 
 
+
 **Projectboard:**
 
 [Project Board](https://trello.com/b/80a0xYw8/inf112-oblig-2)
 
-
-
 <br/> 
 
 **Gruppedynamikk og kommunikasjon:**
+
 Alle i gruppen er nok meget fornøyd med dynamikken og kommunikasjonen mellom hverandre. Vi er flinke til å spør om hjelp
 dersom noen sliter, vi er gode på å finne nytt arbeid dersom vi ser noe mangler eller ender opp med å bli ferdig med 
 et krav vi har satt oss. Og dersom noen ikke finner noe så spør vi om noen andre trenger hjelp med noe. De som er litt
@@ -355,15 +362,27 @@ sterkere å kode tar å hjelper litt ekstra dem som kanskje sliter litt mer, men
 ikke er forstått av oppgaver, eller dersom en implementasjon henger sammen med noe annet så er det aldri et problem 
 at vi forklarer hva som er blitt gjort slik at det blir enklest mulig for alle parter å samarbeide/forstå andres kode.
 
-I forhold til starten er det blitt letter å si ifra eller å snakke om mulige bugs for å få hjelp. Var aldri et veldig 
+I forhold til starten er det blitt lettere å si ifra eller å snakke om mulige bugs for å få hjelp. Var aldri et veldig 
 stort problem ettersom fire av oss var kjent fra før. For siste mann merket han at det også ble lettere å diskutere 
 med oss andre ettersom han ble bedre kjent med oss gjennom alle arbeidsoppgavene vi hadde sammen. 
 Men i oblig 3 og 4 har vi prøvd å fordele mer av oppgavene hver for oss, slik at det skulle være litt mer effektiv
 jobbing enn i de 2 første Obligene. Så en stor forskjell er at vi har klart å jobbe litt mer effektivt enn før selv om 
 vi alltid har jobbet på samme tidspunktene slik som før. 
 
+<br/>
 
-**Retrospektivt av Prosjektet**
+**Total retrospektiv av hele prosjektet fra start**
+
+Vi er særs fornøyd med den totale gjennomførelsen av prosjektet. Vi har holdt våre tidsfrister, levert inn stabil kode og
+hatt gjennomgående god kvalitet på innleveringene. Gjennom de tre innleveringene vi har hatt har vi fått nærmere full score på
+samtlige, noe som igjen reflekterer at vi har hatt en høy måloppnåelse. Vi har fått implementert mange funksjoner i spillet, 
+som faktisk gjør spillet spillbart. Vi har hatt godt samarbeid, lært mye om prosjektmetodikk og lært mye om det å jobbe sammen i team.
+Vi har også fått mye erfaringer med bruk av github, spesielt med tanke på flere branches og merging, samt bruk av samabeidsvertkøy som Code With Me. 
+
+Det er vanskelig å si i retrospektiv hva vi per nå hadde gjort annerledes om vi nå hadde begynt på nytt, men vi hadde nok beholdt dagens
+prosjektmetodikk  om vi skulle begynt på nytt. De siste to innleveringene har vært mer effektive, med tanke på oppmøte, møtetidspunkter og gjennomførelser av oppgaver fra
+project board, enn de to første innleveringene var. Vi har opplevd at det var bedre å fordele oppgaver ut på hver person og at hver person heller jobbe ut fra disse ansvarene.
+
 
 
 
