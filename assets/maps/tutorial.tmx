@@ -1,13 +1,4 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2513
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
-
-\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 <?xml version="1.0" encoding="UTF-8"?>\
+<?xml version="1.0" encoding="UTF-8"?>\
 <map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="25" height="14" tilewidth="300" tileheight="300" infinite="0" nextlayerid="8" nextobjectid="1">\
  <tileset firstgid="1" source="tiles.tsx"/>\
  <layer id="1" name="Board" width="25" height="14">\

@@ -19,7 +19,6 @@ _Notater for hva som ble gjort og hva som er litt avklart er notert ned selve da
 MERK: Ingen arbeid er blitt gjort mellom møtene av noen i gruppen, såfremt det ikke er nevnt i selve møtereferatet.
 Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 
-test
 
 **09.04.2021 : 10:15 - 12:00**
 * Alle møtes
@@ -74,9 +73,16 @@ test
 
 **23.04.2021 : 10:00 -**
 * Alle møtte opp.
-* 
-  
+* Petter skrev på md dokumentene.
+* Johnny & Anthony fikset at robot skal respawner på nytt når den har mistet alle sine HP, og at spillvinduet endrer seg til et nytt vindu når en robot tar alle flag, som indikerer at en spiller har vunnet og spillet er ferdig. Det nye vinduet er bare en lilla skjerm, mangler 
+  design ikke nok tid til ferdig implementasjon.
+* Tore fikset bug med pushing, man pusher ikke spiller dersom man går baklengs lengre. 
+* Marius har fikset bug med vegger, slik at man ikke kan gå utfor mappet. 
+* Tore og Marius fikset Laser bug, nå mister man ikke hp dersom man står bak en vegg. (laseren blir stoppet av veggen)
+
+
 ***
+
 ## Krav for denne inneleveringen:
 _Dette er målene vi har satt oss for å klare å fullføre for denne obligatoriske innleveringen:_
 
@@ -345,8 +351,8 @@ Men det er også mulighet for å jobbe alene dersom man ønsker det.
 
 **3 forbedringspunkter:**
 1. Starte på obligen tidligere(hvertfall på denne obligen). 
-2. 
-3. 
+2. Burde startet med å fordele oppgaver til enkeltpersoner tidligere. Ikke så mye grupper arbeid.
+3. Bruke Trello mer strukturert. (den var litt rotete til tider)
 
 
 **Projectboard:**

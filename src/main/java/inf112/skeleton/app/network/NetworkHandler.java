@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class NetworkHandler {
 
     public static final int PORT = 8080;
-    public static final String IPAddress = "25.83.60.150";
+    public static final String IPAddress = "localhost";
 
     public static void register(EndPoint endPoint) {
 

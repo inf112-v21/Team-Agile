@@ -30,8 +30,7 @@ public class Robot extends Sprite {
     private final int WIDTH = 1;
     private final int HEIGHT = 1;
 
-    //private RoboRally game;
-    //private boolean cannotmove = false;
+
 
     public void setRobotHealthPoint(int robotHealthPoint) {
         this.robotHealthPoint = robotHealthPoint;
@@ -69,12 +68,6 @@ public class Robot extends Sprite {
 
     public boolean isgettingpushed;
 
-
-    public void setPowerdownpos(Vector2 powerdownpos) {
-        this.powerdownpos = powerdownpos;
-    }
-
-    public Vector2 powerdownpos;
 
     BitmapFont priorityfont = new BitmapFont(Gdx.files.internal("fonts/15green.fnt"));
     BitmapFont hudFont = new BitmapFont(Gdx.files.internal("fonts/17green.fnt"));
@@ -133,13 +126,9 @@ public class Robot extends Sprite {
         winState = tr[0][2];
     }
 
-    public Vector2 getCheckpoint() {
-        return checkpoint;
-    }
 
-    public void setCheckpoint(Vector2 checkpoint) {
-        this.checkpoint = checkpoint;
-    }
+
+
 
     public void changeState(String state) {
         switch (state) {
@@ -164,10 +153,6 @@ public class Robot extends Sprite {
     }
 
     public boolean checkForPlayer(int rot) {
-        //kjente bugs:
-        //om spilleren går baklengs mens han
-        //står mot en annen spiller, så
-        //backer begge off (feature, not a bug?)
 
         int x = (int) this.getX();
         int y = (int) this.getY();
@@ -274,7 +259,6 @@ public class Robot extends Sprite {
         float xStart = 883;
         float yStart = 680;
 
-        // 83 y 17
 
         for (PlayingCard kort : cards) {
             int priority = kort.getPriority();
@@ -306,7 +290,6 @@ public class Robot extends Sprite {
         else return "Forest"; }
 
     public void initializeHud(Batch batch){
-        //Color col = RoboRally.getColors().get(id);
         hudFont.draw(batch, ("Player: " + id + " | Color: " + getColorType(id)), 30, 80);
         hudFont.draw(batch, ("HP = " + robotHealthPoint), 715, 80);
         hudFont.draw(batch, ("Flags: " + (flagToTake-1) + "/" + totalFlags + " | Next flag nr: " + flagToTake), 30, 30);

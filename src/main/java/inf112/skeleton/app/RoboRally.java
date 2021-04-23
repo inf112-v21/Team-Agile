@@ -180,7 +180,6 @@ public class RoboRally extends InputAdapter implements Screen {
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.renderPriority(batch);
             batch.draw(powerDown, 1090, 49, 170, 76);
-            //batch.draw(background2, 0, 0, 1339, 750);
             batch.setProjectionMatrix(font_cam.combined);
             clientPlayer.initializeHud(batch);
         }
@@ -233,12 +232,5 @@ public class RoboRally extends InputAdapter implements Screen {
         return laserLayer;
     }
 
-    public int getBoardHeight() {
-        return boardHeight;
-    }
-
-    public int getBoardWidth() {
-        return boardWidth;
-    }
 
 }

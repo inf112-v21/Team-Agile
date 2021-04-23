@@ -19,9 +19,9 @@ public class PlayingCardTest {
 
     Robot player;
     PlayingCard card;
-    InputHandler handler;
 
-    RoboRally game = new RoboRally("tutorial.tmx", true);
+
+    RoboRally game = new RoboRally("MapNumber1.tmx", true);
 
 
     @Before
@@ -35,6 +35,7 @@ public class PlayingCardTest {
         new Lwjgl3Application(new Game() {
             @Override
             public void create() {
+                game.show();
                 Gdx.app.exit();
             }
         }, cfg);
@@ -58,11 +59,11 @@ public class PlayingCardTest {
     @Test
     public void performRotateRightShouldReturn270degree() {
         player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
-        handler = new InputHandler(game,player);
+
         player.setRotation(0);
         card = new PlayingCard(MoveType.ROTATE_RIGHT, 10);
 
-        handler.rotate(card.getMove());
+        player.rotate(card.getMove());
 
         assertEquals(270, (int) player.getRotation());
     }
@@ -70,47 +71,47 @@ public class PlayingCardTest {
     @Test
     public void performRotateLeftShouldReturn90degree() {
         player =  new Robot(new TextureRegion(new Texture("pikachu.png")) , 3 , 3, "player 1");
-        handler = new InputHandler(game,player);
+
         player.setRotation(0);
         card = new PlayingCard(MoveType.ROTATE_LEFT, 10);
 
-        handler.rotate(card.getMove());
+        player.rotate(card.getMove());
 
         assertEquals(90, (int) player.getRotation());
     }
     @Test
     public void performMoveOneShouldReturn2inYdirection() {
         player = new Robot(3,3, Color.BLACK, 1, game);
-        handler = new InputHandler(game,player);
-        player.setRotation(0);
+
+        player.setRotation(180);
         card = new PlayingCard(MoveType.MOVEONE, 10);
 
         player.move(card.getMove());
 
-        assertEquals(2, (int) player.getY());
+        assertEquals(4, (int) player.getY());
     }
     @Test
     public void performMoveTwoShouldReturn1inYdirection() {
         player = new Robot(3,3, Color.BLACK, 1, game);
-        handler = new InputHandler(game,player);
-        player.setRotation(0);
+
+        player.setRotation(180);
         card = new PlayingCard(MoveType.MOVETWO, 10);
 
         player.move(card.getMove());
 
-        assertEquals(1, (int) player.getY());
+        assertEquals(5, (int) player.getY());
     }
 
     @Test
     public void performMoveThreeShouldReturn0inYdirection() {
         player = new Robot(3,3, Color.BLACK, 1, game);
-        handler = new InputHandler(game,player);
-        player.setRotation(0);
+
+        player.setRotation(180);
         card = new PlayingCard(MoveType.MOVETHREE, 10);
 
         player.move(card.getMove());
 
-        assertEquals(0, (int) player.getY());
+        assertEquals(6, (int) player.getY());
     }
 
 

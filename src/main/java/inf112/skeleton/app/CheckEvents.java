@@ -250,12 +250,9 @@ public class CheckEvents {
                                                 r.rotate(-90);
                                             }
                                         }
-
-
-
                                 break;
                             case WEST:
-                                if (r.checkForWall(r, (int) r.getX(), (int) r.getY() - 1)) {
+                                if (r.checkForWall(r, (int) r.getX() - 1, (int) r.getY())) {
 
                                 } else {
                                     r.setPosition(r.getX() - 1, r.getY());
@@ -268,7 +265,7 @@ public class CheckEvents {
                                 }
                                 break;
                             case NORTH:
-                                if (r.checkForWall(r, (int) r.getX(), (int) r.getY() - 1)) {
+                                if (r.checkForWall(r, (int) r.getX(), (int) r.getY() + 1)) {
 
                                 } else {
                                     r.setPosition(r.getX(), r.getY() + 1);
@@ -281,7 +278,7 @@ public class CheckEvents {
                                 }
                                 break;
                             case EAST:
-                                if (r.checkForWall(r, (int) r.getX(), (int) r.getY() - 1)) {
+                                if (r.checkForWall(r, (int) r.getX() + 1, (int) r.getY())) {
 
                                 } else {
                                     r.setPosition(r.getX() + 1, r.getY());

@@ -21,7 +21,7 @@ public class RobotTest {
     Vector2 pos;
     InputHandler handler;
 
-    RoboRally game = new RoboRally("MapNumber1.tmx", true);
+    RoboRally game = new RoboRally("tutorial.tmx", true);
 
     @Before
     public void setUp() throws Exception {
@@ -31,7 +31,6 @@ public class RobotTest {
         new Lwjgl3Application(new Game() {
             @Override
             public void create() {
-
                 Gdx.app.exit();
             }
         }, cfg);
@@ -53,15 +52,7 @@ public class RobotTest {
 
 
 
-        /*
-        playerLayer = new TiledMapTileLayer(5,5,300,300);
-        //pos = new Vector2(1,1);
-        TiledMapTileLayer.Cell cell2 = new TiledMapTileLayer.Cell();
 
-        player2 = new Robot(4,3, Color.BLACK, 2, game);
-        playerLayer.setCell((int) player.getX(), (int) player.getY(), cell2);
-
-         */
     }
 
 
@@ -94,41 +85,6 @@ public class RobotTest {
         assertEquals(degreesBefore, degreesAfter);
     }
 
-    @Test
-    public void keyDownShouldMakePlayerMoveOneToTheDownDirectionOfPlayer() {
-
-        // Siden spilleren sin robot peker mot sør vil key down gjøre at roboten
-        // går 1 i y-retning, selv om det er litt lite intuitivt. Det samme
-        // gjelder for keyUp-testen, sånn at den også blir "motsatt".
-
-        assertNotNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
-
-        Vector2 newPosition = new Vector2((int) player.getX() - 1, (int) player.getY());
-
-        player.move(-1);
-
-        Vector2 currentPosition = new Vector2((int) player.getX(), (int) player.getY());
-
-        assertEquals(newPosition, currentPosition);
-
-        assertNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
-    }
-
-    @Test
-    public void keyUpShouldMakePlayerMoveOneToTheDirectionOfPlayer() {
-
-        assertNotNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
-
-        Vector2 newPosition = new Vector2((int) player.getX() + 1, (int) player.getY());
-
-        player.move(1);
-
-        Vector2 currentPosition = new Vector2((int) player.getX(), (int) player.getY());
-
-        assertEquals(newPosition, currentPosition);
-
-        assertNull(playerLayer.getCell((int) player.getX(), (int) player.getY()));
-    }
 
     @Test
     public void robotVisitSecondFlagWithoutVisitingFirstFlagFirst() {
@@ -168,37 +124,5 @@ public class RobotTest {
 
     }
 
-    @Test
-    public void robotWalksIntoAnotherRobotAndShouldPushOtherRobot() {
-
-        Robot robot2 = new Robot(4,3, Color.BLACK, 2, game);
-
-        game.robots.add(player);
-        game.robots.add(robot2);
-
-        int playerxbefore = (int) player.getX();
-        int player2xbefore = (int) robot2.getX();
-
-        player.move(1);
-
-        assertEquals((int) player.getX(), playerxbefore + 1);
-        assertEquals((int) robot2.getX(), player2xbefore + 1);
-
-    }
-
-
-    /*
-    @Test
-    public void givenTakesTheLastFlagThenWins() {
-        Integer flagsToTake = 3;
-
-        player.visitFlag(1);
-        player.visitFlag(2);
-
-        //Sjekker om flagget som skal tas er det samme som siste flagget
-        assertEquals(flagsToTake, player.getFlag());
-    }
-
- */
 
 }

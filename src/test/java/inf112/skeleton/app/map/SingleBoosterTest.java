@@ -34,26 +34,11 @@ public class SingleBoosterTest {
         game.robots.clear();
         game.robots.add(robot);
     }
-/*
-    @BeforeEach
-    public void setUpRobot() throws Exception {
-        robot = new Robot(5,8, Color.BLACK,1,game);
-        game.robots.add(robot);
-
-        //game.robots.remove(robot);
-
-    }
-
- */
 
 
     @Test
     public void testSingleBoosterWestDirection(){
-        /*
-        robot = new Robot(5,8, Color.BLACK,1,game);
-        game.robots.add(robot);
 
-         */
         robot.setPosition(5,8);
         game.checkevent.checkBoosters(game.robots);
         assertEquals(4, (int) robot.getX());
@@ -62,11 +47,7 @@ public class SingleBoosterTest {
 
     @Test
     public void testSingleBoosterEastDirection(){
-        /*
-        robot = new Robot(9,9, Color.BLACK,1,game);
-        game.robots.add(robot);
 
-         */
         robot.setPosition(9,9);
         game.checkevent.checkBoosters(game.robots);
         assertEquals(10, (int) robot.getX());
@@ -75,11 +56,7 @@ public class SingleBoosterTest {
 
     @Test
     public void testSingleBoosterNorthDirection(){
-        /*
-        robot = new Robot(7,2, Color.BLACK,1,game);
-        game.robots.add(robot);
 
-         */
         robot.setPosition(7,2);
         game.checkevent.checkBoosters(game.robots);
         assertEquals(7, (int) robot.getX());
@@ -88,11 +65,7 @@ public class SingleBoosterTest {
 
     @Test
     public void testSingleBoosterSouthDirection(){
-        /*
-        robot = new Robot(5,6, Color.BLACK,1,game);
-        game.robots.add(robot);
 
-         */
         robot.setPosition(5,6);
         game.checkevent.checkBoosters(game.robots);
         assertEquals(5, (int) robot.getX());

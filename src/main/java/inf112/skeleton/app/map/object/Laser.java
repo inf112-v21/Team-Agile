@@ -33,11 +33,7 @@ public class Laser extends Wall {
         return this.wallPos;
     }
 
-    public Boolean isLaserInFrontOfPlayer(Robot player) {
-        int xTest = ((int) player.getX());
-        int yTest = ((int) player.getY());
-        return (laserLayer.getCell(xTest, yTest).getTile().getId()) != 0;
-    }
+
 
     public int getCellId() {
         return this.cellId;

@@ -67,8 +67,6 @@ public class Booster {
 
 
 
-    public static void isThisTurn(){
 
-    }
 }
 

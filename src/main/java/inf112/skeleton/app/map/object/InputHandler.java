@@ -33,23 +33,23 @@ public class InputHandler extends InputAdapter implements InputProcessor {
     public boolean keyUp(int keycode) {
         switch (keycode) {
             case Input.Keys.UP:
-                //player.move(1);
+
                 game.client.sendMove(new MoveEvent(game.client.getID(), 1));
                 break;
             case Input.Keys.DOWN:
-                //player.move(-1);
+
                 game.client.sendMove(new MoveEvent(game.client.getID(), -1));
                 break;
             case Input.Keys.LEFT:
-                //player.rotate(90);
+
                 game.client.sendRotation(new RotationEvent(game.client.getID(), 90));
                 break;
             case Input.Keys.RIGHT:
-                //rotate(-90);
+
                 game.client.sendRotation(new RotationEvent(game.client.getID(), -90));
                 break;
             case Input.Keys.R:
-                //rotate(180);
+
                 game.client.sendRotation(new RotationEvent(game.client.getID(), 180));
                 break;
             case Input.Keys.NUM_1:

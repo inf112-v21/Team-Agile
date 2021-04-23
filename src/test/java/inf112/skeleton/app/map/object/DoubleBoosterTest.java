@@ -44,10 +44,6 @@ public class DoubleBoosterTest {
 
     @Test
     public void testDoubleBoosterNorthDirection(){
-        /*
-        robot = new Robot(7,6, Color.BLACK,1,game);
-        game.robots.add(robot);
-        */
         robot.setPosition(7,6);
         game.checkevent.checkBoosters(game.robots);
         assertEquals(7, (int) robot.getX());
