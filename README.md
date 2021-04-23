@@ -171,5 +171,5 @@ Kan hende i noen tilfeller at museklikk i Main Menu er lite responsiv, som gjør
 **Spill Bugs**
 når man spiller spillet er det et par bugs man må vite. dersom man står på en booster som er på vei ut av mappet, må man stå i samme retning som boosteren peker
 for å ikke bli dyttet ut av brettet. dersom man faktisk blir dyttet ut, vil det ikke være mulig å komme seg inn på brettet igjen. 
-Har også en bug med pushing av spiller. dersom spiller som skal bli dyttet står i retning av en vegg, og en annen skal prøve å dytte denne spilleren, så vil 
-spiller som dytter ende på samme tile som den spilleren som står i samme retning hvor veggen er. 
+
+hvis en robot står mot en vegg og en annen dytter i samme retning, vil de ende opp på samme tile. 
