@@ -76,6 +76,7 @@ public class RoboRally extends InputAdapter implements Screen {
     public CheckEvents checkevent;
     public Texture powerDown, background2;
     public StartGame screen;
+    public Boolean anyWin = false;
 
 
 
@@ -173,7 +174,7 @@ public class RoboRally extends InputAdapter implements Screen {
 
         batch.draw(background2, 0,0, 29,14);
 
-        if (clientPlayer != null) {
+        if (clientPlayer != null && anyWin == false) {
             clientPlayer.renderCards(batch);
             batch.draw(background2, 0,0, 29,14);
             batch.setProjectionMatrix(font_cam.combined);
@@ -185,7 +186,7 @@ public class RoboRally extends InputAdapter implements Screen {
         }
         batch.end();
 
-        if (clientPlayer != null && phase.equals("check")) {
+        if (clientPlayer != null && phase.equals("check") && anyWin == false) {
             checkevent.checkLaserBeams(allLasers);
             checkevent.checkBoosters(robots);
             checkevent.checkHole(robots);
@@ -197,6 +198,13 @@ public class RoboRally extends InputAdapter implements Screen {
             checkevent.checkFlags(robots);
             checkevent.allFlagsTaken(robots);
             phase = "pickCards";
+        }
+
+        if (anyWin) {
+            Gdx.gl.glClearColor(0.5f, 0.5f, 1, 1);
+            Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
+
+
         }
 
     }
