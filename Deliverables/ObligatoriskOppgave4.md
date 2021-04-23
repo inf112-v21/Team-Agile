@@ -261,9 +261,6 @@ Dette er å finne i README-dokumentet i selve prosjektet.
 
 ***
 
-* P
-![](/Deliverables/Images/HUD.png "HUD")
-
 ### Manuelle tester
 
 **Multiplayer test med flere instanser på samme PC**
