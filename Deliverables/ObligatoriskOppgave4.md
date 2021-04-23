@@ -40,7 +40,7 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Johnny var litt syk denne dagen, men møtte fortsatt opp på discord å fortsatte med implementasjonen av Boostere
 
 **19.04.2021 : 12:15 - 14:00**
-* Denne dagen var Marius på jobb og Johnny hadde en ærend, så han kom en 45 min etter de andre. 
+* Denne dagen var Marius på jobb og Johnny hadde en ærend, så Johnny kom 45 min etter de andre. 
 * Vi fikk merget inn både Menu branchen og Gameloop branchen til master. 
 * Tore startet på ny branch for å implementere "Pushing" på robotene. slik at dersom de traff hverandre vil
   robot bli dyttet.
@@ -53,16 +53,20 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
 * Tore fortsatte pushing av roboter. 
 * Petter fortsatte å oppdatere marcdown.doc. 
 
-**21.04.2021 : 12:15 -**
+**21.04.2021 : 12:15 - 16:00**
 * Alle tilstede
 * Johnny og Anthony fikk gjort mye på klassediagram
 * Tore og Leif Petter fikk startet på javadoc-dokumentasjon
 * Marius fikk ferdigimplementert Rotation-klassen og repair-klassen. Fikk også implementert PowerDown, sammen med Anthony. 
 
-**22.04.2021 : 12:15 -**
+**22.04.2021 : 12:15 -18:00**
 * Alle var tilstede.
 * I forkant av dette møtet hadde Marius fått ferdigstilt tester til Repair og Rotation, samt startet på powerDown. 
-  Også fått gjort litt designendringer. 
+  Også fått gjort litt designendringer.
+* I løpet av møtet fant vi litt bugs som måtte fikses f.eks. Lasere skøyt forbi vegger, veggen kunne vi gå gjennom, men
+  det ble også fikset i løpet av dagen, av Marius og Anthony som satt litt ekstra for å fikse veggene helt.
+* fant en bug om at hvis man står intil  
+  
   
 ***
 ## Krav for denne inneleveringen:
