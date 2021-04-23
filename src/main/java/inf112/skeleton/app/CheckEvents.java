@@ -10,7 +10,10 @@ import java.util.HashMap;
 /**
  * CheckEvents holder styr på hendelser som gjentas hver runde,
  * og har metoder for å eksekvere disse hendelsene, f.eks
- * avfyring av lasere, å holde styr
+ * avfyring av lasere, å holde styr alle roboters nåværende
+ * tilstand (i live, død, mottar skade), om en av robotene har
+ * tatt alle flaggene og vinner, og generelt om noen av robotene
+ * blir påvirket av hendelser (events) som skjer på brettet/i spillet.
  *
  * @author Team Agile
  *

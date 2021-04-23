@@ -13,6 +13,14 @@ import inf112.skeleton.app.Screens.StartGame;
 
 public class MainMenu extends InputAdapter implements Screen {
 
+    /**
+     * MainMenu implementerer en skjerm for å kunne vise GUIen
+     * til hovedmenyen som kommer opp når spillet starter.
+     *
+     * @author Team Agile
+     *
+     */
+
     private SpriteBatch batch;
     Texture BackgroundImage;
 

@@ -13,6 +13,13 @@ import inf112.skeleton.app.network.Packets.Events.MoveEvent;
 import inf112.skeleton.app.network.Packets.Events.PowerDown;
 import inf112.skeleton.app.network.Packets.Events.RotationEvent;
 
+/**
+ * InputHandler er klassen som holder styr på alt som gjøres
+ * av input fra spilleren og som så behandles av spillet gjennom
+ * denne klassen.
+ *
+ * @author Team Agile
+ */
 public class InputHandler extends InputAdapter implements InputProcessor {
 
     Robot player;

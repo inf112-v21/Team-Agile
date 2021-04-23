@@ -12,6 +12,17 @@ import inf112.skeleton.app.map.object.Rotation;
 
 import java.util.ArrayList;
 
+/**
+ * CreateGame oppretter en instans av selve spillet, legger til og
+ * initialiserer alle layere, registrerer roboter for hver av spillerne på spawn points,
+ * registrerer lasere og vegger og legger de til sine respektive
+ * arraylists, og registrerer og legger til i spillmekanikken alle andre
+ * objekter på mapet, som boosters og repair stations.
+ *
+ * @author Team Agile
+ *
+ */
+
 public class CreateGame {
 
 

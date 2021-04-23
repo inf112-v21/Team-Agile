@@ -26,8 +26,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- * RoboRally klassen er klassen som holder styr på alle regler, den tar og henter informasjon fra
- * alle diverse andre klasser, slik som hører til spi
+ * RoboRally er klassen som alle andre klasser ender opp med å sende
+ * info om spillet til. Den holder styr på alle spillere, kortene,
+ * veggene, hvilket map som skal spilles og farger på spillere. Klassen
+ * rendrer det som vises på skjermen og interakterer opp mot spillmotoren
+ * libgdx som vi har brukt til å lage spillet.
+ *
+ * @author Team Agile
  *
  */
 

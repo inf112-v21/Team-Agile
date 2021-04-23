@@ -3,6 +3,16 @@ package inf112.skeleton.app.cards;
 import inf112.skeleton.app.map.object.Robot;
 import java.util.*;
 
+/**
+ * Deck klassen lager et Deck objekt hvor det opprettes
+ * en fullstendig kortstokk med riktig antall av forskjellige
+ * typer kort, som så stokkes for å kunne deles ut tilfeldig
+ * til hver av spillerne.
+ *
+ * @author Team Agile
+ *
+ */
+
 public class Deck {
 
     ArrayList<PlayingCard> deck;

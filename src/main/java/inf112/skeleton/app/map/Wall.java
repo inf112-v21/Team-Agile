@@ -4,6 +4,17 @@ import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.map.object.Laser;
 import inf112.skeleton.app.map.object.Robot;
 
+/**
+ * Wall klassen oppretter et Vegg-objekt for å kunne
+ * behandle hvordan spillerne interakterer med en vegg,
+ * som representeres av et Wall layer på kartet. Det håndterer
+ * alle typer vegger (nord, øst, vest, sør, samt yttervegger),
+ * og i tillegg layerne til Laser, som extender Wall.
+ *
+ * @author Team Agile
+ *
+ */
+
 public class Wall {
 
     Vector2 wallPos;

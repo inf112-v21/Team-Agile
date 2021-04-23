@@ -25,6 +25,17 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 
+/**
+ * GameClient tar inn en instanse av spillet RoboRally og gjør seg klar
+ * til å starte spillet. Først venter den på svar om flere spillere
+ * skal bli med i denne instansen av spillet. Så venter den til alle spillere
+ * har koblet seg til denne instansen. Når alle har koblet seg til
+ * tar denne klassen også inn valg av kort. Den passer dermed på
+ * om noe skjer med spillerne, slik som bevegelse, rotasjon, valg
+ * av kort og setter i gang ny fase. (passer på alle klasser fra Events mappen)
+ *
+ * @author Team Agile
+ */
 
 public class GameClient extends Listener {
 

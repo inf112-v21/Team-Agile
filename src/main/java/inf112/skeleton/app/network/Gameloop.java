@@ -11,6 +11,13 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.PriorityQueue;
 
+/**
+ * Gameloop klassen er klassen som holder alle rundene i gang.
+ * Den kjører gjennom spillets 5 faser, og starter på ny når nye kort er valgt.
+ * den holder spillet konstant i gang
+ *
+ * @author Team Agile
+ */
 public class Gameloop {
 
     int round;
