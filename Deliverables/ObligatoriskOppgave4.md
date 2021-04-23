@@ -65,7 +65,12 @@ Det meste av arbeid på prosjektet skjer under de faste møtetidspunkter.
   Også fått gjort litt designendringer.
 * I løpet av møtet fant vi litt bugs som måtte fikses f.eks. Lasere skøyt forbi vegger, veggen kunne vi gå gjennom, men
   det ble også fikset i løpet av dagen, av Marius og Anthony som satt litt ekstra for å fikse veggene helt.
-* fant en bug om at hvis man står intil  
+* fant en bug om at hvis man står ved siden av en motspiller i retning mot den spilleren og går bakover, 
+  altså ikke mot spiller, så ville mot spiller bli pushet og spiller ville gå bakover. 
+* Det ble også skrevet en manuell test for PowerDown i dette dokumentet lengre nede. 
+* BoosterTest ble også ferdig, både for single og dobble boostere/rullebaner. 
+
+  
   
   
 ***
