@@ -43,6 +43,7 @@ public class Gameloop {
         for (int i = 0; i < 5; i++) {
             performRound(i);
             checkEvents();
+            delay(200);
 
 
         }
